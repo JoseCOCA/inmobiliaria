@@ -1,8 +1,12 @@
+
 <body>
 
 <div id="container">
-	<h1>Inmobiliaria</h1>
-
+	<div id="slides">
+	</div>
+	<div>
+		
+	</div>
 </div>
 
 </body>

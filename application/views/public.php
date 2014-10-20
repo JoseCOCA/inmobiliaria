@@ -9,7 +9,6 @@
 
 <div id="container">
 	<h1>Inmobiliaria</h1>
-	<h2>MA</h2>
 
 </div>
 

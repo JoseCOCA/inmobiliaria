@@ -22,4 +22,20 @@ class Templates extends CI_Controller {
 		$this->load->view('header');
 		$this->load->view('public/home');
 	}
+	public function admin(){
+		$this->load->view('header');
+		$this->load->view('admin/admin');
+		$this->load->view('footer');
+	}
+	public function info(){
+		$this->load->view('header');
+		$this->load->view('public/info');
+		$this->load->view('footer');
+	}
+	public function privacy(){
+		$this->load->view('header');
+		$this->load->view('public/privacy');
+		$this->load->view('footer');
+	}
+
 }

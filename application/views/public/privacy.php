@@ -5,6 +5,6 @@
 	<title>Document</title>
 </head>
 <body>
-	<h1>Aqui plantilla admin</h1>
+	<h1>Aqui vista Aviso de privacidad</h1>
 </body>
 </html>

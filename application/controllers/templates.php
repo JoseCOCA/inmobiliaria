@@ -38,4 +38,11 @@ class Templates extends CI_Controller {
 		$this->load->view('footer');
 	}
 
+	public function terms(){
+		$this->load->view('header');
+		$this->load->view('public/terms');
+		$this->load->view('footer');
+	}
+
+
 }

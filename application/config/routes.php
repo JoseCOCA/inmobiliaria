@@ -40,6 +40,12 @@
 
 $route['default_controller'] = "templates";
 $route['404_override'] = '';
+$route['admin'] = "templates/admin";
+$route['privacy'] = "templates/privacy";
+$route['terms'] = "templates/terms";
+$route['info'] = "templates/info";
+
+
 
 
 /* End of file routes.php */

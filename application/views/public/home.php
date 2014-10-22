@@ -93,10 +93,10 @@
   <div class="menu_block" >
     <nav class="horizontal-nav full-width horizontalNav-notprocessed">
       <ul class="sf-menu">
-       <li class="current"><a href="index.html">INICIO</a></li>
-       <li><a href="#">INFORMACIÓN DE EMPRESA</a></li>
-       <li><a href="#">AVISO DE PRIVACIDAD</a></li>
-       <li><a href="#">TERMINOS DE USO</a></li>
+       <li class="current"><a href="<?= base_url() ?>">INICIO</a></li>
+       <li><a href="<?= base_url("info") ?>">INFORMACIÓN DE EMPRESA</a></li>
+       <li><a href="<?= base_url("privacy") ?>">AVISO DE PRIVACIDAD</a></li>
+       <li><a href="<?= base_url("terms") ?>">TERMINOS DE USO</a></li>
      </ul>
     </nav>
     <div class="clear"></div>       

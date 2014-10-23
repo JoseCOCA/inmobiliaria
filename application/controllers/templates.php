@@ -20,7 +20,10 @@ class Templates extends CI_Controller {
 
 	public function index()
 	{
-		$data['title'] = 'Home';
+		$data = array(
+			'title' => 'Home'
+
+			);
 		$this->load->view('header',$data);
 		$this->load->view('public/home');
 		$this->load->view('footer');
@@ -31,20 +34,29 @@ class Templates extends CI_Controller {
 		//$this->load->view('footer');
 	}
 	public function info(){
-		$data['title'] = 'info';
+		$data = array(
+			'title' => 'info'
+
+			);
 		$this->load->view('header',$data);
 		$this->load->view('public/info');
 		$this->load->view('footer');
 	}
 	public function privacy(){
-		$data['title'] = 'privacy';
+		$data = array(
+			'title' => 'privacy'
+
+			);
 		$this->load->view('header',$data);
 		$this->load->view('public/privacy');
 		$this->load->view('footer');
 	}
 
 	public function terms(){
-		$data['title'] = 'terms';
+		$data = array(
+			'title' => 'terms'
+
+			);
 		$this->load->view('header',$data);
 		$this->load->view('public/terms');
 		$this->load->view('footer');

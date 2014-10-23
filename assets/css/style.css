@@ -97,13 +97,12 @@ h2.head1 {
 }
 
 h3  {
-    padding-top: 69px;
+    padding-top: 30px;
     margin-bottom: 30px;
     font: 30px/43px 'Dosis', sans-serif;
 }
 
 .page1 h3 {
-    padding-top: 98px;
     margin-bottom: 15px;
 }
 
@@ -382,14 +381,14 @@ header h1 a img {
 
 .text1 {
     color: #6a6a6a;
-    margin-top: -21px;
-    font: 20px/22px 'Dosis', sans-serif;
+    margin-top: 9px;
+    font: 30px/22px 'Dosis', sans-serif;
     margin-bottom: 26px;
 }
 
 .ban_img {
-    margin-bottom: 39px;
-    margin-top: 39px;
+    margin-bottom: 10px;
+    margin-top: 50px;
     width: 100%;
 }
 

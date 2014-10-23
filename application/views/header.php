@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
      <head>
-     <title>Home</title>
+     <title><?php echo $title; ?></title>
      <meta charset="utf-8">
      <meta name="format-detection" content="telephone=no" />
      <link rel="icon" href="images/favicon.ico">
@@ -18,19 +18,22 @@
      <script src="assets/js/slippry.js"></script>
     <script src="assets/js/modernizr.custom.17475.js"></script>    
     <script type="text/javascript" src="assets/js/isotope.js"></script>
+    <script type="text/javascript" src="assets/js/imagesLoaded.pkgd.js"></script>
+    <script type="text/javascript" src="assets/js/imagesLoaded.pkgd.min.js"></script>
 
     <script>
      $(document).ready(function(){
         jQuery('#slippry').slippry();
             
-            var $container = $('#iso');
-            $container.isotope({
-              filter: '*',
+            var $container = $('#iso').imagesLoaded( function() {
+              $container.isotope({
+                filter: '*',
               animationOptions: {
                  duration: 750,
                  easing: 'linear',
                  queue: false,
                }
+              });
             });
 
             $('#nav a').click(function(){

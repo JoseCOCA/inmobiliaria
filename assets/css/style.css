@@ -13,6 +13,8 @@
 @import url(//fonts.googleapis.com/css?family=Open+Sans:600);
 @import url(//fonts.googleapis.com/css?family=Open+Sans:700);
 @import url(//fonts.googleapis.com/css?family=Open+Sans:400italic);
+@font-face{
+}
 html {
     width: 100%;
 
@@ -72,7 +74,11 @@ img {
     max-width: 100%;
 }
 
+hr {
+    height: 4px;
+    background-color: #0066FF;
 
+}
 
 /****Heads****/
 

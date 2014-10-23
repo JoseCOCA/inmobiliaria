@@ -17,9 +17,11 @@ class Templates extends CI_Controller {
 	 * map to /index.php/welcome/<method_name>
 	 * @see http://codeigniter.com/user_guide/general/urls.html
 	 */
+
 	public function index()
 	{
-		$this->load->view('header');
+		$data['title'] = 'Home';
+		$this->load->view('header',$data);
 		$this->load->view('public/home');
 		$this->load->view('footer');
 	}
@@ -29,20 +31,23 @@ class Templates extends CI_Controller {
 		//$this->load->view('footer');
 	}
 	public function info(){
-		$this->load->view('header');
+		$data['title'] = 'info';
+		$this->load->view('header',$data);
 		$this->load->view('public/info');
 		$this->load->view('footer');
 	}
 	public function privacy(){
-		$this->load->view('header');
+		$data['title'] = 'privacy';
+		$this->load->view('header',$data);
 		$this->load->view('public/privacy');
 		$this->load->view('footer');
 	}
 
 	public function terms(){
-		//$this->load->view('header');
+		$data['title'] = 'terms';
+		$this->load->view('header',$data);
 		$this->load->view('public/terms');
-		//$this->load->view('footer');
+		$this->load->view('footer');
 	}
 
 

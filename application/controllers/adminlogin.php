@@ -2,6 +2,10 @@
 
 class Adminlogin extends CI_Controller {
 
+	function __construct(){
+		parent::__construct();
+		session_start();
+	}
 	/**
 	 * Index Page for this controller.
 	 *
@@ -24,7 +28,20 @@ class Adminlogin extends CI_Controller {
 		$this->form_validation->set_rules('password', 'Password', 'required|min_length[4]');
 
 		if ($this->form_validation->run() !== false) {
-			# code...
+
+			$this->load->model('admin_model');
+		    $res = $this
+		    		->admin_model
+		    		->verify_user(
+		    			$this->input->post('email_address'),
+		    			$this->input->post('password')
+		    			);
+
+		    if ($res !== false) {
+
+		    	$_SESSION['username'] = $this->input->post('email_address');
+
+		    }
 		}
 		$this->load->view('login_view');
 	}

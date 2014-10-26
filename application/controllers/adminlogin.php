@@ -40,9 +40,14 @@ class Adminlogin extends CI_Controller {
 		    if ($res !== false) {
 
 		    	$_SESSION['username'] = $this->input->post('email_address');
-
+		    	redirect('admin');
 		    }
 		}
+		$this->load->view('login_view');
+	}
+
+	public function logout(){
+		session_unset();
 		$this->load->view('login_view');
 	}
 }

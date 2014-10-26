@@ -28,11 +28,6 @@ class Templates extends CI_Controller {
 		$this->load->view('public/home');
 		$this->load->view('footer');
 	}
-	public function admin(){
-		//$this->load->view('header');
-		$this->load->view('admin/admin');
-		//$this->load->view('footer');
-	}
 	public function info(){
 		$data = array(
 			'title' => 'info'

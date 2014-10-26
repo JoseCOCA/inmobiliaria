@@ -16,7 +16,7 @@
 	<?php echo form_open('adminlogin');?>
 	<p>
 		<?php echo form_label('Email Address:', 'email_addres'); 
-			  echo form_input('email_address', '', 'id="email_address"');
+			  echo form_input('email_address', set_value('email_address'), 'id="email_address"');
 		?>
 	</p>
 	<p>
@@ -25,7 +25,7 @@
 		?>
 	</p>
 	<p>
-		<?php echo form_submit('sumit', 'Login'); ?>
+		<?php echo form_submit('submit', 'Login'); ?>
 	</p>
 	<?php echo form_close(); ?>
 	<div class="errors">

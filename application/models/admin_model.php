@@ -2,10 +2,6 @@
 
 class Admin_model extends CI_Model {
 
-	function __construct(){
-
-	}	
-
 	public function verify_user($email, $password){
 		$q = $this
 			->db
@@ -20,7 +16,6 @@ class Admin_model extends CI_Model {
 		}
 
 		return false;
-
 
 	}
 }

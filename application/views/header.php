@@ -93,7 +93,9 @@
     <li>
       <a href="#slide5"><img class= "img_slide" src="assets/images/homeFull_4.jpg" alt="Tidy and Perfect"></a>
     </li>
+    <p class="contact">CONTACTO</p>
   </ul> 
+
   <div class="menu_block" >
     <nav class="horizontal-nav full-width horizontalNav-notprocessed">
       <ul class="sf-menu">
@@ -101,7 +103,6 @@
        <li><a href="<?= base_url("info") ?>">INFORMACIÓN DE EMPRESA</a></li>
        <li><a href="<?= base_url("privacy") ?>">AVISO DE PRIVACIDAD</a></li>
        <li><a href="<?= base_url("terms") ?>">TERMINOS DE USO</a></li>
-       <p> alsjoiwe </p>
      </ul>
     </nav>
     <div class="clear"></div>       

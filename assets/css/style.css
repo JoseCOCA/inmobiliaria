@@ -483,6 +483,12 @@ header h1 a img {
     height: 92px;
 }
 
+/*Contacto slider*/
+
+.contact{
+    float: right;
+}
+
 /**Map**/
 
 .color1 {

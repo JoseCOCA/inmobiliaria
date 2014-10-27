@@ -74,7 +74,9 @@ input {
 img {
     max-width: 100%;
 }
-
+.img_slide{
+    border-radius: 50px;
+}
 hr {
     height: 4px;
     background-color: #0066FF;
@@ -396,7 +398,9 @@ header h1 a img {
 .ban_img {
     margin-bottom: 10px;
     margin-top: 50px;
-    width: 100%;
+    padding-left: 5%;
+    padding-right: 5%;
+    width: 90%;
 }
 
 .links a {

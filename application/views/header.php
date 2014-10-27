@@ -79,19 +79,19 @@
   <div class="clear"></div>
   <ul id="slippry">
     <li>
-      <a href="#slide1"><img src="assets/images/HomeFull_1.jpg" alt="propiedades"></a>
+      <a href="#slide1"><img class= "img_slide" src="assets/images/banner_sld.jpg" alt="propiedades"></a>
     </li>
     <li>
-      <a href="#slide1"><img src="assets/images/HomeFull_2.jpg" alt="Keeping Your Home Clean"></a>
+      <a href="#slide2"><img class= "img_slide" src="assets/images/HomeFull_2.jpg" alt="Keeping Your Home Clean"></a>
     </li>
     <li>
-      <a href="#slide1"><img src="assets/images/homeFull_4.jpg" alt="Tidy and Perfect"></a>
+      <a href="#slide3"><img class= "img_slide" src="assets/images/homeFull_4.jpg" alt="Tidy and Perfect"></a>
     </li>
     <li>
-      <a href="#slide1"><img src="assets/images/homeFull_4.jpg" alt="Tidy and Perfect"></a>
+      <a href="#slide4"><img class= "img_slide" src="assets/images/homeFull_4.jpg" alt="Tidy and Perfect"></a>
     </li>
     <li>
-      <a href="#slide1"><img src="assets/images/homeFull_4.jpg" alt="Tidy and Perfect"></a>
+      <a href="#slide5"><img class= "img_slide" src="assets/images/homeFull_4.jpg" alt="Tidy and Perfect"></a>
     </li>
   </ul> 
   <div class="menu_block" >
@@ -101,6 +101,7 @@
        <li><a href="<?= base_url("info") ?>">INFORMACIÓN DE EMPRESA</a></li>
        <li><a href="<?= base_url("privacy") ?>">AVISO DE PRIVACIDAD</a></li>
        <li><a href="<?= base_url("terms") ?>">TERMINOS DE USO</a></li>
+       <p> alsjoiwe </p>
      </ul>
     </nav>
     <div class="clear"></div>       

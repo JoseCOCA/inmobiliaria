@@ -31,7 +31,13 @@ class Admin extends CI_Controller {
 
 	public function index()
 	{
+		$data = array(
+			'title' => 'Admin'
+
+			);
+		$this->load->view('admin/header_admin',$data);
 		$this->load->view('admin/admin_view');
+		$this->load->view('admin/footer_admin');
 	}
 }
 

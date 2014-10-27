@@ -18,6 +18,10 @@ class Admin_model extends CI_Model {
 		return false;
 
 	}
+
+	public function get_images(){
+		
+	}
 }
 
 /* End of file admin_model.php */

@@ -15,7 +15,7 @@ class Upload extends CI_Controller {
 
 	function upload_bannerSld()
 	{
-		$config['upload_path'] = 'assets/images';
+		$config['upload_path'] = 'assets/images/sld';
 		$config['allowed_types'] = 'gif|jpg|png';
 		$config['max_size']	= '100';
 		$config['max_width']  = '1024';
@@ -31,18 +31,26 @@ class Upload extends CI_Controller {
 		}
 		else
 		{
-			// obtener los datos de upload
-			// $data = array(
-
-			// 	     'name' => $image_data['file_name'],
-   			//       'path' => $image_data['full_path'],
-   			//       'thumb_path'=> $image_data['file_path'] . 'thumbs/'. $image_data['file_name'],
-   			//       'tag' => $tag
-
-			// 	);
+			//obtener los datos de upload
+			$var = 1;
 			$data = array('upload_data' => $this->upload->data());
+			$insert = array(
 
-			$this->load->view('upload_succes', $data);
+				    //'ID' => ''
+				    'nombre' => $data['upload_data']['file_name']  ,
+   			        'image_path' => $data['upload_data']['full_path'] ,
+   			        // 'images_path'=> $image_data['file_path'] . 'images/'. $image_data['file_name'],
+   			        'link' => base_url("image")
+
+				);
+
+			// echo '<pre>';
+			// print_r($insert);
+			// echo '</pre>';
+			
+			$this->admin_model->insert_imagesSLD($insert);
+
+			$this->load->view('upload_succes', $insert);
 		}
 
 		if(is_file($config['upload_path']))

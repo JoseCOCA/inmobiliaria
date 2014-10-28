@@ -2,6 +2,18 @@
 
 class Admin_model extends CI_Model {
 
+	function __construct(){
+		parent::__construct();
+	}
+
+	// Insertar imagenes del Slide
+
+	public function insert_imagesSLD($data){
+		$this->db->insert('images_sld', $data);
+	}
+
+	// verifica el login de usuario 
+	
 	public function verify_user($email, $password){
 		$q = $this
 			->db

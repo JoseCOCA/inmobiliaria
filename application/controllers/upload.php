@@ -5,7 +5,7 @@ class Upload extends CI_Controller {
 	function __construct()
 	{
 		parent::__construct();
-		$this->load->helper(array('form', 'url'));
+		$this->load->model('admin_model');		
 	}
 
 	function index()
@@ -31,11 +31,16 @@ class Upload extends CI_Controller {
 		}
 		else
 		{
-			$data = array(
+			// obtener los datos de upload
+			// $data = array(
 
-				
+			// 	     'name' => $image_data['file_name'],
+   			//       'path' => $image_data['full_path'],
+   			//       'thumb_path'=> $image_data['file_path'] . 'thumbs/'. $image_data['file_name'],
+   			//       'tag' => $tag
 
-				);
+			// 	);
+			$data = array('upload_data' => $this->upload->data());
 
 			$this->load->view('upload_succes', $data);
 		}

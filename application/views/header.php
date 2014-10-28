@@ -93,9 +93,8 @@
     <li>
       <a href="#slide5"><img class= "img_slide" src="assets/images/homeFull_4.jpg" alt="Tidy and Perfect"></a>
     </li>
-    <p class="contact">CONTACTO</p>
   </ul> 
-
+    <p class="contact">CONTACTO</p>
   <div class="menu_block" >
     <nav class="horizontal-nav full-width horizontalNav-notprocessed">
       <ul class="sf-menu">

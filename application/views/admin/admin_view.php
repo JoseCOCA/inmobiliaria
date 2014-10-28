@@ -42,6 +42,8 @@
 
   <div class="container_12">
     <div class="clear"></div>
+
+    <?php $this->load->view('upload_form'); ?>
   </div>
 
 </section>

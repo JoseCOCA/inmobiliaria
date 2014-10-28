@@ -20,6 +20,7 @@
     <script type="text/javascript" src="assets/js/isotope.js"></script>
     <script type="text/javascript" src="assets/js/imagesLoaded.pkgd.js"></script>
     <script type="text/javascript" src="assets/js/imagesLoaded.pkgd.min.js"></script>
+    <script type="text/javascript" src="http://stickyjs.com/jquery.sticky.js"></script>
 
     <script>
      $(document).ready(function(){

@@ -12,6 +12,9 @@
 .page1 .menu_block {
 	border-top: 0;
 	padding-top: 37px;
+	position: absolute;
+	text-align: center;
+	width: 100% !important;
 }
 
 .menu_block nav {

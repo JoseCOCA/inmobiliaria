@@ -23,6 +23,7 @@
         minItems : 8
       } );
       jQuery(document).ready(function () {
+        $('.menu_block').sticky({topSpacing:0});
                 /*Sticky bar*/
          /*stickyNav();  
          var stickyNavTop = $('.menu_block').offset().top;  
@@ -45,7 +46,7 @@
 
 
       })
-        posicionarMenu();
+        /*posicionarMenu();
 
         $(window).scroll(function() {
             posicionarMenu();
@@ -59,11 +60,13 @@
             if ($(window).scrollTop() >= altura_del_header-altura_del_menu){
                 $('.menu_block').addClass('sticky');
                 $('.content').css('padding-top', (altura_del_menu) + 'px');
+                $('.sticky').animate({'padding-bottom':'10px','padding-top':'35px'}, 500);
             } else if($('.menu_block').scrollTop() <= altura_del_content+altura_del_menu){
                 $('.menu_block').removeClass('sticky');
                 $('.content').css('padding-top', '0');
+                $('.menu_block').css({'padding-bottom':'','padding-top':''});
             }
-        }
+        }*/
 
     </script>
 </body>

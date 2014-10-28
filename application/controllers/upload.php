@@ -13,7 +13,7 @@ class Upload extends CI_Controller {
 		$this->load->view('upload_form', array('error' => ' ' ));
 	}
 
-	function do_upload()
+	function upload_bannerSld()
 	{
 		$config['upload_path'] = 'assets/images';
 		$config['allowed_types'] = 'gif|jpg|png';
@@ -31,7 +31,11 @@ class Upload extends CI_Controller {
 		}
 		else
 		{
-			$data = array('upload_data' => $this->upload->data());
+			$data = array(
+
+				
+
+				);
 
 			$this->load->view('upload_succes', $data);
 		}

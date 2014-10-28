@@ -24,9 +24,10 @@
       } );
       jQuery(document).ready(function () {
                 /*Sticky bar*/
+         /*stickyNav();  
          var stickyNavTop = $('.menu_block').offset().top;  
 
-         var stickyNav = function(){  
+         function stickyNav(){  
             var scrollTop = $(window).scrollTop();  
 
             if (scrollTop > stickyNavTop) {   
@@ -36,15 +37,33 @@
             }  
          };  
 
-         stickyNav();  
 
          $(window).scroll(function() {  
             stickyNav();  
-         });
+         });*/
       /*//Sticky bar*/       
 
-      })
 
+      })
+        posicionarMenu();
+
+        $(window).scroll(function() {
+            posicionarMenu();
+        })
+
+        function posicionarMenu() {
+            var altura_del_header = $('header').outerHeight(true);
+            var altura_del_menu = $('.menu_block').outerHeight(true);
+            var altura_del_content = $('.content').outerHeight(true);
+
+            if ($(window).scrollTop() >= altura_del_header-altura_del_menu){
+                $('.menu_block').addClass('sticky');
+                $('.content').css('padding-top', (altura_del_menu) + 'px');
+            } else if($('.menu_block').scrollTop() <= altura_del_content+altura_del_menu){
+                $('.menu_block').removeClass('sticky');
+                $('.content').css('padding-top', '0');
+            }
+        }
 
     </script>
 </body>

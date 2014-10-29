@@ -9,6 +9,11 @@
       Voluptatem, voluptate veritatis porro, minima commodi esse. 
       Commodi maiores repudiandae quisquam enim qui autem sed nisi 
       odit facilis, ipsa illo magnam, praesentium!</p>
+      <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Dignissimos incidunt dolorum quidem et debitis labore deleniti quaerat non. Recusandae quibusdam nihil voluptate exercitationem dignissimos eligendi, tempora, perspiciatis fugit? Rem, eius.</p>
+      <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Dignissimos incidunt dolorum quidem et debitis labore deleniti quaerat non. Recusandae quibusdam nihil voluptate exercitationem dignissimos eligendi, tempora, perspiciatis fugit? Rem, eius.</p>
+      <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Dignissimos incidunt dolorum quidem et debitis labore deleniti quaerat non. Recusandae quibusdam nihil voluptate exercitationem dignissimos eligendi, tempora, perspiciatis fugit? Rem, eius.</p>
+      <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Dignissimos incidunt dolorum quidem et debitis labore deleniti quaerat non. Recusandae quibusdam nihil voluptate exercitationem dignissimos eligendi, tempora, perspiciatis fugit? Rem, eius.</p>
+      <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Dignissimos incidunt dolorum quidem et debitis labore deleniti quaerat non. Recusandae quibusdam nihil voluptate exercitationem dignissimos eligendi, tempora, perspiciatis fugit? Rem, eius.</p>
   </div>  
   <div class="clear"></div>
   <div class="sep__1"></div>
@@ -22,51 +27,18 @@
       $( '#carousel' ).elastislide( {
         minItems : 8
       } );
-      jQuery(document).ready(function () {
+      jQuery(document).ready(function(){
+        /*Stickybar*/
         $('.menu_block').sticky({topSpacing:0});
-                /*Sticky bar*/
-         /*stickyNav();  
-         var stickyNavTop = $('.menu_block').offset().top;  
+        
+      });
+      $('.menu_block').on('sticky-start', function (e) { 
+        e.preventDefault();
+        var altura = document.querySelector('.menu_block').offsetHeight;
+        $('#nav').sticky({topSpacing:46}).css({'z-index': '99', 'width': '100%'});
+      });
+  
 
-         function stickyNav(){  
-            var scrollTop = $(window).scrollTop();  
-
-            if (scrollTop > stickyNavTop) {   
-               $('.menu_block').addClass('sticky');  
-            } else {  
-               $('.menu_block').removeClass('sticky');   
-            }  
-         };  
-
-
-         $(window).scroll(function() {  
-            stickyNav();  
-         });*/
-      /*//Sticky bar*/       
-
-
-      })
-        /*posicionarMenu();
-
-        $(window).scroll(function() {
-            posicionarMenu();
-        })
-
-        function posicionarMenu() {
-            var altura_del_header = $('header').outerHeight(true);
-            var altura_del_menu = $('.menu_block').outerHeight(true);
-            var altura_del_content = $('.content').outerHeight(true);
-
-            if ($(window).scrollTop() >= altura_del_header-altura_del_menu){
-                $('.menu_block').addClass('sticky');
-                $('.content').css('padding-top', (altura_del_menu) + 'px');
-                $('.sticky').animate({'padding-bottom':'10px','padding-top':'35px'}, 500);
-            } else if($('.menu_block').scrollTop() <= altura_del_content+altura_del_menu){
-                $('.menu_block').removeClass('sticky');
-                $('.content').css('padding-top', '0');
-                $('.menu_block').css({'padding-bottom':'','padding-top':''});
-            }
-        }*/
 
     </script>
 </body>

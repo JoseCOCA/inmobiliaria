@@ -9,6 +9,7 @@
      <link rel="stylesheet" href="assets/css/slippry.css">
      <link rel="stylesheet" href="assets/css/elastislide.css" />
      <link rel="stylesheet" href="assets/css/style.css">
+     <link rel="stylesheet" href="assets/css/style-admin.css">
      <script src="assets/js/jquery.js"></script>
      <script src="assets/js/jquery-migrate-1.1.1.js"></script>
      <script src="assets/js/script.js"></script> 

@@ -12,6 +12,13 @@ class Admin_model extends CI_Model {
 		$this->db->insert('images_sld', $data);
 	}
 
+	//Imagenes del Banner
+
+	public function insert_imagesRec($data)
+	{
+		$this->db->insert('images_rec',$data);
+	}
+
 	// verifica el login de usuario 
 	
 	public function verify_user($email, $password){
@@ -31,9 +38,6 @@ class Admin_model extends CI_Model {
 
 	}
 
-	public function get_images(){
-		
-	}
 }
 
 /* End of file admin_model.php */

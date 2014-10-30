@@ -3,46 +3,57 @@
 <head>
 	<meta charset="UTF-8">
 	<title>Login</title>
-	<!-- <link rel="stylesheet" href="assets/css/style.css"> -->
+	<link rel="stylesheet" href="assets/css/style-login.css">
 	<style type="text/css">
-		*{
-			margin: 0px;
-			padding:0px;
-		}
-		form{
-			margin: 0 auto;
-			width: 200px;
-		}
-		body{
-			text-align: center;
-		}
-		#container_login{
-			margin: 10%;
-		}
-		.logo{
-			
-		}
 	</style>
 </head>
 <body>
 	<div id= "container_login">
 		<div class="logo">
-			<img src="assets/images/logo_inmobiliaria.png" alt="Logo">			
+			<img src="assets/images/logo_inmobiliaria_b.png" alt="Logo">			
 		</div>
-			<h1>Login</h1>
+		<div id="form-login">
+			<h1>LOG IN</h1>
 				<?php echo form_open('adminlogin');?>
 				
-				<?php echo form_label('E-MAIL', 'email_addres'); 
-					 echo form_input('email_address', set_value('email_address'), 'id="email_address"');
+					<?php 
+						$email = array(
+			              'name'        => 'email_address',
+			              'type'		=> 'email',
+			              'id'          => 'email_address',
+			              'maxlength'   => '100',
+			              'size'        => '50',
+			              'required'	=> 'required'
+			            );
+						echo form_label('E-MAIL', 'email_address'); 
+						echo '<br />';
+						echo form_input($email);
 					?>
-				<?php echo form_label('PASSWORD', 'password'); 
-					echo form_password('password', '', 'id="password"');?>
-				<?php echo form_submit('submit', 'LOGIN'); ?>
+					<br>
+					<br>
+					<?php 
+						$pass = array(
+			              'name'        => 'password',
+			              'type'		=> 'password',
+			              'id'          => 'password',
+			              'maxlength'   => '100',
+			              'size'        => '50',
+			              'required'	=> 'required'
+			            );
+						echo form_label('PASSWORD', 'password'); 
+						echo '<br />';
+						echo form_password($pass);
+					?>
+					<br>
+					<br>
+					<br>
+				<?php echo form_submit('submit', 'ENTRAR'); ?>
 				<?php echo form_close(); ?>
 
 			<div class="errors">
 				<?php echo validation_errors(); ?>
 			</div>
+		</div>
 					
 	</div>
 </body>

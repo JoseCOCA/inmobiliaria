@@ -1,0 +1,127 @@
+[33mcommit 6fc8a09a5efb7c12fe4bba981fdc121641f069bc[m
+Author: Jose Coca <josecoca0890@gmail.com>
+Date:   Mon Oct 27 15:10:02 2014 -0600
+
+    texto contacto abajo de slider
+
+[33mcommit 7fe77b20471f1f442916c49fe70a807c3a21ae60[m
+Author: Jose Coca <josecoca0890@gmail.com>
+Date:   Mon Oct 27 14:38:40 2014 -0600
+
+    estilos agregados
+
+[33mcommit aab042d216236925e4fee94e5ef5b6b2c0240017[m
+Author: Jose Coca <josecoca0890@gmail.com>
+Date:   Sun Oct 26 19:13:31 2014 -0600
+
+    form parasubir archivos
+
+[33mcommit a9e9e0818b873665ca515b34635dc0902c340147[m
+Author: Jose Coca <josecoca0890@gmail.com>
+Date:   Sun Oct 26 01:22:01 2014 -0500
+
+    login back-end terminado
+
+[33mcommit 405184a49b6d29a8326e99ba7a008d25b64f3d64[m
+Author: Jose Coca <josecoca0890@gmail.com>
+Date:   Sat Oct 25 19:10:02 2014 -0500
+
+    BD y login model
+
+[33mcommit 8cae8e4be033ece02a1bc04d01867df2db73515d[m
+Author: Jose Coca <josecoca0890@gmail.com>
+Date:   Fri Oct 24 15:04:00 2014 -0500
+
+    login de usuario
+
+[33mcommit 38bfb9e9a6d8c6a32e6c62fe74853d9916a32e10[m
+Author: Jose Coca <josecoca0890@gmail.com>
+Date:   Thu Oct 23 21:59:17 2014 -0500
+
+    footer con estilos
+
+[33mcommit 9a7155336992265245a7480f1d20bf4025fb3c02[m
+Author: Jose Coca <josecoca0890@gmail.com>
+Date:   Thu Oct 23 18:59:36 2014 -0500
+
+    info casi completo
+
+[33mcommit 58f824de6d07ff682e3ca3d835d96e72ca021dcf[m
+Author: Jose Coca <josecoca0890@gmail.com>
+Date:   Thu Oct 23 17:11:57 2014 -0500
+
+    cambios header
+
+[33mcommit 11d3a756c4c1856178387b45f2bafb5953ff841c[m
+Author: Jose Coca <josecoca0890@gmail.com>
+Date:   Thu Oct 23 13:32:15 2014 -0500
+
+    privacy.php modificado
+
+[33mcommit 452438d13b7b065b3ab4ab700840db165ea30113[m
+Author: Jose Coca <josecoca0890@gmail.com>
+Date:   Wed Oct 22 18:24:35 2014 -0500
+
+    links a plantillas desde home
+
+[33mcommit 4958a754441a01870be22473a7a3d9b9b2f77485[m
+Author: Jose Coca <josecoca0890@gmail.com>
+Date:   Wed Oct 22 18:01:21 2014 -0500
+
+    agregada plantilla Home
+
+[33mcommit aada50de58ef48b6a9f7d6842ddc6b98d33a9c84[m
+Author: Jose Coca <josecoca0890@gmail.com>
+Date:   Tue Oct 21 01:01:16 2014 -0500
+
+    routes.php modificado
+    
+    se pueden escribir las rutas de las vistas sin requerir de la clase
+    templates
+
+[33mcommit b66e6fc2f600f88040a9262badda6c28305228f0[m
+Author: Jose Coca <josecoca0890@gmail.com>
+Date:   Tue Oct 21 00:32:39 2014 -0500
+
+    kuy
+
+[33mcommit 26901ed0a27bc359464f1acb9f66151e42aa38c3[m
+Author: Jose Coca <josecoca0890@gmail.com>
+Date:   Mon Oct 20 00:02:09 2014 -0500
+
+    vista header y home
+
+[33mcommit 34a63ec5f59b81616bdae036c7fe9ce27fd4108a[m
+Author: Jose Coca <josecoca0890@gmail.com>
+Date:   Sun Oct 19 22:16:27 2014 -0500
+
+    header agregado
+
+[33mcommit 276b66eb4431ac92aedd883e184463021476267c[m
+Author: Jose Coca <josecoca0890@gmail.com>
+Date:   Sun Oct 19 21:09:15 2014 -0500
+
+    cambio a MVC
+
+[33mcommit aa4bcff7b4b6d9a44cda08bdae0b1c6f097f5608[m
+Author: Jose Coca <josecoca0890@gmail.com>
+Date:   Sun Oct 19 17:57:50 2014 -0500
+
+    inmobiliaria
+
+[33mcommit 491cf0f283c7459aec2212c50700add00bbf0f12[m
+Author: Jose Coca <josecoca0890@gmail.com>
+Date:   Sat Oct 18 02:07:47 2014 -0500
+
+    CodeIgniter plantilla
+    
+    Se agrego una plantilla estan dentro de application/modules/views
+    
+    se debe de utilizar la función base_url() en CI para cargar los estilos
+    que estan ubicados en assets/css
+
+[33mcommit 46144b72c7bee5610d40c12ea9514de012ee8adb[m
+Author: Jose Coca <JoseCOCA@users.noreply.github.com>
+Date:   Sat Oct 18 01:55:18 2014 -0500
+
+    Initial commit

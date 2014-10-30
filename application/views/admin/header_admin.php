@@ -77,6 +77,7 @@
 <!--==============================header=================================-->
 <header>
 
+  <a href="admin/logout">Cerrar sesión</a>
   <div class="clear"></div>
   <ul id="slippry">
     <li>

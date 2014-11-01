@@ -9,7 +9,6 @@
      <link rel="stylesheet" href="assets/css/slippry.css">
      <link rel="stylesheet" href="assets/css/elastislide.css" />
      <link rel="stylesheet" href="assets/css/style.css">
-     <link rel="stylesheet" href="assets/css/style-admin.css">
      <script src="assets/js/jquery.js"></script>
      <script src="assets/js/jquery-migrate-1.1.1.js"></script>
      <script src="assets/js/script.js"></script> 
@@ -21,6 +20,7 @@
     <script type="text/javascript" src="assets/js/isotope.js"></script>
     <script type="text/javascript" src="assets/js/imagesLoaded.pkgd.js"></script>
     <script type="text/javascript" src="assets/js/imagesLoaded.pkgd.min.js"></script>
+    <script type="text/javascript" src="assets/js/jquery.sticky.js"></script>
 
     <script>
      $(document).ready(function(){
@@ -77,25 +77,34 @@
 <!--==============================header=================================-->
 <header>
 
-  <a href="admin/logout">Cerrar sesión</a>
   <div class="clear"></div>
   <ul id="slippry">
     <li>
-      <a href="#slide1"><img src="assets/images/HomeFull_1.jpg" alt="propiedades"></a>
+      <a href="#slide1"><img class= "img_slide" src="assets/images/banner_sld.jpg" alt="propiedades"></a>
     </li>
     <li>
-      <a href="#slide1"><img src="assets/images/HomeFull_2.jpg" alt="Keeping Your Home Clean"></a>
+      <a href="#slide2"><img class= "img_slide" src="assets/images/HomeFull_2.jpg" alt="Keeping Your Home Clean"></a>
     </li>
     <li>
-      <a href="#slide1"><img src="assets/images/homeFull_4.jpg" alt="Tidy and Perfect"></a>
+      <a href="#slide3"><img class= "img_slide" src="assets/images/homeFull_4.jpg" alt="Tidy and Perfect"></a>
     </li>
     <li>
-      <a href="#slide1"><img src="assets/images/homeFull_4.jpg" alt="Tidy and Perfect"></a>
+      <a href="#slide4"><img class= "img_slide" src="assets/images/homeFull_4.jpg" alt="Tidy and Perfect"></a>
     </li>
     <li>
-      <a href="#slide1"><img src="assets/images/homeFull_4.jpg" alt="Tidy and Perfect"></a>
+      <a href="#slide5"><img class= "img_slide" src="assets/images/homeFull_4.jpg" alt="Tidy and Perfect"></a>
     </li>
   </ul> 
+    <p class="contact">CONTACTO</p>
+  <?php 
+  $data = array(
+    'error' => '',
+    'padre' => '1'
+   );
+
+    $this->load->view('upload_form', $data);
+   ?>
+
   <div class="menu_block" >
     <nav class="horizontal-nav full-width horizontalNav-notprocessed">
       <ul class="sf-menu">

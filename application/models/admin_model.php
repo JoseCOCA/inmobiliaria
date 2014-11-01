@@ -6,19 +6,12 @@ class Admin_model extends CI_Model {
 		parent::__construct();
 	}
 
-	// Insertar imagenes del Slide
+	// Insertar imagenes
 
-	public function insert_imagesSLD($data){
-		$this->db->insert('images_sld', $data);
+	public function insert_images($table, $data){
+		$this->db->insert($table, $data);
 	}
-
-	//Imagenes del Banner
-
-	public function insert_imagesRec($data)
-	{
-		$this->db->insert('images_rec',$data);
-	}
-
+	
 	// verifica el login de usuario 
 	
 	public function verify_user($email, $password){
@@ -36,6 +29,20 @@ class Admin_model extends CI_Model {
 
 		return false;
 
+	}
+
+	//realiza la consulta de los parametros de la imagen del slide
+
+	public function get_images()
+	{
+		$query = $this->db->get('images');
+		if ($query->num_rows() > 0) {
+		
+			foreach ($query->result() as $row) {
+				$data[] = $row;
+			}
+			return $data;		
+		}
 	}
 
 }

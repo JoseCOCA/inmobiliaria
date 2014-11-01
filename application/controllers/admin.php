@@ -22,7 +22,7 @@ class Admin extends CI_Controller {
 		parent::__construct();
 		
 		session_start();
-
+		$this->load->model('admin_model');
 
 
 	}
@@ -33,11 +33,11 @@ class Admin extends CI_Controller {
 			redirect('/admin/login');
 		}
 		$data = array(
-			'title' => 'Admin'
-
+			'title' => 'Admin',
+			'query' => $this->admin_model->get_images()
 			);
 		$this->load->view('admin/header_admin',$data);
-		$this->load->view('admin/admin_view');
+		$this->load->view('admin/admin_view',$data);
 		$this->load->view('admin/footer_admin');
 	}
 

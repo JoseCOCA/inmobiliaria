@@ -78,6 +78,7 @@
 <header>
 
   <div class="clear"></div>
+  <a href="admin/logout">CERRAR SESIÓN</a>
   <ul id="slippry">
 
      <?php if ($query > 0) {?>
@@ -85,7 +86,7 @@
             <?php foreach ($query as $row) {?>
                <?php if($row -> padre == '1'){?>
                     <li>
-                      <a href="<?= $row -> link ?>"><img id= "img_filter" src="<?= $row -> url ?>"alt=""></a>
+                      <a href="<?= $row -> link ?>"><img class= "img_slide" src="<?= $row -> url ?>"alt=""></a>
                     </li>
 
                 <?php }?>

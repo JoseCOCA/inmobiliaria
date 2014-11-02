@@ -6,21 +6,21 @@
      <meta name="format-detection" content="telephone=no" />
      <link rel="icon" href="images/favicon.ico">
      <link rel="shortcut icon" href="images/favicon.ico" />
-     <link rel="stylesheet" href="assets/css/slippry.css">
-     <link rel="stylesheet" href="assets/css/elastislide.css" />
-     <link rel="stylesheet" href="assets/css/style.css">
-     <script src="assets/js/jquery.js"></script>
-     <script src="assets/js/jquery-migrate-1.1.1.js"></script>
-     <script src="assets/js/script.js"></script> 
-     <script src="assets/js/superfish.js"></script>
-     <script src="assets/js/jquery.equalheights.js"></script>
-     <script src="assets/js/jquery.easing.1.3.js"></script>
-     <script src="assets/js/slippry.js"></script>
-    <script src="assets/js/modernizr.custom.17475.js"></script>    
-    <script type="text/javascript" src="assets/js/isotope.js"></script>
-    <script type="text/javascript" src="assets/js/imagesLoaded.pkgd.js"></script>
-    <script type="text/javascript" src="assets/js/imagesLoaded.pkgd.min.js"></script>
-    <script type="text/javascript" src="assets/js/jquery.sticky.js"></script>
+     <link rel="stylesheet" href="css/slippry.css">
+     <link rel="stylesheet" href="css/elastislide.css" />
+     <link rel="stylesheet" href="css/style.css">
+     <script src="js/jquery.js"></script>
+     <script src="js/jquery-migrate-1.1.1.js"></script>
+     <script src="js/script.js"></script> 
+     <script src="js/superfish.js"></script>
+     <script src="js/jquery.equalheights.js"></script>
+     <script src="js/jquery.easing.1.3.js"></script>
+     <script src="js/slippry.js"></script>
+    <script src="js/modernizr.custom.17475.js"></script>    
+    <script type="text/javascript" src="js/isotope.js"></script>
+    <script type="text/javascript" src="js/imagesLoaded.pkgd.js"></script>
+    <script type="text/javascript" src="js/imagesLoaded.pkgd.min.js"></script>
+    <script type="text/javascript" src="js/jquery.sticky.js"></script>
 
     <script>
      $(document).ready(function(){
@@ -80,19 +80,19 @@
   <div class="clear"></div>
   <ul id="slippry">
     <li>
-      <a href="#slide1"><img class= "img_slide" src="assets/images/banner_sld.jpg" alt="propiedades"></a>
+      <a href="#slide1"><img class= "img_slide" src="images/banner_sld.jpg" alt="propiedades"></a>
     </li>
     <li>
-      <a href="#slide2"><img class= "img_slide" src="assets/images/HomeFull_2.jpg" alt="Keeping Your Home Clean"></a>
+      <a href="#slide2"><img class= "img_slide" src="images/HomeFull_2.jpg" alt="Keeping Your Home Clean"></a>
     </li>
     <li>
-      <a href="#slide3"><img class= "img_slide" src="assets/images/homeFull_4.jpg" alt="Tidy and Perfect"></a>
+      <a href="#slide3"><img class= "img_slide" src="images/homeFull_4.jpg" alt="Tidy and Perfect"></a>
     </li>
     <li>
-      <a href="#slide4"><img class= "img_slide" src="assets/images/homeFull_4.jpg" alt="Tidy and Perfect"></a>
+      <a href="#slide4"><img class= "img_slide" src="images/homeFull_4.jpg" alt="Tidy and Perfect"></a>
     </li>
     <li>
-      <a href="#slide5"><img class= "img_slide" src="assets/images/homeFull_4.jpg" alt="Tidy and Perfect"></a>
+      <a href="#slide5"><img class= "img_slide" src="images/homeFull_4.jpg" alt="Tidy and Perfect"></a>
     </li>
   </ul> 
     <p class="contact">CONTACTO</p>

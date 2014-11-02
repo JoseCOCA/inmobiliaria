@@ -6,21 +6,21 @@
      <meta name="format-detection" content="telephone=no" />
      <link rel="icon" href="images/favicon.ico">
      <link rel="shortcut icon" href="images/favicon.ico" />
-     <link rel="stylesheet" href="assets/css/slippry.css">
-     <link rel="stylesheet" href="assets/css/elastislide.css" />
-     <link rel="stylesheet" href="assets/css/style.css">
-     <script src="assets/js/jquery.js"></script>
-     <script src="assets/js/jquery-migrate-1.1.1.js"></script>
-     <script src="assets/js/script.js"></script> 
-     <script src="assets/js/superfish.js"></script>
-     <script src="assets/js/jquery.equalheights.js"></script>
-     <script src="assets/js/jquery.easing.1.3.js"></script>
-     <script src="assets/js/slippry.js"></script>
-    <script src="assets/js/modernizr.custom.17475.js"></script>    
-    <script type="text/javascript" src="assets/js/isotope.js"></script>
-    <script type="text/javascript" src="assets/js/imagesLoaded.pkgd.js"></script>
-    <script type="text/javascript" src="assets/js/imagesLoaded.pkgd.min.js"></script>
-    <script type="text/javascript" src="assets/js/jquery.sticky.js"></script>
+     <link rel="stylesheet" href="css/slippry.css">
+     <link rel="stylesheet" href="css/elastislide.css" />
+     <link rel="stylesheet" href="css/style.css">
+     <script src="js/jquery.js"></script>
+     <script src="js/jquery-migrate-1.1.1.js"></script>
+     <script src="js/script.js"></script> 
+     <script src="js/superfish.js"></script>
+     <script src="js/jquery.equalheights.js"></script>
+     <script src="js/jquery.easing.1.3.js"></script>
+     <script src="js/slippry.js"></script>
+    <script src="js/modernizr.custom.17475.js"></script>    
+    <script type="text/javascript" src="js/isotope.js"></script>
+    <script type="text/javascript" src="js/imagesLoaded.pkgd.js"></script>
+    <script type="text/javascript" src="js/imagesLoaded.pkgd.min.js"></script>
+    <script type="text/javascript" src="js/jquery.sticky.js"></script>
 
     <script>
      $(document).ready(function(){

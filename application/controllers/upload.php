@@ -12,7 +12,7 @@ class Upload extends CI_Controller {
 
 	function upload_images()
 	{
-		$config['upload_path'] = 'assets/images/banners';
+		$config['upload_path'] = 'images/banners';
 		$config['allowed_types'] = 'gif|jpg|png';
 		$config['max_size']	= '1000';
 		$config['max_width']  = '2000';
@@ -31,7 +31,7 @@ class Upload extends CI_Controller {
 			$var = 1;
 			$data = array('upload_data' => $this->upload->data());
 			$insert = array(
-   			        'url' 		=> 'assets/images/banners/'. $data['upload_data']['file_name'] ,
+   			        'url' 		=> 'images/banners/'. $data['upload_data']['file_name'] ,
    			        'link' 		=> base_url("image"),
 				    'nombre' 	=> $data['upload_data']['file_name'],
 				    'padre'  	=> $this->input->post('padre')

@@ -3,14 +3,14 @@
 <head>
 	<meta charset="UTF-8">
 	<title>Login</title>
-	<link rel="stylesheet" href="../assets/css/style-login.css">
+	<link rel="stylesheet" href="../css/style-login.css">
 	<style type="text/css">
 	</style>
 </head>
 <body>
 	<div id= "container_login">
 		<div class="logo">
-			<img src="../assets/images/logo_inmobiliaria_b.png" alt="Logo">			
+			<img src="../images/logo_inmobiliaria_b.png" alt="Logo">			
 		</div>
 		<div id="form-login">
 			<h1>LOG IN</h1>

@@ -1,7 +1,16 @@
 <!--=====================Content======================-->
 <section class="content">
     <div class="grid_12 center">
-        <a href="#"><img src="assets/images/banner.jpg" class="ban_img" alt=""></a>
+        <?php if ($query > 0) {?>
+
+            <?php foreach ($query as $row) {?>
+               <?php if($row -> padre == '2'){?>
+                  <a href="<?= $row -> link ?>"><img id= "img_filter" src="<?= $row -> url ?>"alt=""></a>
+                <?php }?>
+            <?php }?>
+
+        <?php }  ?>
+
     <?php 
       $data = array(
         'error' => '',
@@ -20,7 +29,7 @@
             <?php foreach ($query as $row) {?>
                <?php if($row -> padre == '3'){?>
                         <div class="box_iso casa depa">
-                            <a href="#"><img id= "img_filter" src="assets/images/house.jpg"alt=""></a>
+                            <a href="<?= $row -> link ?>"><img id= "img_filter" src="<?= $row -> url ?>"alt=""></a>
                         </div>
                 <?php }?>
             <?php }?>

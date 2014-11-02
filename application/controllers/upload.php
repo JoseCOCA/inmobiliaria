@@ -12,11 +12,11 @@ class Upload extends CI_Controller {
 
 	function upload_images()
 	{
-		$config['upload_path'] = 'assets/images/sld';
+		$config['upload_path'] = 'assets/images/banners';
 		$config['allowed_types'] = 'gif|jpg|png';
-		$config['max_size']	= '100';
-		$config['max_width']  = '1024';
-		$config['max_height']  = '768';
+		$config['max_size']	= '1000';
+		$config['max_width']  = '2000';
+		$config['max_height']  = '800';
 
 		$this->load->library('upload', $config);	
 		if ( ! $this->upload->do_upload())
@@ -31,7 +31,7 @@ class Upload extends CI_Controller {
 			$var = 1;
 			$data = array('upload_data' => $this->upload->data());
 			$insert = array(
-   			        'url' 		=> 'assets/images/sld/'. $data['upload_data']['file_name'] ,
+   			        'url' 		=> 'assets/images/banners/'. $data['upload_data']['file_name'] ,
    			        'link' 		=> base_url("image"),
 				    'nombre' 	=> $data['upload_data']['file_name'],
 				    'padre'  	=> $this->input->post('padre')

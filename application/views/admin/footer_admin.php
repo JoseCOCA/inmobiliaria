@@ -30,6 +30,9 @@
       jQuery(document).ready(function(){
         /*Stickybar*/
         $('.menu_block').sticky({topSpacing:0});
+          // Overlay
+        
+
         
       });
       $('.menu_block').on('sticky-start', function (e) { 

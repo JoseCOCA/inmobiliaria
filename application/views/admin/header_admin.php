@@ -21,11 +21,17 @@
     <script type="text/javascript" src="js/imagesLoaded.pkgd.js"></script>
     <script type="text/javascript" src="js/imagesLoaded.pkgd.min.js"></script>
     <script type="text/javascript" src="js/jquery.sticky.js"></script>
+    <script type="text/javascript" src="js/jquery.popupoverlay.js"></script>
 
     <script>
      $(document).ready(function(){
-        jQuery('#slippry').slippry();
-            
+  
+          jQuery('#slippry').slippry();
+          $('#fadeandscale').popup({
+          pagecontainer: '.page1',
+          transition: 'all 0.3s'
+          });
+
             var $container = $('#iso').imagesLoaded( function() {
               $container.isotope({
                 filter: '*',
@@ -50,6 +56,7 @@
               });
               return false;
             });
+
 
      }); 
     function goToByScroll(id){$('html,body').animate({scrollTop: $("#"+id).offset().top},'slow');}
@@ -95,7 +102,29 @@
         <?php }  ?>
   </ul> 
     <p class="contact">CONTACTO</p>
-  <?php 
+
+    <a href= "#fadeandscale" class="fadeandscale_open">Modificar</a>
+
+    <div id="fadeandscale">
+      <div id="pattern" class="pattern">
+    <ul class="g">
+
+      <?php foreach ($query as $row) {
+
+        if ($row-> padre == '1' ) {  ?>
+
+          <li><a href="#"><img src="http://bradfrost.github.com/this-is-responsive/patterns/images/fpo_square.png" alt="Product Name" /></a></li>
+
+      <?php
+            }
+
+        } ?>
+    </ul>
+  </div>
+  
+    </div>
+
+<?php 
   $data = array(
     'error' => '',
     'padre' => '1'

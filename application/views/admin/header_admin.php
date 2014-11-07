@@ -107,21 +107,29 @@
 
     <div id="fadeandscale">
       <div id="pattern" class="pattern">
-    <ul class="g">
+        <ul class="g">
 
-      <?php foreach ($query as $row) {
+          <?php foreach ($query as $row) {
 
-        if ($row-> padre == '1' ) {  ?>
+            if ($row-> padre == '1' ) {  ?>
 
-          <li><a href="#"><img src="http://bradfrost.github.com/this-is-responsive/patterns/images/fpo_square.png" alt="Product Name" /></a></li>
+              <li><img src="<?= $row -> url ?>" alt="Product Name" /></li>
 
-      <?php
-            }
+          <?php
+                }
 
-        } ?>
-    </ul>
-  </div>
-  
+            } ?>
+        </ul>
+      </div>
+      
+        <?php 
+  $data = array(
+    'error' => '',
+    'padre' => '1'
+   );
+
+    $this->load->view('upload_form', $data);
+   ?>
     </div>
 
 <?php 

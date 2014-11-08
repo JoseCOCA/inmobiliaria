@@ -33,3 +33,22 @@
 .specs p{
 	margin-bottom: 0;
 }
+
+.slideRec{
+	position: absolute;
+	left: 28.2em;
+	top: 1px;
+
+}
+
+#sld{
+	width: 813px;
+	height: 124px;
+}
+
+#rec{
+	position: absolute;
+	height: 125px;
+	left: 76.4em;
+	top: 2px;
+}

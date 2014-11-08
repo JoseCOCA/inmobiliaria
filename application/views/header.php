@@ -21,10 +21,21 @@
     <script type="text/javascript" src="js/imagesLoaded.pkgd.js"></script>
     <script type="text/javascript" src="js/imagesLoaded.pkgd.min.js"></script>
     <script type="text/javascript" src="js/jquery.sticky.js"></script>
+    <script type="text/javascript" src="js/jquery.popupoverlay.js"></script>
+
 
     <script>
      $(document).ready(function(){
         jQuery('#slippry').slippry();
+        jQuery('#slider').slippry({
+          pager: false,
+          controls: false,
+        });
+          $('#overlay').popup({
+          pagecontainer: '.page1',
+          transition: 'all 0.3s'
+          });
+
             
             var $container = $('#iso').imagesLoaded( function() {
               $container.isotope({
@@ -77,8 +88,13 @@
 <!--==============================header=================================-->
 <header>
 
+  
+
   <div class="clear"></div>
+
+
   <ul id="slippry">
+
     <li>
       <a href="#slide1"><img class= "img_slide" src="images/banner_sld.jpg" alt="propiedades"></a>
     </li>
@@ -94,7 +110,8 @@
     <li>
       <a href="#slide5"><img class= "img_slide" src="images/homeFull_4.jpg" alt="Tidy and Perfect"></a>
     </li>
-  </ul> 
+  </ul>
+
     <p class="contact">CONTACTO</p>
   <div class="menu_block" >
     <nav class="horizontal-nav full-width horizontalNav-notprocessed">

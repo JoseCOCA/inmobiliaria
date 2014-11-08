@@ -27,7 +27,8 @@
      $(document).ready(function(){
   
           jQuery('#slippry').slippry();
-          $('#fadeandscale').popup({
+          
+          $('#slideshow').popup({
           pagecontainer: '.page1',
           transition: 'all 0.3s'
           });
@@ -103,9 +104,9 @@
   </ul> 
     <p class="contact">CONTACTO</p>
 
-    <a href= "#fadeandscale" class="fadeandscale_open">Modificar</a>
+    <a href= "#slideshow" class="slideshow_open">Modificar</a>
 
-    <div id="fadeandscale">
+    <div id="slideshow">
       <div id="pattern" class="pattern">
         <ul class="g">
 
@@ -122,24 +123,24 @@
         </ul>
       </div>
       
-        <?php 
-  $data = array(
-    'error' => '',
-    'padre' => '1'
-   );
+            <?php 
+            $data = array(
+              'error' => '',
+              'padre' => '1'
+             );
 
-    $this->load->view('upload_form', $data);
-   ?>
-    </div>
+              $this->load->view('upload_form', $data);
+             ?>
+      </div>
 
-<?php 
-  $data = array(
-    'error' => '',
-    'padre' => '1'
-   );
+      <?php 
+        $data = array(
+          'error' => '',
+          'padre' => '1'
+         );
 
-    $this->load->view('upload_form', $data);
-   ?>
+          $this->load->view('upload_form', $data);
+         ?>
 
   <div class="menu_block" >
     <nav class="horizontal-nav full-width horizontalNav-notprocessed">

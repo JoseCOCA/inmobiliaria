@@ -2,7 +2,19 @@
 <!--=====================Content======================-->
 <section class="content">
     <div class="grid_12 center">
-        <a href="#"><img src="images/banner.jpg" class="ban_img" alt=""></a>
+      <div class="mask">
+        <div class="type" >
+      <p>OFICINA</p>
+      </div>
+      <div class="specs">
+        <p>Dimensiones: 200 m2 </p> 
+        
+        <p>Zona Polanco</p>
+
+        <p>Costo: $10000000</p>
+      </div>
+      </div>
+        <!-- <a href="#"><img src="images/mask.png" class="ban_img" alt=""></a> -->
         <div class="text1">Elige la mejor opción que se adapte a tus necesidades </div>
     </div> 
     <?php $this->load->view('menu');?>    

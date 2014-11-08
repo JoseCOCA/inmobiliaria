@@ -1,0 +1,35 @@
+
+.mask{
+	position: relative;
+	background: url('../images/mask.png');
+	background-size: 90% 100%;
+    background-repeat: no-repeat;
+	left: 5%;
+	height: 125px;
+}
+
+.type{
+	position: absolute;
+	bottom: 34px;
+	left: 1.2em;
+	width: 150px;
+	font-weight: bold;
+	color: #fff;
+	font-size: 30px;
+
+}
+
+.specs{
+
+	position: absolute;
+	bottom: 34px;
+	left: 11.5em;
+	width: 200px;
+	color: #fff;
+	font-size: 18px;
+
+}
+
+.specs p{
+	margin-bottom: 0;
+}

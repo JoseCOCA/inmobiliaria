@@ -19,7 +19,7 @@
 
 .menu_block nav {
 	position: relative;
-	font-family: 'Dosis', sans-serif;
+	font-family: 'DINPro', sans-serif;
 }
 
 
@@ -36,7 +36,7 @@ nav{ position:relative;padding: 0px 0 0 0;}
 	display: inline-block;
 	position: relative;
 	float: none;
-	font-size: 24px;
+	font-size: 22px;
 	line-height: 30px;
 	-moz-box-sizing: border-box;
     -webkit-box-sizing: border-box;
@@ -46,7 +46,7 @@ nav{ position:relative;padding: 0px 0 0 0;}
 
 
 .sf-menu>li+li {
-	margin-left: 65px;
+	margin-left: 50px;
 }
 
 .sf-menu>li+li+li {

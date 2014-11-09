@@ -36,7 +36,7 @@ body {
     position: relative;
     background-color: #fff;
     color: #908e8e;
-    font: 14px/20px 'Open Sans', sans-serif;
+    font: 14px/20px 'DINPro','Open Sans', sans-serif;
 }
 
 .ic {
@@ -93,7 +93,7 @@ hr {
 h1, h2, h3, h4, h5, h6 {
     color: #474343;
     font-weight: normal;
-    font-family: 'Denk One', sans-serif;
+    font-family: 'DINPro', sans-serif;
 }
 
 h2 {
@@ -112,7 +112,7 @@ h2.head1 {
 h3  {
     padding-top: 30px;
     margin-bottom: 30px;
-    font: 30px/43px 'Dosis', sans-serif;
+    font: 30px/43px 'DINPro', sans-serif;
 }
 
 .page1 h3 {
@@ -151,7 +151,7 @@ ul {
 .list .count {
     margin-top: 4px;
     color: #fff;
-    font: 30px/48px 'Dosis', sans-serif;
+    font: 30px/48px 'DINPro', sans-serif;
     width: 49px;
     float: left;
     margin-right: 11px;
@@ -250,7 +250,7 @@ a:hover {
     display: inline-block;
     padding: 22px 62px 24px;
     background-color: #3da9b6;
-    font: bold 30px/40px 'Dosis', sans-serif;
+    font: bold 30px/40px 'DINPro', sans-serif;
 }
 
 .btn:hover {
@@ -260,7 +260,7 @@ a:hover {
 .link1 {
     display: inline-block;
     margin-top: 16px;
-    font: 24px/26px 'Dosis', sans-serif;
+    font: 24px/26px 'DINPro', sans-serif;
     color: #3b3a3a;
 }
 
@@ -394,8 +394,8 @@ header h1 a img {
 
 .text1 {
     color: #6a6a6a;
-    margin-top: 9px;
-    font: 30px/22px 'Dosis', sans-serif;
+    margin-top: 25px;
+    font: 30px/22px 'DINPro', sans-serif;
     margin-bottom: 26px;
 }
 
@@ -422,7 +422,7 @@ header h1 a img {
     text-align: center;
     display: block;
     background-color: #79c4ca;
-    font: 36px/43px 'Dosis', sans-serif;
+    font: 36px/43px 'DINPro', sans-serif;
     margin-bottom: 25px;
 }
 
@@ -688,14 +688,18 @@ padding: 15px;
 float: left;
 margin-left: 40px;
 margin-right: 10px;
-width: 250px;
+width: 100%;
+}
+
+#iso{
+    padding-bottom: 30px;
 }
 .box_iso {
 color: #212121;
-padding-top: 40px;
-padding-left: 40px;
+padding-top: 5%;
+padding-left: 4.5%;
 float: left;
-width: 250px;
+width: 15%;
 background: transparent;
 margin-bottom: 20px;
 }

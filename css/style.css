@@ -16,6 +16,8 @@
 @import url(//fonts.googleapis.com/css?family=Open+Sans:700);
 @import url(//fonts.googleapis.com/css?family=Open+Sans:400italic);
 @font-face{
+    font-family: "DINPro";
+    src: url("../fonts/DINPro-Light.ttf");
 }
 html {
     width: 100%;
@@ -745,7 +747,7 @@ border-radius: 5px;
 .portada{
     background-image: url("../images/background.png");
     background-size: 90% 100%;
-    width: 1000px;
+    width: 900px;
     margin-top: 30px;
     margin-bottom: 30px;
 }
@@ -756,3 +758,95 @@ top: -13px;
 left: 982px;
 }
 
+.text-content{
+    font-family: "DINPro";
+    font-size: 20px;
+    padding-left: 5%;
+    padding-right: 5%;
+    padding-bottom: 8%;
+
+}
+
+.content1{
+    margin-top: 30px;
+}
+.content1 p{
+    padding-right: 200px;
+}
+
+.text-content p,label{
+    color: #fff;
+    display: inline-block;
+    margin-bottom: 0px;
+}
+
+.text-content li{
+    color: #fff;
+    list-style-type: disc;
+    margin-left: 60px;
+}
+
+#check-text{
+    display: inline-block;
+}
+input[type=checkbox] {
+  visibility: hidden;
+}
+.checkbox-1 {
+    display: inline-block;
+    vertical-align: middle;
+    width: 1em;
+    height: 1em;
+    background: #ededed;
+    margin-left: 124px;
+    border: 1px solid rgba(0, 0, 0, 0.15);
+    position: relative;
+    box-shadow: 1px 2px 5px rgba(0, 0, 0, 0.4);
+}
+.checkbox-1 label {
+    background: #ededed;
+    display: block;
+    width: 1em;
+    height: 1em;
+    cursor: pointer;
+    position: absolute;
+    top: 0;
+    left: 0;
+    z-index: 1;
+    box-shadow: 0 0 5px rgba(0,0,0,0.7) inset;
+    -webkit-transition: all .5s ease;
+    -moz-transition: all .5s ease;
+    -o-transition: all .5s ease;
+    -ms-transition: all .5s ease;
+    transition: all .5s ease;
+}
+.checkbox-1 input[type=checkbox]:checked + label {
+    background: #FF7361;
+}
+
+.text-content hr{
+  border: 0;
+  width: 100%;
+  color: #CC6600;
+  background-color: #CC6600;
+  height: 5px;
+}
+.ubic{
+    margin-top: 80px;
+}
+.ubic p{
+   display: inline-block;
+   padding-left: 10px;
+}
+.styledP{
+    background:rgb(67, 157, 173);
+    padding: 5px;
+}
+.contentDesc p{
+    margin-top: 30px;
+}
+
+#mt{
+    margin-top: 30px;
+
+}

@@ -73,10 +73,53 @@
         <li><img src="images/banner_sld.jpg" alt="" class="image_slide"></li>
       </ul>
       <div class="text-content">
-        <p>PROPIEDAD:</p><p>Oficina</p>
-        <p>CONDICIÓN:</p><p>Venta</p>
-        <p>STATUS: </p><p>No disponible</p>
+        <div class="content1">
+          <p>PROPIEDAD: Oficina</p>
+          <p>CONDICIÓN: Venta</p>
+          <hr>          
+        </div>
+
+        <div class="content2">
+          <p>STATUS: NO DISPONIBLE</p>
+          
+          <div class="checkbox-1">
+
+            <input type="checkbox" name="reservacion" id="reservación">
+            <label for="reservación"></label> 
+
+          </div>
+          <p id= "check-text">RECIBIR NOTIFICACIÓN DE DISPONIBILIDAD</p>
+          <hr>          
+        </div>
+
+        <div class="ubic">
+         <p>UBICACIÓN:</p><p class="styledP"style="width:83%; "> Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ut ducimus quisquam nisi harum mollitia, consequatur quo. Sint iste, laudantium eaque incidunt earum, accusamus nisi, doloribus dignissimos reiciendis repudiandae obcaecati animi!</p>
+        </div>
         
+        <div class="contentDesc">
+  
+        <p>DESCRIPCIÓN</p>
+  
+        <p class="styledP" id= "desc">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Non repellendus ad aperiam unde, quisquam nesciunt rem, voluptatem ratione ab eveniet fugiat molestias earum saepe ipsam qui sunt necessitatibus perferendis! Consequuntur?</p>
+  
+        <p>CONDICIONES DE CONTRATACIÓN</p>
+
+        </div>
+
+        <div class= "styledP" id="mt">
+  
+          <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Optio ratione autem quas sunt necessitatibus nam recusandae voluptates rerum veniam dolore at, id quisquam dolorum facere eius ipsam, saepe delectus iure.</p>
+          <ul style="margin-top: 20px;" >
+            <li>CONDICION 1</li>
+            <li>CONDICION 2</li>
+            <li>Condicion 3</li>
+          </ul>
+        
+        </div>
+
+        <hr>          
+        
+
       </div>
     </div>
   </div>

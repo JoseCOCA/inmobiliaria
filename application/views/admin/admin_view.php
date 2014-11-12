@@ -11,15 +11,6 @@
 
         <?php }  ?>
 
-    <?php 
-      $data = array(
-        'error' => '',
-        'padre' => '2'
-       );
-
-        $this->load->view('upload_form', $data);
-    ?>
-
         <div class="text1">Elige la mejor opción que se adapte a tus necesidades </div>
     </div> 
     
@@ -47,15 +38,6 @@
 
         <?php }  ?>
     </div>
-
-    <?php 
-      $data = array(
-        'error' => '',
-        'padre' => '3'
-       );
-
-        $this->load->view('upload_form', $data);
-    ?>
 
   <div class="container_12">
     <div class="clear"></div>

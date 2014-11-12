@@ -86,7 +86,11 @@
 <header>
 
   <div class="clear"></div>
+
   <a href="admin/logout">CERRAR SESIÓN</a>
+
+  <a href= "#slideshow" class="slideshow_open">Modificar</a>
+
   <ul id="slippry">
 
      <?php if ($query > 0) {?>
@@ -104,9 +108,12 @@
   </ul> 
     <p class="contact">CONTACTO</p>
 
-    <a href= "#slideshow" class="slideshow_open">Modificar</a>
 
     <div id="slideshow">
+
+      <div class="filter_container">
+
+      </div>
       <div id="pattern" class="pattern">
         <ul class="g">
 
@@ -123,24 +130,8 @@
         </ul>
       </div>
       
-            <?php 
-            $data = array(
-              'error' => '',
-              'padre' => '1'
-             );
-
-              $this->load->view('upload_form', $data);
-             ?>
       </div>
 
-      <?php 
-        $data = array(
-          'error' => '',
-          'padre' => '1'
-         );
-
-          $this->load->view('upload_form', $data);
-         ?>
 
   <div class="menu_block" >
     <nav class="horizontal-nav full-width horizontalNav-notprocessed">

@@ -1,6 +1,7 @@
-.g {
+		.g {
   		padding: 0.25em;
 			overflow: hidden;
+			display: inline-block;
 		}
 		.g li {
 			float: left;

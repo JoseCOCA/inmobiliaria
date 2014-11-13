@@ -27,10 +27,14 @@
      $(document).ready(function(){
   
           jQuery('#slippry').slippry();
-          
+           jQuery('#slider').slippry({
+          pager: false,
+          controls: true,
+          });
           $('#slideshow').popup({
           pagecontainer: '.page1',
-          transition: 'all 0.3s'
+          transition: 'all 0.3s',
+          scrolllock: true
           });
 
             var $container = $('#iso').imagesLoaded( function() {
@@ -113,24 +117,112 @@
 
       <div class="filter_container">
 
-      </div>
-      <div id="pattern" class="pattern">
-        <ul class="g">
-
           <?php foreach ($query as $row) {
 
             if ($row-> padre == '1' ) {  ?>
 
-              <li><img src="<?= $row -> url ?>" alt="Product Name" /></li>
+              <img src="<?= $row -> url ?>" alt="Product Name" />
 
           <?php
                 }
 
             } ?>
+
+            
+      </div>
+
+      <div class="config_container">
+          
+          <div class="adminInput">
+      
+          <a href="#" class="overlay_close"><img id="close" src="images/button_close.png" alt=""></a>
+      
+        <ul id="slider">
+          <li><img src="images/banner_sld.jpg" alt="" class="image_slide"></li>
+          <li><img src="images/banner_sld.jpg" alt="" class="image_slide"></li>
+          <li><img src="images/banner_sld.jpg" alt="" class="image_slide"></li>
         </ul>
+        <div class="text-content">
+          <div class="content1">
+              
+            <div class="checkbox-1AD">
+
+              <input type="checkbox" name="principal" id="principal">
+              <label for="principal"></label> 
+
+            </div>
+            
+            <p id= "check-text">BANNER PRINCIPAL</p>
+            
+            <select name="inmueble" id="inmueble" >
+              <option selected="selected" value="">Seleccione el tipo de inmueble</option>
+              <option value="">BODEGA</option>
+              <option value="">CASA</option>
+              <option value="">DEPARTAMENTO</option>
+              <option value="">OFICINA</option>
+            </select>
+            
+            <button>Seleccionar imagenes</button>
+
+            <div class="checkbox-2AD">
+
+              <input type="checkbox" name="recomendado" id="recomendado">
+              <label for="recomendado"></label> 
+
+            </div>
+            <p id= "check-text" style="margin-right:15%;">RECOMENDADO</p>
+            <select name="Status" id="">
+              <option value="">STATUS</option>
+              <option value="">VENTA</option>
+              <option value="">RENTA</option>
+              <option value="">NO DISPONIBLE</option>
+            </select>
+            <hr>          
+          </div>
+
+          <div class="AdminHeaders">
+           <p>UBICACIÓN</p>
+
+          </div>
+          
+          <p style="padding-top:30px;">Calle y Número:</p>
+          <input type="text" class="ubiEdit">
+          <p>Colonia:</p>
+          <input type="text" class="ubiEdit">
+          <p>Delegación:</p>
+          <input type="text" class="ubiEdit">
+          <p>Codigo Postal:</p>
+          <input type="text" class="ubiEdit">
+          
+          <div class="contentDesc">
+          
+          <div class="AdminHeaders">
+           <p>DESCRIPCIÓN</p>
+          </div>
+          
+            <textarea class="ubiEdit" rows="4" cols="50" style="margin-top:30px;">
+            Proporcione una descripción detallada de la propiedad en cuestión.
+            </textarea>          
+
+          <div class="AdminHeaders">
+            <p>CONDICIONES DE CONTRATACIÓN</p>
+          </div>   
+            
+            <textarea class="ubiEdit" rows="4" cols="50" style="margin-top:30px;">
+            Proporcione las condiciones de contratación de considere nesecarias.
+            </textarea> 
+         
+
+          </div>
+
+        <hr>          
+        
+
+      </div>
+    </div>
       </div>
       
-      </div>
+    </div>
 
 
   <div class="menu_block" >

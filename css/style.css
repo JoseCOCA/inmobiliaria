@@ -2,7 +2,6 @@
 @import "reset.css";
 @import "font-awesome.css";
 @import "superfish.css";
-@import "imageGrid.css";
 @import "bannerRec.css";
 
 @import url(//fonts.googleapis.com/css?family=Dosis:400);
@@ -775,7 +774,11 @@ left: 982px;
     margin-top: 30px;
 }
 .content1 p{
-    padding-right: 200px;
+    margin-right: 10%;
+}
+
+#inmueble{
+    margin-right: 6%;
 }
 
 .text-content p,label{
@@ -858,8 +861,111 @@ input[type=checkbox] {
 /*Overlay Admin*/
 
 .filter_container{
-    width: 300px;
-    height: 600px;
-    display: inline-block;
+    width: 20vw;
+    height: 100vh;
+    overflow-y: scroll;
+    overflow-x: hidden;
+    float: left;
     
+}
+
+.filter_container img{
+
+    width: 130px;
+    height: 130px;
+    padding-left: 16%;
+    padding-top: 10%;
+
+}
+
+.config_container{
+    width: 78vw;
+    height: 100vh;
+    float: left;
+
+}
+
+.adminInput{
+    background-image: url("../images/background.png");
+    background-size: 100% 100%;
+    overflow-y: scroll;
+    overflow-x: hidden;
+    height: 100vh;
+}
+
+.ubiEdit{
+    width: 100%;
+    margin-bottom: 28px;
+}
+.checkbox-1AD{
+    display: inline-block;
+    vertical-align: middle;
+    width: 1em;
+    height: 1em;
+    background: #ededed;
+    margin-left: 0px;
+    border: 1px solid rgba(0, 0, 0, 0.15);
+    position: relative;
+    box-shadow: 1px 2px 5px rgba(0, 0, 0, 0.4);
+}
+
+.checkbox-1AD label {
+    background: #ededed;
+    display: block;
+    width: 1em;
+    height: 1em;
+    cursor: pointer;
+    position: absolute;
+    top: 0;
+    left: 0;
+    z-index: 1;
+    box-shadow: 0 0 5px rgba(0,0,0,0.7) inset;
+    -webkit-transition: all .5s ease;
+    -moz-transition: all .5s ease;
+    -o-transition: all .5s ease;
+    -ms-transition: all .5s ease;
+    transition: all .5s ease;
+}
+
+.checkbox-1AD input[type=checkbox]:checked + label {
+    background: #FF7361;
+}
+
+.checkbox-2AD{
+    display: inline-block;
+    vertical-align: middle;
+    width: 1em;
+    height: 1em;
+    background: #ededed;
+    margin-left: 0px;
+    border: 1px solid rgba(0, 0, 0, 0.15);
+    position: relative;
+    box-shadow: 1px 2px 5px rgba(0, 0, 0, 0.4);
+}
+
+.checkbox-2AD label {
+    background: #ededed;
+    display: block;
+    width: 1em;
+    height: 1em;
+    cursor: pointer;
+    position: absolute;
+    top: 0;
+    left: 0;
+    z-index: 1;
+    box-shadow: 0 0 5px rgba(0,0,0,0.7) inset;
+    -webkit-transition: all .5s ease;
+    -moz-transition: all .5s ease;
+    -o-transition: all .5s ease;
+    -ms-transition: all .5s ease;
+    transition: all .5s ease;
+}
+
+.checkbox-2AD input[type=checkbox]:checked + label {
+    background: #FF7361;
+}
+
+.AdminHeaders{
+    margin: 0px auto;
+    text-align: center;
 }

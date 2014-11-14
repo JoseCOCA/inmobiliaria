@@ -119,9 +119,9 @@
 
           <?php foreach ($query as $row) {
 
-            if ($row-> padre == '1' ) {  ?>
+            if ($row-> padre == '3' ) {  ?>
 
-              <img src="<?= $row -> url ?>" alt="Product Name" />
+              <a href="#"><img src="<?= $row -> url ?>" alt="Product Name" /></a>
 
           <?php
                 }
@@ -142,6 +142,8 @@
           <li><img src="images/banner_sld.jpg" alt="" class="image_slide"></li>
           <li><img src="images/banner_sld.jpg" alt="" class="image_slide"></li>
         </ul>
+
+         <?php echo form_open('admin/getData'); ?>
         <div class="text-content">
           <div class="content1">
               
@@ -186,13 +188,13 @@
           </div>
           
           <p style="padding-top:30px;">Calle y Número:</p>
-          <input type="text" class="ubiEdit">
+          <input type="text" class="ubiEdit" id="calleNum" name="CalleNumero">
           <p>Colonia:</p>
-          <input type="text" class="ubiEdit">
+          <input type="text" class="ubiEdit" id="colonia" name="Colonia">
           <p>Delegación:</p>
-          <input type="text" class="ubiEdit">
+          <input type="text" class="ubiEdit" id="delegacion" name="Delegacion">
           <p>Codigo Postal:</p>
-          <input type="text" class="ubiEdit">
+          <input type="text" class="ubiEdit" id="CP" name="CodigoPostal">
           
           <div class="contentDesc">
           
@@ -200,28 +202,27 @@
            <p>DESCRIPCIÓN</p>
           </div>
           
-            <textarea class="ubiEdit" rows="4" cols="50" style="margin-top:30px;">
-            Proporcione una descripción detallada de la propiedad en cuestión.
-            </textarea>          
+            <textarea id="descripción" name="descripcion" style= "text-aign: justify;"class="ubiEdit" rows="4" cols="50" style="margin-top:30px;" placeholder="Porporcione una descripción detallada"></textarea>          
 
           <div class="AdminHeaders">
             <p>CONDICIONES DE CONTRATACIÓN</p>
           </div>   
             
-            <textarea class="ubiEdit" rows="4" cols="50" style="margin-top:30px;">
-            Proporcione las condiciones de contratación de considere nesecarias.
-            </textarea> 
+            <textarea id="condiciones" name="condiciones" class="ubiEdit" rows="4" cols="50" style="margin-top:30px;" placeholder="Proporcione las condiciones de contratación de considere nesecarias."></textarea> 
          
 
           </div>
 
-        <hr>          
+        <hr> 
+
+
         
 
-      </div>
-    </div>
-      </div>
+          </div>
+            <?php echo form_close(); ?>
       
+        </div>
+      </div>
     </div>
 
 

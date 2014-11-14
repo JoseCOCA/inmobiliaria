@@ -33,9 +33,9 @@ class Admin_model extends CI_Model {
 
 	//realiza la consulta de los parametros de la imagen del slide
 
-	public function get_images()
+	public function get_imagesDesc()
 	{
-		$query = $this->db->get('images');
+		$query = $this->db->get('imagedesc');
 		if ($query->num_rows() > 0) {
 		
 			foreach ($query->result() as $row) {
@@ -43,6 +43,24 @@ class Admin_model extends CI_Model {
 			}
 			return $data;		
 		}
+	}
+
+		public function get_imagesFilter()
+	{
+		$query = $this->db->get('imagefilters');
+		if ($query->num_rows() > 0) {
+		
+			foreach ($query->result() as $row) {
+				$data[] = $row;
+			}
+			return $data;		
+		}
+	}
+
+
+	public function insert_data()
+	{
+
 	}
 
 }

@@ -2,6 +2,11 @@
 
 class Templates extends CI_Controller {
 
+	public function __construct(){
+		parent::__construct();
+		$this->load->model('admin_model');
+	}
+
 	/**
 	 * Index Page for this controller.
 	 *
@@ -21,8 +26,9 @@ class Templates extends CI_Controller {
 	public function index()
 	{
 		$data = array(
-			'title' => 'Home'
-
+			'title' => 'Home',
+			'query' => $this->admin_model->get_imagesDesc(),
+			'query1' => $this->admin_model->get_imagesFilter()
 			);
 		$this->load->view('header',$data);
 		$this->load->view('public/home');
@@ -30,8 +36,8 @@ class Templates extends CI_Controller {
 	}
 	public function info(){
 		$data = array(
-			'title' => 'info'
-
+			'title' => 'info',
+			'query' => $this->admin_model->get_imagesDesc(),
 			);
 		$this->load->view('header',$data);
 		$this->load->view('public/info');
@@ -39,8 +45,8 @@ class Templates extends CI_Controller {
 	}
 	public function privacy(){
 		$data = array(
-			'title' => 'privacy'
-
+			'title' => 'privacy',
+			'query' => $this->admin_model->get_imagesDesc(),
 			);
 		$this->load->view('header',$data);
 		$this->load->view('public/privacy');

@@ -71,6 +71,10 @@ class Admin extends CI_Controller {
 		redirect('admin/login');
 	}
 
+	public function getData(){
+		
+	}
+
 }
 
 /* End of file welcome.php */

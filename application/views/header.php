@@ -31,10 +31,14 @@
           pager: false,
           controls: false,
         });
+
+        
           $('#overlay').popup({
           pagecontainer: '.page1',
-          transition: 'all 0.3s'
+          transition: 'all 0.3s',
+          scrolllock: true
           });
+
 
             
             var $container = $('#iso').imagesLoaded( function() {
@@ -93,24 +97,21 @@
   <div class="clear"></div>
 
 
-  <ul id="slippry">
+<ul id="slippry">
 
-    <li>
-      <a href="#slide1"><img class= "img_slide" src="images/banner_sld.jpg" alt="propiedades"></a>
-    </li>
-    <li>
-      <a href="#slide2"><img class= "img_slide" src="images/HomeFull_2.jpg" alt="Keeping Your Home Clean"></a>
-    </li>
-    <li>
-      <a href="#slide3"><img class= "img_slide" src="images/homeFull_4.jpg" alt="Tidy and Perfect"></a>
-    </li>
-    <li>
-      <a href="#slide4"><img class= "img_slide" src="images/homeFull_4.jpg" alt="Tidy and Perfect"></a>
-    </li>
-    <li>
-      <a href="#slide5"><img class= "img_slide" src="images/homeFull_4.jpg" alt="Tidy and Perfect"></a>
-    </li>
-  </ul>
+     <?php if ($query > 0) {?>
+
+            <?php foreach ($query as $row) {?>
+               <?php if($row -> padre == '1'){?>
+                    <li>
+                      <a href="#overlay" class="overlay_open"><img class= "img_slide" src="<?= $row -> url ?>"alt=""></a>
+                    </li>
+
+                <?php }?>
+            <?php }?>
+
+        <?php }  ?>
+  </ul> 
 
     <p class="contact">CONTACTO</p>
   <div class="menu_block" >

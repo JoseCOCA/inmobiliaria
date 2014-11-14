@@ -755,10 +755,9 @@ border-radius: 5px;
     margin-bottom: 30px;
 }
 #close{
-    width: 30px;
 position: relative;
 top: -13px;
-left: 982px;
+left: 97%;
 }
 
 .text-content{
@@ -791,6 +790,10 @@ left: 982px;
     color: #fff;
     list-style-type: disc;
     margin-left: 60px;
+}
+
+.contentDesc p{
+    display: block;
 }
 
 #check-text{

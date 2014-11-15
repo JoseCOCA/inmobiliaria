@@ -4,10 +4,11 @@
     <div class="grid_12 center">
 
       <div class="slideRec">
-            <img id="sld" src="images/imageSlide.png" alt="banner1">
-
+         
       </div>
       <div class="mask">
+
+       <img style="width:90%"id="sld" src="images/mask.png" alt="banner1">
           <div class="type" >
           <p>OFICINA</p>
           </div>
@@ -18,6 +19,7 @@
 
             <p>Costo: $10000000</p>
           </div>
+          
 
 
       </div>

@@ -34,6 +34,8 @@ class Admin extends CI_Controller {
 		}
 		$data = array(
 			'title' => 'Admin',
+			'query' => $this->admin_model->get_imagesDesc(),
+			'query1' =>$this->admin_model->get_imagesFilter()
 			);
 		$this->load->view('admin/header_admin',$data);
 		$this->load->view('admin/admin_view',$data);

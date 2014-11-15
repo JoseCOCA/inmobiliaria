@@ -28,6 +28,14 @@
      $(document).ready(function(){
         jQuery('#slippry').slippry();
 
+        jQuery('#Recomendado').slippry({
+
+          slippryWrapper: '<div class="sy-box recomendado-slider" />',
+          pager: false,
+          controls: false,
+          adaptiveHeight: false,
+        })
+
           $('#overlay').popup({
           pagecontainer: '.page1',
           transition: 'all 0.3s',

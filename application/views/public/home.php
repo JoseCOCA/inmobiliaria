@@ -2,6 +2,11 @@
 <!--=====================Content======================-->
 <section class="content">
     <div class="grid_12 center">
+
+      <div class="slideRec">
+            <img id="sld" src="images/imageSlide.png" alt="banner1">
+
+      </div>
       <div class="mask">
           <div class="type" >
           <p>OFICINA</p>
@@ -13,11 +18,7 @@
 
             <p>Costo: $10000000</p>
           </div>
-          <div class="slideRec">
 
-            <img id="sld" src="images/imageSlide.png" alt="banner1">
-
-          </div>
 
       </div>
         <!-- <a href="#"><img src="images/mask.png" class="ban_img" alt=""></a> -->

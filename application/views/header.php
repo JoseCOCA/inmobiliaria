@@ -27,12 +27,7 @@
     <script>
      $(document).ready(function(){
         jQuery('#slippry').slippry();
-        jQuery('#slider').slippry({
-          pager: false,
-          controls: false,
-        });
 
-        
           $('#overlay').popup({
           pagecontainer: '.page1',
           transition: 'all 0.3s',
@@ -66,6 +61,16 @@
               return false;
             });
 
+        $('.overlay_open').each(function() {
+
+          var getID = jQuery(this).attr("id");
+
+        jQuery('#'+getID).slippry({
+          pager: false,
+          controls: false,
+        });
+
+        });
      }); 
     function goToByScroll(id){$('html,body').animate({scrollTop: $("#"+id).offset().top},'slow');}
 

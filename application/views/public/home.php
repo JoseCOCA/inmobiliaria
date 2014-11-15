@@ -48,11 +48,11 @@
         <div id="overlay">
 
           <?php foreach ($query1 as $row) { ?>
-            <div class="portada" id="<?=$row -> Filtro ?>">
+            <div class="portada <?=$row -> Filtro ?> oculto">
 
-              <a href="#" class="overlay_close"><img id="close" src="images/boton_close.png" alt=""></a>
+              <a href="#" class="overlay_close" onclick="getID()"><img id="close" src="images/boton_close.png" alt=""></a>
                         
-                        <ul id="slider">
+                        <ul id= "<?=$row -> Filtro ?>">
                           <li><img src="images/banner_sld.jpg" alt="" class="image_slide"></li>
                           <li><img src="images/banner_sld.jpg" alt="" class="image_slide"></li>
                           <li><img src="images/banner_sld.jpg" alt="" class="image_slide"></li>

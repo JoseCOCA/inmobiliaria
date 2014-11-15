@@ -972,3 +972,7 @@ input[type=checkbox] {
     margin: 0px auto;
     text-align: center;
 }
+
+.oculto{
+    display: none;
+}

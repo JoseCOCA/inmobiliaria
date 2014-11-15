@@ -37,8 +37,17 @@
         var altura = document.querySelector('.menu_block').offsetHeight;
         $('#nav').sticky({topSpacing:46}).css({'z-index': '99', 'width': '100%'});
       });
-  
+      
+      jQuery('.overlay_open').each(function(){
+      jQuery(this).click(function(){
 
+        var clickedID = jQuery(this).attr("id");
+
+      $('.no-oculto').removeClass('no-oculto').addClass('oculto');
+      $('.'+clickedID).removeClass('oculto').addClass('no-oculto');
+
+      });
+      })
 
     </script>
 </body>

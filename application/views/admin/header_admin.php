@@ -88,8 +88,7 @@
 <body class="page1" id="top">
 <!--==============================header=================================-->
 <header>
-
-  <a href="logout">Cerrar sesión</a>
+  
   <div class="clear"></div>
 
   <a href="admin/logout">CERRAR SESIÓN</a>

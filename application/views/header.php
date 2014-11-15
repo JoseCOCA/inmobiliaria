@@ -61,7 +61,7 @@
               return false;
             });
 
-        $('.overlay_open').each(function() {
+        $('.showInfo').each(function() {
 
           var getID = jQuery(this).attr("id");
 
@@ -108,8 +108,8 @@
 
             <?php foreach ($query as $row) {?>
                <?php if($row -> padre == '1'){?>
-                    <li><img src="images/mascara-principal.png" class="wrap"/>
-                      <a href=""><img class= "img_slide" src="<?= $row -> url ?>"alt=""></a>
+                    <li><a href="#overlay" id="<?=$row -> Filtro ?>" class="overlay_open"><img src="images/mascara-principal.png" class="wrap"/>
+                      <img class= "img_slide" src="<?= $row -> url ?>"alt=""></a>
                     </li>
 
                 <?php }?>

@@ -18,9 +18,6 @@
             <img id="sld" src="images/imageSlide.png" alt="banner1">
 
           </div>
-          <div class="rec">
-            <img id="rec" src="images/mask2.png" alt="mascara Rec">
-          </div>
 
       </div>
         <!-- <a href="#"><img src="images/mask.png" class="ban_img" alt=""></a> -->
@@ -34,8 +31,8 @@
 
             <?php foreach ($query1 as $row) {?>
 
-                    <div class="box_iso casa depa">
-                        <a href="#overlay" id="<?=$row -> Filtro ?>"class= "overlay_open"><img id= "img_filter" src="<?= $row -> url ?>"alt=""></a>
+                    <div class="box_iso <?=$row->Tipo?>">
+                        <a href="#overlay" id="<?=$row -> Filtro ?>" class= "overlay_open showInfo"><img id= "img_filter" src="<?= $row -> url ?>"alt=""></a>
                     </div>
 
             <?php }?>

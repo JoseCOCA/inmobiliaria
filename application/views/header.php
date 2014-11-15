@@ -102,14 +102,14 @@
   <div class="clear"></div>
 
 
-<ul id="slippry">
+  <ul id="slippry">
 
      <?php if ($query > 0) {?>
 
             <?php foreach ($query as $row) {?>
                <?php if($row -> padre == '1'){?>
-                    <li>
-                      <a href="#overlay" class="overlay_open"><img class= "img_slide" src="<?= $row -> url ?>"alt=""></a>
+                    <li><img src="images/mascara-principal.png" class="wrap"/>
+                      <a href=""><img class= "img_slide" src="<?= $row -> url ?>"alt=""></a>
                     </li>
 
                 <?php }?>

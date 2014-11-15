@@ -22,23 +22,59 @@ class Admin extends CI_Controller {
 		parent::__construct();
 		
 		session_start();
+		$this->load->model('admin_model');
 
-		if (!isset($_SESSION['username'])) {
-			redirect('adminlogin');
-		}
 
 	}
 
 	public function index()
 	{
+		if (!isset($_SESSION['username'])) {
+			redirect('/admin/login');
+		}
 		$data = array(
-			'title' => 'Admin'
-
+			'title' => 'Admin',
+			'query' => $this->admin_model->get_images()
 			);
 		$this->load->view('admin/header_admin',$data);
-		$this->load->view('admin/admin_view');
+		$this->load->view('admin/admin_view',$data);
 		$this->load->view('admin/footer_admin');
 	}
+
+	public function login()
+	{
+		$this->load->library('form_validation');
+		$this->form_validation->set_rules('email_address', 'Email Address', 'required|valid_email');
+		$this->form_validation->set_rules('password', 'Password', 'required|min_length[4]');
+
+		if ($this->form_validation->run() !== false) {
+
+			$this->load->model('admin_model');
+		    $res = $this
+		    		->admin_model
+		    		->verify_user(
+		    			$this->input->post('email_address'),
+		    			$this->input->post('password')
+		    			);
+
+		    if ($res !== false) {
+
+		    	$_SESSION['username'] = $this->input->post('email_address');
+		    	redirect('admin');
+		    }
+		}
+		$this->load->view('login_view');	
+	}
+
+	public function logout(){
+		session_unset();
+		redirect('admin/login');
+	}
+
+	public function getData(){
+		
+	}
+
 }
 
 /* End of file welcome.php */

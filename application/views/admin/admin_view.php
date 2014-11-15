@@ -1,49 +1,47 @@
 <!--=====================Content======================-->
 <section class="content">
     <div class="grid_12 center">
-        <a href="#"><img src="assets/images/banner.jpg" class="ban_img" alt=""></a>
+        <?php if ($query > 0) {?>
+
+            <?php foreach ($query as $row) {?>
+               <?php if($row -> padre == '2'){?>
+                  <a href="<?= $row -> link ?>"><img id= "img_filter" src="<?= $row -> url ?>"alt=""></a>
+                <?php }?>
+            <?php }?>
+
+        <?php }  ?>
+
         <div class="text1">Elige la mejor opción que se adapte a tus necesidades </div>
     </div> 
-    <?php $this->load->view('menu');?>    
     
+    <div id="header"></div>
+    <div id="nav">
+      <ul>
+        <li><a href="" data-filter="*">TODOS</a></li>
+        <li><a href="" data-filter=".oficina">OFICINAS</a></li>
+        <!-- <li><a href="" data-filter=".depa">DEPARTAMENTOS</a></li> -->
+        <li><a href="" data-filter=".bodega">BODEGAS</a></li>
+        <li><a href="" data-filter=".casa">CASAS</a></li>
+      </ul>
+    </div> 
+
     <div id="iso">
-      <div class="box_iso casa depa">
-          <a href="#"><img id= "img_filter" src="assets/images/house.jpg"alt=""></a>
-      </div>
-      
-      <div class="box_iso casa">
-          <a href=""><img id= "img_filter" src="assets/images/house.jpg" alt=""></a>
-      </div>
-      
-      <div class="box_iso oficina depa bodega">
-          <a href=""><img id= "img_filter" src="assets/images/house.jpg" alt=""></a>
-      </div>
-      
-      <div class="box_iso casa">
-          <a href=""><img id= "img_filter" src="assets/images/house.jpg" alt=""></a>
-      </div>
-      <div class="box_iso oficina">
-          <a href=""><img id= "img_filter" src="assets/images/house.jpg" alt=""></a>
-      </div>
-      <div class="box_iso bodega">
-          <a href=""><img id= "img_filter" src="assets/images/house.jpg" alt=""></a>
-      </div>
-      
-      <div class="box_iso bodega depa">
-          <a href=""><img id= "img_filter" src="assets/images/house.jpg" alt=""></a>
-      </div>
-      
-      <div class="box_iso casa">
-          <a href=""><img id= "img_filter" src="assets/images/house.jpg" alt=""></a>
-      </div>
-    
-    
+        <?php if ($query > 0) {?>
+
+            <?php foreach ($query as $row) {?>
+               <?php if($row -> padre == '3'){?>
+                        <div class="box_iso casa depa">
+                            <a href="<?= $row -> link ?>"><img id= "img_filter" src="<?= $row -> url ?>"alt=""></a>
+                        </div>
+                <?php }?>
+            <?php }?>
+
+        <?php }  ?>
     </div>
 
   <div class="container_12">
     <div class="clear"></div>
-
-    <?php $this->load->view('upload_form'); ?>
   </div>
 
 </section>
+

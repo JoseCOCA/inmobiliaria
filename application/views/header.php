@@ -6,25 +6,35 @@
      <meta name="format-detection" content="telephone=no" />
      <link rel="icon" href="images/favicon.ico">
      <link rel="shortcut icon" href="images/favicon.ico" />
-     <link rel="stylesheet" href="assets/css/slippry.css">
-     <link rel="stylesheet" href="assets/css/elastislide.css" />
-     <link rel="stylesheet" href="assets/css/style.css">
-     <script src="assets/js/jquery.js"></script>
-     <script src="assets/js/jquery-migrate-1.1.1.js"></script>
-     <script src="assets/js/script.js"></script> 
-     <script src="assets/js/superfish.js"></script>
-     <script src="assets/js/jquery.equalheights.js"></script>
-     <script src="assets/js/jquery.easing.1.3.js"></script>
-     <script src="assets/js/slippry.js"></script>
-    <script src="assets/js/modernizr.custom.17475.js"></script>    
-    <script type="text/javascript" src="assets/js/isotope.js"></script>
-    <script type="text/javascript" src="assets/js/imagesLoaded.pkgd.js"></script>
-    <script type="text/javascript" src="assets/js/imagesLoaded.pkgd.min.js"></script>
-    <script type="text/javascript" src="assets/js/jquery.sticky.js"></script>
+     <link rel="stylesheet" href="css/slippry.css">
+     <link rel="stylesheet" href="css/elastislide.css" />
+     <link rel="stylesheet" href="css/style.css">
+     <script src="js/jquery.js"></script>
+     <script src="js/jquery-migrate-1.1.1.js"></script>
+     <script src="js/script.js"></script> 
+     <script src="js/superfish.js"></script>
+     <script src="js/jquery.equalheights.js"></script>
+     <script src="js/jquery.easing.1.3.js"></script>
+     <script src="js/slippry.js"></script>
+    <script src="js/modernizr.custom.17475.js"></script>    
+    <script type="text/javascript" src="js/isotope.js"></script>
+    <script type="text/javascript" src="js/imagesloaded.pkgd.js"></script>
+    <script type="text/javascript" src="js/imagesloaded.pkgd.min.js"></script>
+    <script type="text/javascript" src="js/jquery.sticky.js"></script>
+    <script type="text/javascript" src="js/jquery.popupoverlay.js"></script>
+
 
     <script>
      $(document).ready(function(){
         jQuery('#slippry').slippry();
+
+          $('#overlay').popup({
+          pagecontainer: '.page1',
+          transition: 'all 0.3s',
+          scrolllock: true
+          });
+
+
             
             var $container = $('#iso').imagesLoaded( function() {
               $container.isotope({
@@ -51,6 +61,16 @@
               return false;
             });
 
+        $('.overlay_open').each(function() {
+
+          var getID = jQuery(this).attr("id");
+
+        jQuery('#'+getID).slippry({
+          pager: false,
+          controls: false,
+        });
+
+        });
      }); 
     function goToByScroll(id){$('html,body').animate({scrollTop: $("#"+id).offset().top},'slow');}
 
@@ -77,24 +97,27 @@
 <!--==============================header=================================-->
 <header>
 
+  
+
   <div class="clear"></div>
-  <ul id="slippry">
-    <li>
-      <a href="#slide1"><img class= "img_slide" src="assets/images/banner_sld.jpg" alt="propiedades"></a>
-    </li>
-    <li>
-      <a href="#slide2"><img class= "img_slide" src="assets/images/HomeFull_2.jpg" alt="Keeping Your Home Clean"></a>
-    </li>
-    <li>
-      <a href="#slide3"><img class= "img_slide" src="assets/images/homeFull_4.jpg" alt="Tidy and Perfect"></a>
-    </li>
-    <li>
-      <a href="#slide4"><img class= "img_slide" src="assets/images/homeFull_4.jpg" alt="Tidy and Perfect"></a>
-    </li>
-    <li>
-      <a href="#slide5"><img class= "img_slide" src="assets/images/homeFull_4.jpg" alt="Tidy and Perfect"></a>
-    </li>
+
+
+<ul id="slippry">
+
+     <?php if ($query > 0) {?>
+
+            <?php foreach ($query as $row) {?>
+               <?php if($row -> padre == '1'){?>
+                    <li>
+                      <a href="#overlay" class="overlay_open"><img class= "img_slide" src="<?= $row -> url ?>"alt=""></a>
+                    </li>
+
+                <?php }?>
+            <?php }?>
+
+        <?php }  ?>
   </ul> 
+
     <p class="contact">CONTACTO</p>
   <div class="menu_block" >
     <nav class="horizontal-nav full-width horizontalNav-notprocessed">

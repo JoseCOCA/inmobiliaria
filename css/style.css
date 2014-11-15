@@ -2,6 +2,7 @@
 @import "reset.css";
 @import "font-awesome.css";
 @import "superfish.css";
+@import "bannerRec.css";
 
 @import url(//fonts.googleapis.com/css?family=Dosis:400);
 @import url(//fonts.googleapis.com/css?family=Dosis:700);
@@ -14,6 +15,8 @@
 @import url(//fonts.googleapis.com/css?family=Open+Sans:700);
 @import url(//fonts.googleapis.com/css?family=Open+Sans:400italic);
 @font-face{
+    font-family: "DINPro";
+    src: url("../fonts/DINPro-Light.ttf");
 }
 html {
     width: 100%;
@@ -32,7 +35,7 @@ body {
     position: relative;
     background-color: #fff;
     color: #908e8e;
-    font: 14px/20px 'Open Sans', sans-serif;
+    font: 14px/20px 'DINPro','Open Sans', sans-serif;
 }
 
 .ic {
@@ -89,7 +92,7 @@ hr {
 h1, h2, h3, h4, h5, h6 {
     color: #474343;
     font-weight: normal;
-    font-family: 'Denk One', sans-serif;
+    font-family: 'DINPro', sans-serif;
 }
 
 h2 {
@@ -108,7 +111,7 @@ h2.head1 {
 h3  {
     padding-top: 30px;
     margin-bottom: 30px;
-    font: 30px/43px 'Dosis', sans-serif;
+    font: 30px/43px 'DINPro', sans-serif;
 }
 
 .page1 h3 {
@@ -147,7 +150,7 @@ ul {
 .list .count {
     margin-top: 4px;
     color: #fff;
-    font: 30px/48px 'Dosis', sans-serif;
+    font: 30px/48px 'DINPro', sans-serif;
     width: 49px;
     float: left;
     margin-right: 11px;
@@ -246,7 +249,7 @@ a:hover {
     display: inline-block;
     padding: 22px 62px 24px;
     background-color: #3da9b6;
-    font: bold 30px/40px 'Dosis', sans-serif;
+    font: bold 30px/40px 'DINPro', sans-serif;
 }
 
 .btn:hover {
@@ -256,7 +259,7 @@ a:hover {
 .link1 {
     display: inline-block;
     margin-top: 16px;
-    font: 24px/26px 'Dosis', sans-serif;
+    font: 24px/26px 'DINPro', sans-serif;
     color: #3b3a3a;
 }
 
@@ -390,8 +393,8 @@ header h1 a img {
 
 .text1 {
     color: #6a6a6a;
-    margin-top: 9px;
-    font: 30px/22px 'Dosis', sans-serif;
+    margin-top: 25px;
+    font: 30px/22px 'DINPro', sans-serif;
     margin-bottom: 26px;
 }
 
@@ -418,7 +421,7 @@ header h1 a img {
     text-align: center;
     display: block;
     background-color: #79c4ca;
-    font: 36px/43px 'Dosis', sans-serif;
+    font: 36px/43px 'DINPro', sans-serif;
     margin-bottom: 25px;
 }
 
@@ -684,14 +687,18 @@ padding: 15px;
 float: left;
 margin-left: 40px;
 margin-right: 10px;
-width: 250px;
+width: 100%;
+}
+
+#iso{
+    padding-bottom: 30px;
 }
 .box_iso {
 color: #212121;
-padding-top: 40px;
-padding-left: 40px;
+padding-top: 5%;
+padding-left: 4.5%;
 float: left;
-width: 250px;
+width: 15%;
 background: transparent;
 margin-bottom: 20px;
 }
@@ -738,5 +745,234 @@ border-radius: 5px;
 
 }
 
-/*login*/
+/*Overlay info*/
 
+.portada{
+    background-image: url("../images/background.png");
+    background-size: 90% 100%;
+    width: 900px;
+    margin-top: 30px;
+    margin-bottom: 30px;
+}
+#close{
+position: relative;
+top: -13px;
+left: 97%;
+}
+
+.text-content{
+    font-family: "DINPro";
+    font-size: 20px;
+    padding-left: 5%;
+    padding-right: 5%;
+    padding-bottom: 8%;
+
+}
+
+.content1{
+    margin-top: 30px;
+}
+.content1 p{
+    margin-right: 10%;
+}
+
+#inmueble{
+    margin-right: 6%;
+}
+
+.text-content p,label{
+    color: #fff;
+    display: inline-block;
+    margin-bottom: 0px;
+}
+
+.text-content li{
+    color: #fff;
+    list-style-type: disc;
+    margin-left: 60px;
+}
+
+.contentDesc p{
+    display: block;
+}
+
+#check-text{
+    display: inline-block;
+}
+input[type=checkbox] {
+  visibility: hidden;
+}
+.checkbox-1 {
+    display: inline-block;
+    vertical-align: middle;
+    width: 1em;
+    height: 1em;
+    background: #ededed;
+    margin-left: 124px;
+    border: 1px solid rgba(0, 0, 0, 0.15);
+    position: relative;
+    box-shadow: 1px 2px 5px rgba(0, 0, 0, 0.4);
+}
+.checkbox-1 label {
+    background: #ededed;
+    display: block;
+    width: 1em;
+    height: 1em;
+    cursor: pointer;
+    position: absolute;
+    top: 0;
+    left: 0;
+    z-index: 1;
+    box-shadow: 0 0 5px rgba(0,0,0,0.7) inset;
+    -webkit-transition: all .5s ease;
+    -moz-transition: all .5s ease;
+    -o-transition: all .5s ease;
+    -ms-transition: all .5s ease;
+    transition: all .5s ease;
+}
+.checkbox-1 input[type=checkbox]:checked + label {
+    background: #FF7361;
+}
+
+.text-content hr{
+  border: 0;
+  width: 100%;
+  color: #CC6600;
+  background-color: #CC6600;
+  height: 5px;
+}
+.ubic{
+    margin-top: 80px;
+}
+.ubic p{
+   display: inline-block;
+   padding-left: 10px;
+}
+.styledP{
+    background:rgb(67, 157, 173);
+    padding: 5px;
+}
+.contentDesc p{
+    margin-top: 30px;
+}
+
+#mt{
+    margin-top: 30px;
+
+}
+
+/*Overlay Admin*/
+
+.filter_container{
+    width: 20vw;
+    height: 100vh;
+    overflow-y: scroll;
+    overflow-x: hidden;
+    float: left;
+    
+}
+
+.filter_container img{
+
+    width: 130px;
+    height: 130px;
+    padding-left: 16%;
+    padding-top: 10%;
+
+}
+
+.config_container{
+    width: 78vw;
+    height: 100vh;
+    float: left;
+
+}
+
+.adminInput{
+    background-image: url("../images/background.png");
+    background-size: 100% 100%;
+    overflow-y: scroll;
+    overflow-x: hidden;
+    height: 100vh;
+}
+
+.ubiEdit{
+    width: 100%;
+    margin-bottom: 28px;
+}
+.checkbox-1AD{
+    display: inline-block;
+    vertical-align: middle;
+    width: 1em;
+    height: 1em;
+    background: #ededed;
+    margin-left: 0px;
+    border: 1px solid rgba(0, 0, 0, 0.15);
+    position: relative;
+    box-shadow: 1px 2px 5px rgba(0, 0, 0, 0.4);
+}
+
+.checkbox-1AD label {
+    background: #ededed;
+    display: block;
+    width: 1em;
+    height: 1em;
+    cursor: pointer;
+    position: absolute;
+    top: 0;
+    left: 0;
+    z-index: 1;
+    box-shadow: 0 0 5px rgba(0,0,0,0.7) inset;
+    -webkit-transition: all .5s ease;
+    -moz-transition: all .5s ease;
+    -o-transition: all .5s ease;
+    -ms-transition: all .5s ease;
+    transition: all .5s ease;
+}
+
+.checkbox-1AD input[type=checkbox]:checked + label {
+    background: #FF7361;
+}
+
+.checkbox-2AD{
+    display: inline-block;
+    vertical-align: middle;
+    width: 1em;
+    height: 1em;
+    background: #ededed;
+    margin-left: 0px;
+    border: 1px solid rgba(0, 0, 0, 0.15);
+    position: relative;
+    box-shadow: 1px 2px 5px rgba(0, 0, 0, 0.4);
+}
+
+.checkbox-2AD label {
+    background: #ededed;
+    display: block;
+    width: 1em;
+    height: 1em;
+    cursor: pointer;
+    position: absolute;
+    top: 0;
+    left: 0;
+    z-index: 1;
+    box-shadow: 0 0 5px rgba(0,0,0,0.7) inset;
+    -webkit-transition: all .5s ease;
+    -moz-transition: all .5s ease;
+    -o-transition: all .5s ease;
+    -ms-transition: all .5s ease;
+    transition: all .5s ease;
+}
+
+.checkbox-2AD input[type=checkbox]:checked + label {
+    background: #FF7361;
+}
+
+.AdminHeaders{
+    margin: 0px auto;
+    text-align: center;
+}
+
+.oculto{
+    display: none;
+}

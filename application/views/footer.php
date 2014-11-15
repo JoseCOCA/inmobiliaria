@@ -20,8 +20,8 @@
   <div class="foot_colourd">
   </div>
 </footer>
-<script type="text/javascript" src="assets/js/jquerypp.custom.js"></script>
-    <script type="text/javascript" src="assets/js/jquery.elastislide.js"></script>
+<script type="text/javascript" src="js/jquerypp.custom.js"></script>
+    <script type="text/javascript" src="js/jquery.elastislide.js"></script>
     <script type="text/javascript">
       
       $( '#carousel' ).elastislide( {
@@ -37,8 +37,17 @@
         var altura = document.querySelector('.menu_block').offsetHeight;
         $('#nav').sticky({topSpacing:46}).css({'z-index': '99', 'width': '100%'});
       });
-  
+      
+      jQuery('.overlay_open').each(function(){
+      jQuery(this).click(function(){
 
+        var clickedID = jQuery(this).attr("id");
+
+      $('.no-oculto').removeClass('no-oculto').addClass('oculto');
+      $('.'+clickedID).removeClass('oculto').addClass('no-oculto');
+
+      });
+      })
 
     </script>
 </body>

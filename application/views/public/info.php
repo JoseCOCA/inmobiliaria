@@ -1,7 +1,7 @@
 
 <!--=====================Content======================-->
 <section class="content">
-        <a href="#"><img src="assets/images/banner.jpg" class="ban_img" alt=""></a>
+        <a href="#"><img src="images/banner.jpg" class="ban_img" alt=""></a>
     </div> 
   <div class="container_12" style = "margin-top: 30px;">
     <div class="grid_4" style = "background: lightblue;">
@@ -25,7 +25,7 @@
           Etiam non rutrum lectus, a viverra elit. Nulla quis arcu sed lectus ultricies tincidunt quis dictum tellus.
         </div>
       </div>
-      <img style= "width: 100%; padding-top: 30px;" src="assets/images/mision.png" alt="">
+      <img style= "width: 100%; padding-top: 30px;" src="images/mision.png" alt="">
       <h3>NUESTRA EXPERIENCIA-PRESENCIA EN EL MERCADO</h3>
       <div class="block1">
         <div class="extra_wrapper">

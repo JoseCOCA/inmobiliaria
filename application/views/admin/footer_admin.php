@@ -9,43 +9,41 @@
       Voluptatem, voluptate veritatis porro, minima commodi esse. 
       Commodi maiores repudiandae quisquam enim qui autem sed nisi 
       odit facilis, ipsa illo magnam, praesentium!</p>
+      <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Dignissimos incidunt dolorum quidem et debitis labore deleniti quaerat non. Recusandae quibusdam nihil voluptate exercitationem dignissimos eligendi, tempora, perspiciatis fugit? Rem, eius.</p>
+      <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Dignissimos incidunt dolorum quidem et debitis labore deleniti quaerat non. Recusandae quibusdam nihil voluptate exercitationem dignissimos eligendi, tempora, perspiciatis fugit? Rem, eius.</p>
+      <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Dignissimos incidunt dolorum quidem et debitis labore deleniti quaerat non. Recusandae quibusdam nihil voluptate exercitationem dignissimos eligendi, tempora, perspiciatis fugit? Rem, eius.</p>
+      <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Dignissimos incidunt dolorum quidem et debitis labore deleniti quaerat non. Recusandae quibusdam nihil voluptate exercitationem dignissimos eligendi, tempora, perspiciatis fugit? Rem, eius.</p>
+      <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Dignissimos incidunt dolorum quidem et debitis labore deleniti quaerat non. Recusandae quibusdam nihil voluptate exercitationem dignissimos eligendi, tempora, perspiciatis fugit? Rem, eius.</p>
   </div>  
   <div class="clear"></div>
   <div class="sep__1"></div>
   <div class="foot_colourd">
   </div>
 </footer>
-<script type="text/javascript" src="assets/js/jquerypp.custom.js"></script>
-    <script type="text/javascript" src="assets/js/jquery.elastislide.js"></script>
+<script type="text/javascript" src="js/jquerypp.custom.js"></script>
+    <script type="text/javascript" src="js/jquery.elastislide.js"></script>
     <script type="text/javascript">
       
       $( '#carousel' ).elastislide( {
         minItems : 8
       } );
-      jQuery(document).ready(function () {
-                /*Sticky bar*/
-         var stickyNavTop = $('.menu_block').offset().top;  
+      jQuery(document).ready(function(){
+        /*Stickybar*/
+        $('.menu_block').sticky({topSpacing:0});
+          // Overlay
+        
 
-         var stickyNav = function(){  
-            var scrollTop = $(window).scrollTop();  
-
-            if (scrollTop > stickyNavTop) {   
-               $('.menu_block').addClass('sticky');  
-            } else {  
-               $('.menu_block').removeClass('sticky');   
-            }  
-         };  
-
-         stickyNav();  
-
-         $(window).scroll(function() {  
-            stickyNav();  
-         });
-      /*//Sticky bar*/       
-
-      })
+        
+      });
+      $('.menu_block').on('sticky-start', function (e) { 
+        e.preventDefault();
+        var altura = document.querySelector('.menu_block').offsetHeight;
+        $('#nav').sticky({topSpacing:46}).css({'z-index': '99', 'width': '100%'});
+      });
+  
 
 
     </script>
 </body>
 </html>
+

@@ -1,6 +1,6 @@
 <!--=====================Content======================-->
 <section class="content">
-        <a href="#"><img src="assets/images/banner.jpg" class="ban_img" alt=""></a>
+        <a href="#"><img src="images/banner.jpg" class="ban_img" alt=""></a>
   <div class="container_12" style="width = 100%;">
     <div class="grid_4" style = "width: 100%; margin:0px">
       <h4 class="head2" style = "text-align: center; padding-top: 50px; ">TERMINOS DE USO</h4>

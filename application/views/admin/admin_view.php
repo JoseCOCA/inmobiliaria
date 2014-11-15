@@ -28,12 +28,11 @@
     <div id="iso">
         <?php if ($query > 0) {?>
 
-            <?php foreach ($query as $row) {?>
-               <?php if($row -> padre == '3'){?>
+            <?php foreach ($query1 as $row) {?>
+              
                         <div class="box_iso casa depa">
-                            <a href="<?= $row -> link ?>"><img id= "img_filter" src="<?= $row -> url ?>"alt=""></a>
+                            <a href="#"><img id= "img_filter" src="<?= $row -> url ?>"alt=""></a>
                         </div>
-                <?php }?>
             <?php }?>
 
         <?php }  ?>

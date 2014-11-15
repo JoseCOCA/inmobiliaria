@@ -88,8 +88,6 @@
 <body class="page1" id="top">
 <!--==============================header=================================-->
 <header>
-
-  <a href="logout">Cerrar sesión</a>
   <div class="clear"></div>
 
   <a href="admin/logout">CERRAR SESIÓN</a>
@@ -118,16 +116,11 @@
 
       <div class="filter_container">
 
-          <?php foreach ($query as $row) {
+          <?php foreach ($query1 as $row) {?>
 
-            if ($row-> padre == '3' ) {  ?>
+             <a href="#"><img src="<?= $row -> url ?>" alt="Product Name" /></a>
 
-              <a href="#"><img src="<?= $row -> url ?>" alt="Product Name" /></a>
-
-          <?php
-                }
-
-            } ?>
+             <?php } ?>
 
             
       </div>

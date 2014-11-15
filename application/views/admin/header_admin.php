@@ -103,7 +103,7 @@
             <?php foreach ($query as $row) {?>
                <?php if($row -> padre == '1'){?>
                     <li>
-                      <a href="<?= $row -> link ?>"><img class= "img_slide" src="<?= $row -> url ?>"alt=""></a>
+                      <a href=""><img class= "img_slide" src="<?= $row -> url ?>"alt=""></a>
                     </li>
 
                 <?php }?>

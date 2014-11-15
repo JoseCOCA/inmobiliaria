@@ -1,80 +1,123 @@
--- MySQL dump 10.13  Distrib 5.1.73, for unknown-linux-gnu (x86_64)
+-- phpMyAdmin SQL Dump
+-- version 4.2.7.1
+-- http://www.phpmyadmin.net
 --
--- Host: localhost    Database: inmobi16_inmo
--- ------------------------------------------------------
--- Server version	5.1.73-cll
+-- Servidor: 127.0.0.1
+-- Tiempo de generación: 15-11-2014 a las 07:20:31
+-- Versión del servidor: 5.6.20
+-- Versión de PHP: 5.5.15
+
+SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
+SET time_zone = "+00:00";
+
 
 /*!40101 SET @OLD_CHARACTER_SET_CLIENT=@@CHARACTER_SET_CLIENT */;
 /*!40101 SET @OLD_CHARACTER_SET_RESULTS=@@CHARACTER_SET_RESULTS */;
 /*!40101 SET @OLD_COLLATION_CONNECTION=@@COLLATION_CONNECTION */;
 /*!40101 SET NAMES utf8 */;
-/*!40103 SET @OLD_TIME_ZONE=@@TIME_ZONE */;
-/*!40103 SET TIME_ZONE='+00:00' */;
-/*!40014 SET @OLD_UNIQUE_CHECKS=@@UNIQUE_CHECKS, UNIQUE_CHECKS=0 */;
-/*!40014 SET @OLD_FOREIGN_KEY_CHECKS=@@FOREIGN_KEY_CHECKS, FOREIGN_KEY_CHECKS=0 */;
-/*!40101 SET @OLD_SQL_MODE=@@SQL_MODE, SQL_MODE='NO_AUTO_VALUE_ON_ZERO' */;
-/*!40111 SET @OLD_SQL_NOTES=@@SQL_NOTES, SQL_NOTES=0 */;
 
 --
--- Table structure for table `images`
+-- Base de datos: `inmobi16_inmo`
 --
 
-DROP TABLE IF EXISTS `images`;
-/*!40101 SET @saved_cs_client     = @@character_set_client */;
-/*!40101 SET character_set_client = utf8 */;
-CREATE TABLE `images` (
-  `ID` int(2) NOT NULL AUTO_INCREMENT,
-  `url` varchar(50) NOT NULL,
-  `link` varchar(50) NOT NULL,
-  `tipo` int(1) NOT NULL,
-  PRIMARY KEY (`ID`)
+-- --------------------------------------------------------
+
+--
+-- Estructura de tabla para la tabla `imagedesc`
+--
+
+CREATE TABLE IF NOT EXISTS `imagedesc` (
+  `Filtro` varchar(2) CHARACTER SET utf8 COLLATE utf8_unicode_ci NOT NULL,
+  `padre` enum('1','2') CHARACTER SET utf8 COLLATE utf8_unicode_ci NOT NULL,
+  `url` varchar(100) CHARACTER SET utf8 COLLATE utf8_unicode_ci NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
-/*!40101 SET character_set_client = @saved_cs_client */;
 
 --
--- Dumping data for table `images`
+-- Volcado de datos para la tabla `imagedesc`
 --
 
-LOCK TABLES `images` WRITE;
-/*!40000 ALTER TABLE `images` DISABLE KEYS */;
-/*!40000 ALTER TABLE `images` ENABLE KEYS */;
-UNLOCK TABLES;
+INSERT INTO `imagedesc` (`Filtro`, `padre`, `url`) VALUES
+('', '1', 'images/banners/HomeFull_2.jpg'),
+('', '1', 'images/banners/HomeFull_1.jpg');
+
+-- --------------------------------------------------------
 
 --
--- Table structure for table `users`
+-- Estructura de tabla para la tabla `imagefilters`
 --
 
-DROP TABLE IF EXISTS `users`;
-/*!40101 SET @saved_cs_client     = @@character_set_client */;
-/*!40101 SET character_set_client = utf8 */;
-CREATE TABLE `users` (
-  `id` int(11) NOT NULL AUTO_INCREMENT,
+CREATE TABLE IF NOT EXISTS `imagefilters` (
+`ID` int(2) NOT NULL,
+  `url` varchar(50) NOT NULL,
+  `nombre` varchar(50) NOT NULL,
+  `Descripcion` text NOT NULL,
+  `Ubicacion` tinytext NOT NULL,
+  `Tipo` enum('Casa','Oficina','Departamento','Bodega') NOT NULL,
+  `Status` enum('En venta','En renta','No disponible','') NOT NULL,
+  `Condiciones` text NOT NULL,
+  `Filtro` varchar(2) NOT NULL
+) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=15 ;
+
+--
+-- Volcado de datos para la tabla `imagefilters`
+--
+
+INSERT INTO `imagefilters` (`ID`, `url`, `nombre`, `Descripcion`, `Ubicacion`, `Tipo`, `Status`, `Condiciones`, `Filtro`) VALUES
+(13, 'images/filtros/house.jpg', 'house.jpg', 'lkasjdoiden,cmnxoiejd', 'gbljgluyghbmb', 'Casa', 'En venta', ',bvjvygbj,hb,lhgjhgjgjhg', 'F1'),
+(14, 'images/filtros/house1.jpg', 'house1.jpg', 'esta es una casa muy bonita', 'Av. SiempreViva Numero 23 manzana 56 a un lado del kwek-e Mart ', 'Oficina', 'En venta', 'Subir una foto \r\nCredencial de elector\r\nlSDOIEJ', 'F2');
+
+-- --------------------------------------------------------
+
+--
+-- Estructura de tabla para la tabla `users`
+--
+
+CREATE TABLE IF NOT EXISTS `users` (
+`id` int(11) NOT NULL,
   `first_name` varchar(40) NOT NULL,
   `last_name` varchar(40) NOT NULL,
   `email_address` varchar(50) NOT NULL,
   `password` varchar(128) NOT NULL,
-  `date` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,
-  PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=latin1;
-/*!40101 SET character_set_client = @saved_cs_client */;
+  `date` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP
+) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=2 ;
 
 --
--- Dumping data for table `users`
+-- Volcado de datos para la tabla `users`
 --
 
-LOCK TABLES `users` WRITE;
-/*!40000 ALTER TABLE `users` DISABLE KEYS */;
-INSERT INTO `users` (`id`, `first_name`, `last_name`, `email_address`, `password`, `date`) VALUES (1,'jose','coca','a@a.com','91dfd9ddb4198affc5c194cd8ce6d338fde470e2','2014-10-24 19:28:22');
-/*!40000 ALTER TABLE `users` ENABLE KEYS */;
-UNLOCK TABLES;
-/*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
+INSERT INTO `users` (`id`, `first_name`, `last_name`, `email_address`, `password`, `date`) VALUES
+(1, 'jose', 'coca', 'a@a.com', '91dfd9ddb4198affc5c194cd8ce6d338fde470e2', '2014-10-24 19:28:22');
 
-/*!40101 SET SQL_MODE=@OLD_SQL_MODE */;
-/*!40014 SET FOREIGN_KEY_CHECKS=@OLD_FOREIGN_KEY_CHECKS */;
-/*!40014 SET UNIQUE_CHECKS=@OLD_UNIQUE_CHECKS */;
+--
+-- Índices para tablas volcadas
+--
+
+--
+-- Indices de la tabla `imagefilters`
+--
+ALTER TABLE `imagefilters`
+ ADD PRIMARY KEY (`ID`);
+
+--
+-- Indices de la tabla `users`
+--
+ALTER TABLE `users`
+ ADD PRIMARY KEY (`id`);
+
+--
+-- AUTO_INCREMENT de las tablas volcadas
+--
+
+--
+-- AUTO_INCREMENT de la tabla `imagefilters`
+--
+ALTER TABLE `imagefilters`
+MODIFY `ID` int(2) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=15;
+--
+-- AUTO_INCREMENT de la tabla `users`
+--
+ALTER TABLE `users`
+MODIFY `id` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=2;
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
 /*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
-/*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
-
--- Dump completed on 2014-10-30  0:23:19

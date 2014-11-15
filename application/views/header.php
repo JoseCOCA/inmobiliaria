@@ -116,8 +116,11 @@
 
             <?php foreach ($query as $row) {?>
                <?php if($row -> padre == '1'){?>
-                    <li><a href="#overlay" id="<?=$row -> Filtro ?>" class="overlay_open"><img src="images/mascara-principal.png" class="wrap"/>
-                      <img class= "img_slide" src="<?= $row -> url ?>"alt=""></a>
+                    <li>
+                      <a href="#overlay" id="<?=$row -> Filtro ?>" class="overlay_open">
+                      <img src="images/mascara-principal.png" class="wrap"/>
+                      <img class= "img_slide" src="<?= $row -> url ?>"alt="">
+                      </a>
                     </li>
 
                 <?php }?>
@@ -127,6 +130,7 @@
   </ul> 
 
     <p class="contact">CONTACTO</p>
+    
   <div class="menu_block" >
     <nav class="horizontal-nav full-width horizontalNav-notprocessed">
       <ul class="sf-menu">

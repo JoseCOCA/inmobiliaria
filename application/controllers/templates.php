@@ -38,6 +38,7 @@ class Templates extends CI_Controller {
 		$data = array(
 			'title' => 'info',
 			'query' => $this->admin_model->get_imagesDesc(),
+			'query1' => $this->admin_model->get_imagesFilter()
 			);
 		$this->load->view('header',$data);
 		$this->load->view('public/info');

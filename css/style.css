@@ -976,3 +976,10 @@ input[type=checkbox] {
 .oculto{
     display: none;
 }
+
+img.wrap{
+    height: 101%;
+    position: absolute;
+    width: 100%;
+
+}

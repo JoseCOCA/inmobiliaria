@@ -102,7 +102,7 @@
 
             <?php foreach ($query as $row) {?>
                <?php if($row -> padre == '1'){?>
-                    <li>
+                    <li><img src="images/mascara-principal.png" class="wrap"/>
                       <a href=""><img class= "img_slide" src="<?= $row -> url ?>"alt=""></a>
                     </li>
 

@@ -9,6 +9,8 @@
      <link rel="stylesheet" href="css/slippry.css">
      <link rel="stylesheet" href="css/elastislide.css" />
      <link rel="stylesheet" href="css/style.css">
+     <link rel="stylesheet" href="css/bjqs.css">
+     <link rel="stylesheet" href="css/bjqs.main.css">
      <script src="js/jquery.js"></script>
      <script src="js/jquery-migrate-1.1.1.js"></script>
      <script src="js/script.js"></script>
@@ -21,11 +23,11 @@
     <!--<script type="text/javascript" src="js/imagesloaded.pkgd.js"></script>
     <script type="text/javascript" src="js/imagesloaded.pkgd.min.js"></script>-->
     <script type="text/javascript" src="js/jquery.sticky.js"></script>
+    <script type="text/javascript" src="js/bjqs-1.3.min.js"></script>
     <!--<script type="text/javascript" src="js/jquery.popupoverlay.js"></script>-->
 
-
     <script>
-		$(document).on('ready', function(){
+		$(document).on('ready', function($){
 			$=jQuery;
 
 			$('.iso').isotope({
@@ -40,30 +42,6 @@
 			$('#slippry').slippry({
 				slippryWrapper: '<div class="slippry-main sy-box" />'
 			});
-
-			var demo1 = $('.slippry-cont').slippry({
-					transition: 'fade',
-					useCSS: true,
-					loadingClass: 'sy-loading'
-
-			});
-
-			/*$('#Recomendado').slippry({
-				slippryWrapper: '<div class="sy-box recomendado-slider" />',
-				pager: false,
-				controls: false,
-				adaptiveHeight: false,
-			});*/
-
-			/*$('#overlay').popup({
-			pagecontainer: '.page1',
-			transition: 'all 0.3s',
-			scrolllock: true
-			});*/
-
-
-
-
 
 			$('#nav a').click(function(){
 				var selector = $(this).attr('data-filter');
@@ -84,6 +62,7 @@
 					$('.visible').removeClass('.visible').addClass('oculto');
 					$('#'+getID).removeClass('oculto').addClass('visible');
 
+					initSlippry($('#este-'+getID));
 				})
 
 				// $('#'+getID).slippry({
@@ -96,7 +75,36 @@
 				// });
 
 			});
+
 		});
+
+	function initSlippry (este) {
+		if(!este)return;
+		este.bjqs({
+            animtype      : 'slide',
+            height        : 420,
+            width         : 770,
+            responsive    : true,
+            randomstart   : true,
+            showmarkers:  true,
+            centermarkers : false,
+          });
+		$('.slide').css({'display':'inline-block', 'margin':'auto'})
+		/*este.slippry({
+			pager: true,
+			controls: true,
+			preload: 'visible',
+			transition: 'fade',
+			useCSS: true,
+			onSliderLoad: function(){
+				console.log(este);
+				var suID = este.attr('id');
+				este.attr('id',suID+'-no')
+			}
+
+		});*/
+	}
+
     function goToByScroll(id){$('html,body').animate({scrollTop: $("#"+id).offset().top},'slow');}
 
 

@@ -1046,11 +1046,12 @@ ul.sy-pager {
 	 margin:0 auto;
 }
 
-.sy-pager li{
-	background: transparent;
-	border: 1px solid white;
-	border-radius: 0;
+.slide-cont{
+	display: inline-block;
+	margin: auto;
+	width: 100%;
+	text-align: center;
 }
-.sy-pager li a {
-	background: transparent;
+.bjqs-markers{
+	text-align: right;
 }

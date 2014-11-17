@@ -43,16 +43,20 @@
 	<div id="overlay">
 	<a href="#" class=""><div id="overlay-back"></div></a>
 
-	<?php foreach ($query1 as $row) { ?>
+	<?php $i=0; foreach ($query1 as $row) { ?>
 		<div class="portada overlay-cont oculto" id="<?=$row -> Filtro ?>">
 
 			<a href="#close" class=""><img id="close" src="images/boton_close.png" alt=""></a>
 
-				<ul class="slippry-cont" data-slide="<?=$row -> Filtro ?>">
-					<li><img src="images/banner_sld.jpg" alt="" class="image_slide"></li>
-					<li><img src="images/banner_sld.jpg" alt="" class="image_slide"></li>
-					<li><img src="images/banner_sld.jpg" alt="" class="image_slide"></li>
-				</ul>
+				<div class="slide-cont">
+					<div class="slide" id="este-<?=$row -> Filtro ?>">
+						<ul class="slippry-cont bjqs" data-slide="<?=$row -> Filtro ?>" >
+							<li><img src="http://lorempixel.com/g/400/200" alt="" class="image_slide"></li>
+							<li><img src="http://lorempixel.com/400/200" alt="" class="image_slide"></li>
+							<li><img src="http://lorempixel.com/g/400/200/city" alt="" class="image_slide"></li>
+						</ul>
+					</div>
+				</div>
 
 			<div class="text-content">
 				<div class="content1">

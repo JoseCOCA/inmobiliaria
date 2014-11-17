@@ -52,6 +52,17 @@
       });
       })
 
+      jQuery('.configFilter').each(function(){
+      jQuery(this).click(function(){
+
+        var clickedID = jQuery(this).attr("id");
+
+      $('.no-oculto').removeClass('no-oculto').addClass('oculto');
+      $('.'+clickedID).removeClass('oculto').addClass('no-oculto');
+
+      });
+      })
+
     </script>
 </body>
 </html>

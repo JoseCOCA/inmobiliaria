@@ -5,7 +5,7 @@
 
         	<?php foreach ($query1 as $row) {?>
 
-             <a href="#" id="" ><img src="<?= $row -> url ?>" alt="Product Name" /></a>
+             <a href="#" id="<?=$row-> Filtro?>" class="configFilter" ><img src="<?= $row -> url ?>" alt="Product Name" /></a>
 
              <?php } ?>
 
@@ -15,15 +15,19 @@
 	
 
       	<div class="config_container">
-          
-          <div class="adminInput">
+        
+        <?php foreach ($query1 as $row) { ?>
+
+          <div class="adminInput <?=$row-> Filtro?> oculto">
       
           <a href="#"  class="adminPanel_close"><img id="close" src="images/button_close.png" alt=""></a>
       
-        <ul id="slider">
-          <li><img src="images/banner_sld.jpg" alt="" class="image_slide"></li>
-          <li><img src="images/banner_sld.jpg" alt="" class="image_slide"></li>
-          <li><img src="images/banner_sld.jpg" alt="" class="image_slide"></li>
+        <ul id= "<?=$row -> Filtro ?>">
+
+        	<?php foreach ($query as $row) { ?>
+        		<li><img src="images/banner_sld.jpg" alt="" class="image_slide"></li>
+        	<?php } ?>  
+
         </ul>
 
          <?php echo form_open('admin/getData'); ?>
@@ -105,7 +109,11 @@
             <?php echo form_close(); ?>
       
         </div>
+		
+		<?php  } ?>  
+
       </div>
+
     </div>			
 
 

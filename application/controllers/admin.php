@@ -72,7 +72,7 @@ class Admin extends CI_Controller {
 		redirect('admin/login');
 	}
 
-	public function getData(){
+	public function getContactData(){
 		
 	}
 

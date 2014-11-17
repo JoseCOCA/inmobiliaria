@@ -6,8 +6,18 @@
       <div class="slideRec">
          
       </div>
+
       <div class="mask">
 
+<!--         <div class="reco">
+          <ul>
+            <li id="slide1"><img src="images/deco_1.jpg" alt=""></li>
+            <li id="slide1"><img src="images/deco_2.jpg" alt=""></li>
+            <li id="slide1"><img src="images/deco_3.jpg" alt=""></li>
+            <li id="slide1"><img src="images/deco_4.jpg" alt=""></li>
+          </ul>
+        </div>
+ -->
        <img style="width:90%"id="sld" src="images/mask.png" alt="banner1">
           <div class="type" >
           <p>OFICINA</p>
@@ -76,6 +86,8 @@
                             <p id= "check-text">RECIBIR NOTIFICACIÓN DE DISPONIBILIDAD</p>
                             <hr>          
                           </div>
+
+                          <?php $this->load->view('contactForm'); ?>                
 
                           <div class="ubic">
                            <p>UBICACIÓN:</p><p class="styledP"style="width:83%; "><?=$row-> Ubicacion ?></p>

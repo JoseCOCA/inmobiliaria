@@ -371,7 +371,7 @@ header h1 a {
     display: inline-block;
     overflow: hidden;
     font-size: 0;
-    line-height: 0;    
+    line-height: 0;
     text-indent: -999px;
     transition: 0s ease;
     -o-transition: 0s ease;
@@ -631,7 +631,7 @@ top: 0;
 width: 100%;
 background: white;
 padding-bottom: 10px;
-padding-top: 5px !important; 
+padding-top: 5px !important;
 transition: all 0.5s ease-in;
 background: rgba(255,255,255,.9);
 }
@@ -705,7 +705,7 @@ margin-bottom: 20px;
 #img_filter{
  -webkit-border-radius: 5px;
 -moz-border-radius: 5px;
-border-radius: 5px;   
+border-radius: 5px;
 }
 #nav{
     /* border:1px solid #ccc;
@@ -747,12 +747,29 @@ border-radius: 5px;
 
 /*Overlay info*/
 
-.portada{
+/* .portada{
     background-image: url("../images/background.png");
     background-size: 90% 100%;
     width: 900px;
     margin-top: 30px;
     margin-bottom: 30px;
+} */
+.portada{
+	background: #7db9e8; /* Old browsers */
+	background: -moz-linear-gradient(top,  #7db9e8 0%, #2989d8 39%, #1e5799 100%); /* FF3.6+ */
+	background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,#7db9e8), color-stop(39%,#2989d8), color-stop(100%,#1e5799)); /* Chrome,Safari4+ */
+	background: -webkit-linear-gradient(top,  #7db9e8 0%,#2989d8 39%,#1e5799 100%); /* Chrome10+,Safari5.1+ */
+	background: -o-linear-gradient(top,  #7db9e8 0%,#2989d8 39%,#1e5799 100%); /* Opera 11.10+ */
+	background: -ms-linear-gradient(top,  #7db9e8 0%,#2989d8 39%,#1e5799 100%); /* IE10+ */
+	background: linear-gradient(to bottom,  #7db9e8 0%,#2989d8 39%,#1e5799 100%); /* W3C */
+	filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#7db9e8', endColorstr='#1e5799',GradientType=0 ); /* IE6-9 */	width: 900px;
+	margin-top: 30px;
+	margin-bottom: 30px;
+	position: absolute;
+	top: 3%;
+	left: 50%;
+	transform: translateX(-50%) !important;
+	max-height: 100%;
 }
 #close{
 position: relative;
@@ -869,7 +886,7 @@ input[type=checkbox] {
     overflow-y: scroll;
     overflow-x: hidden;
     float: left;
-    
+
 }
 
 .filter_container img{
@@ -982,4 +999,58 @@ img.wrap{
     position: absolute;
     width: 100%;
 
+}
+
+ul.sy-pager {
+    text-align: right;
+}
+.menu_block{
+	z-index: 9 !important;
+}
+
+#overlay{
+    /*display: none;*/
+    height: 100%;
+    left: 0;
+    max-height: 100%;
+    max-width: 100%;
+    position: absolute;
+    top: 0;
+    width: 100%;
+    z-index: 10;
+    opacity:0;
+    -webkit-transition: opacity 400ms ease-in;
+    -moz-transition: opacity 400ms ease-in;
+    transition: opacity 400ms ease-in;
+    pointer-events: none;
+}
+#overlay-back{
+    background-color: rgba(0,0,0,0.7);
+    height: 100%;
+    position: absolute;
+    width: 100%;
+}
+#overlay:target{
+	/*display: block;*/
+	opacity: 1;
+	pointer-events: auto;
+}
+
+#overlay .overlay-cont{
+	margin: -5% auto;
+ 	-webkit-transition: all 500ms ease-in;
+    -moz-transition: all 500ms ease-in;
+    transition: all 500ms ease-in;
+}
+#overlay:target .overlay-cont{
+	 margin:0 auto;
+}
+
+.sy-pager li{
+	background: transparent;
+	border: 1px solid white;
+	border-radius: 0;
+}
+.sy-pager li a {
+	background: transparent;
 }

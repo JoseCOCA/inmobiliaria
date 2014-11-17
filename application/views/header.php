@@ -11,81 +11,100 @@
      <link rel="stylesheet" href="css/style.css">
      <script src="js/jquery.js"></script>
      <script src="js/jquery-migrate-1.1.1.js"></script>
-     <script src="js/script.js"></script> 
+     <script src="js/script.js"></script>
      <script src="js/superfish.js"></script>
      <script src="js/jquery.equalheights.js"></script>
      <script src="js/jquery.easing.1.3.js"></script>
      <script src="js/slippry.js"></script>
-    <script src="js/modernizr.custom.17475.js"></script>    
+    <script src="js/modernizr.custom.17475.js"></script>
     <script type="text/javascript" src="js/isotope.js"></script>
-    <script type="text/javascript" src="js/imagesloaded.pkgd.js"></script>
-    <script type="text/javascript" src="js/imagesloaded.pkgd.min.js"></script>
+    <!--<script type="text/javascript" src="js/imagesloaded.pkgd.js"></script>
+    <script type="text/javascript" src="js/imagesloaded.pkgd.min.js"></script>-->
     <script type="text/javascript" src="js/jquery.sticky.js"></script>
-    <script type="text/javascript" src="js/jquery.popupoverlay.js"></script>
+    <!--<script type="text/javascript" src="js/jquery.popupoverlay.js"></script>-->
 
 
     <script>
-     $(document).ready(function(){
-        jQuery('#slippry').slippry();
+		$(document).on('ready', function(){
+			$=jQuery;
 
-        jQuery('#Recomendado').slippry({
+			$('.iso').isotope({
+				filter: '*',
+				animationOptions: {
+				duration: 750,
+				easing: 'linear',
+				queue: false,
+				}
+			});
 
-          slippryWrapper: '<div class="sy-box recomendado-slider" />',
-          pager: false,
-          controls: false,
-          adaptiveHeight: false,
-        })
+			$('#slippry').slippry({
+				slippryWrapper: '<div class="slippry-main sy-box" />'
+			});
 
-          $('#overlay').popup({
-          pagecontainer: '.page1',
-          transition: 'all 0.3s',
-          scrolllock: true
-          });
+			var demo1 = $('.slippry-cont').slippry({
+					transition: 'fade',
+					useCSS: true,
+					loadingClass: 'sy-loading'
+
+			});
+
+			/*$('#Recomendado').slippry({
+				slippryWrapper: '<div class="sy-box recomendado-slider" />',
+				pager: false,
+				controls: false,
+				adaptiveHeight: false,
+			});*/
+
+			/*$('#overlay').popup({
+			pagecontainer: '.page1',
+			transition: 'all 0.3s',
+			scrolllock: true
+			});*/
 
 
-            
-            var $container = $('#iso').imagesLoaded( function() {
-              $container.isotope({
-                filter: '*',
-              animationOptions: {
-                 duration: 750,
-                 easing: 'linear',
-                 queue: false,
-               }
-              });
-            });
 
-            $('#nav a').click(function(){
-              var selector = $(this).attr('data-filter');
-                $container.isotope({ 
-              filter: selector,
-              animationOptions: {
-                 duration: 750,
-                 easing: 'linear',
-                 queue: false,
-               
-               }
-              });
-              return false;
-            });
 
-        $('.showInfo').each(function() {
 
-          var getID = jQuery(this).attr("id");
+			$('#nav a').click(function(){
+				var selector = $(this).attr('data-filter');
+				$('.iso').isotope({
+					filter: selector,
+					animationOptions: {
+					duration: 750,
+					easing: 'linear',
+					queue: false,
+				}
+			});
+			return false;
+			});
 
-        jQuery('#'+getID).slippry({
-          pager: false,
-          controls: false,
-        });
+			$('.showInfo').each(function() {
+				$(this).on('click', function (e){
+					var getID = $(this).attr("data-cont");
+					$('.visible').removeClass('.visible').addClass('oculto');
+					$('#'+getID).removeClass('oculto').addClass('visible');
+					demo1.reloadSlider();
+					return false;
 
-        });
-     }); 
+				})
+
+				// $('#'+getID).slippry({
+				// 	pager: true,
+				// 	controls: true,
+				// 	preload: 'visible',
+				// 	transition: 'fade',
+				// 	useCSS: true,
+
+				// });
+
+			});
+		});
     function goToByScroll(id){$('html,body').animate({scrollTop: $("#"+id).offset().top},'slow');}
 
 
      </script>
-        
-   
+
+
     <!--[if lt IE 8]>
        <div style=' clear: both; text-align:center; position: relative;'>
          <a href="http://windows.microsoft.com/en-US/internet-explorer/products/ie/home?ocid=ie6_countdown_bannercode">
@@ -105,7 +124,7 @@
 <!--==============================header=================================-->
 <header>
 
-  
+
 
   <div class="clear"></div>
 
@@ -117,7 +136,7 @@
             <?php foreach ($query as $row) {?>
                <?php if($row -> padre == '1'){?>
                     <li>
-                      <a href="#overlay" id="<?=$row -> Filtro ?>" class="overlay_open">
+                      <a href="#overlay" data-slippry="<?=$row -> Filtro ?>" class="overlay_open">
                       <img src="images/mascara-principal.png" class="wrap"/>
                       <img class= "img_slide" src="<?= $row -> url ?>"alt="">
                       </a>
@@ -127,10 +146,10 @@
             <?php }?>
 
         <?php }  ?>
-  </ul> 
+  </ul>
 
     <p class="contact">CONTACTO</p>
-    
+
   <div class="menu_block" >
     <nav class="horizontal-nav full-width horizontalNav-notprocessed">
       <ul class="sf-menu">
@@ -140,7 +159,7 @@
        <li><a href="<?= base_url("terms") ?>">TERMINOS DE USO</a></li>
      </ul>
     </nav>
-    <div class="clear"></div>       
+    <div class="clear"></div>
   </div>
-</header>  
+</header>
 

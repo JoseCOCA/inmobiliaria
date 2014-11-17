@@ -83,8 +83,6 @@
 					var getID = $(this).attr("data-cont");
 					$('.visible').removeClass('.visible').addClass('oculto');
 					$('#'+getID).removeClass('oculto').addClass('visible');
-					demo1.reloadSlider();
-					return false;
 
 				})
 

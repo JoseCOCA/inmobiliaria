@@ -18,6 +18,11 @@
         
         <?php foreach ($query1 as $row) { ?>
 
+        <?php 	
+	        $FiltroPadre = $row-> Filtro;
+	        $Descripcion = $row-> Descripcion;
+	     ?>
+
           <div class="adminInput <?=$row-> Filtro?> oculto">
       
           <a href="#"  class="adminPanel_close"><img id="close" src="images/button_close.png" alt=""></a>
@@ -25,7 +30,14 @@
         <ul id= "<?=$row -> Filtro ?>">
 
         	<?php foreach ($query as $row) { ?>
-        		<li><img src="images/banner_sld.jpg" alt="" class="image_slide"></li>
+
+        	<?php $FiltroSlider = $row-> Filtro ?>
+
+        	<?php if ($FiltroPadre == $FiltroSlider) { ?>
+
+        		<li><img src="<?=$row-> url?>" alt="" class="image_slide"></li>
+
+        	<?php } ?>
         	<?php } ?>  
 
         </ul>
@@ -60,12 +72,14 @@
 
             </div>
             <p id= "check-text" style="margin-right:15%;">RECOMENDADO</p>
+
             <select name="Status" id="">
               <option value="">STATUS</option>
               <option value="">VENTA</option>
               <option value="">RENTA</option>
               <option value="">NO DISPONIBLE</option>
             </select>
+
             <hr>          
           </div>
 
@@ -89,21 +103,20 @@
            <p>DESCRIPCIÓN</p>
           </div>
           
-            <textarea id="descripción" name="descripcion" style= "text-aign: justify;"class="ubiEdit" rows="4" cols="50" style="margin-top:30px;" placeholder="Porporcione una descripción detallada"></textarea>          
+            <textarea id="descripción" name="descripcion" style= "text-aign: justify;"class="ubiEdit" rows="4" cols="50" style="margin-top:30px;" placeholder="Porporcione una descripción detallada"><?= $Descripcion ?></textarea>          
 
           <div class="AdminHeaders">
             <p>CONDICIONES DE CONTRATACIÓN</p>
           </div>   
             
-            <textarea id="condiciones" name="condiciones" class="ubiEdit" rows="4" cols="50" style="margin-top:30px;" placeholder="Proporcione las condiciones de contratación de considere nesecarias."></textarea> 
+           <textarea id="condiciones" name="condiciones" class="ubiEdit" rows="4" cols="50" style="margin-top:30px;" placeholder="Proporcione las condiciones de contratación de considere nesecarias."></textarea> 
          
 
           </div>
 
         <hr> 
 
-
-        
+        <?php echo form_submit('submit', 'Modificar'); ?>
 
           </div>
             <?php echo form_close(); ?>

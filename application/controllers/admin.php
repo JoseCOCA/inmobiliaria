@@ -72,6 +72,14 @@ class Admin extends CI_Controller {
 		redirect('admin/login');
 	}
 
+	public function getData(){
+
+		// $data = array('' => , );
+
+		// redirect('admin');
+
+	}
+
 	public function getContactData(){
 		
 	}

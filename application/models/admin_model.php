@@ -58,8 +58,10 @@ class Admin_model extends CI_Model {
 	}
 
 
-	public function insert_data()
+	public function update_data($table,$data,$Filter)
 	{
+		$this->db->where('Filtro',$Filter);
+		$this->db->update($table, $data);
 
 	}
 

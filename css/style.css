@@ -1055,3 +1055,10 @@ ul.sy-pager {
 .bjqs-markers{
 	text-align: right;
 }
+
+#imagesDesc {
+  transform: scale(0.8);
+}
+.popup_visible #imagesDesc {
+  transform: scale(1);
+}

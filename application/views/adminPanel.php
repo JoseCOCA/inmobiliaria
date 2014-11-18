@@ -9,6 +9,8 @@
 
              <?php } ?>
 
+             <?php  ?>
+
             
       </div>
 		
@@ -42,10 +44,14 @@
 
         </ul>
 
-         <?php echo form_open('admin/getData'); ?>
+        <?php echo form_open_multipart('admin/getData'); ?>
+
+        
         <div class="text-content">
           <div class="content1">
-              
+
+            <input type="hidden" name="Filtro" value="<?= $FiltroPadre ?>">
+
             <div class="checkbox-1AD">
 
               <input type="checkbox" name="principal" id="principal">
@@ -55,15 +61,26 @@
             
             <p id= "check-text">BANNER PRINCIPAL</p>
             
-            <select name="inmueble" id="inmueble" >
-              <option selected="selected" value="">Seleccione el tipo de inmueble</option>
-              <option value="">BODEGA</option>
-              <option value="">CASA</option>
-              <option value="">DEPARTAMENTO</option>
-              <option value="">OFICINA</option>
-            </select>
+            <?php $options = array(
+
+                'Casa'          =>  'Casa',
+                'Bodega'        =>  'Bodega',
+                'Departamento'  =>  'Departamento',
+                'Oficina'       =>  'Oficina',
+
+
+
+            ); 
+
+            $id = 'id="inmueble"';
+
+            echo form_dropdown('inmueble', $options,'',$id);
+
+            ?>
+
+            <input type="file" name="files[]" multiple>
             
-            <button>Seleccionar imagenes</button>
+            <button type="button" >Seleccionar imagenes</button>
 
             <div class="checkbox-2AD">
 
@@ -73,12 +90,18 @@
             </div>
             <p id= "check-text" style="margin-right:15%;">RECOMENDADO</p>
 
-            <select name="Status" id="">
-              <option value="">STATUS</option>
-              <option value="">VENTA</option>
-              <option value="">RENTA</option>
-              <option value="">NO DISPONIBLE</option>
-            </select>
+            <?php $options = array(
+
+                'venta'         =>  'Venta',
+                'renta'         =>  'Renta',
+                'NoDisponible'  =>  'No Disponible',
+            ); 
+
+            $id = 'id="status"';
+
+            echo form_dropdown('Status', $options,'',$id);
+
+            ?>
 
             <hr>          
           </div>
@@ -90,10 +113,13 @@
           
           <p style="padding-top:30px;">Calle y Número:</p>
           <input type="text" class="ubiEdit" id="calleNum" name="CalleNumero">
+
           <p>Colonia:</p>
           <input type="text" class="ubiEdit" id="colonia" name="Colonia">
+
           <p>Delegación:</p>
           <input type="text" class="ubiEdit" id="delegacion" name="Delegacion">
+
           <p>Codigo Postal:</p>
           <input type="text" class="ubiEdit" id="CP" name="CodigoPostal">
           
@@ -103,7 +129,7 @@
            <p>DESCRIPCIÓN</p>
           </div>
           
-            <textarea id="descripción" name="descripcion" style= "text-aign: justify;"class="ubiEdit" rows="4" cols="50" style="margin-top:30px;" placeholder="Porporcione una descripción detallada"><?= $Descripcion ?></textarea>          
+            <textarea id="descripción" name="descripcion" style= "text-aign: justify;"class="ubiEdit" rows="4" cols="50" style="margin-top:30px;" placeholder="Porporcione una descripción detallada"></textarea>          
 
           <div class="AdminHeaders">
             <p>CONDICIONES DE CONTRATACIÓN</p>

@@ -10,9 +10,8 @@ $data = array(
               'name'        => 'padre',
               'size'        => '2',
               'type'		=> 'hidden',
-              'value'		=> $padre
+              // 'value'		=> $padre
             );
-
 
 echo form_input($data);
 

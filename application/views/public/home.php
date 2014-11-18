@@ -50,10 +50,10 @@
 
 				<div class="slide-cont">
 					<div class="slide" id="este-<?=$row -> Filtro ?>">
-						<ul class="slippry-cont bjqs" data-slide="<?=$row -> Filtro ?>" >
-							<li><img src="http://lorempixel.com/g/400/200" alt="" class="image_slide"></li>
-							<li><img src="http://lorempixel.com/400/200" alt="" class="image_slide"></li>
-							<li><img src="http://lorempixel.com/g/400/200/city" alt="" class="image_slide"></li>
+						<ul class="slider-cont" data-slide="<?=$row -> Filtro ?>" id="slider">
+							<li><img src="http://lorempixel.com/g/750/450" alt="" class="image_slide"></li>
+							<li><img src="http://lorempixel.com/750/450" alt="" class="image_slide"></li>
+							<li><img src="http://lorempixel.com/g/750/450/city" alt="" class="image_slide"></li>
 						</ul>
 					</div>
 				</div>

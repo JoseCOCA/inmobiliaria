@@ -1,23 +1,24 @@
 <!DOCTYPE html>
 <html lang="en">
-     <head>
-     <title><?php echo $title; ?></title>
-     <meta charset="utf-8">
-     <meta name="format-detection" content="telephone=no" />
-     <link rel="icon" href="images/favicon.ico">
-     <link rel="shortcut icon" href="images/favicon.ico" />
-     <link rel="stylesheet" href="css/slippry.css">
-     <link rel="stylesheet" href="css/elastislide.css" />
-     <link rel="stylesheet" href="css/style.css">
-     <link rel="stylesheet" href="css/bjqs.css">
-     <link rel="stylesheet" href="css/bjqs.main.css">
-     <script src="js/jquery.js"></script>
-     <script src="js/jquery-migrate-1.1.1.js"></script>
-     <script src="js/script.js"></script>
-     <script src="js/superfish.js"></script>
-     <script src="js/jquery.equalheights.js"></script>
-     <script src="js/jquery.easing.1.3.js"></script>
-     <script src="js/slippry.js"></script>
+	<head>
+	<title><?php echo $title; ?></title>
+	<meta charset="utf-8">
+	<meta name="format-detection" content="telephone=no" />
+	<link rel="icon" href="images/favicon.ico">
+	<link rel="shortcut icon" href="images/favicon.ico" />
+	<link rel="stylesheet" href="css/slippry.css">
+	<link rel="stylesheet" href="css/elastislide.css" />
+	<link rel="stylesheet" href="css/style.css">
+	<link rel="stylesheet" href="css/bjqs.css">
+	<link rel="stylesheet" href="css/bjqs.main.css">
+	<link type="text/css" rel="stylesheet" href="css/rhinoslider-1.05.css" />
+	<script src="js/jquery.js"></script>
+	<script src="js/jquery-migrate-1.1.1.js"></script>
+	<script src="js/script.js"></script>
+	<script src="js/superfish.js"></script>
+	<script src="js/jquery.equalheights.js"></script>
+	<script src="js/jquery.easing.1.3.js"></script>
+	<script src="js/slippry.js"></script>
     <script src="js/modernizr.custom.17475.js"></script>
     <script type="text/javascript" src="js/isotope.js"></script>
     <!--<script type="text/javascript" src="js/imagesloaded.pkgd.js"></script>
@@ -25,6 +26,9 @@
     <script type="text/javascript" src="js/jquery.sticky.js"></script>
     <script type="text/javascript" src="js/bjqs-1.3.min.js"></script>
     <!--<script type="text/javascript" src="js/jquery.popupoverlay.js"></script>-->
+	<script type="text/javascript" src="js/rhinoslider-1.05.min.js"></script>
+	<script type="text/javascript" src="js/mousewheel.js"></script>
+	<script type="text/javascript" src="js/easing.js"></script>
 
     <script>
 		$(document).on('ready', function($){
@@ -51,9 +55,9 @@
 					duration: 750,
 					easing: 'linear',
 					queue: false,
-				}
-			});
-			return false;
+					}
+				});
+				return false;
 			});
 
 			$('.showInfo').each(function() {
@@ -62,48 +66,24 @@
 					$('.visible').removeClass('.visible').addClass('oculto');
 					$('#'+getID).removeClass('oculto').addClass('visible');
 
-					initSlippry($('#este-'+getID));
+					$('#este-'+getID +' #slider').data('rhinoslider').play();
 				})
 
-				// $('#'+getID).slippry({
-				// 	pager: true,
-				// 	controls: true,
-				// 	preload: 'visible',
-				// 	transition: 'fade',
-				// 	useCSS: true,
-
-				// });
 
 			});
 
+			$('.slider-cont').rhinoslider({
+				effect: 'kick',
+				controlsPlayPause: false,
+				autoPlay: false,
+				showBullets: 'always',
+				changeBullets: 'before',
+				showControls: 'always',
+				slidePrevDirection: 'toRight',
+				slideNextDirection: 'toLeft'
+			});
+
 		});
-
-	function initSlippry (este) {
-		if(!este)return;
-		este.bjqs({
-            animtype      : 'slide',
-            height        : 420,
-            width         : 770,
-            responsive    : true,
-            randomstart   : true,
-            showmarkers:  true,
-            centermarkers : false,
-          });
-		$('.slide').css({'display':'inline-block', 'margin':'auto'})
-		/*este.slippry({
-			pager: true,
-			controls: true,
-			preload: 'visible',
-			transition: 'fade',
-			useCSS: true,
-			onSliderLoad: function(){
-				console.log(este);
-				var suID = este.attr('id');
-				este.attr('id',suID+'-no')
-			}
-
-		});*/
-	}
 
     function goToByScroll(id){$('html,body').animate({scrollTop: $("#"+id).offset().top},'slow');}
 

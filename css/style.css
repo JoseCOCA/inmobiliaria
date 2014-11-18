@@ -1052,13 +1052,25 @@ ul.sy-pager {
 	width: 100%;
 	text-align: center;
 }
-.bjqs-markers{
-	text-align: right;
-}
 
 #imagesDesc {
   transform: scale(0.8);
 }
 .popup_visible #imagesDesc {
   transform: scale(1);
+}
+
+#slider {
+	width:750px;
+	height:450px;
+	/*IE bugfix*/
+	padding:0;
+	margin:0;
+}
+
+#slider li { list-style:none; }
+
+#page {
+	width:750px;
+	margin:50px auto;
 }

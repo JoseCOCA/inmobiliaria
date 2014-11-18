@@ -52,6 +52,10 @@
 
             <input type="hidden" name="Filtro" value="<?= $FiltroPadre ?>">
 
+            <p>Seleccionar imagenes:</p>
+            <input type="file" name="files[]" multiple>
+            <br>
+
             <div class="checkbox-1AD">
 
               <input type="checkbox" name="principal" id="principal">
@@ -78,9 +82,7 @@
 
             ?>
 
-            <input type="file" name="files[]" multiple>
-            
-            <button type="button" >Seleccionar imagenes</button>
+            <br>
 
             <div class="checkbox-2AD">
 
@@ -102,6 +104,8 @@
             echo form_dropdown('Status', $options,'',$id);
 
             ?>
+
+
 
             <hr>          
           </div>

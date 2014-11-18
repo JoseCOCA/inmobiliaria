@@ -74,70 +74,78 @@ class Admin extends CI_Controller {
 
 	public function getData(){
 
-		$config['upload_path'] = 'images/banners';
-		$config['allowed_types'] = 'gif|jpg|png';
-		$config['max_size']	= '1000';
-		$config['max_width']  = '2000';
-		$config['max_height']  = '800';
+		$this->load->library('MY_Upload');
 
-		$this->load->library('MY_Upload', $config);	
+	    $this->upload->initialize(array(
 
-		if ( ! $this->upload->do_multi_upload())
+	        "upload_path"   => "images/banners",
+	        "allowed_types" => "gif|jpg|png",
+			"max_size"		=> "1000",
+			"max_width"  	=> "2000",
+			"max_height"	=> "800",
+	    
+	    ));		
+
+		if ( $this->upload->do_multi_upload("files"))
 		{
-			$error = array('error' => $this->upload->display_errors());
+			//obtener los datos de upload
 
-			$this->load->view('upload_form', $error);
+			$Filter = $this->input->post('Filtro');
+
+			$data = array('upload_data' => $this->upload->get_multi_upload_data());
+
+			$Length = count($data);
+
+			for ($i=0; $i < $Length; $i++) { 
+
+				$insert = array(
+						'url' 		=> 'images/banners/'. $data['upload_data'][$i]['file_name'] ,
+   			        	'Filtro'	=> $Filter,
+				);
+			// $this->admin_model->insert_images('imagedesc',$insert[$i]);
+			}
+			
+			$dataForm = array(
+			 	'Descripcion' 	=> $this->input->post('descripcion'),
+			 	'Tipo'			=> $this->input->post('inmueble'),
+			 	'Status'		=> $this->input->post('Status'),
+			 	'Condiciones'	=> $this->input->post('condiciones'),
+			 	'CalleNo'		=> $this->input->post('CalleNumero'),
+			 	'Colonia'		=> $this->input->post('Colonia'),
+			 	'Delegacion'	=> $this->input->post('Delegacion'),
+			 	'CP'			=> $this->input->post('CodigoPostal')
+			);
+
+			$this->admin_model->update_data('imagefilters', $dataForm,$Filter);
+
+			$LengthInsert = count($insert);
+
+			echo $LengthInsert;
+
+
+
+
+
+			// redirect('admin');
+
 		}
 		else
 		{
-			//obtener los datos de upload
-			$var = 1;
-			$data = array('upload_data' => $this->upload->data());
-			$insert = array(
-   			        'url' 		=> 'images/banners/'. $data['upload_data']['file_name'] ,
-   			        'link' 		=> base_url("image"),
-				    'nombre' 	=> $data['upload_data']['file_name'],
-				    'padre'  	=> $this->input->post('padre')
-				);
 
-			// echo '<pre>';
-			// print_r($insert);
-			// echo '</pre>';
+			$error = array('error' => $this->upload->display_errors());
+
+			$this->load->view('upload_form', $error);
+
 			
-			$this->admin_model->insert_images('images',$insert);
-			//redirect('admin');
-
-			//$this->load->view('upload_succes', $insert);
-
 		}
 
-		if(is_file($config['upload_path']))
-		{
-		    chmod($config['upload_path'], 777); ## this should change the permissions
-		}
+		// if(is_file($config['upload_path']))
+		// {
+		//     chmod($config['upload_path'], 777); ## this should change the permissions
+		// }
 
 
-		$dataForm = array(
-		 	'Descripcion' 	=> $this->input->post('descripcion'),
-		 	'Tipo'			=> $this->input->post('inmueble'),
-		 	'Status'		=> $this->input->post('Status'),
-		 	'Condiciones'	=> $this->input->post('condiciones'),
-		 	'CalleNo'		=> $this->input->post('CalleNumero'),
-		 	'Colonia'		=> $this->input->post('Colonia'),
-		 	'Delegacion'	=> $this->input->post('Delegacion'),
-		 	'CP'			=> $this->input->post('CodigoPostal')
-		);
 
-		$Filter = $this->input->post('Filtro');
-
-		$this->admin_model->update_data('imagefilters', $dataForm,$Filter);
-
-		foreach ($dataForm as $item => $value) {
-			echo $value, '<br>';
-		}
-
-		echo $Filter;
-		// redirect('admin');
 
 	}
 

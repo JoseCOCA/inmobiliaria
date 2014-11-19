@@ -87,66 +87,81 @@ class Admin extends CI_Controller {
 
 		);
 
-	    $this->upload->initialize($config);		
+		switch ($this->input->post('adminPanel')) {
 
-		if ( $this->upload->do_multi_upload("files"))
-		{
-			//obtener los datos de upload
+			case 'Agregar imagenes':
+ 				
+ 				$this->upload->initialize($config);		
 
-			$Filter = $this->input->post('Filtro');
+				if ( $this->upload->do_multi_upload("files"))
+				{
+					//obtener los datos de upload
 
-			$data = array('upload_data' => $this->upload->get_multi_upload_data());
+					$Filter = $this->input->post('Filtro');
 
-
-			$Length = count($data['upload_data']);
-
-			echo $Length;
-
-			for ($i=0; $i < $Length; $i++) { 
-
-				$insert = array(
-						'url' 		=> 'images/banners/'. $data['upload_data'][$i]['file_name'] ,
-   			        	'Filtro'	=> $Filter,
-				);
-			$this->admin_model->insert_images('imagedesc',$insert);
-
-			}
-			
-			if(is_file($config['upload_path'])){
-
-			    chmod($config['upload_path'], 777); ## this should change the permissions
-
-			}
+					$data = array('upload_data' => $this->upload->get_multi_upload_data());
 
 
-			$dataForm = array(
-			 	'Descripcion' 	=> $this->input->post('descripcion'),
-			 	'Tipo'			=> $this->input->post('inmueble'),
-			 	'Status'		=> $this->input->post('Status'),
-			 	'Condiciones'	=> $this->input->post('condiciones'),
-			 	'CalleNo'		=> $this->input->post('CalleNumero'),
-			 	'Colonia'		=> $this->input->post('Colonia'),
-			 	'Delegacion'	=> $this->input->post('Delegacion'),
-			 	'CP'			=> $this->input->post('CodigoPostal')
-			);
+					$Length = count($data['upload_data']);
 
-			$this->admin_model->update_data('imagefilters', $dataForm,$Filter);
+					echo $Length;
 
+					for ($i=0; $i < $Length; $i++) { 
 
+						$insert = array(
+								'url' 		=> 'images/banners/'. $data['upload_data'][$i]['file_name'] ,
+		   			        	'Filtro'	=> $Filter,
+		   			        	'nombre'	=> $data['upload_data'][$i]['file_name']
+						);
+					$this->admin_model->insert_images('imagedesc',$insert);
 
+					}
+					
+					if(is_file($config['upload_path'])){
 
+					    chmod($config['upload_path'], 777); ## this should change the permissions
 
-			// redirect('admin');
+					}
+				}
+				else
+				{
 
-		}
-		else
-		{
+					$error = array('error' => $this->upload->display_errors());
 
-			$error = array('error' => $this->upload->display_errors());
+					$this->load->view('upload_form', $error);
 
-			$this->load->view('upload_form', $error);
+				}
 
-			
+				break;
+
+			case 'Modificar':
+
+					$dataForm = array(
+					 	'Descripcion' 	=> $this->input->post('descripcion'),
+					 	'Tipo'			=> $this->input->post('inmueble'),
+					 	'Status'		=> $this->input->post('Status'),
+					 	'Condiciones'	=> $this->input->post('condiciones'),
+					 	'CalleNo'		=> $this->input->post('CalleNumero'),
+					 	'Colonia'		=> $this->input->post('Colonia'),
+					 	'Delegacion'	=> $this->input->post('Delegacion'),
+					 	'CP'			=> $this->input->post('CodigoPostal')
+						);
+
+						$this->admin_model->update_data('imagefilters', $dataForm,$Filter);
+
+						redirect('admin');
+
+						break;
+
+				case 'Eliminar':
+
+					$Filter = $this->input->post('Filtro');
+
+					$this->db->delete('imagefilters',array('Filtro' => $Filter) );
+					$this->db->delete('imageDesc', array('Filtro' => $Filter));
+					redirect('admin#adminPanel');
+
+				break;
 		}
 
 

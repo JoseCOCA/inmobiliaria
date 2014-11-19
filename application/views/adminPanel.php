@@ -81,16 +81,38 @@
 
             <p>Seleccionar imagenes:</p>
             <input type="file" name="files[]" multiple>
+
+            <?php echo form_submit('adminPanel', 'Agregar imagenes'); ?>
             <br>
-
-            <div class="checkbox-1AD">
-
-              <input type="checkbox" name="principal" id="principal">
-              <label for="principal"></label> 
-
-            </div>
             
             <p id= "check-text">BANNER PRINCIPAL</p>
+
+            <?php 
+                $optionsBanner = array(
+
+                    '' => 'Ninguno',
+
+                    );
+
+                if($query > 0){
+
+                    foreach ($query as $row) {
+
+                        $FiltroSlider = $row-> Filtro;
+                        if( $FiltroSlider == $FiltroPadre){
+
+                            $optionsBanner[$row-> nombre] =  $row -> nombre;
+
+                        }
+
+                    }
+
+                }
+
+                echo form_dropdown('principal', $optionsBanner);
+            ?>
+
+            <p>Tipo inmueble</p>
             
             <?php $options = array(
 
@@ -111,13 +133,34 @@
 
             <br>
 
-            <div class="checkbox-2AD">
-
-              <input type="checkbox" name="recomendado" id="recomendado">
-              <label for="recomendado"></label> 
-
-            </div>
             <p id= "check-text" style="margin-right:15%;">RECOMENDADO</p>
+
+            <?php 
+                $optionsRec = array(
+
+                    'none' => 'Ninguno',
+
+                    );
+
+                if($query > 0){
+
+                    foreach ($query as $row) {
+
+                        $FiltroSlider = $row-> Filtro;
+                        if( $FiltroSlider == $FiltroPadre){
+
+                            $optionsRec[$row-> nombre] =  $row -> nombre;
+
+                        }
+
+                    }
+
+                }
+
+                echo form_dropdown('principal', $optionsRec);
+            ?>
+
+            <p>Status</p>
 
             <?php $options = array(
 
@@ -173,7 +216,10 @@
 
         <hr> 
 
-        <?php echo form_submit('submit', 'Modificar'); ?>
+        <?php echo form_submit('adminPanel', 'Modificar'); ?>
+
+        <?php echo form_submit('adminPanel', 'Eliminar'); ?>
+
 
           </div>
             <?php echo form_close(); ?>

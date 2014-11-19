@@ -48,13 +48,22 @@ class Admin_model extends CI_Model {
 		public function get_imagesFilter()
 	{
 		$query = $this->db->get('imagefilters');
+
 		if ($query->num_rows() > 0) {
 		
 			foreach ($query->result() as $row) {
 				$data[] = $row;
 			}
-			return $data;		
+			return $data;
+
 		}
+	}
+
+	public function numRows()
+	{
+		$query = $this->db->get('imagefilters');
+		$numrows = $query->num_rows();
+		return $numrows;
 	}
 
 

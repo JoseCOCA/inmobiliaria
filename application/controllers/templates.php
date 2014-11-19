@@ -12,10 +12,10 @@ class Templates extends CI_Controller {
 	 *
 	 * Maps to the following URL
 	 * 		http://example.com/index.php/welcome
-	 *	- or -  
+	 *	- or -
 	 * 		http://example.com/index.php/welcome/index
 	 *	- or -
-	 * Since this controller is set as the default controller in 
+	 * Since this controller is set as the default controller in
 	 * config/routes.php, it's displayed at http://example.com/
 	 *
 	 * So any other public methods not prefixed with an underscore will
@@ -26,7 +26,8 @@ class Templates extends CI_Controller {
 	public function index()
 	{
 		$data = array(
-			'title' => 'Home',
+			'title' => 'Inicio - Inmobiliaria',
+			'infoContacto' => 'BIENES RAICES / +52 (55) 90 00 30 00',
 			'query' => $this->admin_model->get_imagesDesc(),
 			'query1' => $this->admin_model->get_imagesFilter()
 			);

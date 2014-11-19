@@ -8,7 +8,7 @@
       </div>
 	<div class="mask">
 
-		<img style="width:90%"id="sld" src="images/mask.png" alt="banner1">
+		<img style="width:80%"id="sld" src="images/mask.png" alt="banner1">
 		<div class="type" >
 			<p>OFICINA</p>
 		</div>
@@ -24,20 +24,23 @@
 
         <div class="text1">Elige la mejor opción que se adapte a tus necesidades </div>
     </div>
-    <?php $this->load->view('menu');?>
 
-    <div class="iso">
-        <?php if ($query1 > 0) {?>
+    <div id="isotope-cont">
+    	<?php $this->load->view('menu');?>
 
-            <?php foreach ($query1 as $row) {?>
+    	<div class="iso">
+    	    <?php if ($query1 > 0) {?>
 
-                    <div class="box_iso <?=$row->Tipo?>">
-                        <a href="#overlay" data-cont="<?=$row -> Filtro ?>" class= "showInfo"><img id= "img_filter" src="<?= $row -> url ?>"alt=""></a>
-                    </div>
+    	        <?php foreach ($query1 as $row) {?>
 
-            <?php }?>
+    	                <div class="box_iso <?=$row->Tipo?>">
+    	                    <a href="#overlay" data-cont="<?=$row -> Filtro ?>" class= "showInfo"><img id= "img_filter" src="<?= $row -> url ?>"alt=""></a>
+    	                </div>
 
-        <?php }  ?>
+    	        <?php }?>
+
+    	    <?php }  ?>
+    	</div>
     </div>
 
 	<div id="overlay">

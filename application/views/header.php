@@ -1,7 +1,7 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="es">
 	<head>
-	<title><?php echo $title; ?></title>
+	<title><?= $title; ?></title>
 	<meta charset="utf-8">
 	<meta name="format-detection" content="telephone=no" />
 	<link rel="icon" href="images/favicon.ico">
@@ -9,86 +9,12 @@
 	<link rel="stylesheet" href="css/slippry.css">
 	<link rel="stylesheet" href="css/elastislide.css" />
 	<link rel="stylesheet" href="css/style.css">
-	<link rel="stylesheet" href="css/bjqs.css">
-	<link rel="stylesheet" href="css/bjqs.main.css">
 	<link type="text/css" rel="stylesheet" href="css/rhinoslider-1.05.css" />
 	<script src="js/jquery.js"></script>
 	<script src="js/jquery-migrate-1.1.1.js"></script>
-	<script src="js/script.js"></script>
-	<script src="js/superfish.js"></script>
-	<script src="js/jquery.equalheights.js"></script>
-	<script src="js/jquery.easing.1.3.js"></script>
-	<script src="js/slippry.js"></script>
-    <script src="js/modernizr.custom.17475.js"></script>
-    <script type="text/javascript" src="js/isotope.js"></script>
-    <!--<script type="text/javascript" src="js/imagesloaded.pkgd.js"></script>
-    <script type="text/javascript" src="js/imagesloaded.pkgd.min.js"></script>-->
-    <script type="text/javascript" src="js/jquery.sticky.js"></script>
-    <script type="text/javascript" src="js/bjqs-1.3.min.js"></script>
-    <!--<script type="text/javascript" src="js/jquery.popupoverlay.js"></script>-->
-	<script type="text/javascript" src="js/rhinoslider-1.05.min.js"></script>
-	<script type="text/javascript" src="js/mousewheel.js"></script>
-	<script type="text/javascript" src="js/easing.js"></script>
-
     <script>
-		$(document).on('ready', function($){
-			$=jQuery;
-
-			$('.iso').isotope({
-				filter: '*',
-				animationOptions: {
-				duration: 750,
-				easing: 'linear',
-				queue: false,
-				}
-			});
-
-			$('#slippry').slippry({
-				slippryWrapper: '<div class="slippry-main sy-box" />'
-			});
-
-			$('#nav a').click(function(){
-				var selector = $(this).attr('data-filter');
-				$('.iso').isotope({
-					filter: selector,
-					animationOptions: {
-					duration: 750,
-					easing: 'linear',
-					queue: false,
-					}
-				});
-				return false;
-			});
-
-			$('.showInfo').each(function() {
-				$(this).on('click', function (e){
-					var getID = $(this).attr("data-cont");
-					$('.visible').removeClass('.visible').addClass('oculto');
-					$('#'+getID).removeClass('oculto').addClass('visible');
-
-					$('#este-'+getID +' #slider').data('rhinoslider').play();
-				})
-
-
-			});
-
-			$('.slider-cont').rhinoslider({
-				effect: 'kick',
-				controlsPlayPause: false,
-				autoPlay: false,
-				showBullets: 'always',
-				changeBullets: 'before',
-				showControls: 'always',
-				slidePrevDirection: 'toRight',
-				slideNextDirection: 'toLeft'
-			});
-
-		});
-
-    function goToByScroll(id){$('html,body').animate({scrollTop: $("#"+id).offset().top},'slow');}
-
-
-     </script>
+		var contact = '<?=$infoContacto; ?>'
+    </script>
 
 
     <!--[if lt IE 8]>
@@ -134,14 +60,17 @@
         <?php }  ?>
   </ul>
 
-    <p class="contact">CONTACTO</p>
+
 
   <div class="menu_block" >
     <nav class="horizontal-nav full-width horizontalNav-notprocessed">
       <ul class="sf-menu">
        <li><a href="<?= base_url() ?>">INICIO</a></li>
+       <li class="menu-separator">|</li>
        <li><a href="<?= base_url("info") ?>">INFORMACIÓN DE EMPRESA</a></li>
+       <li class="menu-separator">|</li>
        <li><a href="<?= base_url("privacy") ?>">AVISO DE PRIVACIDAD</a></li>
+       <li class="menu-separator">|</li>
        <li><a href="<?= base_url("terms") ?>">TERMINOS DE USO</a></li>
      </ul>
     </nav>

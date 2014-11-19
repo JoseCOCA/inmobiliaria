@@ -20,34 +20,27 @@
   <div class="foot_colourd">
   </div>
 </footer>
-<script type="text/javascript" src="js/jquerypp.custom.js"></script>
-    <script type="text/javascript" src="js/jquery.elastislide.js"></script>
-    <script type="text/javascript">
+	<script src="js/script.js"></script>
+	<script src="js/superfish.js"></script>
+	<script src="js/jquery.equalheights.js"></script>
+	<script src="js/jquery.easing.1.3.js"></script>
+	<script src="js/slippry.js"></script>
+	<script src="js/modernizr.custom.17475.js"></script>
+	<script type="text/javascript" src="js/isotope.js"></script>
+	<!--<script type="text/javascript" src="js/imagesloaded.pkgd.js"></script>
+	<script type="text/javascript" src="js/imagesloaded.pkgd.min.js"></script>-->
+	<script type="text/javascript" src="js/jquery.sticky.js"></script>
+	<!--<script type="text/javascript" src="js/jquery.popupoverlay.js"></script>-->
+	<script type="text/javascript" src="js/rhinoslider-1.05.min.js"></script>
+	<script type="text/javascript" src="js/mousewheel.js"></script>
+	<script type="text/javascript" src="js/easing.js"></script>
+	<script type="text/javascript" src="js/index.js"></script>
 
-      $( '#carousel' ).elastislide( {
-        minItems : 8
-      } );
-      jQuery(document).ready(function(){
-        /*Stickybar*/
-        $('.menu_block').sticky({topSpacing:0});
+	<script type="text/javascript" src="js/jquerypp.custom.js"></script>
+	<script type="text/javascript" src="js/jquery.elastislide.js"></script>
+	<script type="text/javascript">
 
-      });
-      $('.menu_block').on('sticky-start', function (e) {
-        e.preventDefault();
-        var altura = document.querySelector('.menu_block').offsetHeight;
-        $('#nav').sticky({topSpacing:46}).css({'z-index': '99', 'width': '100%'});
-      });
 
-      jQuery('.overlay_open').each(function(){
-      jQuery(this).click(function(){
-
-        var clickedID = jQuery(this).attr("id");
-
-      $('.no-oculto').removeClass('no-oculto').addClass('oculto');
-      $('.'+clickedID).removeClass('oculto').addClass('no-oculto');
-
-      });
-      })
 
     </script>
 </body>

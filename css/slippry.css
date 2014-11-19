@@ -171,9 +171,9 @@
   visibility: hidden;
 }
 .sy-box{
-  padding-left: 5%;
-  padding-right: 5%;
-  width: 90%;
+  padding-left: 10%;
+  padding-right: 10%;
+  width: 80%;
 }
 /* element that wraps the slides */
 .sy-slides-wrap {

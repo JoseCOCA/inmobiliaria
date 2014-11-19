@@ -33,9 +33,10 @@ class Admin extends CI_Controller {
 			redirect('/admin/login');
 		}
 		$data = array(
-			'title' => 'Admin',
-			'query' => $this->admin_model->get_imagesDesc(),
-			'query1' =>$this->admin_model->get_imagesFilter()
+			'title' 	=> 	'Admin',
+			'query' 	=> 	$this->admin_model->get_imagesDesc(),
+			'query1' 	=>	$this->admin_model->get_imagesFilter(),
+			'numRows' 	=>	$this->admin_model->numRows()
 			);
 		$this->load->view('admin/header_admin',$data);
 		$this->load->view('admin/admin_view',$data);
@@ -76,15 +77,17 @@ class Admin extends CI_Controller {
 
 		$this->load->library('MY_Upload');
 
-	    $this->upload->initialize(array(
+		$config = array(
 
 	        "upload_path"   => "images/banners",
 	        "allowed_types" => "gif|jpg|png",
 			"max_size"		=> "1000",
 			"max_width"  	=> "2000",
 			"max_height"	=> "800",
-	    
-	    ));		
+
+		);
+
+	    $this->upload->initialize($config);		
 
 		if ( $this->upload->do_multi_upload("files"))
 		{
@@ -94,7 +97,10 @@ class Admin extends CI_Controller {
 
 			$data = array('upload_data' => $this->upload->get_multi_upload_data());
 
-			$Length = count($data);
+
+			$Length = count($data['upload_data']);
+
+			echo $Length;
 
 			for ($i=0; $i < $Length; $i++) { 
 
@@ -102,9 +108,17 @@ class Admin extends CI_Controller {
 						'url' 		=> 'images/banners/'. $data['upload_data'][$i]['file_name'] ,
    			        	'Filtro'	=> $Filter,
 				);
-			// $this->admin_model->insert_images('imagedesc',$insert[$i]);
+			$this->admin_model->insert_images('imagedesc',$insert);
+
 			}
 			
+			if(is_file($config['upload_path'])){
+
+			    chmod($config['upload_path'], 777); ## this should change the permissions
+
+			}
+
+
 			$dataForm = array(
 			 	'Descripcion' 	=> $this->input->post('descripcion'),
 			 	'Tipo'			=> $this->input->post('inmueble'),
@@ -117,10 +131,6 @@ class Admin extends CI_Controller {
 			);
 
 			$this->admin_model->update_data('imagefilters', $dataForm,$Filter);
-
-			$LengthInsert = count($insert);
-
-			echo $LengthInsert;
 
 
 
@@ -139,14 +149,51 @@ class Admin extends CI_Controller {
 			
 		}
 
-		// if(is_file($config['upload_path']))
-		// {
-		//     chmod($config['upload_path'], 777); ## this should change the permissions
-		// }
 
 
 
+	}
 
+	public function newFilter()
+	{
+		$config['upload_path'] = 'images/filtros';
+		$config['allowed_types'] = 'gif|jpg|png';
+		$config['max_size']	= '1000';
+		$config['max_width']  = '300';
+		$config['max_height']  = '300';
+
+		$this->upload->initialize($config);
+
+		echo $config['upload_path'];
+
+		if ( ! $this->upload->do_upload())
+		{
+			$error = array('error' => $this->upload->display_errors());
+			$this->load->view('upload_form', $error);
+		}
+		else
+		{
+			//obtener los datos de upload
+
+			$data = array('upload_data' => $this->upload->data());
+			$insert = array(
+   			        'url' 		=> 'images/filtros/'. $data['upload_data']['file_name'] ,
+				    'nombre' 	=> $data['upload_data']['file_name'],
+				    'Filtro'	=> $this->input->post('Filtro')
+				);
+			
+			$this->admin_model->insert_images('imagefilters',$insert);
+
+			// redirect('admin');
+
+			//$this->load->view('upload_succes', $insert);
+
+		}
+
+		if(is_file($config['upload_path']))
+		{
+		    chmod($config['upload_path'], 777); ## this should change the permissions
+		}
 	}
 
 	public function getContactData(){

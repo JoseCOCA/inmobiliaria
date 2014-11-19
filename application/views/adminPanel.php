@@ -1,15 +1,42 @@
+<?php /* Panel de administración para la inmobiliaria:
+    En este se muestra un formulario para la modificación de la información en las 
+    descripciones de las proopiedades existentes, de igual forma se tiene la posibilidad de borrar
+    o crear nuevas propiedades
+*/ ?>
 
     <div id="adminPanel">
 
-      <div class="filter_container">
+        <div class="filter_container">
 
-        	<?php foreach ($query1 as $row) {?>
+        	<?php if ($query1 > 0) { ?>
+            
+            <?php foreach ($query1 as $row) { ?>
 
              <a href="#" id="<?=$row-> Filtro?>" class="configFilter" ><img src="<?= $row -> url ?>" alt="Product Name" /></a>
 
              <?php } ?>
 
-             <?php  ?>
+        <?php } ?>
+
+
+            <?php             
+
+             $Filtro = 'F'.($numRows+1);
+
+             ?>
+
+             <?php echo form_open_multipart('admin/newFilter') ?>
+
+
+
+            <?php
+
+                echo form_hidden('Filtro', $Filtro);?>
+
+                <input type="file" name="userfile">
+                <input type="submit" value="upload" />
+
+             <?php echo form_close(); ?>
 
             
       </div>

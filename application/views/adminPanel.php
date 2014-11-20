@@ -221,7 +221,13 @@
           </div>   
             
            <textarea id="condiciones" name="condiciones" class="ubiEdit" rows="4" cols="50" style="margin-top:30px;" placeholder="Proporcione las condiciones de contratación de considere nesecarias."></textarea> 
-         
+         <p>Dimensiones:</p>
+
+         <input type="text" class="ubiEdit" id="dim" name="dimensiones">
+
+         <p>Costo:</p>
+
+         <input type="text" class="ubiEdit" id="cost" name="costo">
 
           </div>
 

@@ -11,7 +11,10 @@ $(document).on('ready', function($){
 	});
 
 	$('#slippry').slippry({
-		slippryWrapper: '<div class="slippry-main sy-box" />'
+		slippryWrapper: '<div class="slippry-main sy-box" />',
+		transition: 'horizontal',
+		easing: 'easeOutExpo',
+		continuous: false
 	});
 
 	$('.sy-pager').append('<h5 class="contact">'+contact+'</h5>');

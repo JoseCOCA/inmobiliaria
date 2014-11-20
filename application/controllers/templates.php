@@ -27,7 +27,6 @@ class Templates extends CI_Controller {
 	{
 		$data = array(
 			'title' => 'Inicio - Inmobiliaria',
-			'infoContacto' => 'BIENES RAICES / +52 (55) 90 00 30 00',
 			'query' => $this->admin_model->get_imagesDesc(),
 			'query1' => $this->admin_model->get_imagesFilter()
 			);

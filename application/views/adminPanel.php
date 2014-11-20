@@ -84,13 +84,14 @@
 
             <?php echo form_submit('adminPanel', 'Agregar imagenes'); ?>
             <br>
-            
-            <p id= "check-text">BANNER PRINCIPAL</p>
+            <p>Eliminar imagenes:</p>
+
 
             <?php 
+                
                 $optionsBanner = array(
 
-                    '' => 'Ninguno',
+                    '0' => 'Ninguno',
 
                     );
 
@@ -108,6 +109,16 @@
                     }
 
                 }
+
+
+            echo form_multiselect('delete[]',$optionsBanner); 
+            echo form_submit('adminPanel', 'Eliminar Imagenes');
+            ?>
+            <br>
+            
+            <p id= "check-text">BANNER PRINCIPAL</p>
+
+            <?php 
 
                 echo form_dropdown('principal', $optionsBanner);
             ?>
@@ -138,7 +149,7 @@
             <?php 
                 $optionsRec = array(
 
-                    'none' => 'Ninguno',
+                    '0' => 'Ninguno',
 
                     );
 
@@ -157,7 +168,7 @@
 
                 }
 
-                echo form_dropdown('principal', $optionsRec);
+                echo form_dropdown('recomendado', $optionsRec);
             ?>
 
             <p>Status</p>

@@ -116,7 +116,7 @@
      <?php if ($query > 0) {?>
 
             <?php foreach ($query as $row) {?>
-               <?php if($row -> padre == '1'){?>
+               <?php if($row -> principal == '1'){?>
                     <li>
                       <a href="#overlay" id="<?=$row -> Filtro ?>" class="overlay_open showInfo">
                       <img src="images/mascara-principal.png" class="wrap"/>

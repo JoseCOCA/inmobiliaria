@@ -89,6 +89,21 @@ class Admin extends CI_Controller {
 
 		switch ($this->input->post('adminPanel')) {
 
+			case 'Eliminar Imagenes':
+
+				$FilesToDelete = $this->input->post('delete');
+
+				foreach ($FilesToDelete as $name) {
+
+					$this->db->delete('imagedesc',array('nombre' => $name) );
+
+					unlink('images/banners/'.$name);
+				}
+
+				 
+
+				break;
+
 			case 'Agregar imagenes':
  				
  				$this->upload->initialize($config);		
@@ -136,6 +151,7 @@ class Admin extends CI_Controller {
 
 			case 'Modificar':
 
+					$Filter = array('Filtro' => $this->input->post('Filtro') );
 					$dataForm = array(
 					 	'Descripcion' 	=> $this->input->post('descripcion'),
 					 	'Tipo'			=> $this->input->post('inmueble'),
@@ -147,7 +163,59 @@ class Admin extends CI_Controller {
 					 	'CP'			=> $this->input->post('CodigoPostal')
 						);
 
+					$padre1  	= 	$this->input->post('principal');
+					$padre2  	=	$this->input->post('recomendado');
+
+					if($padre1 or $padre2 != '0'){
+
+						echo $padre1;
+						echo $padre2;
+
+						$filtroPrincipal = array(
+
+						'Filtro' => $this->input->post('Filtro'), 
+						'nombre' => $padre1
+
+						);
+
+						if ($padre1 != '0') {
+							$this->admin_model->update_data('imagedesc',array('principal'=>'1'),$filtroPrincipal);
+						}
+
+
+						$filtroRecomendado = array(
+
+						'Filtro' => $this->input->post('Filtro'), 
+						'nombre' => $padre2
+
+						);
+
+						if ($padre2 != '0') {
+
+							$this->admin_model->update_data('imagedesc',array('recomendado'=>'1'),$filtroRecomendado);
+
+						}
+
+					}else{
+
+						 echo "hola";
+						// echo $padre2;
+						
+						$filtro = array(
+
+						'Filtro' => $this->input->post('Filtro'), 
+
+						);
+						
+						$this->admin_model->update_data('imagedesc',array('principal'=>'0'),$filtro);
+						
+						$this->admin_model->update_data('imagedesc',array('recomendado'=>'0'),$filtro);
+
+
+					}
+						
 						$this->admin_model->update_data('imagefilters', $dataForm,$Filter);
+						
 
 						redirect('admin');
 

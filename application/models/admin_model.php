@@ -69,9 +69,17 @@ class Admin_model extends CI_Model {
 
 	public function update_data($table,$data,$Filter)
 	{
-		$this->db->where('Filtro',$Filter);
+		$this->db->where($Filter);
 		$this->db->update($table, $data);
 
+	}
+
+	public function deleteImage($name)
+	{
+		$this->db->select('url');
+		$data = $this->db->get_where('imagedesc',array('nombre' => $name));
+
+		return $data->result();
 	}
 
 }

@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Servidor: 127.0.0.1
--- Tiempo de generación: 15-11-2014 a las 07:20:31
+-- Tiempo de generación: 20-11-2014 a las 21:05:09
 -- Versión del servidor: 5.6.20
 -- Versión de PHP: 5.5.15
 
@@ -23,22 +23,40 @@ SET time_zone = "+00:00";
 -- --------------------------------------------------------
 
 --
+-- Estructura de tabla para la tabla `contactos`
+--
+
+CREATE TABLE IF NOT EXISTS `contactos` (
+`ID` int(2) NOT NULL,
+  `Nombre` varchar(30) COLLATE utf8_unicode_ci NOT NULL,
+  `Telefono` varchar(10) COLLATE utf8_unicode_ci NOT NULL,
+  `Celular` varchar(15) COLLATE utf8_unicode_ci NOT NULL,
+  `Correo` varchar(40) COLLATE utf8_unicode_ci NOT NULL,
+  `Empresa` varchar(20) COLLATE utf8_unicode_ci NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci AUTO_INCREMENT=1 ;
+
+-- --------------------------------------------------------
+
+--
 -- Estructura de tabla para la tabla `imagedesc`
 --
 
 CREATE TABLE IF NOT EXISTS `imagedesc` (
+`ID` int(1) NOT NULL,
   `Filtro` varchar(2) CHARACTER SET utf8 COLLATE utf8_unicode_ci NOT NULL,
-  `padre` enum('1','2') CHARACTER SET utf8 COLLATE utf8_unicode_ci NOT NULL,
-  `url` varchar(100) CHARACTER SET utf8 COLLATE utf8_unicode_ci NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+  `url` varchar(100) CHARACTER SET utf8 COLLATE utf8_unicode_ci NOT NULL,
+  `nombre` varchar(50) CHARACTER SET utf8 COLLATE utf8_unicode_ci NOT NULL,
+  `principal` enum('0','1') CHARACTER SET utf8 COLLATE utf8_unicode_ci NOT NULL,
+  `recomendado` enum('0','1') CHARACTER SET utf8 COLLATE utf8_unicode_ci NOT NULL
+) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=3 ;
 
 --
 -- Volcado de datos para la tabla `imagedesc`
 --
 
-INSERT INTO `imagedesc` (`Filtro`, `padre`, `url`) VALUES
-('', '1', 'images/banners/HomeFull_2.jpg'),
-('', '1', 'images/banners/HomeFull_1.jpg');
+INSERT INTO `imagedesc` (`ID`, `Filtro`, `url`, `nombre`, `principal`, `recomendado`) VALUES
+(1, 'F1', 'images/banners/HomeFull_2.jpg', 'HomeFull_2.jpg', '1', '0'),
+(2, 'F2', 'images/banners/HomeFull_1.jpg', 'HomeFull_1.jpg', '1', '0');
 
 -- --------------------------------------------------------
 
@@ -51,20 +69,24 @@ CREATE TABLE IF NOT EXISTS `imagefilters` (
   `url` varchar(50) NOT NULL,
   `nombre` varchar(50) NOT NULL,
   `Descripcion` text NOT NULL,
-  `Ubicacion` tinytext NOT NULL,
   `Tipo` enum('Casa','Oficina','Departamento','Bodega') NOT NULL,
-  `Status` enum('En venta','En renta','No disponible','') NOT NULL,
+  `Status` enum('venta','renta','NoDisponible','') CHARACTER SET utf8 COLLATE utf8_unicode_ci NOT NULL,
   `Condiciones` text NOT NULL,
-  `Filtro` varchar(2) NOT NULL
-) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=15 ;
+  `Filtro` varchar(2) CHARACTER SET utf8 COLLATE utf8_unicode_ci NOT NULL,
+  `CalleNo` varchar(50) CHARACTER SET utf8 COLLATE utf8_unicode_ci NOT NULL,
+  `Colonia` varchar(50) CHARACTER SET utf8 COLLATE utf8_unicode_ci NOT NULL,
+  `Delegacion` varchar(50) CHARACTER SET utf8 COLLATE utf8_unicode_ci NOT NULL,
+  `CP` varchar(50) CHARACTER SET utf8 COLLATE utf8_unicode_ci NOT NULL
+) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=18 ;
 
 --
 -- Volcado de datos para la tabla `imagefilters`
 --
 
-INSERT INTO `imagefilters` (`ID`, `url`, `nombre`, `Descripcion`, `Ubicacion`, `Tipo`, `Status`, `Condiciones`, `Filtro`) VALUES
-(13, 'images/filtros/house.jpg', 'house.jpg', 'lkasjdoiden,cmnxoiejd', 'gbljgluyghbmb', 'Casa', 'En venta', ',bvjvygbj,hb,lhgjhgjgjhg', 'F1'),
-(14, 'images/filtros/house1.jpg', 'house1.jpg', 'esta es una casa muy bonita', 'Av. SiempreViva Numero 23 manzana 56 a un lado del kwek-e Mart ', 'Oficina', 'En venta', 'Subir una foto \r\nCredencial de elector\r\nlSDOIEJ', 'F2');
+INSERT INTO `imagefilters` (`ID`, `url`, `nombre`, `Descripcion`, `Tipo`, `Status`, `Condiciones`, `Filtro`, `CalleNo`, `Colonia`, `Delegacion`, `CP`) VALUES
+(13, 'images/filtros/house.jpg', 'house.jpg', '', 'Casa', 'venta', '', 'F1', '', '', '', ''),
+(14, 'images/filtros/house1.jpg', 'house1.jpg', '', 'Casa', 'venta', '', 'F2', '', '', '', ''),
+(17, 'images/filtros/house2.jpg', 'house2.jpg', '', 'Casa', 'venta', '', 'F3', '', '', '', '');
 
 -- --------------------------------------------------------
 
@@ -93,6 +115,18 @@ INSERT INTO `users` (`id`, `first_name`, `last_name`, `email_address`, `password
 --
 
 --
+-- Indices de la tabla `contactos`
+--
+ALTER TABLE `contactos`
+ ADD PRIMARY KEY (`ID`);
+
+--
+-- Indices de la tabla `imagedesc`
+--
+ALTER TABLE `imagedesc`
+ ADD PRIMARY KEY (`ID`);
+
+--
 -- Indices de la tabla `imagefilters`
 --
 ALTER TABLE `imagefilters`
@@ -109,10 +143,20 @@ ALTER TABLE `users`
 --
 
 --
+-- AUTO_INCREMENT de la tabla `contactos`
+--
+ALTER TABLE `contactos`
+MODIFY `ID` int(2) NOT NULL AUTO_INCREMENT;
+--
+-- AUTO_INCREMENT de la tabla `imagedesc`
+--
+ALTER TABLE `imagedesc`
+MODIFY `ID` int(1) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=3;
+--
 -- AUTO_INCREMENT de la tabla `imagefilters`
 --
 ALTER TABLE `imagefilters`
-MODIFY `ID` int(2) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=15;
+MODIFY `ID` int(2) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=18;
 --
 -- AUTO_INCREMENT de la tabla `users`
 --

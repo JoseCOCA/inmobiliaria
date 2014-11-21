@@ -12,7 +12,7 @@ $(document).on('ready', function($){
 
 	$('#slippry').slippry({
 		slippryWrapper: '<div class="slippry-main sy-box" />',
-		transition: 'horizontal',
+		transition: 'fade',
 		easing: 'easeOutExpo',
 		continuous: false
 	});
@@ -20,19 +20,34 @@ $(document).on('ready', function($){
 	$('.sy-pager').append('<h5 class="contact">'+contact+'</h5>');
 
 
-	$('#nav a').click(function(){
+	var $isoContainer = $('.iso');
+	$('#isotope-cont #nav a').click(function(e){
+		e.preventDefault();
+		$('.nav-iso-active').removeClass('nav-iso-active');
+		$(this).addClass('nav-iso-active');
 		var selector = $(this).attr('data-filter');
-		$('.iso').isotope({
+		$isoContainer.isotope({
 			filter: selector,
 			animationOptions: {
 			duration: 750,
 			easing: 'linear',
 			queue: false,
+			resizable: true, // disable normal resizing
+		  // set columnWidth to a percentage of container width
+		  masonry: { columnWidth: $isoContainer.width() / 5 }
 			}
 		});
 		return false;
 	});
-
+	
+	// update columnWidth on window resize
+	$(window).smartresize(function(){
+	  $isoContainer.isotope({
+	    // update columnWidth to a percentage of container width
+	    masonry: { columnWidth: $isoContainer.width() / 5 }
+	  });
+	});
+	
 	$('.showInfo').each(function() {
 		$(this).on('click', function (e){
 			var getID = $(this).attr("data-cont");
@@ -46,14 +61,27 @@ $(document).on('ready', function($){
 	});
 
 	$('.slider-cont').rhinoslider({
-		effect: 'kick',
-		controlsPlayPause: false,
 		autoPlay: false,
-		showBullets: 'always',
 		changeBullets: 'before',
+		controlsPlayPause: false,
+		effect: 'kick',
+		showBullets: 'always',
 		showControls: 'always',
-		slidePrevDirection: 'toRight',
-		slideNextDirection: 'toLeft'
+		slideNextDirection: 'toLeft',
+		slidePrevDirection: 'toRight'
+	});
+	
+	$('.slider-recomedados').rhinoslider({
+		autoPlay: true,
+		easing: 'easeInExpo',
+		effect: 'turnOver',
+		effectTime: 2000,
+		pauseOnHover: false,
+		showTime: 15000,
+		showBullets: 'never',
+		showControls: 'never',
+		slideNextDirection: 'toLeft',
+		slidePrevDirection: 'toRight'
 	});
 
 	/*Stickybar*/

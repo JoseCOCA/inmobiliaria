@@ -41,26 +41,26 @@
   <div class="clear"></div>
 
 
-  <ul id="slippry">
+ <ul id="slippry">
 
      <?php if ($query > 0) {?>
 
             <?php foreach ($query as $row) {?>
-               <?php if($row -> padre == '1'){?>
+               <?php if($row -> principal == '1'){?>
 				<li>
-					<a href="#overlay" data-slippry="<?=$row -> Filtro ?>" class="overlay_open">
+					<a href="#overlay" data-slippry="<?=$row -> Filtro ?>" data-cont="<?=$row -> Filtro ?>" class="showInfo">
 						<img src="images/mascara-principal.png" class="wrap"/>
 						<img class= "img_slide" src="<?= $row -> url ?>"alt="">
 					</a>
 				</li>
 				<li>
-					<a href="#overlay" data-slippry="<?=$row -> Filtro ?>" class="overlay_open">
+					<a href="#overlay" data-slippry="<?=$row -> Filtro ?>" data-cont="<?=$row -> Filtro ?>" class="showInfo">
 						<img src="images/mascara-principal.png" class="wrap"/>
 						<img class= "img_slide" src="<?= $row -> url ?>"alt="">
 					</a>
 				</li>
 				<li>
-					<a href="#overlay" data-slippry="<?=$row -> Filtro ?>" class="overlay_open">
+					<a href="#overlay" data-slippry="<?=$row -> Filtro ?>" data-cont="<?=$row -> Filtro ?>" class="showInfo">
 						<img src="images/mascara-principal.png" class="wrap"/>
 						<img class= "img_slide" src="<?= $row -> url ?>"alt="">
 					</a>
@@ -93,18 +93,22 @@
 	<div class="slideRec">
 
 	</div>
-	<div class="mask">
-
-		<img style="width:80%"id="sld" src="images/mask.png" alt="banner1">
-		<div class="type">
-			<p>OFICINA</p>
+	<div id="banner-recomendados" class="mask">
+		<div class="tipo-recomendados"><span>OFICINA</span></div>
+		<div class="specs-recomendados">
+			<div class="specs">
+				<span>Dimensiones: 200 m2</span>
+				<span>Zona Polanco</span>
+				<span>Costo: $10000000</span>
+			</div>
 		</div>
-		<div class="specs">
-			<p>Dimensiones: 200 m2 </p>
-
-			<p>Zona Polanco</p>
-
-			<p>Costo: $10000000</p>
+		<div class="slide-recomendados">
+			<ul class="slider-recomedados">
+				<li><img src="images/homeFull_1.jpg"></li>
+				<li><img src="images/homeFull_2.jpg"></li>
+				<li><img src="images/homeFull_4.jpg"></li>
+			</ul>
+		<div class="mask-recomendado"><h2>CLICK + INFO</h2></div>
 		</div>
 	</div>
 

@@ -50,6 +50,12 @@
 							<li><img src="http://lorempixel.com/g/750/450" alt="" class="image_slide"></li>
 							<li><img src="http://lorempixel.com/750/450" alt="" class="image_slide"></li>
 							<li><img src="http://lorempixel.com/g/750/450/city" alt="" class="image_slide"></li>
+							<li><img src="http://lorempixel.com/g/750/450" alt="" class="image_slide"></li>
+							<li><img src="http://lorempixel.com/750/450" alt="" class="image_slide"></li>
+							<li><img src="http://lorempixel.com/g/750/450/city" alt="" class="image_slide"></li>
+							<li><img src="http://lorempixel.com/g/750/450" alt="" class="image_slide"></li>
+							<li><img src="http://lorempixel.com/750/450" alt="" class="image_slide"></li>
+							<li><img src="http://lorempixel.com/g/750/450/city" alt="" class="image_slide"></li>
 						</ul>
 					</div>
 				</div>
@@ -77,7 +83,7 @@
 
 				<div class="ubic">
 					<p>UBICACIÓN:</p>
-					<p class="styledP"style="width:83%; "><?=$row-> Ubicacion ?></p>
+					<p class="styledP"style="width:83%; "><?//=$row-> Ubicacion ?></p>
 				</div>
 
 				<div class="contentDesc">

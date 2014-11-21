@@ -14,7 +14,8 @@
 | path to your installation.
 |
 */
-$config['base_url']	= 'http://localhost/inmobiliaria/';
+$config['base_url']	= 'http://localhost/pruebas/inmobiliaria/'; // PARA DESARROLLO EXTERNO
+// $config['base_url']	= 'http://localhost/inmobiliaria/';
 
 /*
 |--------------------------------------------------------------------------

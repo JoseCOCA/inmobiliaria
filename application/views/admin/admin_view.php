@@ -20,15 +20,6 @@
                       <div class="box_iso <?=$row->Tipo?>">
                           <a href="#overlay" data-cont="<?=$row -> Filtro ?>" class= "showInfo"><img id= "img_filter" src="<?= $row -> url ?>"alt=""></a>
                       </div>
-                      <div class="box_iso <?=$row->Tipo?>">
-                          <a href="#overlay" data-cont="<?=$row -> Filtro ?>" class= "showInfo"><img id= "img_filter" src="<?= $row -> url ?>"alt=""></a>
-                      </div>
-                      <div class="box_iso <?=$row->Tipo?>">
-                          <a href="#overlay" data-cont="<?=$row -> Filtro ?>" class= "showInfo"><img id= "img_filter" src="<?= $row -> url ?>"alt=""></a>
-                      </div>
-                      <div class="box_iso <?=$row->Tipo?>">
-                          <a href="#overlay" data-cont="<?=$row -> Filtro ?>" class= "showInfo"><img id= "img_filter" src="<?= $row -> url ?>"alt=""></a>
-                      </div>
 
               <?php }?>
 
@@ -40,30 +31,39 @@
   <a href="#" class=""><div id="overlay-back"></div></a>
 
   <?php $i=0; foreach ($query1 as $row) { ?>
-    <div class="portada overlay-cont oculto" id="<?=$row -> Filtro ?>">
+    <?php $FiltroPadre  = $row -> Filtro;
+          $Tipo         = $row -> Tipo;
+          $Status       = $row -> Status;
+          $CalleNum     = $row -> CalleNo;
+          $Colonia      = $row -> Colonia;
+          $Delegacion   = $row -> Delegacion;
+          $CP           = $row -> CP;
+          $Descripcion  = $row -> Descripcion;
+
+
+     ?>
+    <div class="portada overlay-cont oculto" id="<?=$FiltroPadre; ?>">
 
       <a href="#close" class=""><img id="close" src="images/boton_close.png" alt=""></a>
 
         <div class="slide-cont">
-          <div class="slide" id="este-<?=$row -> Filtro ?>">
-            <ul class="slider-cont" data-slide="<?=$row -> Filtro ?>" id="slider">
-              <li><img src="http://lorempixel.com/g/750/450" alt="" class="image_slide"></li>
-              <li><img src="http://lorempixel.com/750/450" alt="" class="image_slide"></li>
-              <li><img src="http://lorempixel.com/g/750/450/city" alt="" class="image_slide"></li>
-              <li><img src="http://lorempixel.com/g/750/450" alt="" class="image_slide"></li>
-              <li><img src="http://lorempixel.com/750/450" alt="" class="image_slide"></li>
-              <li><img src="http://lorempixel.com/g/750/450/city" alt="" class="image_slide"></li>
-              <li><img src="http://lorempixel.com/g/750/450" alt="" class="image_slide"></li>
-              <li><img src="http://lorempixel.com/750/450" alt="" class="image_slide"></li>
-              <li><img src="http://lorempixel.com/g/750/450/city" alt="" class="image_slide"></li>
+          <div class="slide" id="este-<?=$FiltroPadre; ?>">
+            <ul class="slider-cont" data-slide="<?=$FiltroPadre; ?>" id="slider">
+                <?php foreach ($query as $row) {
+                  $FiltroSlider = $row-> Filtro;
+                  if($FiltroPadre == $FiltroSlider){
+                  ?>
+                    <li><img src="<?= $row->url ?>" alt="" class="image_slide"></li>                
+                <?php }
+                } ?>
             </ul>
           </div>
         </div>
 
       <div class="text-content">
         <div class="content1">
-          <p>PROPIEDAD: <?=$row-> Tipo?></p>
-          <p>CONDICIÓN: <?=$row-> Tipo?></p>
+          <p>PROPIEDAD: <?=$Tipo?></p>
+          <p>CONDICION: <?=$Tipo?></p>
           <hr>
         </div>
 
@@ -83,14 +83,14 @@
 
         <div class="ubic">
           <p>UBICACIÓN:</p>
-          <p class="styledP"style="width:83%; "><?php ?></p>
+          <p class="styledP"style="width:83%; "><?= $CalleNum.','.$Colonia.','.$Delegacion ?></p>
         </div>
 
         <div class="contentDesc">
 
           <p>DESCRIPCIÓN</p>
 
-          <p class="styledP" id= "desc"><?=$row-> Descripcion ?></p>
+          <p class="styledP" id= "desc"><?= $Descripcion; ?></p>
 
           <p>CONDICIONES DE CONTRATACIÓN</p>
 

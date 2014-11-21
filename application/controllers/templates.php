@@ -42,7 +42,7 @@ class Templates extends CI_Controller {
 			);
 		$this->load->view('header',$data);
 		$this->load->view('public/info');
-		$this->load->view('footer');
+		$this->load->view('footer2');
 	}
 	public function privacy(){
 		$data = array(
@@ -51,17 +51,19 @@ class Templates extends CI_Controller {
 			);
 		$this->load->view('header',$data);
 		$this->load->view('public/privacy');
-		$this->load->view('footer');
+		$this->load->view('footer2');
 	}
 
 	public function terms(){
 		$data = array(
-			'title' => 'terms'
+			'title' => 'terms',
+			'query' => $this->admin_model->get_imagesDesc(),
+			'query1' => $this->admin_model->get_imagesFilter()
 
 			);
 		$this->load->view('header',$data);
 		$this->load->view('public/terms');
-		$this->load->view('footer');
+		$this->load->view('footer2');
 	}
 
 

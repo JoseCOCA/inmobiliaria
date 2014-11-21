@@ -1,0 +1,18 @@
+hr.colourdHR {
+	padding-bottom: 0px;
+    margin-bottom: 14px;
+    background-color: #62A8D3 !important;
+    width: 90%;
+}
+
+h4.head2 {
+    padding-bottom: 0px;
+    margin-bottom: 14px;
+    color: rgb(75, 155, 205);
+  font-size: 30px;
+}
+
+.p1{
+    padding-left: 10%;
+    padding-right: 10%;
+}

@@ -160,7 +160,9 @@ class Admin extends CI_Controller {
 					 	'CalleNo'		=> $this->input->post('CalleNumero'),
 					 	'Colonia'		=> $this->input->post('Colonia'),
 					 	'Delegacion'	=> $this->input->post('Delegacion'),
-					 	'CP'			=> $this->input->post('CodigoPostal')
+					 	'CP'			=> $this->input->post('CodigoPostal'),
+					 	'Dimension'		=> $this->input->post('dimensiones'),
+					 	'Precio'		=> $this->input->post('precio')
 						);
 
 					$padre1  	= 	$this->input->post('principal');

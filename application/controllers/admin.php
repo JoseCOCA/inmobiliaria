@@ -18,11 +18,13 @@ class Admin extends CI_Controller {
 	 * @see http://codeigniter.com/user_guide/general/urls.html
 	 */
 
+
 	public function __construct(){
 		parent::__construct();
 		
 		session_start();
 		$this->load->model('admin_model');
+		$error = "";
 
 
 	}
@@ -36,7 +38,7 @@ class Admin extends CI_Controller {
 			'title' 	=> 	'Admin',
 			'query' 	=> 	$this->admin_model->get_imagesDesc(),
 			'query1' 	=>	$this->admin_model->get_imagesFilter(),
-			'numRows' 	=>	$this->admin_model->numRows()
+			'numRows' 	=>	$this->admin_model->numRows(),
 			);
 		$this->load->view('admin/header_admin',$data);
 		$this->load->view('admin/admin_view',$data);
@@ -87,6 +89,48 @@ class Admin extends CI_Controller {
 
 		);
 
+		$configRules = array(
+		               array(
+		                     'field'   => 'inmueble',
+		                     'label'   => 'Tipo de Inmmueble',
+		                     'rules'   => 'required'
+		                  ),
+		               array(
+		                     'field'   => 'Status',
+		                     'label'   => 'Status',
+		                     'rules'   => 'required'
+		                  ),
+		               array(
+		                     'field'   => 'CalleNumero',
+		                     'label'   => 'Calle y número',
+		                     'rules'   => 'required'
+		                  ),   
+		               array(
+		                     'field'   => 'Colonia',
+		                     'label'   => 'Colonia',
+		                     'rules'   => 'required'
+		                  ),
+		               array(
+		                     'field'   => 'Delegacion',
+		                     'label'   => 'Delegación',
+		                     'rules'   => 'required'
+		                  ),
+		               array(
+		                     'field'   => 'CodigoPostal',
+		                     'label'   => 'Codigo Postal',
+		                     'rules'   => 'required'
+		                  ),
+		               array(
+		                     'field'   => 'descripcion',
+		                     'label'   => 'Descripcion',
+		                     'rules'   => 'required'
+		                  ),
+		            );
+
+		$this->form_validation->set_rules($configRules); 
+
+		
+
 		switch ($this->input->post('adminPanel')) {
 
 			case 'Eliminar Imagenes':
@@ -101,7 +145,7 @@ class Admin extends CI_Controller {
 				}
 
 				 
-
+				redirect('admin');
 				break;
 
 			case 'Agregar imagenes':
@@ -137,6 +181,8 @@ class Admin extends CI_Controller {
 					    chmod($config['upload_path'], 777); ## this should change the permissions
 
 					}
+
+					redirect('admin');
 				}
 				else
 				{
@@ -150,6 +196,13 @@ class Admin extends CI_Controller {
 				break;
 
 			case 'Modificar':
+
+
+				if ($this->form_validation->run() == FALSE) {
+
+					$this->load->view('errorsPage');
+
+				}else{
 
 					$Filter = array('Filtro' => $this->input->post('Filtro') );
 					$dataForm = array(
@@ -200,9 +253,6 @@ class Admin extends CI_Controller {
 
 					}else{
 
-						 echo "hola";
-						// echo $padre2;
-						
 						$filtro = array(
 
 						'Filtro' => $this->input->post('Filtro'), 
@@ -221,6 +271,9 @@ class Admin extends CI_Controller {
 
 						redirect('admin');
 
+				}
+
+
 						break;
 
 				case 'Eliminar':
@@ -229,12 +282,11 @@ class Admin extends CI_Controller {
 
 					$this->db->delete('imagefilters',array('Filtro' => $Filter) );
 					$this->db->delete('imageDesc', array('Filtro' => $Filter));
-					redirect('admin#adminPanel');
+
+					redirect('admin');
 
 				break;
 		}
-
-
 
 
 	}

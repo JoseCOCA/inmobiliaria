@@ -1,92 +1,44 @@
 <!DOCTYPE html>
-<html lang="en">
-     <head>
-     <title><?php echo $title; ?></title>
-     <meta charset="utf-8">
-     <meta name="format-detection" content="telephone=no" />
-     <link rel="icon" href="images/favicon.ico">
-     <link rel="shortcut icon" href="images/favicon.ico" />
-     <link rel="stylesheet" href="css/slippry.css">
-     <link rel="stylesheet" href="css/elastislide.css" />
-     <link rel="stylesheet" href="css/style.css">
-     <script src="js/jquery.js"></script>
-     <script src="js/jquery-migrate-1.1.1.js"></script>
-     <script src="js/script.js"></script> 
-     <script src="js/superfish.js"></script>
-     <script src="js/jquery.equalheights.js"></script>
-     <script src="js/jquery.easing.1.3.js"></script>
-     <script src="js/slippry.js"></script>
-    <script src="js/modernizr.custom.17475.js"></script>    
-    <script type="text/javascript" src="js/isotope.js"></script>
-    <script type="text/javascript" src="js/imagesLoaded.pkgd.js"></script>
-    <script type="text/javascript" src="js/imagesLoaded.pkgd.min.js"></script>
-    <script type="text/javascript" src="js/jquery.sticky.js"></script>
+<html lang="es">
+    <head>
+    <title><?= $title; ?></title>
+    <meta charset="utf-8">
+    <meta name="format-detection" content="telephone=no" />
+    <link rel="icon" href="images/favicon.ico">
+    <link rel="shortcut icon" href="images/favicon.ico" />
+    <link rel="stylesheet" href="css/slippry.css">
+    <link rel="stylesheet" href="css/elastislide.css" />
+    <link rel="stylesheet" href="css/style.css">
+    <link type="text/css" rel="stylesheet" href="css/rhinoslider-1.05.css" />
+    <script src="js/jquery.js"></script>
+    <script src="js/jquery-migrate-1.1.1.js"></script>
     <script type="text/javascript" src="js/jquery.popupoverlay.js"></script>
-
     <script>
-     $(document).ready(function(){
-  
-          jQuery('#slippry').slippry();
-           jQuery('#slider').slippry({
-          pager: false,
-          controls: true,
-          });
+        var contact = 'BIENES RAICES / +52 (55) 90 00 30 00'
+          $(document).ready(function() {
+
+          // Initialize the plugin
           $('#adminPanel').popup({
-          pagecontainer: '.page1',
-          transition: 'all 0.3s',
-          scrolllock: true
+            scrolllock: true,
+            transition: 'all 0.3s',
           });
 
+        $('.configFilter').each(function() {
+        $(this).on('click', function (e){
+          var getID = $(this).attr("id");
+          $('.visible').removeClass('.visible').addClass('oculto');
+          $('.'+getID).removeClass('oculto').addClass('visible');
 
-          $('#overlay').popup({
-          pagecontainer: '.page1',
-          transition: 'all 0.3s',
-          scrolllock: true
+          //$('#este-'+getID +' #slider').data('rhinoslider').play();
+          })
+
+
           });
 
-            var $container = $('#iso').imagesLoaded( function() {
-              $container.isotope({
-                filter: '*',
-              animationOptions: {
-                 duration: 750,
-                 easing: 'linear',
-                 queue: false,
-               }
-              });
-            });
-
-            $('#nav a').click(function(){
-              var selector = $(this).attr('data-filter');
-                $container.isotope({ 
-              filter: selector,
-              animationOptions: {
-                 duration: 750,
-                 easing: 'linear',
-                 queue: false,
-               
-               }
-              });
-              return false;
-            });
-
-        $('.showInfo').each(function() {
-
-          var getID = jQuery(this).attr("id");
-
-        jQuery('#'+getID).slippry({
-          pager: false,
-          controls: false,
         });
-
-        });
-
-     }); 
-    function goToByScroll(id){$('html,body').animate({scrollTop: $("#"+id).offset().top},'slow');}
+    </script>
 
 
-     </script>
-        
-   
     <!--[if lt IE 8]>
        <div style=' clear: both; text-align:center; position: relative;'>
          <a href="http://windows.microsoft.com/en-US/internet-explorer/products/ie/home?ocid=ie6_countdown_bannercode">
@@ -105,44 +57,82 @@
 <body class="page1" id="top">
 <!--==============================header=================================-->
 <header>
+
+
+
   <div class="clear"></div>
+<a href="<?= base_url('admin/logout') ?>">CERRAR SESION</a>
+<a href="#" class="adminPanel_open">Modificar</a>
+<?php $this->load->view('adminPanel'); ?>
 
-  <a href="admin/logout">CERRAR SESIÓN</a>
-
-  <a href= "#adminPanel" class="adminPanel_open">Modificar</a>
-
-  <ul id="slippry">
+ <ul id="slippry">
 
      <?php if ($query > 0) {?>
 
             <?php foreach ($query as $row) {?>
                <?php if($row -> principal == '1'){?>
-                    <li>
-                      <a href="#overlay" id="<?=$row -> Filtro ?>" class="overlay_open showInfo">
-                      <img src="images/mascara-principal.png" class="wrap"/>
-                      <img class= "img_slide" src="<?= $row -> url ?>"alt="">
-                      </a>
-                    </li>
+                <li>
+                    <a href="#overlay" data-slippry="<?=$row -> Filtro ?>" data-cont="<?=$row -> Filtro ?>" class="showInfo">
+                        <img src="images/mascara-principal.png" class="wrap"/>
+                        <img class= "img_slide" src="<?= $row -> url ?>"alt="">
+                    </a>
+                </li>
+                <li>
+                    <a href="#overlay" data-slippry="<?=$row -> Filtro ?>" data-cont="<?=$row -> Filtro ?>" class="showInfo">
+                        <img src="images/mascara-principal.png" class="wrap"/>
+                        <img class= "img_slide" src="<?= $row -> url ?>"alt="">
+                    </a>
+                </li>
+                <li>
+                    <a href="#overlay" data-slippry="<?=$row -> Filtro ?>" data-cont="<?=$row -> Filtro ?>" class="showInfo">
+                        <img src="images/mascara-principal.png" class="wrap"/>
+                        <img class= "img_slide" src="<?= $row -> url ?>"alt="">
+                    </a>
+                </li>
 
                 <?php }?>
             <?php }?>
 
         <?php }  ?>
-  </ul> 
-    <p class="contact">CONTACTO</p>
+  </ul>
 
-  <?php $this->load->view('adminPanel'); ?>
 
 
   <div class="menu_block" >
     <nav class="horizontal-nav full-width horizontalNav-notprocessed">
       <ul class="sf-menu">
        <li><a href="<?= base_url() ?>">INICIO</a></li>
+       <li class="menu-separator">|</li>
        <li><a href="<?= base_url("info") ?>">INFORMACIÓN DE EMPRESA</a></li>
+       <li class="menu-separator">|</li>
        <li><a href="<?= base_url("privacy") ?>">AVISO DE PRIVACIDAD</a></li>
+       <li class="menu-separator">|</li>
        <li><a href="<?= base_url("terms") ?>">TERMINOS DE USO</a></li>
      </ul>
     </nav>
-    <div class="clear"></div>       
+    <div class="clear"></div>
   </div>
-</header>  
+</header>
+
+    <div class="slideRec">
+
+    </div>
+    <div id="banner-recomendados" class="mask">
+        <div class="tipo-recomendados"><span>OFICINA</span></div>
+        <div class="specs-recomendados">
+            <div class="specs">
+                <span>Dimensiones: 200 m2</span>
+                <span>Zona Polanco</span>
+                <span>Costo: $10000000</span>
+            </div>
+        </div>
+        <div class="slide-recomendados">
+            <ul class="slider-recomedados">
+                <li><img src="images/homeFull_1.jpg"></li>
+                <li><img src="images/homeFull_2.jpg"></li>
+                <li><img src="images/homeFull_4.jpg"></li>
+            </ul>
+        <div class="mask-recomendado"><h2>CLICK + INFO</h2></div>
+        </div>
+    </div>
+

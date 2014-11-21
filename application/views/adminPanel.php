@@ -48,8 +48,18 @@
             <?php foreach ($query1 as $row) { ?>
 
             <?php 	
-            $FiltroPadre = $row-> Filtro;
-            $Descripcion = $row-> Descripcion;
+            $FiltroPadre    = $row -> Filtro;
+            $Descripcion    = $row -> Descripcion;
+            $Tipo           = $row -> Tipo;
+            $CP             = $row -> CP;
+            $Status         = $row -> Status;
+            $Condiciones    = $row -> Condiciones;
+            $CalleNum       = $row -> CalleNo;
+            $Colonia        = $row -> Colonia;
+            $Delegacion     = $row -> Delegacion;
+            $Dimension      = $row -> Dimension;
+            $Precio         = $row -> Precio;
+
             ?>
 
             <div class="adminInput <?=$row-> Filtro?> oculto">
@@ -97,13 +107,20 @@
 
                         if($query > 0){
 
+                            $principal = '';
+
                             foreach ($query as $row) {
 
                                 $FiltroSlider = $row-> Filtro;
+                                $ImageName = $row -> nombre;
                                 if( $FiltroSlider == $FiltroPadre){
 
-                                    $optionsBanner[$row-> nombre] =  $row -> nombre;
-
+                                    $optionsBanner[$ImageName] =  $ImageName;
+                              
+                                }
+                                
+                                if($row-> principal == '1' and $FiltroPadre == $FiltroSlider){
+                                    $principal = $row-> nombre;
                                 }
 
                             }
@@ -120,7 +137,9 @@
 
                         <?php 
 
-                        echo form_dropdown('principal', $optionsBanner);
+                        echo form_dropdown('principal',$optionsBanner,$principal);
+
+ 
                         ?>
 
                         <p>Tipo inmueble</p>
@@ -136,7 +155,7 @@
 
                         $id = 'id="inmueble"';
 
-                        echo form_dropdown('inmueble', $options,'',$id);
+                        echo form_dropdown('inmueble', $options,$Tipo,$id);
 
                         ?>
 
@@ -153,6 +172,8 @@
 
                         if($query > 0){
 
+                             $recomendado = '';
+
                             foreach ($query as $row) {
 
                                 $FiltroSlider = $row-> Filtro;
@@ -161,12 +182,16 @@
                                     $optionsRec[$row-> nombre] =  $row -> nombre;
 
                                 }
+                                if($row-> recomendado == '1' and $FiltroPadre == $FiltroSlider){
+                                    $recomendado = $row-> nombre;
+                                }
 
                             }
 
                         }
 
-                        echo form_dropdown('recomendado', $optionsRec);
+                        echo form_dropdown('recomendado',$optionsBanner,$recomendado);
+
                         ?>
 
                         <p>Status</p>
@@ -180,7 +205,7 @@
 
                         $id = 'id="status"';
 
-                        echo form_dropdown('Status', $options,'',$id);
+                        echo form_dropdown('Status', $options,$Status,$id);
 
                         ?>
 
@@ -191,20 +216,19 @@
 
                     <div class="AdminHeaders">
                         <p>UBICACIÓN</p>
-
                     </div>
 
                     <p style="padding-top:30px;">Calle y Número:</p>
-                    <input type="text" class="ubiEdit" id="calleNum" name="CalleNumero">
+                    <input type="text" class="ubiEdit" id="calleNum" name="CalleNumero" value="<?= $CalleNum ?>">
 
                     <p>Colonia:</p>
-                    <input type="text" class="ubiEdit" id="colonia" name="Colonia">
+                    <input type="text" class="ubiEdit" id="colonia" name="Colonia" value="<?= $Colonia ?>">
 
                     <p>Delegación:</p>
-                    <input type="text" class="ubiEdit" id="delegacion" name="Delegacion">
+                    <input type="text" class="ubiEdit" id="delegacion" name="Delegacion" value="<?= $Delegacion ?>">
 
                     <p>Codigo Postal:</p>
-                    <input type="text" class="ubiEdit" id="CP" name="CodigoPostal">
+                    <input type="text" class="ubiEdit" id="CP" name="CodigoPostal" value="<?= $CP ?>">
 
                     <div class="contentDesc">
 
@@ -212,20 +236,20 @@
                             <p>DESCRIPCIÓN</p>
                         </div>
 
-                        <textarea id="descripción" name="descripcion" style= "text-aign: justify;"class="ubiEdit" rows="4" cols="50" style="margin-top:30px;" placeholder="Porporcione una descripción detallada"></textarea>          
+                        <textarea id="descripción" name="descripcion" style= "text-aign: justify;"class="ubiEdit" rows="4" cols="50" style="margin-top:30px;" placeholder="Porporcione una descripción detallada"><?= $Descripcion ?></textarea>          
 
                         <div class="AdminHeaders">
                             <p>CONDICIONES DE CONTRATACIÓN</p>
                         </div>   
 
-                        <textarea id="condiciones" name="condiciones" class="ubiEdit" rows="4" cols="50" style="margin-top:30px;" placeholder="Proporcione las condiciones de contratación de considere nesecarias."></textarea> 
+                        <textarea id="condiciones" name="condiciones" class="ubiEdit" rows="4" cols="50" style="margin-top:30px;" placeholder="Proporcione las condiciones de contratación de considere nesecarias."><?= $Condiciones ?></textarea> 
                         <p>Dimensiones:</p>
 
-                        <input type="text" class="ubiEdit" id="dim" name="dimensiones">
+                        <input type="text" class="ubiEdit" id="dim" name="dimensiones" value="<?= $Dimension ?>">
 
                         <p>Precio:</p>
 
-                        <input type="text" class="ubiEdit" id="cost" name="precio">
+                        <input type="text" class="ubiEdit" id="cost" name="precio" value="<?= $Precio ?>">
 
                     </div>
 

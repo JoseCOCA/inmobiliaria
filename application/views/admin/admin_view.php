@@ -39,6 +39,7 @@
           $Delegacion   = $row -> Delegacion;
           $CP           = $row -> CP;
           $Descripcion  = $row -> Descripcion;
+          $Condicion    = $row -> Condicion;
 
 
      ?>
@@ -63,12 +64,12 @@
       <div class="text-content">
         <div class="content1">
           <p>PROPIEDAD: <?=$Tipo?></p>
-          <p>CONDICION: <?=$Tipo?></p>
+          <p>CONDICION: <?=$Condicion?></p>
           <hr>
         </div>
 
         <div class="content2">
-          <p>STATUS: NO DISPONIBLE</p>
+          <p>STATUS: <?=$Status?></p>
 
           <div class="checkbox-1">
 

@@ -4,6 +4,7 @@
     o crear nuevas propiedades
     */ ?>
 
+    
     <div id="adminPanel">
 
         <div class="filter_container">

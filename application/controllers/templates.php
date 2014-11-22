@@ -66,5 +66,10 @@ class Templates extends CI_Controller {
 		$this->load->view('footer2');
 	}
 
+	public function contacto()
+	{
+		$this->load->view('contactForm');
+	}
+
 
 }

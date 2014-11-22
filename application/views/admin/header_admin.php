@@ -15,27 +15,7 @@
 				<script type="text/javascript" src="js/jquery.popupoverlay.js"></script>
 				<script>
 						var contact = 'BIENES RAICES / +52 (55) 90 00 30 00'
-							$(document).ready(function() {
 
-							// Initialize the plugin
-							$('#adminPanel').popup({
-								scrolllock: true,
-								transition: 'all 0.3s',
-							});
-
-						$('.configFilter').each(function() {
-						$(this).on('click', function (e){
-							var getID = $(this).attr("id");
-							$('.visible').removeClass('.visible').addClass('oculto');
-							$('.'+getID).removeClass('oculto').addClass('visible');
-
-							//$('#este-'+getID +' #slider').data('rhinoslider').play();
-							})
-
-
-							});
-
-						});
 				</script>
 
 
@@ -62,8 +42,9 @@
 
 			<div class="clear"></div>
 		<a href="<?= base_url('admin/logout') ?>">CERRAR SESION</a>
-		<a href="#" class="adminPanel_open">Modificar</a>
-		<?php //$this->load->view('adminPanel'); ?>
+		<a href="#overlay" data-cont="adminPanel" class="showInfo">Modificar</a>
+
+		<?php // $this->load->view('adminPanel'); ?>
 
 		 <ul id="slippry">
 

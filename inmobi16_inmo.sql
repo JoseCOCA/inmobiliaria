@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Servidor: 127.0.0.1
--- Tiempo de generación: 20-11-2014 a las 21:05:09
+-- Tiempo de generación: 22-11-2014 a las 00:39:51
 -- Versión del servidor: 5.6.20
 -- Versión de PHP: 5.5.15
 
@@ -48,7 +48,7 @@ CREATE TABLE IF NOT EXISTS `imagedesc` (
   `nombre` varchar(50) CHARACTER SET utf8 COLLATE utf8_unicode_ci NOT NULL,
   `principal` enum('0','1') CHARACTER SET utf8 COLLATE utf8_unicode_ci NOT NULL,
   `recomendado` enum('0','1') CHARACTER SET utf8 COLLATE utf8_unicode_ci NOT NULL
-) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=3 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=7 ;
 
 --
 -- Volcado de datos para la tabla `imagedesc`
@@ -56,7 +56,9 @@ CREATE TABLE IF NOT EXISTS `imagedesc` (
 
 INSERT INTO `imagedesc` (`ID`, `Filtro`, `url`, `nombre`, `principal`, `recomendado`) VALUES
 (1, 'F1', 'images/banners/HomeFull_2.jpg', 'HomeFull_2.jpg', '1', '0'),
-(2, 'F2', 'images/banners/HomeFull_1.jpg', 'HomeFull_1.jpg', '1', '0');
+(2, 'F2', 'images/banners/HomeFull_1.jpg', 'HomeFull_1.jpg', '1', '1'),
+(5, 'F1', 'images/banners/banner_sld.jpg', 'banner_sld.jpg', '0', '0'),
+(6, 'F1', 'images/banners/Camara_1_Final_.png', 'Camara_1_Final_.png', '0', '1');
 
 -- --------------------------------------------------------
 
@@ -70,23 +72,26 @@ CREATE TABLE IF NOT EXISTS `imagefilters` (
   `nombre` varchar(50) NOT NULL,
   `Descripcion` text NOT NULL,
   `Tipo` enum('Casa','Oficina','Departamento','Bodega') NOT NULL,
-  `Status` enum('venta','renta','NoDisponible','') CHARACTER SET utf8 COLLATE utf8_unicode_ci NOT NULL,
+  `Condicion` enum('venta','renta','NoDisponible','') CHARACTER SET utf8 COLLATE utf8_unicode_ci NOT NULL,
   `Condiciones` text NOT NULL,
   `Filtro` varchar(2) CHARACTER SET utf8 COLLATE utf8_unicode_ci NOT NULL,
   `CalleNo` varchar(50) CHARACTER SET utf8 COLLATE utf8_unicode_ci NOT NULL,
   `Colonia` varchar(50) CHARACTER SET utf8 COLLATE utf8_unicode_ci NOT NULL,
   `Delegacion` varchar(50) CHARACTER SET utf8 COLLATE utf8_unicode_ci NOT NULL,
-  `CP` varchar(50) CHARACTER SET utf8 COLLATE utf8_unicode_ci NOT NULL
+  `CP` varchar(50) CHARACTER SET utf8 COLLATE utf8_unicode_ci NOT NULL,
+  `Dimension` varchar(50) CHARACTER SET utf8 COLLATE utf8_unicode_ci NOT NULL,
+  `Precio` varchar(50) CHARACTER SET utf8 COLLATE utf8_unicode_ci NOT NULL,
+  `Status` enum('NO DISPONIBLE','EN REPARACION','EN CONSTRUCCION','EN REMODELACION') CHARACTER SET utf8 COLLATE utf8_unicode_ci NOT NULL
 ) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=18 ;
 
 --
 -- Volcado de datos para la tabla `imagefilters`
 --
 
-INSERT INTO `imagefilters` (`ID`, `url`, `nombre`, `Descripcion`, `Tipo`, `Status`, `Condiciones`, `Filtro`, `CalleNo`, `Colonia`, `Delegacion`, `CP`) VALUES
-(13, 'images/filtros/house.jpg', 'house.jpg', '', 'Casa', 'venta', '', 'F1', '', '', '', ''),
-(14, 'images/filtros/house1.jpg', 'house1.jpg', '', 'Casa', 'venta', '', 'F2', '', '', '', ''),
-(17, 'images/filtros/house2.jpg', 'house2.jpg', '', 'Casa', 'venta', '', 'F3', '', '', '', '');
+INSERT INTO `imagefilters` (`ID`, `url`, `nombre`, `Descripcion`, `Tipo`, `Condicion`, `Condiciones`, `Filtro`, `CalleNo`, `Colonia`, `Delegacion`, `CP`, `Dimension`, `Precio`, `Status`) VALUES
+(13, 'images/filtros/house.jpg', 'house.jpg', 'Casa bonita.\r\nQue tenga una bonita vista', 'Oficina', 'venta', 'Que se quede como esta.\r\nQue tenga una bonita vista', 'F1', 'Av. El Durazno, And. 45', 'El Durazno', 'Miguel hidalgo', '1340', '1000 m2', '100900', 'NO DISPONIBLE'),
+(14, 'images/filtros/house1.jpg', 'house1.jpg', '', 'Casa', 'venta', '', 'F2', '', '', '', '', '', '', 'NO DISPONIBLE'),
+(17, 'images/filtros/house2.jpg', 'house2.jpg', '', 'Casa', 'venta', '', 'F3', '', '', '', '', '', '', 'NO DISPONIBLE');
 
 -- --------------------------------------------------------
 
@@ -151,7 +156,7 @@ MODIFY `ID` int(2) NOT NULL AUTO_INCREMENT;
 -- AUTO_INCREMENT de la tabla `imagedesc`
 --
 ALTER TABLE `imagedesc`
-MODIFY `ID` int(1) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=3;
+MODIFY `ID` int(1) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=7;
 --
 -- AUTO_INCREMENT de la tabla `imagefilters`
 --

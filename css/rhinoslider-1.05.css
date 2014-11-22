@@ -81,7 +81,7 @@
 	bottom: -3px;
 	left: 50%;
 	margin:0 0 0 -50px; */
-	z-index: 10;
+	/*z-index: 10;*/
 	/* background: #fff;
 	padding:0; */
 	text-align: right;
@@ -90,19 +90,20 @@
 }
 
 .rhino-bullets:before, .rhino-bullets:after {
-	position:absolute;
+	/*position:absolute;*/
 	display:block;
-	left:-16px;
+	/*left:-16px;*/
 	content:' ';
 	width:16px;
-	height:26px;
-	background:url(../img/rhinoslider-sprite.png) -224px 0 no-repeat;
+	height:auto;
+	/*height:26px;*/
+	/*background:url(../img/rhinoslider-sprite.png) -224px 0 no-repeat;*/
 }
 
 .rhino-bullets:after {
-	left:auto;
-	right:-16px;
-	background-position: -240px 0;
+	/*left:auto;*/
+	/*right:-16px;*/
+	/*background-position: -240px 0;*/
 }
 
 .rhino-bullets li {

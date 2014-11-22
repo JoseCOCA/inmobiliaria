@@ -20,15 +20,6 @@
     	                <div class="box_iso <?=$row->Tipo?>">
     	                    <a href="#overlay" data-cont="<?=$row -> Filtro ?>" class= "showInfo"><img id= "img_filter" src="<?= $row -> url ?>"alt=""></a>
     	                </div>
-    	                <div class="box_iso <?=$row->Tipo?>">
-    	                    <a href="#overlay" data-cont="<?=$row -> Filtro ?>" class= "showInfo"><img id= "img_filter" src="<?= $row -> url ?>"alt=""></a>
-    	                </div>
-    	                <div class="box_iso <?=$row->Tipo?>">
-    	                    <a href="#overlay" data-cont="<?=$row -> Filtro ?>" class= "showInfo"><img id= "img_filter" src="<?= $row -> url ?>"alt=""></a>
-    	                </div>
-    	                <div class="box_iso <?=$row->Tipo?>">
-    	                    <a href="#overlay" data-cont="<?=$row -> Filtro ?>" class= "showInfo"><img id= "img_filter" src="<?= $row -> url ?>"alt=""></a>
-    	                </div>
 
     	        <?php }?>
 
@@ -81,37 +72,101 @@
 					<hr>
 				</div>
 
-				<div class="ubic">
-					<p>UBICACIÓN:</p>
-					<p class="styledP"style="width:83%; "><?//=$row-> Ubicacion ?></p>
+				<div id="contenido-descripcion">
+					<div id="descripcion">
+						<div class="ubic">
+							<p>UBICACIÓN:</p>
+							<p class="styledP"style="width:83%; "><?=$row-> CalleNo ?></p>
+						</div>
+
+						<div class="contentDesc">
+
+							<p>DESCRIPCIÓN</p>
+
+							<p class="styledP" id= "desc"><?=$row-> Descripcion ?></p>
+
+							<p>CONDICIONES DE CONTRATACIÓN</p>
+
+						</div>
+
+						<div class= "styledP" id="mt">
+							<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Optio ratione autem quas sunt necessitatibus nam recusandae voluptates rerum veniam dolore at, id quisquam dolorum facere eius ipsam, saepe delectus iure.</p>
+							<ul style="margin-top: 20px;" >
+								<li>CONDICION 1</li>
+								<li>CONDICION 2</li>
+								<li>Condicion 3</li>
+							</ul>
+						</div>
+
+						<hr>
+					</div>
+					<div class="notificationForm">
+						<div class="formcontent">
+
+							<?php
+
+								echo form_open('admin/getContactData');
+
+								$data1 = array(
+								'name' => 'Nombre'.$i,
+								'id'  =>  'Nombre'
+								);
+								echo form_label($data1['name'].':', $data1['name']);
+								echo form_input($data1);
+
+								$data2 = array(
+								'name' => 'Telefono',
+								'id'  =>  'Telefono'
+								);
+								echo form_label($data2['name'].':', $data2['name']);
+								echo form_input($data2);
+								$data3 = array(
+								'name' => 'Celular',
+								'id'  =>  'Celular'
+								);
+								echo form_label($data3['name'].':', $data3['name']);
+								echo form_input($data3);
+
+								$data4 = array(
+								'name' => 'Correo',
+								'id'  =>  'Correo'
+								);
+								echo form_label($data4['name'].':', $data4['name']);
+								echo form_input($data4);
+
+								$data5 = array(
+								'name' => 'Empresa',
+								'id'  =>  'Empresa'
+								);
+								echo form_label($data5['name'].':', $data5['name']);
+								echo form_input($data5);
+
+								$data6 = array(
+								'name' => 'Comentarios',
+								'id'  =>  'Comentarios'
+								);
+
+								echo form_label($data6['name'].':', $data6['name']);
+								echo form_textarea('Comentarios');?>
+
+							<div class= "subButton">
+								<?php
+									echo form_submit('submit', 'Enviar');
+								?>
+							</div>
+
+								<?php
+									form_close();
+								?>
+
+						</div>
+					</div>
 				</div>
-
-				<div class="contentDesc">
-
-					<p>DESCRIPCIÓN</p>
-
-					<p class="styledP" id= "desc"><?=$row-> Descripcion ?></p>
-
-					<p>CONDICIONES DE CONTRATACIÓN</p>
-
-				</div>
-
-				<div class= "styledP" id="mt">
-					<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Optio ratione autem quas sunt necessitatibus nam recusandae voluptates rerum veniam dolore at, id quisquam dolorum facere eius ipsam, saepe delectus iure.</p>
-					<ul style="margin-top: 20px;" >
-						<li>CONDICION 1</li>
-						<li>CONDICION 2</li>
-						<li>Condicion 3</li>
-					</ul>
-				</div>
-
-				<hr>
 
 
 			</div>
 		</div>
-
-	<?php  } ?>
+	<?php $i++; } ?>
 
 	</div>
 

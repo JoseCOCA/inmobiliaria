@@ -1,14 +1,5 @@
-$(document).on('ready', function($){
+jQuery(document).on('ready', function($){
 	$=jQuery;
-
-	$('.iso').isotope({
-		filter: '*',
-		animationOptions: {
-		duration: 750,
-		easing: 'linear',
-		queue: false,
-		}
-	});
 
 	$('#slippry').slippry({
 		slippryWrapper: '<div class="slippry-main sy-box" />',
@@ -21,25 +12,25 @@ $(document).on('ready', function($){
 
 
 	var $isoContainer = $('.iso');
+	$isoContainer.isotope({
+		filter: '*',
+		animationOptions: {
+			duration: 750,
+			easing: 'linear',
+			queue: false,
+			resizable: true, // disable normal resizing
+			// set columnWidth to a percentage of container width
+			masonry: { columnWidth: $isoContainer.width() / 5 }
+		}
+	});
 	$('#isotope-cont #nav a').click(function(e){
 		e.preventDefault();
 		$('.nav-iso-active').removeClass('nav-iso-active');
 		$(this).addClass('nav-iso-active');
 		var selector = $(this).attr('data-filter');
-		$isoContainer.isotope({
-			filter: selector,
-			animationOptions: {
-			duration: 750,
-			easing: 'linear',
-			queue: false,
-			resizable: true, // disable normal resizing
-		  // set columnWidth to a percentage of container width
-		  masonry: { columnWidth: $isoContainer.width() / 5 }
-			}
-		});
-		return false;
+		$isoContainer.isotope({ filter: selector })
 	});
-	
+
 	// update columnWidth on window resize
 	$(window).smartresize(function(){
 	  $isoContainer.isotope({
@@ -47,7 +38,7 @@ $(document).on('ready', function($){
 	    masonry: { columnWidth: $isoContainer.width() / 5 }
 	  });
 	});
-	
+
 	$('.showInfo').each(function() {
 		$(this).on('click', function (e){
 			var getID = $(this).attr("data-cont");
@@ -70,7 +61,7 @@ $(document).on('ready', function($){
 		slideNextDirection: 'toLeft',
 		slidePrevDirection: 'toRight'
 	});
-	
+
 	$('.slider-recomedados').rhinoslider({
 		autoPlay: true,
 		easing: 'easeInExpo',

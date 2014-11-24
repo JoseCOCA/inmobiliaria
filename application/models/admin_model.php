@@ -47,15 +47,25 @@ class Admin_model extends CI_Model {
 
 		public function get_desc($Filtro)
 	{
-		$query = $this->db->get_where('imagedesc',array('Filtro' => $Filtro));
+		$data;
+		$query = $this->db->get_where('imagefilters',array('Filtro' => $Filtro));
+		$queryB = $this->db->get_where('imagedesc',array('Filtro' => $Filtro));
 		if ($query->num_rows() > 0) {
 		
 			foreach ($query->result() as $row) {
 				$data[] = $row;
 			
 			}
-			return $data;		
+			// return $data;		
 		}
+		if ($queryB->num_rows() > 0) {
+		
+			foreach ($queryB->result() as $rowB) {
+				$data[] = $rowB;
+			
+			}
+		}
+		return $data;		
 	}
 		public function get_imagesFilter()
 	{

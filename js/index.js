@@ -48,20 +48,49 @@ jQuery(document).on('ready', function($){
 				id : getID
 			}
 			$.ajax({
-				url: base_url+'welcome/increase',
+				url: base_url+'ajax/index',
 				data: data,
 				type : 'POST',
 				cache: false
 			}).done(function (data){
-				data = JSON.parse(data);
+				var dataA = data;
 				console.log(data);
-				var count = data.length;
-				console.log(count);
-				for (var i = 0; i < count; i++) {
-					console.log(data[i]);
-				};
+				data = JSON.parse(data);
+				var datos = data[0];
+				// {"ID":"13","url":"images\/filtros\/house.jpg","nombre":"house.jpg","Descripcion":"Casa bonita.\r\nQue tenga una bonita vista","Tipo":"Oficina","Condicion":"venta","Condiciones":"Que se quede como esta.\r\nQue tenga una bonita vista","Filtro":"F1","CalleNo":"Av. El Durazno, And. 45","Colonia":"El Durazno","Delegacion":"Miguel hidalgo","CP":"1340","Dimension":"1000 m2","Precio":"100900","Status":"NO DISPONIBLE"} 	ESTOS SON LOS DATOS QUE RECIBE
+				$('.checkbox-1 input[type="checkbox"]').attr('checked', false);
+				$('#tipo-propiedad').html(datos['Tipo']);
+				$('#condicion-propiedad').html(datos['Condicion']);
+				$('#ubicacion-propiedad').html(datos['CalleNo']+' '+datos['Colonia']+' '+datos['Delegacion']+' '+datos['CP']);
+				$('#desc').html(datos['Descripcion']);
+				$('#condiciones-propiedad-compra').html(datos['Condiciones']);
+				
+
+				$('.checkbox-1').on('click', function(event){
+					event.stopImmediatePropagation();
+					// event.preventDefault();
+					var este = $(this);
+					var checkbox = este.find('input[type="checkbox"]');
+					// var cont = $('.cont');
+					$(checkbox).change(function(e){
+						e.stopImmediatePropagation();
+						if(checkbox.is(':checked')){
+							$('#descripcion').slideUp('slow', function(){
+								$('#notificationForm').slideDown('slow');
+							});
+							// $('#notificationForm, #descripcion').fadeToggle();
+						}else{
+							$('#notificationForm').slideUp('slow', function(){
+								$('#descripcion').slideDown('slow');
+							});
+							// $('#notificationForm, #descripcion').fadeToggle();
+						};
+					})
+				})
+
 			}).fail(function (status, statusText, responseXML){
 				console.log(statusText);
+				console.log(responseXML);
 			});
 			// $('.visible').removeClass('.visible').addClass('oculto');
 			// $('#'+getID).removeClass('oculto').addClass('visible');
@@ -70,24 +99,8 @@ jQuery(document).on('ready', function($){
 		})
 	});
 
-	// $('.checkbox-1').each(function(){
-	// 	$(this).on('click', function(event){
-	// 		event.stopImmediatePropagation();
-	// 		// event.preventDefault();
-	// 		var este = $(this);
-	// 		var checkbox = este.find('input[type="checkbox"]');
-	// 		// var cont = $('.cont');
-	// 		console.log(checkbox);
-	// 		if(checkbox.is(':checked')){
-	// 			este.closest('.notificationForm').show();
-	// 		}else{
-	// 			este.closest('.notificationForm').hide()
-	// 		};
 
-	// 	})
-	// })
-
-	$('.slider-cont').rhinoslider({
+	/*$('.slider-cont').rhinoslider({
 		autoPlay: false,
 		changeBullets: 'before',
 		controlsPlayPause: false,
@@ -96,7 +109,7 @@ jQuery(document).on('ready', function($){
 		showControls: 'always',
 		slideNextDirection: 'toLeft',
 		slidePrevDirection: 'toRight'
-	});
+	});*/
 
 	$('.slider-recomedados').rhinoslider({
 		autoPlay: true,

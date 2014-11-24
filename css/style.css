@@ -839,7 +839,7 @@ filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#fdfefe', end
     margin-top: 30px;
 }
 .content1 p{
-    margin-right: 10%;
+    margin-right: 5%;
 }
 
 #inmueble{
@@ -908,7 +908,7 @@ input[type=checkbox] {
   height: 3px;
 }
 .ubic{
-    margin-top: 80px;
+    /*margin-top: 80px;*/
 }
 .ubic p{
    display: inline-block;
@@ -1220,18 +1220,19 @@ img.wrap{
 
 #contenido-descripcion{
 	position: relative;
+    padding-top: 10%;
 }
-.notificationForm{
+#notificationForm{
 	display: none;
 	height: 100%;
 	left: 0;
-	position: absolute;
+	/*position: absolute;*/
 	top: 0;
 	width: 100%;
 }
-.notificationForm input[type="text"],
-.notificationForm input[type="email"],
-.notificationForm textarea{
+#notificationForm input[type="text"],
+#notificationForm input[type="email"],
+#notificationForm textarea{
 	background: #4C95A5;
 	border: none;
 	color: white;
@@ -1240,22 +1241,22 @@ img.wrap{
 	padding: 5px;
 	width: calc(100%/3);
 }
-.notificationForm label:last-of-type{
+#notificationForm label:last-of-type{
 	width: 15%;
 }
-.notificationForm textarea{
+#notificationForm textarea{
 	height: 100px;
 	max-height: 300px;
 	max-width: 83%;
 	width: 83%;
 }
-.notificationForm label{
+#notificationForm label{
 	width: 15%;
 }
-.notificationForm .subButton{
+#notificationForm .subButton{
 	text-align: center;
 }
-.notificationForm input[type="submit"]{
+#notificationForm input[type="submit"]{
 	background: none repeat scroll 0% 0% transparent;
 	border-radius: 5px !important;
 	border: 1px solid #C58A3E;

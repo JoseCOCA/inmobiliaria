@@ -30,41 +30,33 @@
 	<div id="overlay">
 	<a href="#" class=""><div id="overlay-back"></div></a>
 
-	<?php $i=0; foreach ($query1 as $row) { ?>
-		<div class="portada overlay-cont oculto" id="<?=$row -> Filtro ?>">
+		<div class="portada overlay-cont" id="">
 
 			<a href="#close" id="close" class=""></a>
 
 				<div class="slide-cont">
-					<div class="slide" id="este-<?=$row -> Filtro ?>">
-						<ul class="slider-cont" data-slide="<?=$row -> Filtro ?>" id="slider">
-							<li><img src="http://lorempixel.com/g/750/450" alt="" class="image_slide"></li>
-							<li><img src="http://lorempixel.com/750/450" alt="" class="image_slide"></li>
-							<li><img src="http://lorempixel.com/g/750/450/city" alt="" class="image_slide"></li>
-							<li><img src="http://lorempixel.com/g/750/450" alt="" class="image_slide"></li>
-							<li><img src="http://lorempixel.com/750/450" alt="" class="image_slide"></li>
-							<li><img src="http://lorempixel.com/g/750/450/city" alt="" class="image_slide"></li>
-							<li><img src="http://lorempixel.com/g/750/450" alt="" class="image_slide"></li>
-							<li><img src="http://lorempixel.com/750/450" alt="" class="image_slide"></li>
-							<li><img src="http://lorempixel.com/g/750/450/city" alt="" class="image_slide"></li>
+					<div class="slide" id="este-">
+						<ul class="slider-cont" data-slide="" id="slider">
+							<!-- IMÁGENES CARRUSEL PROPIEDAD -->
+							<!-- <li><img src="http://lorempixel.com/g/750/450" alt="" class="image_slide"></li> -->
 						</ul>
 					</div>
 				</div>
 
 			<div class="text-content">
 				<div class="content1">
-					<p>PROPIEDAD: <?=$row-> Tipo?></p>
-					<p>CONDICIÓN: <?=$row-> Tipo?></p>
+					<p>PROPIEDAD: </p><p id="tipo-propiedad"><!-- TIPO --></p>
+					<p>CONDICIÓN: </p><p id="condicion-propiedad"><!-- CONDICION --></p>
 					<hr>
 				</div>
 
 				<div class="content2">
-					<p>STATUS: NO DISPONIBLE</p>
+					<p>STATUS: </p><P id="status-prop"><!-- STATUS --></P>
 
 					<div class="checkbox-1">
 
-						<input type="checkbox" name="reservacion" id="reservación-<?=$i?>">
-						<label for="reservación-<?=$i?>"></label>
+						<input type="checkbox" name="reservacion" id="reservación-">
+						<label for="reservación-"></label>
 
 					</div>
 
@@ -76,31 +68,26 @@
 					<div id="descripcion">
 						<div class="ubic">
 							<p>UBICACIÓN:</p>
-							<p class="styledP"style="width:83%; "><?=$row-> CalleNo ?></p>
+							<p id="ubicacion-propiedad" class="styledP"style="width:83%; "><!-- UBICACIÓN --></p>
 						</div>
 
 						<div class="contentDesc">
 
 							<p>DESCRIPCIÓN</p>
 
-							<p class="styledP" id= "desc"><?=$row-> Descripcion ?></p>
+							<p class="styledP" id= "desc"><!-- DESCRIPCIÓN --></p>
 
 							<p>CONDICIONES DE CONTRATACIÓN</p>
 
 						</div>
 
 						<div class= "styledP" id="mt">
-							<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Optio ratione autem quas sunt necessitatibus nam recusandae voluptates rerum veniam dolore at, id quisquam dolorum facere eius ipsam, saepe delectus iure.</p>
-							<ul style="margin-top: 20px;" >
-								<li>CONDICION 1</li>
-								<li>CONDICION 2</li>
-								<li>Condicion 3</li>
-							</ul>
+							<p id="condiciones-propiedad-compra"><!-- CONDICIONES --></p>
 						</div>
 
 						<hr>
 					</div>
-					<div class="notificationForm">
+					<div id="notificationForm">
 						<div class="formcontent">
 
 							<?php
@@ -109,7 +96,7 @@
 
 								$data1 = array(
 								'name' => 'Nombre',
-								'id'  =>  'Nombre'.$i
+								'id'  =>  'Nombre'
 								);
 								echo form_label($data1['name'].':', $data1['name']);
 								echo form_input($data1);
@@ -167,7 +154,7 @@
 
 			</div>
 		</div>
-	<?php $i++; } ?>
+	<?php ?>
 
 	</div>
 

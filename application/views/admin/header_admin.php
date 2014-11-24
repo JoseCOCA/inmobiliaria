@@ -12,7 +12,7 @@
 				<link type="text/css" rel="stylesheet" href="css/rhinoslider-1.05.css" />
 				<script src="js/jquery.js"></script>
 				<script src="js/jquery-migrate-1.1.1.js"></script>
-				<script type="text/javascript" src="js/jquery.popupoverlay.js"></script>
+				<!-- // <script type="text/javascript" src="js/jquery.popupoverlay.js"></script> -->
 				<script>
 						var contact = 'BIENES RAICES / +52 (55) 90 00 30 00'
 
@@ -42,9 +42,13 @@
 
 			<div class="clear"></div>
 		<a href="<?= base_url('admin/logout') ?>">CERRAR SESION</a>
-		<a href="#overlay" data-cont="adminPanel" class="showInfo">Modificar</a>
 
+<<<<<<< HEAD
 		<?php  $this->load->view('adminPanel'); ?>
 
 		 
 
+=======
+
+		</header>
+>>>>>>> 803a1404eeaae0990aa75cd7f91aa815e8f59035

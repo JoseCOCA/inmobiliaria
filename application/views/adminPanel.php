@@ -1,3 +1,4 @@
+
     <?php /* Panel de administración para la inmobiliaria:
     En este se muestra un formulario para la modificación de la información en las 
     descripciones de las propiedades existentes, se tiene la posibilidad de borrar
@@ -48,7 +49,7 @@
 
             <?php foreach ($query1 as $row) { ?>
 
-            <?php 	
+            <?php   
             $FiltroPadre    = $row -> Filtro;
             $Descripcion    = $row -> Descripcion;
             $Tipo           = $row -> Tipo;
@@ -63,7 +64,7 @@
 
             ?>
 
-            <div class="adminInput <?=$row-> Filtro?> oculto">
+            <div class="adminInput <?=$row-> Filtro?> ">
 
                 <a href="#"  class="adminPanel_close"><img id="close" src="images/boton_close.png" alt=""></a>
 
@@ -270,6 +271,7 @@
 
         </div>
 
-    </div>			
+    </div>              
+
 
 

@@ -1,6 +1,8 @@
 jQuery(document).on('ready', function($){
 	$=jQuery;
 
+	$('.checkbox-1 input[type="checkbox"]').attr('checked','');
+
 	$('#slippry').slippry({
 		slippryWrapper: '<div class="slippry-main sy-box" />',
 		transition: 'fade',
@@ -42,14 +44,42 @@ jQuery(document).on('ready', function($){
 	$('.showInfo').each(function() {
 		$(this).on('click', function (e){
 			var getID = $(this).attr("data-cont");
-			$('.visible').removeClass('.visible').addClass('oculto');
-			$('#'+getID).removeClass('oculto').addClass('visible');
+			data = {
+				id : getID
+			}
+			$.ajax({
+				url: base_url+'welcome/increase',
+				data: data,
+				type : 'POST',
+				cache: false
+			}).done(function (data){
+				console.log(data);
+			}).fail(function (status, statusText, responseXML){
+				console.log(statusText);
+			});
+			// $('.visible').removeClass('.visible').addClass('oculto');
+			// $('#'+getID).removeClass('oculto').addClass('visible');
 
-			$('#este-'+getID +' #slider').data('rhinoslider').play();
+			// $('#este-'+getID +' #slider').data('rhinoslider').play();
 		})
-
-
 	});
+
+	// $('.checkbox-1').each(function(){
+	// 	$(this).on('click', function(event){
+	// 		event.stopImmediatePropagation();
+	// 		// event.preventDefault();
+	// 		var este = $(this);
+	// 		var checkbox = este.find('input[type="checkbox"]');
+	// 		// var cont = $('.cont');
+	// 		console.log(checkbox);
+	// 		if(checkbox.is(':checked')){
+	// 			este.closest('.notificationForm').show();
+	// 		}else{
+	// 			este.closest('.notificationForm').hide()
+	// 		};
+
+	// 	})
+	// })
 
 	$('.slider-cont').rhinoslider({
 		autoPlay: false,

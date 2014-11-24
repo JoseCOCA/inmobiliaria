@@ -33,7 +33,7 @@
 	<?php $i=0; foreach ($query1 as $row) { ?>
 		<div class="portada overlay-cont oculto" id="<?=$row -> Filtro ?>">
 
-			<a href="#close" class=""><img id="close" src="images/boton_close.png" alt=""></a>
+			<a href="#close" id="close" class=""></a>
 
 				<div class="slide-cont">
 					<div class="slide" id="este-<?=$row -> Filtro ?>">
@@ -63,8 +63,8 @@
 
 					<div class="checkbox-1">
 
-						<input type="checkbox" name="reservacion" id="reservación">
-						<label for="reservación"></label>
+						<input type="checkbox" name="reservacion" id="reservación-<?=$i?>">
+						<label for="reservación-<?=$i?>"></label>
 
 					</div>
 
@@ -108,8 +108,8 @@
 								echo form_open('admin/getContactData');
 
 								$data1 = array(
-								'name' => 'Nombre'.$i,
-								'id'  =>  'Nombre'
+								'name' => 'Nombre',
+								'id'  =>  'Nombre'.$i
 								);
 								echo form_label($data1['name'].':', $data1['name']);
 								echo form_input($data1);
@@ -140,7 +140,7 @@
 								);
 								echo form_label($data5['name'].':', $data5['name']);
 								echo form_input($data5);
-
+								echo '<br />';
 								$data6 = array(
 								'name' => 'Comentarios',
 								'id'  =>  'Comentarios'
@@ -149,6 +149,7 @@
 								echo form_label($data6['name'].':', $data6['name']);
 								echo form_textarea('Comentarios');?>
 
+								<hr/>
 							<div class= "subButton">
 								<?php
 									echo form_submit('submit', 'Enviar');

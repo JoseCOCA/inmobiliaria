@@ -43,7 +43,8 @@ $route['404_override'] = '';
 $route['privacy'] = "templates/privacy";
 $route['terms'] = "templates/terms";
 $route['info'] = "templates/info";
-$route['contacto'] = "templates/contact";
+$route['contacto'] = "templates/contacto";
+$route['descripcion'] = "templates/descripcion";
 
 
 /* End of file routes.php */

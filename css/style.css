@@ -806,11 +806,26 @@ filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#fdfefe', end
 	max-height: 100%;
 }
 #close{
-position: relative;
-top: -13px;
-left: 97%;
+	background:#9B005D;
+	border-radius: 50%;
+	display: inline-block;
+	height: 39px;
+	left: 97%;
+	position: relative;
+	top: -13px;
+	width: 39px;
 }
-
+#close:after {
+	color: white;
+    content: "X";
+    font-size: 1.5em;
+    font-weight: bolder;
+    left: 50%;
+    position: absolute;
+    text-align: center;
+    top: 50%;
+    transform: translate(-50%, -50%) !important;
+}
 .text-content{
     font-family: "DINPro";
     font-size: 20px;
@@ -885,12 +900,12 @@ input[type=checkbox] {
     background: #FF7361;
 }
 
-.text-content hr{
+.portada hr{
   border: 0;
   width: 100%;
-  color: #CC6600;
-  background-color: #CC6600;
-  height: 5px;
+  color: #C58A3E;
+  background-color: #C58A3E;
+  height: 3px;
 }
 .ubic{
     margin-top: 80px;
@@ -1199,4 +1214,55 @@ img.wrap{
 	width: 100%;
 	max-width: 100% !important;
 	max-height: 100% !important
+}
+
+/**	 FORM PARA RECIBIR NOTIFICACIONES DE PROPIEDADES*/
+
+#contenido-descripcion{
+	position: relative;
+}
+.notificationForm{
+	display: none;
+	height: 100%;
+	left: 0;
+	position: absolute;
+	top: 0;
+	width: 100%;
+}
+.notificationForm input[type="text"],
+.notificationForm input[type="email"],
+.notificationForm textarea{
+	background: #4C95A5;
+	border: none;
+	color: white;
+	height: 20px;
+	margin-bottom: 10px;
+	padding: 5px;
+	width: calc(100%/3);
+}
+.notificationForm label:last-of-type{
+	width: 15%;
+}
+.notificationForm textarea{
+	height: 100px;
+	max-height: 300px;
+	max-width: 83%;
+	width: 83%;
+}
+.notificationForm label{
+	width: 15%;
+}
+.notificationForm .subButton{
+	text-align: center;
+}
+.notificationForm input[type="submit"]{
+	background: none repeat scroll 0% 0% transparent;
+	border-radius: 5px !important;
+	border: 1px solid #C58A3E;
+	color: #FFF;
+	display: inline-table;
+	font-size: 18px;
+	height: 30px;
+	margin: auto;
+	width: 15%;
 }

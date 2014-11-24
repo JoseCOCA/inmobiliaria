@@ -13,7 +13,8 @@
 	<script src="js/jquery.js"></script>
 	<script src="js/jquery-migrate-1.1.1.js"></script>
     <script>
-		var contact = 'BIENES RAICES / +52 (55) 90 00 30 00'
+		var contact = 'BIENES RAICES / +52 (55) 90 00 30 00';
+		var base_url = '<?php echo base_url()?>';
     </script>
 
 

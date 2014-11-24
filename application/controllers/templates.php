@@ -71,5 +71,10 @@ class Templates extends CI_Controller {
 		$this->load->view('contactForm');
 	}
 
+	public function descripcion()
+	{
+		$this->load->view('getDescription');
+	}
+
 
 }

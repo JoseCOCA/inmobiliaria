@@ -53,7 +53,13 @@ jQuery(document).on('ready', function($){
 				type : 'POST',
 				cache: false
 			}).done(function (data){
+				data = JSON.parse(data);
 				console.log(data);
+				var count = data.length;
+				console.log(count);
+				for (var i = 0; i < count; i++) {
+					console.log(data[i]);
+				};
 			}).fail(function (status, statusText, responseXML){
 				console.log(statusText);
 			});

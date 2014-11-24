@@ -15,7 +15,7 @@ class Welcome extends CI_Controller {
 	}
 
 	function increase(){
-	   echo 'algo';
+	   echo json_encode($this->admin_model->get_imagesDesc());
 	}
 
 

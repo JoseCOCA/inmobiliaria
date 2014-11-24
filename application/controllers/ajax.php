@@ -1,6 +1,6 @@
 <?php if ( ! defined('BASEPATH')) exit('No direct script access allowed');
 
-class Request extends CI_Controller {
+class Ajax extends CI_Controller {
 
 	public function __construct()
 	{
@@ -10,10 +10,11 @@ class Request extends CI_Controller {
 
 	public function index()
 	{
-		$data = array(
-			'query' => $this->admin_model->get_desc()
-			);
-		echo json_encode($data);
+		if($Filtro = $this->input->post('id')){ //Agregar nombre del post de ajax;
+			$query => $this->admin_model->get_desc($Filtro);
+		    echo json_encode($query);
+		}
+
 	}
 
 }

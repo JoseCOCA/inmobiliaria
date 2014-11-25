@@ -54,18 +54,6 @@
 						<img class= "img_slide" src="<?= $row -> url ?>"alt="">
 					</a>
 				</li>
-				<li>
-					<a href="#overlay" data-slippry="<?=$row -> Filtro ?>" data-cont="<?=$row -> Filtro ?>" class="showInfo">
-						<img src="images/mascara-principal.png" class="wrap"/>
-						<img class= "img_slide" src="<?= $row -> url ?>"alt="">
-					</a>
-				</li>
-				<li>
-					<a href="#overlay" data-slippry="<?=$row -> Filtro ?>" data-cont="<?=$row -> Filtro ?>" class="showInfo">
-						<img src="images/mascara-principal.png" class="wrap"/>
-						<img class= "img_slide" src="<?= $row -> url ?>"alt="">
-					</a>
-				</li>
 
                 <?php }?>
             <?php }?>
@@ -105,10 +93,20 @@
 		</div>
 		<div class="slide-recomendados">
 			<ul class="slider-recomedados">
-				<li><img src="images/homeFull_1.jpg"></li>
-				<li><img src="images/homeFull_2.jpg"></li>
-				<li><img src="images/homeFull_4.jpg"></li>
+			<?php if ($query > 0) {?>
+
+            <?php foreach ($query as $row) {?>
+				<?php if($row -> recomendado == '1'){?>
+				<li>
+					<a href="#overlay" data-slippry="<?=$row -> Filtro ?>" data-cont="<?=$row -> Filtro ?>" class="showInfo">
+						<img  src="<?= $row -> url ?>"alt="">
+					</a>
+				</li>
+					<?php }?>
+            <?php }?>
+        <?php }  ?>
 			</ul>
+
 		<div class="mask-recomendado"><h2>CLICK + INFO</h2></div>
 		</div>
 	</div>

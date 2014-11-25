@@ -158,7 +158,7 @@ jQuery(document).on('ready', function($){
 	$('.menu_block').one('sticky-start', function (e) {
 		e.preventDefault();
 		var altura = document.querySelector('.menu_block').offsetHeight;
-		$('#nav').sticky({topSpacing:46, getWidthFrom: '#isotope-cont'}).css({'z-index': '10', 'width': '65%'});
+		$('#nav').sticky({topSpacing:46, getWidthFrom: '#isotope-cont'}).css({'z-index': '10', });
 	});
 
 function goToByScroll(id){$('html,body').animate({scrollTop: $("#"+id).offset().top},'slow');}

@@ -1268,3 +1268,13 @@ img.wrap{
 	margin: auto;
 	width: 15%;
 }
+
+/*media queries*/
+
+@media (max-width: 1024px) {
+
+    .menu_block li{
+        font-size: 18px;
+    }
+    
+}

@@ -36,16 +36,14 @@
 
 		<body class="page1" id="top">
 		<!--==============================header=================================-->
-		<header>
+		<header style="padding-top:30px;">
 
 
 
 			<div class="clear"></div>
-		<a href="<?= base_url('admin/logout') ?>">CERRAR SESION</a>
-
-		<?php  $this->load->view('adminPanel'); ?>
-
-		 
+		<div style="width: 200px; padding: 12px; background-color: #4B9BAF; color: #fff; margin: 0 auto; text-align: center; margin-bottom: 30px; font-size: 20px; border-radius: 10px;">
+		<a href="<?= base_url('admin/logout') ?>">CERRAR SESION</a>			
+		</div>
 
 
 		</header>

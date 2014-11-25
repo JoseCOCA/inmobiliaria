@@ -43,8 +43,16 @@ jQuery(document).on('ready', function($){
 
 	$('.showInfo').each(function() {
 		$(this).on('click', function (e){
-			if($('ul.slider-cont').data('rhinoslider')){
-				$('ul.slider-cont').data('rhinoslider').pause();
+			if($('ul#slider').data('rhinoslider')){
+				$('.slide-cont').empty();
+				$('<div/>', {
+					id: 'slide',
+					class: 'slide'
+				}).appendTo('.slide-cont');
+				$('<ul/>', {
+					id: 'slider',
+					class: 'slider-cont'
+				}).appendTo('.slide-cont #slide');
 			}
 			var getID = $(this).attr("data-cont");
 			data = {
@@ -66,7 +74,7 @@ jQuery(document).on('ready', function($){
 					var image = '<li><img src="' + base_url + url + '" alt="' + name + '" class="image_slide"></li>';
 					$('ul#slider').append(image);
 				};
-				$('ul.slider-cont').rhinoslider({
+				$('ul#slider').rhinoslider({
 					autoPlay: true,
 					changeBullets: 'before',
 					controlsPlayPause: false,
@@ -83,7 +91,7 @@ jQuery(document).on('ready', function($){
 				$('#ubicacion-propiedad').html(datos['CalleNo']+' '+datos['Colonia']+' '+datos['Delegacion']+' '+datos['CP']);
 				$('#desc').html(datos['Descripcion']);
 				$('#condiciones-propiedad-compra').html(datos['Condiciones']);
-				
+
 
 				$('.checkbox-1').on('click', function(event){
 					event.stopImmediatePropagation();

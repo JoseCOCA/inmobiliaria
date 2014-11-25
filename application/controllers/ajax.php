@@ -23,22 +23,21 @@ class Ajax extends CI_Controller {
 		if($this->input->post('ajaxForm') != ""){
 			$data = json_decode($this->input->post('ajaxForm')); 	// decodificar post de ajax
 			$Contacto = array(										//arreglo para insertar en tabla contactos
-				'Nombre' 	=> $data['nombre'] , 
-				'Telefono' 	=> $data['telefono'] , 
-				'Celular' 	=> $data['celular'] , 
-				'Correo' 	=> $data['correo'] , 
-				'Empresa' 	=> $data['empresa'],
+				'Nombre' 	=> $data['nombre'] ,
+				'Telefono' 	=> $data['telefono'] ,
+				'Celular' 	=> $data['celular'] ,
+				'Correo' 	=> $data['correo'] ,
+				'Empresa' 	=> $data['empresa']
 				);
 			$this->admin_model->nuevoContacto($data);				//insertar en DB nuevo contacto
 			$Notificacion = array(
-				'Usuario'	=> $data['correo'];
-				'Propiedad'	=> $data['Filtro'];
-				'Enviado'	=> '0';
-				);
-		}		
+				'Usuario'	=> $data['correo'],
+				'Propiedad'	=> $data['Filtro'],
+				'Enviado'	=> '0'				);
+		}
 	}
 
 }
 
 /* End of file request.php */
-/* Location: ./application/controllers/request.php */ 
+/* Location: ./application/controllers/request.php */

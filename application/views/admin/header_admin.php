@@ -10,15 +10,10 @@
 				<link rel="stylesheet" href="css/elastislide.css" />
 				<link rel="stylesheet" href="css/style.css">
 				<link type="text/css" rel="stylesheet" href="css/rhinoslider-1.05.css" />
+				<link rel="stylesheet" href="css/jquery.sidr.dark.css">
 				<script src="js/jquery.js"></script>
 				<script src="js/jquery-migrate-1.1.1.js"></script>
-				<!-- // <script type="text/javascript" src="js/jquery.popupoverlay.js"></script> -->
-				<script>
-						var contact = 'BIENES RAICES / +52 (55) 90 00 30 00'
-
-				</script>
-
-
+				
 				<!--[if lt IE 8]>
 					 <div style=' clear: both; text-align:center; position: relative;'>
 						 <a href="http://windows.microsoft.com/en-US/internet-explorer/products/ie/home?ocid=ie6_countdown_bannercode">
@@ -39,11 +34,13 @@
 		<header style="padding-top:30px;">
 
 
-
-			<div class="clear"></div>
+		<div class="clear"></div>
 		<div style="width: 200px; padding: 12px; background-color: #4B9BAF; color: #fff; margin: 0 auto; text-align: center; margin-bottom: 30px; font-size: 20px; border-radius: 10px;">
-		<a href="<?= base_url('admin/logout') ?>">CERRAR SESION</a>			
+		<a href="<?= base_url('admin/logout') ?>">CERRAR SESION</a>	
 		</div>
+		<div style="width: 200px; padding: 12px; background-color: #4B9BAF; color: #fff; margin: 0 auto; text-align: center; margin-bottom: 30px; font-size: 20px; border-radius: 10px;">
+		<a id="admin-menu" href="#sidr">MODIFICAR</a>  <!-- agregando el menu sidr -->		
+		</div>		
 
 
 		</header>

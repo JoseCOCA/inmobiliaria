@@ -5,16 +5,15 @@
     o crear nuevas propiedades
     */ ?>
 
-    
-    <div id="adminPanel">
-
-        <div class="filter_container">
+        <div id="sidr">
 
             <?php if ($query1 > 0) { ?>
 
             <?php foreach ($query1 as $row) { ?>
 
-            <a href="#" id="<?=$row-> Filtro?>" class="configFilter" ><img src="<?= $row -> url ?>" alt="Product Name" /></a>
+            <ul>
+                <li><a href="#" id="<?=$row-> Filtro?>" class="configFilter" ><img src="<?= $row -> url ?>" alt="Product Name" /></a></li>
+            </ul>
 
             <?php } ?>
 
@@ -42,8 +41,8 @@
 
 
         </div>
-
-
+    
+    <div id="adminPanel">
 
         <div class="config_container">
 
@@ -64,11 +63,20 @@
 
             ?>
 
+
+
             <div class="adminInput <?=$row-> Filtro?> ">
 
                 <a href="#"  class="adminPanel_close"><img id="close" src="images/boton_close.png" alt=""></a>
 
-                <ul id= "<?=$row -> Filtro ?>">
+            
+                            <div class="slide-cont">
+                    <div class="slide" id="este-">
+                        <!-- <ul class="slider-cont" data-slide="" id="slider"> -->
+                            <!-- IMÁGENES CARRUSEL PROPIEDAD -->
+                            <!-- <li><img src="http://lorempixel.com/g/750/450" alt="" class="image_slide"></li> -->
+                        <!-- </ul> -->
+                    <ul class="slider-cont" id= "<?=$row -> Filtro ?>">
 
                     <?php foreach ($query as $row) { ?>
 
@@ -81,7 +89,9 @@
                     <?php } ?>
                     <?php } ?>  
 
-                </ul>
+                    </ul>
+                    </div>
+                </div>
 
                 <?php echo form_open_multipart('admin/getData'); ?>
 

@@ -5,7 +5,7 @@
 
 <?php echo form_open_multipart('upload/upload_images');?>
 
-<?php  
+<?php
 $data = array(
               'name'        => 'padre',
               'size'        => '2',
@@ -16,6 +16,9 @@ $data = array(
 echo form_input($data);
 
 ?>
+<label for="propiedad-nombre">Nombre:</label>
+<input type="text" class="nombre" id="propiedad-nombre" name="propiedad-nombre" value="">
+<br>
 <input type="file" name="userfile" />
 
 <br /><br />

@@ -7,10 +7,10 @@ class Admin extends CI_Controller {
 	 *
 	 * Maps to the following URL
 	 * 		http://example.com/index.php/welcome
-	 *	- or -  
+	 *	- or -
 	 * 		http://example.com/index.php/welcome/index
 	 *	- or -
-	 * Since this controller is set as the default controller in 
+	 * Since this controller is set as the default controller in
 	 * config/routes.php, it's displayed at http://example.com/
 	 *
 	 * So any other public methods not prefixed with an underscore will
@@ -21,7 +21,7 @@ class Admin extends CI_Controller {
 
 	public function __construct(){
 		parent::__construct();
-		
+
 		session_start();
 		$this->load->model('admin_model');
 		$error = "";
@@ -67,7 +67,7 @@ class Admin extends CI_Controller {
 		    	redirect('admin');
 		    }
 		}
-		$this->load->view('login_view');	
+		$this->load->view('login_view');
 	}
 
 	public function logout(){
@@ -104,7 +104,7 @@ class Admin extends CI_Controller {
 		                     'field'   => 'CalleNumero',
 		                     'label'   => 'Calle y número',
 		                     'rules'   => 'required'
-		                  ),   
+		                  ),
 		               array(
 		                     'field'   => 'Colonia',
 		                     'label'   => 'Colonia',
@@ -127,9 +127,9 @@ class Admin extends CI_Controller {
 		                  ),
 		            );
 
-		$this->form_validation->set_rules($configRules); 
+		$this->form_validation->set_rules($configRules);
 
-		
+
 
 		switch ($this->input->post('adminPanel')) {
 
@@ -144,13 +144,13 @@ class Admin extends CI_Controller {
 					unlink('images/banners/'.$name);
 				}
 
-				 
+
 				redirect('admin');
 				break;
 
 			case 'Agregar imagenes':
- 				
- 				$this->upload->initialize($config);		
+
+ 				$this->upload->initialize($config);
 
 				if ( $this->upload->do_multi_upload("files"))
 				{
@@ -165,7 +165,7 @@ class Admin extends CI_Controller {
 
 					echo $Length;
 
-					for ($i=0; $i < $Length; $i++) { 
+					for ($i=0; $i < $Length; $i++) {
 
 						$insert = array(
 								'url' 		=> 'images/banners/'. $data['upload_data'][$i]['file_name'] ,
@@ -175,7 +175,7 @@ class Admin extends CI_Controller {
 					$this->admin_model->insert_images('imagedesc',$insert);
 
 					}
-					
+
 					if(is_file($config['upload_path'])){
 
 					    chmod($config['upload_path'], 777); ## this should change the permissions
@@ -228,7 +228,7 @@ class Admin extends CI_Controller {
 
 						$filtroPrincipal = array(
 
-						'Filtro' => $this->input->post('Filtro'), 
+						'Filtro' => $this->input->post('Filtro'),
 						'nombre' => $padre1
 
 						);
@@ -240,7 +240,7 @@ class Admin extends CI_Controller {
 
 						$filtroRecomendado = array(
 
-						'Filtro' => $this->input->post('Filtro'), 
+						'Filtro' => $this->input->post('Filtro'),
 						'nombre' => $padre2
 
 						);
@@ -255,19 +255,19 @@ class Admin extends CI_Controller {
 
 						$filtro = array(
 
-						'Filtro' => $this->input->post('Filtro'), 
+						'Filtro' => $this->input->post('Filtro'),
 
 						);
-						
+
 						$this->admin_model->update_data('imagedesc',array('principal'=>'0'),$filtro);
-						
+
 						$this->admin_model->update_data('imagedesc',array('recomendado'=>'0'),$filtro);
 
 
 					}
-						
+
 						$this->admin_model->update_data('imagefilters', $dataForm,$Filter);
-						
+
 
 						redirect('admin');
 
@@ -315,10 +315,11 @@ class Admin extends CI_Controller {
 			$data = array('upload_data' => $this->upload->data());
 			$insert = array(
    			        'url' 		=> 'images/filtros/'. $data['upload_data']['file_name'] ,
-				    'nombre' 	=> $data['upload_data']['file_name'],
+				    'nombre' 	=> $_POST['propiedad-nombre']?$_POST['propiedad-nombre']:'PROPIEDAD X',
+				    // 'nombre' 	=> $data['upload_data']['file_name'],
 				    'Filtro'	=> $this->input->post('Filtro')
 				);
-			
+
 			$this->admin_model->insert_images('imagefilters',$insert);
 
 			// redirect('admin');
@@ -334,7 +335,7 @@ class Admin extends CI_Controller {
 	}
 
 	public function getContactData(){
-		
+
 	}
 
 }

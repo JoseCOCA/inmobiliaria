@@ -104,6 +104,10 @@ class Admin_model extends CI_Model {
 		return $data->result();
 	}
 
+	public function nuevoContacto($data)
+	{
+		$this->db->insert('contactos', $data);
+	}
 }
 
 /* End of file admin_model.php */

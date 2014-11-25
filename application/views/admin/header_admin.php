@@ -43,12 +43,9 @@
 			<div class="clear"></div>
 		<a href="<?= base_url('admin/logout') ?>">CERRAR SESION</a>
 
-<<<<<<< HEAD
 		<?php  $this->load->view('adminPanel'); ?>
 
 		 
 
-=======
 
 		</header>
->>>>>>> 803a1404eeaae0990aa75cd7f91aa815e8f59035

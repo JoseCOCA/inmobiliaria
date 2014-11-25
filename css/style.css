@@ -703,6 +703,7 @@ filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#0bafd5', end
     display: inline-block;
     margin: auto;
     padding: 10px calc(35%/2);
+    position: relative;
     width: 65%;
 }
 #isotope-cont #nav a{

@@ -92,45 +92,45 @@
 
 							<?php
 
-								echo form_open('admin/getContactData');
+								echo form_open('');
 
 								$data1 = array(
-								'name' => 'Nombre',
-								'id'  =>  'Nombre'
+								'name' => 'nombre',
+								'id'  =>  'nombre'
 								);
 								echo form_label($data1['name'].':', $data1['name']);
 								echo form_input($data1);
 
 								$data2 = array(
-								'name' => 'Telefono',
-								'id'  =>  'Telefono'
+								'name' => 'telefono',
+								'id'  =>  'telefono'
 								);
 								echo form_label($data2['name'].':', $data2['name']);
 								echo form_input($data2);
 								$data3 = array(
-								'name' => 'Celular',
-								'id'  =>  'Celular'
+								'name' => 'celular',
+								'id'  =>  'celular'
 								);
 								echo form_label($data3['name'].':', $data3['name']);
 								echo form_input($data3);
 
 								$data4 = array(
-								'name' => 'Correo',
-								'id'  =>  'Correo'
+								'name' => 'correo',
+								'id'  =>  'correo'
 								);
 								echo form_label($data4['name'].':', $data4['name']);
 								echo form_input($data4);
 
 								$data5 = array(
-								'name' => 'Empresa',
-								'id'  =>  'Empresa'
+								'name' => 'empresa',
+								'id'  =>  'empresa'
 								);
 								echo form_label($data5['name'].':', $data5['name']);
 								echo form_input($data5);
 								echo '<br />';
 								$data6 = array(
-								'name' => 'Comentarios',
-								'id'  =>  'Comentarios'
+								'name' => 'comentarios',
+								'id'  =>  'comentarios'
 								);
 
 								echo form_label($data6['name'].':', $data6['name']);

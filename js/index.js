@@ -43,6 +43,9 @@ jQuery(document).on('ready', function($){
 
 	$('.showInfo').each(function() {
 		$(this).on('click', function (e){
+			if($('ul.slider-cont').data('rhinoslider')){
+				$('ul.slider-cont').data('rhinoslider').pause();
+			}
 			var getID = $(this).attr("data-cont");
 			data = {
 				id : getID
@@ -54,9 +57,25 @@ jQuery(document).on('ready', function($){
 				cache: false
 			}).done(function (data){
 				var dataA = data;
-				console.log(data);
 				data = JSON.parse(data);
+				console.log(data);
 				var datos = data[0];
+				for (var i = 1; i < data.length; i++) {
+					var url = data[i]['url'];
+					var name = data[i]['nombre'];
+					var image = '<li><img src="' + base_url + url + '" alt="' + name + '" class="image_slide"></li>';
+					$('ul#slider').append(image);
+				};
+				$('ul.slider-cont').rhinoslider({
+					autoPlay: true,
+					changeBullets: 'before',
+					controlsPlayPause: false,
+					effect: 'kick',
+					showBullets: 'always',
+					showControls: 'always',
+					slideNextDirection: 'toLeft',
+					slidePrevDirection: 'toRight'
+				});
 				// {"ID":"13","url":"images\/filtros\/house.jpg","nombre":"house.jpg","Descripcion":"Casa bonita.\r\nQue tenga una bonita vista","Tipo":"Oficina","Condicion":"venta","Condiciones":"Que se quede como esta.\r\nQue tenga una bonita vista","Filtro":"F1","CalleNo":"Av. El Durazno, And. 45","Colonia":"El Durazno","Delegacion":"Miguel hidalgo","CP":"1340","Dimension":"1000 m2","Precio":"100900","Status":"NO DISPONIBLE"} 	ESTOS SON LOS DATOS QUE RECIBE
 				$('.checkbox-1 input[type="checkbox"]').attr('checked', false);
 				$('#tipo-propiedad').html(datos['Tipo']);
@@ -128,10 +147,10 @@ jQuery(document).on('ready', function($){
 	$('.menu_block').sticky({topSpacing:0});
 });
 
-	$('.menu_block').on('sticky-start', function (e) {
+	$('.menu_block').one('sticky-start', function (e) {
 		e.preventDefault();
 		var altura = document.querySelector('.menu_block').offsetHeight;
-		$('#nav').sticky({topSpacing:46}).css({'z-index': '1', 'width': '100%'});
+		$('#nav').sticky({topSpacing:46, getWidthFrom: '#isotope-cont'}).css({'z-index': '10', 'width': '65%'});
 	});
 
 function goToByScroll(id){$('html,body').animate({scrollTop: $("#"+id).offset().top},'slow');}

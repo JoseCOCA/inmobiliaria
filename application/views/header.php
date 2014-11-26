@@ -83,13 +83,27 @@
 
 	</div>
 	<div id="banner-recomendados" class="mask">
-		<div class="tipo-recomendados"><span>OFICINA</span></div>
-		<div class="specs-recomendados">
-			<div class="specs">
-				<span>Dimensiones: 200 m2</span>
-				<span>Zona Polanco</span>
-				<span>Costo: $10000000</span>
+		<div class="tipo-recomendados ">
+		<?php if($query > 0) {?>
+			<?php foreach ($query1 as $row ) {
+
+				$filtroInfo =  $row-> Filtro;
+				?>
+		<div class="oculto"><span><?= $row -> Tipo ?></span></div>
+			<?php } ?>
+		<?php } ?>
+		</div>
+		<div class="specs-recomendados  ">
+		<?php if($query > 0) {?>
+			<?php foreach ($query1 as $row ) {?>
+			<div class="specs oculto">
+				<span>Dimenciones <?= $row -> Dimension ?></span>
+				<span>Zona <?= $row -> Delegacion?></span>
+				<span>Costo: $<?= $row -> Precio?></span>
 			</div>
+
+			<?php } ?>
+		<?php } ?>
 		</div>
 		<div class="slide-recomendados">
 			<ul class="slider-recomedados">
@@ -99,7 +113,7 @@
 				<?php if($row -> recomendado == '1'){?>
 				<li>
 					<a href="#overlay" data-slippry="<?=$row -> Filtro ?>" data-cont="<?=$row -> Filtro ?>" class="showInfo">
-						<img  src="<?= $row -> url ?>"alt="">
+						<img  class="imgRec" id="<?= $row -> Filtro ?>" src="<?= $row -> url ?>"alt="">
 					</a>
 				</li>
 					<?php }?>

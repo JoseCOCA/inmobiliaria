@@ -148,7 +148,14 @@ jQuery(document).on('ready', function($){
 		showBullets: 'never',
 		showControls: 'never',
 		slideNextDirection: 'toLeft',
-		slidePrevDirection: 'toRight'
+		slidePrevDirection: 'toRight',
+
+		callBackNext : function(){
+		var ids = $('.imgRec').map(function(i) {
+		    return this.id;
+		});
+
+		}
 	});
 
 	/*Stickybar*/

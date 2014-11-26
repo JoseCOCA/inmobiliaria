@@ -41,6 +41,8 @@ body {
     background-color: #fff;
     color: #908e8e;
     font: 14px/20px 'DINPro','Open Sans', sans-serif;
+    height: 100%;
+    min-height: 100%;
 }
 
 .ic {
@@ -249,13 +251,17 @@ a:hover {
 }
 
 .btn  {
-    margin-top: 73px;
-    color: #fff;
+    background-color: #007A96;
+    padding: 12px 26px;
+    color: #FFF;
+    font-size: 14px;
+    border-radius: 2px;
+    cursor: pointer;
     display: inline-block;
-    padding: 22px 62px 24px;
-    background-color: #3da9b6;
-    font: bold 30px/40px 'DINPro', sans-serif;
+    margin-top: 12px;
+    line-height: 1;
 }
+
 
 .btn:hover {
     background-color: #1d1d1d;
@@ -393,6 +399,7 @@ header h1 a img {
 
 .content {
     padding-bottom: 80px;
+    height: 100%;
 }
 
 .page1 .content {
@@ -580,7 +587,7 @@ footer {
     display: block;
     text-align: center;
     color: #8c8989;
-    padding: 40px 0 0px;
+    /*padding: 40px 0 0px;*/
 }
 
 .top {
@@ -933,7 +940,8 @@ input[type=checkbox] {
     display: none;
 }
 #main{
-	background: #047189;
+	background: none repeat scroll 0% 0% rgba(108, 204, 225, 0.5);
+    height: 100%;
 }
 img.wrap{
     height: 101%;
@@ -946,6 +954,8 @@ img.wrap{
 	z-index: 9 !important;
 }
 .config_container{
+    height: 100%;
+    /*height: 100vh;*/
 	padding-top: 50px;
 }
 
@@ -1007,6 +1017,7 @@ nav{
 	position: fixed;
 	top: 0;
 	width: 100%;
+    z-index: 100;
 }
 nav .botn{
 	background-color: #4B9BAF;
@@ -1036,4 +1047,138 @@ nav .botn a:hover{
 }
 .sidr h1{
 	font-size: 15px !important;
+}
+
+/* FORCE UPLOAD*/
+
+#upload {
+    font-family: "DINPro-l", sans-serif !important;
+    /*background-color: #82B8C4 !important;*/
+    /*background-image: -moz-linear-gradient(center top , #82B8C4, #13687B) !important;*/
+    /*box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.3) !important;*/
+    margin: auto !important;
+}
+#upload ul {
+    /*border-top: 1px solid #196C7E !important;*/
+    /*border-bottom: 1px solid #196C7E !important;*/
+}
+#drop{
+    /*background-color: rgba(18, 102, 120, 1);*/
+    color: rgba(255, 255, 255, 1) !important;
+    padding: 30px 20px !important;
+}
+
+.div-editable {
+    background: rgba(153, 209, 222, 1);
+    /*border: 1px solid rgba(88, 161, 179, 1);*/
+    display: inline-block;
+    font-family: "DINPro", sans-serif;
+    /*margin: 20px auto;*/
+    /*max-width: 40%;*/
+    max-height: 110px;
+    min-height: 20px;
+    padding: 4px;
+    text-align: left;
+    transition: all .3s ease-in;
+    /*vertical-align: top;*/
+    width: calc(100% - 8px);
+    height: auto;
+    color: rgba(0, 0, 0, 1);
+    font-size: 16px;
+    overflow: auto;
+
+}
+.div-editable:focus{
+    background: none repeat scroll 0% 0% rgba(198, 222, 228, 1);
+}
+.box-editable {
+    border:2px solid #4B9BAF;
+    height: auto;
+    width: 25%;
+    display: inline-block;
+    margin: 10px 0;
+    max-height: 150px;
+}
+.box-editable h4 {
+    background:#4B9BAF;
+    color:white;
+    line-height: normal;
+    padding: 0 10px;
+    max-width: 100%;
+    width: calc(100% - 20px);
+    margin: 0;
+    text-align: left;
+}
+
+.carrusel{
+    margin: auto;
+    width: 60%;
+}
+.carrusel li{
+    border-radius: 5px;
+    border: 1px solid rgba(75, 155, 175, 0.27);
+    padding: 10px;
+    position: relative;
+}
+.carrusel li .btn{
+    position: absolute;
+    opacity: .4;
+    transition: opacity .3s ;
+}
+.carrusel li:hover .btn{
+    opacity: 1;
+}
+
+/* SELECTS */
+
+.styled-select {
+    display: inline-block;
+    margin: 10px 0;
+   background: url(http://i62.tinypic.com/15xvbd5.png) no-repeat 96% 0;
+   height: 29px;
+   overflow: hidden;
+   vertical-align: middle;
+   width: 240px;
+}
+
+.styled-select select {
+   background: transparent;
+   border: none;
+   font-size: 14px;
+   height: 29px;
+   padding: 5px; 
+   width: 268px;
+}
+.blue {
+    background-color: #007A96;
+}
+.semi-square {
+    border-radius: 5px;
+}
+.blue select {
+    color: #FFF;
+}
+
+/* ALERTAS */
+.success{
+    background: none repeat scroll 0% 0% rgba(109, 243, 109, 0.46);
+    border-radius: 7px;
+    border: 2px solid rgba(66, 164, 66, 0.46);
+    color: rgba(20, 96, 20, 1);
+    display: table;
+    font-family: "DinPro",sans-serif;
+    font-size: 18px;
+    margin: auto;
+    padding: 5px 20px;
+}
+.warning{
+    background: none repeat scroll 0% 0% rgba(255, 143, 49, 0.46);
+    border-radius: 7px;
+    border: 2px solid rgba(164, 128, 66, 0.46);
+    color: rgba(197, 68, 26, 1);
+    display: table;
+    font-family: "DinPro",sans-serif;
+    font-size: 18px;
+    margin: auto;
+    padding: 5px 20px;
 }

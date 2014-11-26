@@ -12,7 +12,7 @@ o crear nuevas propiedades -->
         <?php foreach ($query1 as $row) { ?>
 
             <ul>
-                <li><a href="#" id="<?=$row-> Filtro?>" class="configFilter showInfo" data-cont="<?=$row -> Filtro ?>"><img src="<?= $row -> url ?>" /></a></li>
+                <li><a href="#sidr" id="<?=$row-> Filtro?>" class="configFilter showInfo" data-cont="<?=$row -> Filtro ?>"><img src="<?= $row -> url ?>" /></a></li>
                 <p><?=$row-> Filtro?></p>
             </ul>
 
@@ -47,39 +47,24 @@ o crear nuevas propiedades -->
 
 
 <div id="main">
- <?php foreach ($querys1 as $rosw) { ?>
 
-        <?php
-        $FiltroPadre    = $row -> Filtro;
-        $Descripcion    = $row -> Descripcion;
-        $Tipo           = $row -> Tipo;
-        $CP             = $row -> CP;
-        $Status         = $row -> Status;
-        $Condiciones    = $row -> Condiciones;
-        $CalleNum       = $row -> CalleNo;
-        $Colonia        = $row -> Colonia;
-        $Delegacion     = $row -> Delegacion;
-        $Dimension      = $row -> Dimension;
-        $Precio         = $row -> Precio;
-}
-        ?>
-        <div class="adminInput <?=$row-> Filtro?> ">
-
-                <?php $FiltroSlider = $row-> Filtro ?>
-
-                <li><img src="<?=$row-> url?>" alt="" class="image_slide"></li>
-    <div class="config_container" style="display: none">
+    <div class="config_container">
 
 		<!-- CARRUSEL -->
 		<ul class="carrusel">
 
 		</ul>
-		<form id="upload" method="post" action="upload.php" enctype="multipart/form-data">
+        <!-- UPLOAD IMÁGENES -->
+        <h3>Agrega nuevas imágenes a esta propiedad</h3>
+        <form id="upload" method="post" action="admin/getData" enctype="multipart/form-data">
+		<!-- <form id="upload" method="post" action="upload.php" enctype="multipart/form-data"> -->
             <div id="drop">
                 Arrastra tus archivos aquí
 
                 <a>Buscar</a>
                 <input type="file" name="upl" multiple />
+                <input type="hidden" id="filtro-hd" name="Filtro" />
+                <input type="hidden" id="add-hd" val="Agregar imagenes" name="adminPanel" />
             </div>
 
             <ul>
@@ -87,6 +72,61 @@ o crear nuevas propiedades -->
             </ul>
 
         </form>
+        
+        <!-- CONTENIDOS EDITABLES -->
+        <h3>Edita la información de esta propiedad</h3>
+        <div class="box-editable">
+            <h4>Descripcion</h4>
+            <div contenteditable="true" class="div-editable" id="descripcion"><!-- CONTENIDO --></div>
+        </div>
+        <div class="box-editable">
+            <h4>Condiciones</h4>
+            <div contenteditable="true" class="div-editable" id="condiciones"><!-- CONTENIDO --></div>
+        </div>
+        <div class="box-editable">
+            <h4>CalleNo</h4>
+            <div contenteditable="true" class="div-editable" id="calleNo"><!-- CONTENIDO --></div>
+        </div>
+        <div class="box-editable">
+            <h4>Colonia</h4>
+            <div contenteditable="true" class="div-editable" id="colonia"><!-- CONTENIDO --></div>
+        </div>
+        <div class="box-editable">
+            <h4>Delegación</h4>
+            <div contenteditable="true" class="div-editable" id="delegacion"><!-- CONTENIDO --></div>
+        </div>
+        <div class="box-editable">
+            <h4>CP</h4>
+            <div contenteditable="true" class="div-editable" id="cp"><!-- CONTENIDO --></div>
+        </div>
+        <div class="box-editable">
+            <h4>Dimensión</h4>
+            <div contenteditable="true" class="div-editable" id="dimension"><!-- CONTENIDO --></div>
+        </div>
+        <div class="box-editable">
+            <h4>Precio</h4>
+            <div contenteditable="true" class="div-editable" id="precio"><!-- CONTENIDO --></div>
+        </div>
+        
+        <div class="styled-select blue semi-square">
+
+            <select id="tipo" name="tipo">
+                <option value="Casa">Casa</option>
+                <option value="Bodega" selected="selected">Bodega</option>
+                <option value="Departamento">Departamento</option>
+                <option value="Oficina">Oficina</option>
+            </select>
+        </div>
+        <div class="styled-select blue semi-square">
+
+            <select id="status" name="status">
+                <option value="venta">Venta</option>
+                <option value="renta" selected="selected">Renta</option>
+                <option value="NO DISPONIBLE">No disponible</option>
+            </select>
+        </div>
+        <br>
+         <!-- Textos completos   ID  url     nombre  Descripcion     Tipo    Condicion   Condiciones     Filtro  CalleNo     Colonia     Delegacion  CP  Dimension Precio -->
 
     </div>
 

@@ -56,15 +56,19 @@ $(function(){
             // Update the hidden input field and trigger a change
             // so that the jQuery knob plugin knows to update the dial
             data.context.find('input').val(progress).change();
+            // console.log(data);
 
             if(progress == 100){
                 data.context.removeClass('working');
+                console.log(data);
             }
         },
 
         fail:function(e, data){
             // Something has gone wrong!
             data.context.addClass('error');
+            // console.log(e);
+            // console.log(data);
         }
 
     });

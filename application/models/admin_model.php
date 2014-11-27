@@ -88,6 +88,14 @@ class Admin_model extends CI_Model {
 		return $numrows;
 	}
 
+	public function lastFilter()
+	{
+		$this->db->order_by('Filtro', 'desc');
+		$query = $this->db->get('imagefilters', 1);
+
+		return $query->result();
+	}
+
 
 	public function update_data($table,$data,$Filter)
 	{

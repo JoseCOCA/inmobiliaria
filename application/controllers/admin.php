@@ -78,7 +78,7 @@ class Admin extends CI_Controller {
 
 	public function getData(){
 
-		$this->load->library('MY_Upload');
+		//$this->load->library('MY_Upload');
 
 		$config = array(
 

@@ -1,7 +1,9 @@
-<!-- Panel de administración para la inmobiliaria:
+<!-- 
+
+<?php /*Panel de administración para la inmobiliaria:
 En este se muestra un formulario para la modificación de la información en las
 descripciones de las propiedades existentes, se tiene la posibilidad de borrar
-o crear nuevas propiedades -->
+o crear nuevas propiedades*/ ?>--> 
 
 
 <!-- SIDR -->
@@ -34,17 +36,7 @@ o crear nuevas propiedades -->
 
     ?>
 
-    <?php //echo form_open_multipart('admin/newFilter') ?>
-
-
     <h1 class="add-propiety">Agregar nueva propiedad</h1>
-    <?php
-
-    //echo form_hidden('Filtro', $Filtro);?>
-    <!-- <label for="propiedad-nombre">Nombre:</label>
-    <input type="text" class="nombre" id="propiedad-nombre" name="propiedad-nombre" value="<?//=$Filtro?>">
-    <input type="file" name="userfile">
-    <input type="submit" value="upload" /> -->
     
     <form id="nuevaPropiedad" action="<?=base_url()?>php/upload_images.php" method="post" enctype="multipart/form-data" autocomplete="off">
         <div id="image_preview" title="Arrastra aquí la imagen"><img id="previewing" /></div>
@@ -60,7 +52,6 @@ o crear nuevas propiedades -->
    <!--  <h4 id='loading' >loading..</h4>
     <div id="message"></div>
  -->
-    <?php //echo form_close(); ?>
 
 
 </div>
@@ -71,6 +62,21 @@ o crear nuevas propiedades -->
     <div id="welcome">
         
         <h1>Bienvenido al administrador</h1>
+        
+        
+        <h4>Selecciona una sección para editar:</h4>
+        <div class="styled-select blue semi-square">
+
+            <select id="seccion" name="seccion">
+                <option value="" disabled="disabled" selected="selected">Selecciona</option>
+                <option value="1" >Inicio</option>
+                <option value="2">Informacion de empresa</option>
+                <option value="3">Aviso de privacidad</option>
+                <option value="4">Terminos de uso</option>
+            </select>
+        </div>
+        <br>
+        <div class="no-float col-md-2 col-xs-1 col-sm-1 col-lg-3"></div><div id="contenidos-principales" class="no-float col-md-8 col-xs-10 col-sm-10 col-lg-6"></div><div class="no-float col-md-2 col-xs-1 col-sm-1 col-lg-3"></div>
     </div>
     <div class="config_container oculto">
         
@@ -155,247 +161,4 @@ o crear nuevas propiedades -->
     </div>
 
 </div>
-
-<!-- <div id="adminPanel">
-
-    <div class="config_container">
-
-        <?php foreach ($query1 as $row) { ?>
-
-        <?php
-        $FiltroPadre    = $row -> Filtro;
-        $Descripcion    = $row -> Descripcion;
-        $Tipo           = $row -> Tipo;
-        $CP             = $row -> CP;
-        $Status         = $row -> Status;
-        $Condiciones    = $row -> Condiciones;
-        $CalleNum       = $row -> CalleNo;
-        $Colonia        = $row -> Colonia;
-        $Delegacion     = $row -> Delegacion;
-        $Dimension      = $row -> Dimension;
-        $Precio         = $row -> Precio;
-
-        ?>
-
-
-
-        <div class="adminInput <?=$row-> Filtro?> ">
-
-            <a href="#"  class="adminPanel_close"><img id="close" src="images/boton_close.png" alt=""></a>
-
-
-                        <div class="slide-cont">
-                <div class="slide" id="este-">
-                    <ul class="slider-cont" data-slide="" id="slider">
-                        IMÁGENES CARRUSEL PROPIEDAD
-                        <li><img src="http://lorempixel.com/g/750/450" alt="" class="image_slide"></li>
-                    </ul>
-                <ul class="slider-cont" id= "<?=$row -> Filtro ?>">
-
-                <?php foreach ($query as $row) { ?>
-
-                <?php $FiltroSlider = $row-> Filtro ?>
-
-                <?php if ($FiltroPadre == $FiltroSlider) { ?>
-
-                <li><img src="<?=$row-> url?>" alt="" class="image_slide"></li>
-
-                <?php } ?>
-                <?php } ?>
-
-                </ul>
-                </div>
-            </div>
-
-            <?php echo form_open_multipart('admin/getData'); ?>
-
-
-            <div class="text-content">
-                <div class="content1">
-
-                    <input type="hidden" name="Filtro" value="<?= $FiltroPadre ?>">
-
-                    <p>Seleccionar imagenes:</p>
-                    <input type="file" name="files[]" multiple>
-
-                    <?php echo form_submit('adminPanel', 'Agregar imagenes'); ?>
-                    <br>
-                    <p>Eliminar imagenes:</p>
-
-
-                    <?php
-
-                    $optionsBanner = array(
-
-                        '0' => 'Ninguno',
-
-                        );
-
-                    if($query > 0){
-
-                        $principal = '';
-
-                        foreach ($query as $row) {
-
-                            $FiltroSlider = $row-> Filtro;
-                            $ImageName = $row -> nombre;
-                            if( $FiltroSlider == $FiltroPadre){
-
-                                $optionsBanner[$ImageName] =  $ImageName;
-
-                            }
-
-                            if($row-> principal == '1' and $FiltroPadre == $FiltroSlider){
-                                $principal = $row-> nombre;
-                            }
-
-                        }
-
-                    }
-
-
-                    echo form_multiselect('delete[]',$optionsBanner);
-                    echo form_submit('adminPanel', 'Eliminar Imagenes');
-                    ?>
-                    <br>
-
-                    <p id= "check-text">BANNER PRINCIPAL</p>
-
-                    <?php
-
-                    echo form_dropdown('principal',$optionsBanner,$principal);
-
-
-                    ?>
-
-                    <p>Tipo inmueble</p>
-
-                    <?php $options = array(
-
-                        'Casa'          =>  'Casa',
-                        'Bodega'        =>  'Bodega',
-                        'Departamento'  =>  'Departamento',
-                        'Oficina'       =>  'Oficina',
-
-                        );
-
-                    $id = 'id="inmueble"';
-
-                    echo form_dropdown('inmueble', $options,$Tipo,$id);
-
-                    ?>
-
-                    <br>
-
-                    <p id= "check-text" style="margin-right:15%;">RECOMENDADO</p>
-
-                    <?php
-                    $optionsRec = array(
-
-                        '0' => 'Ninguno',
-
-                        );
-
-                    if($query > 0){
-
-                         $recomendado = '';
-
-                        foreach ($query as $row) {
-
-                            $FiltroSlider = $row-> Filtro;
-                            if( $FiltroSlider == $FiltroPadre){
-
-                                $optionsRec[$row-> nombre] =  $row -> nombre;
-
-                            }
-                            if($row-> recomendado == '1' and $FiltroPadre == $FiltroSlider){
-                                $recomendado = $row-> nombre;
-                            }
-
-                        }
-
-                    }
-
-                    echo form_dropdown('recomendado',$optionsBanner,$recomendado);
-
-                    ?>
-
-                    <p>Status</p>
-
-                    <?php $options = array(
-
-                        'venta'         =>  'Venta',
-                        'renta'         =>  'Renta',
-                        'NoDisponible'  =>  'No Disponible',
-                        );
-
-                    $id = 'id="status"';
-
-                    echo form_dropdown('Status', $options,$Status,$id);
-
-                    ?>
-
-
-
-                    <hr>
-                </div>
-
-                <div class="AdminHeaders">
-                    <p>UBICACIÓN</p>
-                </div>
-
-                <p style="padding-top:30px;">Calle y Número:</p>
-                <input type="text" class="ubiEdit" id="calleNum" name="CalleNumero" value="<?= $CalleNum ?>">
-
-                <p>Colonia:</p>
-                <input type="text" class="ubiEdit" id="colonia" name="Colonia" value="<?= $Colonia ?>">
-
-                <p>Delegación:</p>
-                <input type="text" class="ubiEdit" id="delegacion" name="Delegacion" value="<?= $Delegacion ?>">
-
-                <p>Codigo Postal:</p>
-                <input type="text" class="ubiEdit" id="CP" name="CodigoPostal" value="<?= $CP ?>">
-
-                <div class="contentDesc">
-
-                    <div class="AdminHeaders">
-                        <p>DESCRIPCIÓN</p>
-                    </div>
-
-                    <textarea id="descripción" name="descripcion" style= "text-aign: justify;"class="ubiEdit" rows="4" cols="50" style="margin-top:30px;" placeholder="Porporcione una descripción detallada"><?= $Descripcion ?></textarea>
-
-                    <div class="AdminHeaders">
-                        <p>CONDICIONES DE CONTRATACIÓN</p>
-                    </div>
-
-                    <textarea id="condiciones" name="condiciones" class="ubiEdit" rows="4" cols="50" style="margin-top:30px;" placeholder="Proporcione las condiciones de contratación de considere nesecarias."><?= $Condiciones ?></textarea>
-                    <p>Dimensiones:</p>
-
-                    <input type="text" class="ubiEdit" id="dim" name="dimensiones" value="<?= $Dimension ?>">
-
-                    <p>Precio:</p>
-
-                    <input type="text" class="ubiEdit" id="cost" name="precio" value="<?= $Precio ?>">
-
-                </div>
-
-                <hr>
-
-                <?php echo form_submit('adminPanel', 'Modificar'); ?>
-
-                <?php echo form_submit('adminPanel', 'Eliminar'); ?>
-
-
-            </div>
-            <?php echo form_close(); ?>
-
-        </div>
-
-        <?php  } ?>
-
-    </div>
-
-</div> -->
-
-
 

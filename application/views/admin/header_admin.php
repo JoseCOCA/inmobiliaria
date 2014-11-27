@@ -1,20 +1,20 @@
 <!DOCTYPE html>
 <html lang="es">
-		<head>
+	<head>
 		<title><?= $title; ?></title>
 		<meta charset="utf-8">
 		<meta name="format-detection" content="telephone=no" />
+		<link href="//netdna.bootstrapcdn.com/bootstrap/3.0.1/css/bootstrap.min.css" rel="stylesheet"> 
+		<link href="//netdna.bootstrapcdn.com/font-awesome/4.0.3/css/font-awesome.min.css" rel="stylesheet">
+		<link rel="stylesheet" href="css/summernote.css" />
 		<link rel="icon" href="images/favicon.ico">
 		<link rel="shortcut icon" href="images/favicon.ico" />
-		<link rel="stylesheet" href="css/slippry.css">
-		<link rel="stylesheet" href="css/elastislide.css" />
 		<link rel="stylesheet" href="css/style_admin.css">
-		<link type="text/css" rel="stylesheet" href="css/rhinoslider-1.05.css" />
 		<link rel="stylesheet" href="css/jquery.sidr.dark.css">
 		<link rel="stylesheet" href="css/style_mini_upload.css" />
 		<script src="js/jquery.js"></script>
 		<script src="js/jquery-migrate-1.1.1.js"></script>
-
+		<script src="//netdna.bootstrapcdn.com/bootstrap/3.0.1/js/bootstrap.min.js"></script> 
 		<!--[if lt IE 8]>
 			 <div style=' clear: both; text-align:center; position: relative;'>
 				 <a href="http://windows.microsoft.com/en-US/internet-explorer/products/ie/home?ocid=ie6_countdown_bannercode">
@@ -28,7 +28,7 @@
 
 
 		<![endif]-->
-		 </head>
+	 </head>
 <script>var base_url = '<?php echo base_url()?>';</script>
 <body class="page1" id="top">
 <!--==============================header=================================-->
@@ -43,7 +43,7 @@
 			<a id="admin-menu" href="#sidr">EDITAR PROPIEDADES</a>  <!-- agregando el menu sidr -->
 			</div>
 			<div class="botn" id="bannersEdit">
-			<a id="admin-menu" href="#">EDITAR BANNERS</a> 
+			<a id="admin-banners" href="#">EDITAR BANNERS</a> 
 			</div>
 		</nav>
 

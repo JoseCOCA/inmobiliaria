@@ -36,10 +36,10 @@ class Admin extends CI_Controller {
 			redirect('/admin/login');
 		}
 		$data = array(
-			'title' 	=> 	'Admin',
-			'query' 	=> 	$this->admin_model->get_imagesDesc(),
-			'query1' 	=>	$this->admin_model->get_imagesFilter(),
-			'lastFilter' 	=>	$this->admin_model->lastFilter(),
+			'title'      => 'Admin',
+			'query'      => $this->admin_model->get_imagesDesc(),
+			'query1'     =>	$this->admin_model->get_imagesFilter(),
+			'lastFilter' =>	$this->admin_model->lastFilter(),
 			);
 		$this->load->view('admin/header_admin',$data);
 		$this->load->view('admin/admin_view',$data);
@@ -400,9 +400,6 @@ class Admin extends CI_Controller {
 		}
 	}
 
-	public function getContactData(){
-
-	}
 
 }
 

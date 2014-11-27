@@ -1,12 +1,71 @@
 jQuery(document).on('ready', function($){
 	$=jQuery;
-	$("#input_btn").on('click',function(e){
+    $('#admin-menu, .showInfo').sidr({speed: 500});
+ 	// $('#simple-menu').sidr();
+ 	
+ 	var loader = '<div class="loader">'+
+	  '<div class="side"></div>'+
+	  '<div class="side"></div>'+
+	  '<div class="side"></div>'+
+	  '<div class="side"></div>'+
+	  '<div class="side"></div>'+
+	  '<div class="side"></div>'+
+	  '<div class="side"></div>'+
+	  '<div class="side"></div>'+
+	  '</div>';
+ 	
+ 	/* INICIO */
+
+ 	$('select#seccion').on('change', function (e) {
+ 		e.stopImmediatePropagation();
+ 		var cual = $(this).val();
+ 		var datos = {padre : cual};
+ 		$.ajax({
+ 			url : base_url+"ajax/getContentData",
+ 			data : datos,
+ 			cache : false,
+ 			beforeSend : function(){
+ 				$('#contenidos-principales').empty();
+ 				$('#contenidos-principales').append(loader);
+ 			}
+ 		}).done(function (data){
+ 			data = typeof(data)!='object' ? JSON.parse(data) : data;
+ 			console.log(data.length);
+ 			for (var i = 0; i < data.length; i++) {
+ 				var elID = data[i].ID;
+ 				var suPa = data[i].padre;
+ 				var contenido = data[i].contenido;
+ 				$('<textarea />',{id:elID, class: 'wysiwyg', 'data-padre' : suPa}).val(contenido).appendTo('#contenidos-principales');
+ 				var summerOtions = {
+ 					height : 400,
+ 					maxHeight : 400,
+ 					lang: 'es-ES',
+ 					toolbar: [
+					    //[groupname, [button list]]
+					    ['style', ['bold', 'italic', 'underline', 'clear']],
+					    ['font', ['strikethrough']],
+					    ['fontsize', ['fontsize']],
+					    // ['color', ['color']],
+					    ['para', ['ul', 'ol', 'paragraph']],
+					    // ['height', ['height']],
+				  	]
+ 				}
+ 				$('textarea.wysiwyg').summernote(summerOtions);
+ 			};
+ 		}).fail(function (status, statusText, responseXML){
+ 			console.log(statusText);
+			console.log(responseXML);
+ 		});
+ 	});
+
+ 	/* INICIO */
+
+ 	/* PROPIEDADES */
+
+	$("#input_btn").on('click',function (e){
 		e.preventDefault();
 	  	$("#file-upl").click();  
 	});
-    $('#admin-menu, .showInfo').sidr({speed: 500});
- 	// $('#simple-menu').sidr();
-
  	$('#bannersEdit').click(function(){
  		alert('warning! \n Critical error!! \n Aorry an error has ocurred. Please try your request later\n Status error[40092] Unknown request service in front page');
  	});
@@ -33,7 +92,7 @@ jQuery(document).on('ready', function($){
 				}
 			}).done(function (data){
 				var dataA = data;
-				data = JSON.parse(data);
+				data = typeof(data)!='object' ? JSON.parse(data) : data;
 				console.log(data);
 				var datos = data[0];
 				for (var i = 1; i < data.length; i++) {
@@ -238,7 +297,13 @@ jQuery(document).on('ready', function($){
 	
 	/*NUEVA PROPIEDAD*/
 
+ 	/* PROPIEDADES */
+
+
 });
+
+
+ 	/* PROPIEDADES */
 
 function eliminaImagen(){
 	$('.elimina-img').each(function () {
@@ -272,7 +337,8 @@ function eliminaImagen(){
 }
 
 function agregaImages (ars){
-	ars = JSON.parse(ars);
+	// ars = JSON.parse(ars);
+	ars = typeof(ars)!='object' ? JSON.parse(ars) : ars;
 	ars['Filtro'] = $('#filtro-hd').val();
 	ars['adminPanel'] = $('#add-hd').val();
 	// console.log(ars);
@@ -289,5 +355,6 @@ function agregaImages (ars){
 	});
 }
 
+ 	/* PROPIEDADES */
 
 	

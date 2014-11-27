@@ -17,6 +17,11 @@ class Ajax extends CI_Controller {
 		}
 
 	}
+	
+	public function getContentData(){
+		$padre = isset($_GET['padre']) ? $_GET['padre'] : '1';
+		echo json_encode($this->admin_model->getContent($padre));
+	}
 
 	public function contacto()
 	{

@@ -80,6 +80,19 @@ class Admin_model extends CI_Model {
 
 		}
 	}
+	
+	public function getContent($padre)
+	{
+		$query = $this->db->get_where('contenido', array('padre' => $padre));
+
+		if ($query->num_rows() > 0) {
+		
+			foreach ($query->result() as $row) {
+				$data[] = $row;
+			}
+			return $data;
+		}
+	}
 
 	public function numRows()
 	{

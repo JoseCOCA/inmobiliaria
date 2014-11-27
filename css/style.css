@@ -705,6 +705,7 @@ filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#0bafd5', end
     padding: 10px calc(35%/2);
     position: relative;
     width: 65%;
+    min-height: 250px;
     height: auto;
 }
 #isotope-cont #nav a{

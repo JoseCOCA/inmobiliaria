@@ -16,6 +16,7 @@ class Notificacion extends CI_Controller {
 
 	public function obtenerDatos()
 	{
+
 		$this->load->library('email');
 
 		//validación del formulario

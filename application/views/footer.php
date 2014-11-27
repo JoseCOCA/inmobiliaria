@@ -36,6 +36,7 @@
 
 	<script type="text/javascript" src="js/jquerypp.custom.js"></script>
 	<script type="text/javascript" src="js/jquery.elastislide.js"></script>
+	<script src="js/ajax.js"></script>
 	<script type="text/javascript">
 
 

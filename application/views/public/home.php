@@ -92,7 +92,17 @@
 
 							<?php
 
-								echo form_open('');
+
+							$atributos= array(
+
+								'id' 		=> 	'notif',
+								'class' 	=>	'notifAjax'
+
+								);
+
+								echo form_open('notificacion/obtenerDatos',$atributos);
+
+								form_hidden('name', 'value');
 
 								$data1 = array(
 								'name' => 'nombre',

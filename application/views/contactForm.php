@@ -61,8 +61,9 @@
 
                             <?php 
 
-                              echo form_open('admin/getContactData'); 
+                              echo validation_errors();
 
+                              echo form_open('notificacion/obtenerDatos'); 
                               $data1 = array(
                                       'name' => 'Nombre',
                                       'id'  =>  'notForm'

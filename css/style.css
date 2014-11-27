@@ -1249,11 +1249,14 @@ img.wrap{
 #notificationForm textarea{
 	height: 100px;
 	max-height: 300px;
-	max-width: 83%;
-	width: 83%;
+    max-width: 93%;
+    width: 93%;
+    margin-left: 2%;
 }
 #notificationForm label{
-	width: 15%;
+    width: 12%;
+    margin-left: 13px;
+    margin-bottom: 8px;
 }
 #notificationForm .subButton{
 	text-align: center;

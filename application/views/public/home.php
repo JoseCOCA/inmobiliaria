@@ -98,34 +98,34 @@
 								'name' => 'nombre',
 								'id'  =>  'nombre'
 								);
-								echo form_label($data1['name'].':', $data1['name']);
+								echo form_label('Nombre'.':', $data1['name']);
 								echo form_input($data1);
 
 								$data2 = array(
 								'name' => 'telefono',
 								'id'  =>  'telefono'
 								);
-								echo form_label($data2['name'].':', $data2['name']);
+								echo form_label('Teléfono'.':', $data2['name']);
 								echo form_input($data2);
 								$data3 = array(
 								'name' => 'celular',
 								'id'  =>  'celular'
 								);
-								echo form_label($data3['name'].':', $data3['name']);
+								echo form_label('Celular'.':', $data3['name']);
 								echo form_input($data3);
 
 								$data4 = array(
 								'name' => 'correo',
 								'id'  =>  'correo'
 								);
-								echo form_label($data4['name'].':', $data4['name']);
+								echo form_label('Correo'.':', $data4['name']);
 								echo form_input($data4);
 
 								$data5 = array(
 								'name' => 'empresa',
 								'id'  =>  'empresa'
 								);
-								echo form_label($data5['name'].':', $data5['name']);
+								echo form_label('Empresa'.':', $data5['name']);
 								echo form_input($data5);
 								echo '<br />';
 								$data6 = array(
@@ -133,7 +133,7 @@
 								'id'  =>  'comentarios'
 								);
 
-								echo form_label($data6['name'].':', $data6['name']);
+								echo form_label('Comentarios'.':', $data6['name']);
 								echo form_textarea('Comentarios');?>
 
 								<hr/>

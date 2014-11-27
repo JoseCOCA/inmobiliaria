@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Servidor: 127.0.0.1
--- Tiempo de generación: 22-11-2014 a las 00:39:51
+-- Tiempo de generación: 27-11-2014 a las 00:16:48
 -- Versión del servidor: 5.6.20
 -- Versión de PHP: 5.5.15
 
@@ -33,6 +33,27 @@ CREATE TABLE IF NOT EXISTS `contactos` (
   `Celular` varchar(15) COLLATE utf8_unicode_ci NOT NULL,
   `Correo` varchar(40) COLLATE utf8_unicode_ci NOT NULL,
   `Empresa` varchar(20) COLLATE utf8_unicode_ci NOT NULL
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci AUTO_INCREMENT=3 ;
+
+--
+-- Volcado de datos para la tabla `contactos`
+--
+
+INSERT INTO `contactos` (`ID`, `Nombre`, `Telefono`, `Celular`, `Correo`, `Empresa`) VALUES
+(1, 'Jose', '230948', '0445502932', 'josecoca0890@gmail.com', 'Monster Code'),
+(2, 'Jose', '230923', '', 'alberto@gmail.com', '');
+
+-- --------------------------------------------------------
+
+--
+-- Estructura de tabla para la tabla `correos`
+--
+
+CREATE TABLE IF NOT EXISTS `correos` (
+`ID` int(5) NOT NULL,
+  `Propiedad` varchar(2) COLLATE utf8_unicode_ci NOT NULL,
+  `Correos` varchar(50) COLLATE utf8_unicode_ci NOT NULL,
+  `Enviado` enum('0','1') COLLATE utf8_unicode_ci NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci AUTO_INCREMENT=1 ;
 
 -- --------------------------------------------------------
@@ -81,7 +102,7 @@ CREATE TABLE IF NOT EXISTS `imagefilters` (
   `CP` varchar(50) CHARACTER SET utf8 COLLATE utf8_unicode_ci NOT NULL,
   `Dimension` varchar(50) CHARACTER SET utf8 COLLATE utf8_unicode_ci NOT NULL,
   `Precio` varchar(50) CHARACTER SET utf8 COLLATE utf8_unicode_ci NOT NULL,
-  `Status` enum('NO DISPONIBLE','EN REPARACION','EN CONSTRUCCION','EN REMODELACION') CHARACTER SET utf8 COLLATE utf8_unicode_ci NOT NULL
+  `Status` enum('NO DISPONIBLE','EN REPARACION','EN CONSTRUCCION','EN REMODELACION','DISPONIBLE') CHARACTER SET utf8 COLLATE utf8_unicode_ci NOT NULL
 ) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=18 ;
 
 --
@@ -106,14 +127,15 @@ CREATE TABLE IF NOT EXISTS `users` (
   `email_address` varchar(50) NOT NULL,
   `password` varchar(128) NOT NULL,
   `date` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP
-) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=2 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=3 ;
 
 --
 -- Volcado de datos para la tabla `users`
 --
 
 INSERT INTO `users` (`id`, `first_name`, `last_name`, `email_address`, `password`, `date`) VALUES
-(1, 'jose', 'coca', 'a@a.com', '91dfd9ddb4198affc5c194cd8ce6d338fde470e2', '2014-10-24 19:28:22');
+(1, 'jose', 'coca', 'a@a.com', '91dfd9ddb4198affc5c194cd8ce6d338fde470e2', '2014-10-24 19:28:22'),
+(2, 'Admin', 'Inmobiliaria', 'admin@admin.com', 'd033e22ae348aeb5660fc2140aec35850c4da997', '2014-10-24 19:28:22');
 
 --
 -- Índices para tablas volcadas
@@ -123,6 +145,12 @@ INSERT INTO `users` (`id`, `first_name`, `last_name`, `email_address`, `password
 -- Indices de la tabla `contactos`
 --
 ALTER TABLE `contactos`
+ ADD PRIMARY KEY (`ID`);
+
+--
+-- Indices de la tabla `correos`
+--
+ALTER TABLE `correos`
  ADD PRIMARY KEY (`ID`);
 
 --
@@ -151,7 +179,12 @@ ALTER TABLE `users`
 -- AUTO_INCREMENT de la tabla `contactos`
 --
 ALTER TABLE `contactos`
-MODIFY `ID` int(2) NOT NULL AUTO_INCREMENT;
+MODIFY `ID` int(2) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=3;
+--
+-- AUTO_INCREMENT de la tabla `correos`
+--
+ALTER TABLE `correos`
+MODIFY `ID` int(5) NOT NULL AUTO_INCREMENT;
 --
 -- AUTO_INCREMENT de la tabla `imagedesc`
 --
@@ -166,7 +199,7 @@ MODIFY `ID` int(2) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=18;
 -- AUTO_INCREMENT de la tabla `users`
 --
 ALTER TABLE `users`
-MODIFY `id` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=2;
+MODIFY `id` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=3;
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
 /*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;

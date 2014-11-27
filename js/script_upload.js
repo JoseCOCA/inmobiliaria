@@ -47,7 +47,21 @@ $(function(){
             // Automatically upload the file once it is added to the queue
             var jqXHR = data.submit();
         },
-
+        
+        // EDITADO POR JOSÉ GARCÍA
+        // 
+        done : function (e, data){
+            // console.log(data.result);
+            var result = JSON.parse(data.result);
+            var status = result.status;
+            if(status=='success'){
+                agregaImages(data.result);
+            }else{
+                console.log(result.status);
+                data.context.addClass('error');
+            }
+        },
+        
         progress: function(e, data){
 
             // Calculate the completion percentage of the upload
@@ -60,7 +74,6 @@ $(function(){
 
             if(progress == 100){
                 data.context.removeClass('working');
-                console.log(data);
             }
         },
 

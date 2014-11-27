@@ -8,16 +8,20 @@ o crear nuevas propiedades -->
 <div id="sidr">
     <h1>Elige una propiedad</h1>
     <?php if ($query1 > 0) { ?>
-
+        <ul id="lista-propiedades">
         <?php foreach ($query1 as $row) { ?>
 
-            <ul>
-                <li><a href="#sidr" id="<?=$row-> Filtro?>" class="configFilter showInfo" data-cont="<?=$row -> Filtro ?>"><img src="<?= $row -> url ?>" /></a></li>
-                <p><?=$row-> Filtro?></p>
-            </ul>
+            
+                <li>
+                    <a href="#sidr" id="<?=$row-> Filtro?>" class="configFilter showInfo" data-cont="<?=$row -> Filtro ?>">
+                    <img src="<?= $row -> url ?>" />
+                    <p><?=$row-> nombre?></p>
+                    </a>
+                </li>
+           
 
         <?php } ?>
-
+        </ul>
     <?php } ?>
 
 
@@ -27,19 +31,33 @@ o crear nuevas propiedades -->
 
     ?>
 
-    <?php echo form_open_multipart('admin/newFilter') ?>
+    <?php //echo form_open_multipart('admin/newFilter') ?>
 
 
-    <h1>Agregar nueva propiedad</h1>
+    <h1 class="add-propiety">Agregar nueva propiedad</h1>
     <?php
 
-    echo form_hidden('Filtro', $Filtro);?>
-    <label for="propiedad-nombre">Nombre:</label>
-    <input type="text" class="nombre" id="propiedad-nombre" name="propiedad-nombre" value="<?=$Filtro?>">
+    //echo form_hidden('Filtro', $Filtro);?>
+    <!-- <label for="propiedad-nombre">Nombre:</label>
+    <input type="text" class="nombre" id="propiedad-nombre" name="propiedad-nombre" value="<?//=$Filtro?>">
     <input type="file" name="userfile">
-    <input type="submit" value="upload" />
-
-    <?php echo form_close(); ?>
+    <input type="submit" value="upload" /> -->
+    
+    <form id="nuevaPropiedad" action="<?=base_url()?>php/upload_images.php" method="post" enctype="multipart/form-data" autocomplete="off">
+        <div id="image_preview" title="Arrastra aquí la imagen"><img id="previewing" /></div>
+        <div id="selectImage">
+            <label for="file-upl">Seleciona imagen para propiedad</label><br/>
+            <input type="file" name="file-upl" id="file-upl" required="required" accept="image/*" />
+            <button class='input-btn' id='input_btn'>Buscar archivo...</button>
+            <input type="text" class="nombre" id="propiedad-nombre" name="propiedad-nombre" value="<?=$Filtro?>" />
+            <input type="hidden" class="nuevo-filtro" id="nuevo-filtro" name="nuevo-filtro" value="<?=$Filtro?>" />
+            <input type="hidden" class="propiedad" id="propiedad-nueva" name="propiedad" value="nueva">
+        </div>
+    </form>
+   <!--  <h4 id='loading' >loading..</h4>
+    <div id="message"></div>
+ -->
+    <?php //echo form_close(); ?>
 
 
 </div>
@@ -47,29 +65,31 @@ o crear nuevas propiedades -->
 
 
 <div id="main">
-
-    <div class="config_container">
-
+    <div id="welcome">
+        
+        <h1>Bienvenido al administrador</h1>
+    </div>
+    <div class="config_container oculto">
+        
 		<!-- CARRUSEL -->
 		<ul class="carrusel">
 
 		</ul>
         <!-- UPLOAD IMÁGENES -->
         <h3>Agrega nuevas imágenes a esta propiedad</h3>
-        <form id="upload" method="post" action="admin/getData" enctype="multipart/form-data">
-		<!-- <form id="upload" method="post" action="upload.php" enctype="multipart/form-data"> -->
+        <form id="upload" method="post" action="<?=base_url()?>php/upload_images.php" enctype="multipart/form-data">
             <div id="drop">
                 Arrastra tus archivos aquí
 
                 <a>Buscar</a>
                 <input type="file" name="upl" multiple />
-                <input type="hidden" id="filtro-hd" name="Filtro" />
-                <input type="hidden" id="add-hd" val="Agregar imagenes" name="adminPanel" />
             </div>
 
             <ul>
                 <!-- The file uploads will be shown here -->
             </ul>
+            <input type="hidden" id="filtro-hd" name="Filtro" />
+            <input type="hidden" id="add-hd" value="Agregar imagenes" name="adminPanel" />
 
         </form>
         

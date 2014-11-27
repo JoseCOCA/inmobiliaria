@@ -42,6 +42,9 @@
 			<div class="botn" id="edit">
 			<a id="admin-menu" href="#sidr">EDITAR PROPIEDADES</a>  <!-- agregando el menu sidr -->
 			</div>
+			<div class="botn" id="bannersEdit">
+			<a id="admin-menu" href="#">EDITAR BANNERS</a> 
+			</div>
 		</nav>
 
 

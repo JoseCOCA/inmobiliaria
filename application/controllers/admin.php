@@ -202,57 +202,41 @@ class Admin extends CI_Controller {
 
 				// break;
 
+				// $allowed = array('png', 'jpg', 'gif','zip');
 
-				$upload_path_url = base_url().'uploads/';
+				// if(isset($_FILES['upl']) && $_FILES['upl']['error'] == 0){
 
-				$config['upload_path'] = FCPATH.'uploads/';
-				$config['allowed_types'] = 'jpg';
-				$config['max_size'] = '30000';
+				// 	$extension = pathinfo($_FILES['upl']['name'], PATHINFO_EXTENSION);
 
-				$this->load->library('upload', $config);
+				// 	if(!in_array(strtolower($extension), $allowed)){
+				// 			echo '{"status":"error"}';
+				// 		exit;
+				// 		}
 
-				if ( ! $this->upload->do_upload()) {
-					$error = array('error' => $this->upload->display_errors());
-					$this->load->view('upload', $error);
+				// 		if(move_uploaded_file($_FILES['upl']['tmp_name'], 'uploads/'.$_FILES['upl']['name'])){
+				// 			echo '{"status":"success"}';
+				// 		exit;
+				// 	}
+				// }
 
-				} else {
-					$data = $this->upload->data();
-					/*
-					        // to re-size for thumbnail images un-comment and set path here and in json array   
-					$config = array(
-					    'source_image' => $data['full_path'],
-					    'new_image' => $this->$upload_path_url '/thumbs',
-					    'maintain_ration' => true,
-					    'width' => 80,
-					    'height' => 80
-					);
+				// echo '{"status":"error"}';
+				// exit;
+				$insert = array(
 
-					$this->load->library('image_lib', $config);
-					$this->image_lib->resize();
-					*/
-					//set the data for the json array   
-					$info->name = $data['file_name'];
-					    $info->size = $data['file_size'];
-					$info->type = $data['file_type'];
-					    $info->url = $upload_path_url .$data['file_name'];
-					// I set this to original file since I did not create thumbs.  change to thumbnail directory if you do = $upload_path_url .'/thumbs' .$data['file_name']
-					$info->thumbnail_url = $upload_path_url .$data['file_name'];
-					    $info->delete_url = base_url().'upload/deleteImage/'.$data['file_name'];
-					    $info->delete_type = 'DELETE';
-
-					//this is why we put this in the constants to pass only json data
-					if (IS_AJAX) {
-					    echo json_encode(array($info));
-					    //this has to be the only data returned or you will get an error.
-					    //if you don't give this a json array it will give you a Empty file upload result error
-					    //it you set this without the if(IS_AJAX)...else... you get ERROR:TRUE (my experience anyway)
-
-					// so that this will still work if javascript is not enabled
-					} else {
-					    $file_data['upload_data'] = $this->upload->data();
-					    $this->load->view('admin/upload_success', $file_data);
-					}
+					'Filtro'      => $this->input->post('Filtro'),
+					'nombre'      => $this->input->post('nombre'),
+					'url'         => 'images/banners/'.$this->input->post('nombre'),
+					'principal'   => '0',
+					'recomendado' => '0'
+				
+				);
+				if($this->admin_model->insert_images('imagedesc',$insert)){
+					echo 'ok';
+				}else{
+					echo 'error';
 				}
+				
+				break;
 			case 'Modificar':
 
 
@@ -346,6 +330,27 @@ class Admin extends CI_Controller {
 
 					redirect('admin');
 
+				break;
+				
+				case 'Nueva Propiedad':
+				
+				$insert = array(
+
+					'Filtro'      => $this->input->post('Filtro'),
+					'nombre'      => $this->input->post('nombre'),
+					'url'         => 'images/filtros/'.$this->input->post('imagen'),
+					'Status'   => 'NO DISPONIBLE'
+				
+				);
+				if($this->admin_model->insert_images('imagefilters',$insert)){
+					echo 'ok';
+				}else{
+					echo 'error';
+				}
+				
+				break;
+				default:
+					echo 'nel';
 				break;
 		}
 

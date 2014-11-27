@@ -109,11 +109,15 @@
 #upload ul li span{
     width: 15px;
     height: 12px;
-    background: url('../img/icons.png') no-repeat;
+    background: url('../images/icons.png') no-repeat;
     position: absolute;
     top: 34px;
     right: 33px;
     cursor:pointer;
+}
+
+.error span {
+    background-position: 100% 100% !important;
 }
 
 #upload ul li.working span{
@@ -122,7 +126,7 @@
 }
 
 #upload ul li.error p{
-    color:red;
+    color:rgba(221, 84, 94, 1);
 }
 
 

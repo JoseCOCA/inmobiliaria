@@ -9,7 +9,7 @@ class Admin_model extends CI_Model {
 	// Insertar imagenes
 
 	public function insert_images($table, $data){
-		$this->db->insert($table, $data);
+		if($this->db->insert($table, $data)) return true;
 	}
 	
 	// verifica el login de usuario 

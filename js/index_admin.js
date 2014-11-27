@@ -1,11 +1,22 @@
 jQuery(document).on('ready', function($){
 	$=jQuery;
-
+	$("#input_btn").on('click',function(e){
+		e.preventDefault();
+	  	$("#file-upl").click();  
+	});
     $('#admin-menu, .showInfo').sidr({speed: 500});
  	// $('#simple-menu').sidr();
 
-	$('.showInfo').each(function() {
-		$(this).on('click', function (e){
+ 	$('#bannersEdit').click(function(){
+ 		alert('warning! \n Critical error!! \n Aorry an error has ocurred. Please try your request later\n Status error[40092] Unknown request service in front page');
+ 	});
+
+	// $('.showInfo').each(function() {
+		$('.showInfo').live('click', function (e){
+			$(this).sidr({speed: 500});
+			$('#welcome').hide();
+			$('.config_container').slideDown(500);
+		// $(this).live('click', function (e){
 			var getID = $(this).attr("data-cont");
 			data = {
 				id : getID
@@ -17,6 +28,7 @@ jQuery(document).on('ready', function($){
 				cache: false,
 				beforeSend: function (){
 					$('.config_container .carrusel').empty();
+					$('form#upload ul').empty();
 					$('.config_container #saveChanges').remove();
 				}
 			}).done(function (data){
@@ -41,6 +53,7 @@ jQuery(document).on('ready', function($){
 				$('#tipo').val(datos['Tipo']);
 				$('#status').val(datos['Status']);
 				$('#filtro-hd').val(datos['Filtro']);
+				$('form#upload').append('<input type="hidden" id="propiedad" value="true" name="propiedad" />');
 				
 				$('<div/>', {
 					id: 'saveChanges',
@@ -86,8 +99,9 @@ jQuery(document).on('ready', function($){
 			// $('#'+getID).removeClass('oculto').addClass('visible');
 
 			// $('#este-'+getID +' #slider').data('rhinoslider').play();
-		})
-	});
+		});
+	// });
+	
 
 	function actualizaRegistro (ars) {
 		$.ajax({
@@ -123,6 +137,107 @@ jQuery(document).on('ready', function($){
 	}
 	
 
+/*		NUEVA PROPIEDAD */	
+	// 	
+
+	$('form#nuevaPropiedad').fileupload({
+        dataType: 'json',
+        dropZone: $('#image_preview'),
+        add: function (e, data) {
+        	$('button.submit').remove();
+        	if (data.files && data.files[0]) {
+		        var reader = new FileReader();
+		        reader.onload = function(e) {
+		            $('#previewing').attr('src', e.target.result);
+		        }
+		    }
+        	reader.readAsDataURL(data.files[0]);
+            data.context = $('<button/>',{class:'submit'}).text('Cargar')
+                .appendTo($(this).find('#selectImage'))
+                .click(function (e) {
+                	e.preventDefault();
+                    // data.context = $('<p/>').text('Uploading...').replaceAll($(this));
+                    data.context.fadeOut();
+                    data.submit();
+                });
+        },
+        done: function (e, data) {
+            console.log(data.result);
+            var status = data.result.status;
+            if(status == "success"){
+				// Filtro
+				// nombre
+				// imagen
+				var filtro = data.result.filtro,
+				nombre     = data.result.nombre,
+				imagen     = data.result.imagen,
+				dats       = {
+					Filtro : filtro,
+					nombre : nombre,
+					imagen : imagen,
+					adminPanel : 'Nueva Propiedad'
+				};
+            	$.ajax({
+            		url : base_url+'admin/getData',
+            		cache :false,
+            		type : 'POST',
+            		data : dats,
+            		beforeSend : function(){
+            			$('#previewing').removeAttr('src');
+		            	$('button.submit').remove();
+		            	$('form#nuevaPropiedad').slideUp(1000);
+            		}
+            	}).done(function (data){
+            		console.log(data);
+            		var nueva = '<li><a href="#sidr" id="'+filtro+'" class="configFilter showInfo" data-cont="'+filtro+'"><img src="images/filtros/'+imagen+'" /><p>'+nombre+'</p></a></li>';
+            		
+					$(nueva).hide().appendTo("#lista-propiedades").fadeIn(1000);
+
+            	}).fail(function (status, statusText, responseXML){
+            		console.log(statusText);
+					console.log(responseXML);
+            	});
+            }
+        },
+        fail: function (e, data){
+        	 data.context.addClass('error');
+        	 // data.context.addClass('error');
+        }
+    });
+	/* ENVIA INFO DE NUEVA PROPIEDAD */
+	
+	// $("form#nuevaPropiedad").on('submit',(function (e) {
+	// 	e.preventDefault();
+	// 	$("#message").empty();
+	// 	$('#loading').show();
+	// 	var datos = new FormData();
+	// 	var propiedad = $('#propiedad-nueva').val();
+	// 	datos.append("propiedad", "propiedad");
+	// 	// datos.append(document.getElementById("file").files[0]);
+	// 	// var datos = $(this).serialize();
+	// 	console.log(datos);
+	// 	$.ajax({
+	// 		url: base_url+'php/upload_images.php',
+	// 		type: "POST",
+	// 		data : datos,
+	// 		// data: new FormData(this),
+	// 		cache: false,
+	// 		processData:false, 
+	// 		success: function(data){
+	// 			$('#loading').hide();
+	// 			$("#message").html(data);
+	// 			console.log(data);
+	// 		},
+	// 		error: function(status, statusText, responseXML){
+	// 			console.log(statusText);
+	// 			console.log(responseXML);				
+	// 		}
+	// 	});
+	// }));	
+	
+	
+	/*NUEVA PROPIEDAD*/
+
 });
 
 function eliminaImagen(){
@@ -156,4 +271,23 @@ function eliminaImagen(){
 	})	
 }
 
+function agregaImages (ars){
+	ars = JSON.parse(ars);
+	ars['Filtro'] = $('#filtro-hd').val();
+	ars['adminPanel'] = $('#add-hd').val();
+	// console.log(ars);
+	$.ajax({
+		url : base_url+'admin/getData',
+		data : ars,
+		cache : false,
+		type : 'POST'
+	}).done(function (data){
+		console.log(data);
+	}).fail(function (status, statusText, responseXML){
+		console.log(statusText);
+		console.log(responseXML);
+	});
+}
 
+
+	

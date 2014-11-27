@@ -956,7 +956,18 @@ img.wrap{
 .config_container{
     height: 100%;
     /*height: 100vh;*/
-	padding-top: 50px;
+    padding-top: 50px;
+}
+
+#welcome{
+    height: calc(100vh - 180px);
+    /*height: 100vh;*/
+    padding-top: 150px;
+}
+#welcome h1{
+    text-align: center;
+    font-size: 4em;
+    text-shadow: 0px 0px 10px #4B9BAF;
 }
 
 #overlay{
@@ -1181,4 +1192,115 @@ nav .botn a:hover{
     font-size: 18px;
     margin: auto;
     padding: 5px 20px;
+}
+
+/* AGREGA NUEVA PROPIEDAD */
+
+#image_preview{
+    background-color: #5D5D5D;
+    color: #E0E0E0;
+    font-family: "DINpro-l";
+    font-size: 30px;
+    font-weight: bold;
+    line-height: 180px;
+    overflow: hidden;
+    position: relative;
+    text-align: center;
+    width: 100%;
+}
+#image_preview:after{
+    content: "Preview"
+}
+#image_preview img{
+    left: 0;
+    position: absolute;
+    top: 0;
+}
+#selectImage{
+    padding: 15px 15px;
+    bottom: 0px;
+    background-color: #99D1DE;
+    width: calc(100% - 30px);
+}
+.submit{
+    background: linear-gradient(#4B9BAF 5%,#007A96 100%) repeat scroll 0% 0% transparent !important;
+    border: 1px solid #716D62;
+    color: rgba(255, 255, 255, 1) !important;
+    cursor: pointer;
+    font-family: "DINPro";
+    font-size: 16px;
+    margin-top: 20px;
+    outline: medium none !important;
+    padding: 5px 0px;
+    width: calc(100% - 50px);
+}
+.submit:hover{
+background: linear-gradient(#ffdd7f 5%, #ffbc00 100%);
+}
+/*#file {
+    box-shadow: 0px 0px 15px #626F7E;
+    color: rgba(138, 134, 134, 1);
+    margin-bottom: 20px;
+    margin-top: 10px;
+    padding: 5px;
+    width: 72%;
+}*/
+
+#file-upl{
+  /*display:none;  */
+  visibility: hidden;
+}
+.input-btn{
+  background-color:#8c8c8c;
+  color:#fff;
+  cursor: pointer;
+  border:1px solid #8c8c8c;
+  padding:5px;
+  border-radius:6px;
+  box-shadow:1px 1px 3px #000;
+  margin:10px;
+}
+.input-btn:hover{
+  background-color:#c9cccb;
+}
+
+
+#message{
+position:absolute;
+top:120px;
+left:815px;
+}
+#success
+{
+color:green;
+}
+#invalid
+{
+color:red;
+}
+
+#error
+{
+color:red;
+}
+#error_message
+{
+color:blue;
+}
+#loading
+{
+display:none;
+position:absolute;
+top:50px;
+left:850px;
+font-size:25px;
+}
+#nuevaPropiedad{
+    margin-bottom: 30px;
+}
+.add-propiety{
+    cursor: pointer;
+}
+.add-propiety:hover{
+    color: rgba(160, 164, 165, 1);
 }

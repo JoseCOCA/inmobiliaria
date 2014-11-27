@@ -334,20 +334,32 @@ class Admin extends CI_Controller {
 				
 				case 'Nueva Propiedad':
 				
-				$insert = array(
+					$insert = array(
 
-					'Filtro'      => $this->input->post('Filtro'),
-					'nombre'      => $this->input->post('nombre'),
-					'url'         => 'images/filtros/'.$this->input->post('imagen'),
-					'Status'   => 'NO DISPONIBLE'
+						'Filtro'      => $this->input->post('Filtro'),
+						'nombre'      => $this->input->post('nombre'),
+						'url'         => 'images/filtros/'.$this->input->post('imagen'),
+						'Status'   => 'NO DISPONIBLE'
+					
+					);
+					if($this->admin_model->insert_images('imagefilters',$insert)){
+						echo 'ok';
+					}else{
+						echo 'error';
+					}
 				
-				);
-				if($this->admin_model->insert_images('imagefilters',$insert)){
-					echo 'ok';
-				}else{
-					echo 'error';
-				}
-				
+				break;
+				case 'Modifica seccion':
+					$update = array(
+						'contenido' => $this->input->post('contenido')
+					);
+					$id = array(
+						'ID' => $this->input->post('id'),
+						);
+					$this->admin_model->update_data('contenido',$update,$id);
+					
+					echo "{success:'ok', datos:'".$update['contenido']."'}";
+					
 				break;
 				default:
 					echo 'nel';

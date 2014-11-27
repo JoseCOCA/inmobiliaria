@@ -35,7 +35,6 @@ jQuery(document).on('ready', function($){
  				var elID = data[i].ID;
  				var suPa = data[i].padre;
  				var contenido = data[i].contenido;
- 				$('<textarea />',{id:elID, class: 'wysiwyg', 'data-padre' : suPa}).val(contenido).appendTo('#contenidos-principales');
  				var summerOtions = {
  					height : 400,
  					maxHeight : 400,
@@ -47,16 +46,59 @@ jQuery(document).on('ready', function($){
 					    ['fontsize', ['fontsize']],
 					    // ['color', ['color']],
 					    ['para', ['ul', 'ol', 'paragraph']],
+					    ['picture',['picture']],
+					    ['codeview', ['codeview']]
 					    // ['height', ['height']],
-				  	]
+				  	],
+			  		onImageUpload: function(files, editor, $editable) {
+						console.log('image upload:', files, editor, $editable);
+					},
+					onInit: function(contents, $editable) {
+					    console.log($editable);
+					}
  				}
- 				$('textarea.wysiwyg').summernote(summerOtions);
- 			};
+ 				$('<textarea />',{id:elID, class: 'wysiwyg', 'data-padre' : suPa}).val(contenido).appendTo('#contenidos-principales').each(function(){
+ 					$(this).summernote(summerOtions);
+ 					// console.log($(this).next('.note-editor'));
+ 					var $toolbar = $($(this).next('.note-editor'));
+ 					var $sendBtn = $('<div class="btn-group"><button data-original-title="Enviar" data-parent="'+elID+'" type="button" class="btn btn-default btn-sm btn-small submit-contenido" title="">Guardar</button></div>');
+ 					$sendBtn.appendTo($toolbar);
+   					actualizaContenido();
+				});
+			};
  		}).fail(function (status, statusText, responseXML){
  			console.log(statusText);
 			console.log(responseXML);
  		});
  	});
+
+	function actualizaContenido(){
+		$('button.submit-contenido').each(function (){
+			$(this).click(function (e){
+				e.preventDefault();
+				e.stopImmediatePropagation();
+				var este = $(this);
+				var suID = este.data('parent');
+				var cont = este.parent().parent().find('.note-editable').html();
+				console.log(cont);
+				var arguments = {id : suID, adminPanel : 'Modifica seccion', contenido : cont};
+				$.ajax({
+					url : base_url+'admin/getData',
+					data : arguments,
+					type : 'POST',
+					cache : false,
+					beforeSend : function (e){
+						este.fadeOut();
+					}
+				}).done(function (data){
+					console.log(data);
+				}).fail(function (status, statusText, responseXML){
+					console.log(statusText);
+					console.log(responseXML);
+				});
+			})
+		})
+	}
 
  	/* INICIO */
 

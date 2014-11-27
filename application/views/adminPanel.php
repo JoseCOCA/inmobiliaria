@@ -7,6 +7,7 @@ o crear nuevas propiedades -->
 <!-- SIDR -->
 <div id="sidr">
     <h1>Elige una propiedad</h1>
+    
     <?php if ($query1 > 0) { ?>
         <ul id="lista-propiedades">
         <?php foreach ($query1 as $row) { ?>
@@ -27,7 +28,9 @@ o crear nuevas propiedades -->
 
     <?php
 
-    $Filtro = 'F'.($numRows+1);
+    
+
+    $Filtro = 'F'.($lastFilter+1);
 
     ?>
 
@@ -115,6 +118,7 @@ o crear nuevas propiedades -->
             <h4>Delegación</h4>
             <div contenteditable="true" class="div-editable" id="delegacion"><!-- CONTENIDO --></div>
         </div>
+
         <div class="box-editable">
             <h4>CP</h4>
             <div contenteditable="true" class="div-editable" id="cp"><!-- CONTENIDO --></div>

@@ -90,10 +90,19 @@ class Admin_model extends CI_Model {
 
 	public function lastFilter()
 	{
+		$this->db->select('Filtro');
 		$this->db->order_by('Filtro', 'desc');
 		$query = $this->db->get('imagefilters', 1);
 
-		return $query->result();
+		if ($query->num_rows() > 0) {
+			
+			$row = $query->result_array();
+			$value = $row['0']['Filtro'];
+			$arrayTrimed = str_split($value);
+
+			$lastNumFilter = $arrayTrimed['1'];
+			return $lastNumFilter;
+		}
 	}
 
 

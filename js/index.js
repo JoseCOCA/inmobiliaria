@@ -105,7 +105,7 @@ jQuery(document).on('ready', function($){
 							$('#descripcion').slideUp('slow', function(){
 
 								$('#notificationForm').slideDown('slow');
-								document.getElementById("notif").reset();
+								
 							});
 							// $('#notificationForm, #descripcion').fadeToggle();
 						}else{

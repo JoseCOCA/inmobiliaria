@@ -23,20 +23,21 @@ class Notificacion extends CI_Controller {
 
 		//$this->form_validation->set_message();
 
-		$this->form_validation->set_rules('Nombre', 'Nombre', 'required');
-		$this->form_validation->set_rules('Telefono', 'Teléfono', 'required');
-		$this->form_validation->set_rules('Correo', 'Correo', 'required|valid_email');
+		 $this->form_validation->set_rules('name', 'Nombre', 'required');
+		 $this->form_validation->set_rules('tel', 'Teléfono', 'required');
+		 $this->form_validation->set_rules('email', 'Correo', 'required|valid_email');
 
 		if ($this->form_validation->run() == FALSE) {
 			
-			$this->load->view('contactForm');
+			echo validation_errors();
+
 		}else{
 			//Variables del nuevo contacto
-			$nombre 	= 	$this->input->post('Nombre');	
-			$telefono 	=	$this->input->post('Telefono');
-			$correo 	=	$this->input->post('Correo');
-			$cel 		=	$this->input->post('Celular');
-			$empresa 	=	$this->input->post('Empresa');
+			$nombre 	= 	$this->input->post('name');	
+			$telefono 	=	$this->input->post('tel');
+			$correo 	=	$this->input->post('email');
+			$cel 		=	$this->input->post('cel');
+			$empresa 	=	$this->input->post('emp');
 
 			//arreglo para el nuevo contacto
 			$contacto = array(		
@@ -52,56 +53,60 @@ class Notificacion extends CI_Controller {
 				$comentarios = $this->input->post('Comentarios');
 				if($comentarios !== ""){
 
+					// activar envio de email
 					
+					// $this->email->from(set_value($comentarios));
+					// $this->email->to('josecoca0890@gmail.com');
 					
-					$this->email->from(set_value($comentarios));
-					$this->email->to('josecoca0890@gmail.com');
+					// $this->email->subject('Comentarios de las propiedades');
+					// $this->email->message(set_value($comentarios));
 					
-					$this->email->subject('Comentarios de las propiedades');
-					$this->email->message(set_value($comentarios));
-					
-					if($this->email->send()){
+					// if($this->email->send()){
 
-						echo "mail sent";
-						echo $this->email->print_debugger();
+					// 	echo "mail sent";
+					// 	echo $this->email->print_debugger();
 
-					}else{
+					// }else{
 
-						echo $this->email->print_debugger();
+					// 	echo $this->email->print_debugger();
 
-					}
-					
-					
-				}
+					// }
+					echo "Comentario enviado correctamente";
+				 }else{
+				 	echo "el contacto existe";
+				 }
+				 
 
 			}else{
 
 					if($comentarios !== ""){	//si existen comentarios
 
-						$this->email->from(set_value($correo));
-						$this->email->to('josecoca0890@gmail.com');
+						// $this->email->from(set_value($correo));
+						// $this->email->to('josecoca0890@gmail.com');
 						
-						$this->email->subject('Comentarios de las propiedades');
-						$this->email->message(set_value($comentarios));
+						// $this->email->subject('Comentarios de las propiedades');
+						// $this->email->message(set_value($comentarios));
 						
-						if($this->email->send()){
+						// if($this->email->send()){
 
-							echo "mail sent";
-							echo $this->email->print_debugger();
+						// 	echo "mail sent";
+						// 	echo $this->email->print_debugger();
 
-						}else{
+						// }else{
 
-							echo $this->email->print_debugger();
+						// 	echo $this->email->print_debugger();
 
-						}
+						// }
 						
 					}
 				//captura de datos de nuevo contacto en DB
+				// $message = array('' => , );
+				echo "Nuevo contacto agregado";
 				$this->notificacion_modelo->nuevoContacto($contacto);
 			}
 
 			//mensaje de aprovación
-			$this->load->view('succesContact');
+			// $this->load->view('succesContact');
 
 
 		}

@@ -90,6 +90,10 @@
 					<div id="notificationForm">
 						<div class="formcontent">
 
+							<div class="form-message">
+								<!-- MENSAJE DEL FORMULARIO -->
+							</div>
+
 							<?php
 
 
@@ -101,7 +105,7 @@
 
 								);
 
-								echo form_open('notificacion/obtenerDatos',$atributos);
+								echo form_open('',$atributos);
 
 								
 
@@ -150,7 +154,7 @@
 								<hr/>
 							<div class= "subButton">
 								<?php
-									echo form_submit('submit', 'Enviar');
+									echo form_submit('submit', 'Enviar','id="submit"');
 								?>
 							</div>
 

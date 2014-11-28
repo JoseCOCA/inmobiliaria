@@ -1274,6 +1274,15 @@ img.wrap{
 	width: 15%;
 }
 
+/*mensajes de notificacion*/
+
+.form-message{
+    width: 33%;
+    margin: 0px auto;
+    padding-bottom: 15px;
+    text-align: center;
+}
+
 /*media queries*/
 
 @media (max-width: 1024px) {

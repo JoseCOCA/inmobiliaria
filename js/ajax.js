@@ -1,28 +1,30 @@
 
-$('form.notifAjax').on('submit', function(e){
+$('#submit').click(function(e){
 	e.preventDefault();
-	var that = $(this),
-		url = that.attr('action'),
-		type = that.attr('method'),
-		data = {};
+	var form_data = { 
+		name : $('#nombre').val(), 
+		tel : $('#telefono').val(), 
+		cel : $('#celular').val(), 
+		email : $('#correo').val(), 
+		emp : $('#empresa').val(), 
+		com : $('#comentarios').val() 
+		},
+		url = $('#notif').attr('action');
 
-	that.find('[name]').each(function( index, value){
-		var that = $(this),
-			name = that.attr('name'),
-			value = that.val();
 
-		data[name] = value;
-	});
-
+	console.log(url);
 	$.ajax({
 
-		url: 	url,
-		type:  	type,
-		data:  	data,
-		success: function () {
-			
-		} 
+		url: 	url+'notificacion/obtenerDatos',
+		type:  	'POST',
+		data:  	form_data,
+		success: function (msg) {
+			$('.form-message').append(msg);
+			document.getElementById("notif").reset();
+		}
 
 	});
-	console.log(data);
+
+	return false;
+
 });

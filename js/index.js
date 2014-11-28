@@ -103,7 +103,9 @@ jQuery(document).on('ready', function($){
 						e.stopImmediatePropagation();
 						if(checkbox.is(':checked')){
 							$('#descripcion').slideUp('slow', function(){
+
 								$('#notificationForm').slideDown('slow');
+								document.getElementById("notif").reset();
 							});
 							// $('#notificationForm, #descripcion').fadeToggle();
 						}else{
@@ -169,3 +171,7 @@ jQuery(document).on('ready', function($){
 	});
 
 function goToByScroll(id){$('html,body').animate({scrollTop: $("#"+id).offset().top},'slow');}
+
+function resetForm () {
+	document.getElementById("notif").reset();
+}

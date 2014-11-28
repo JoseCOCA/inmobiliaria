@@ -1,6 +1,6 @@
 
-$('form.notifAjax').on('submit', function(){
-
+$('form.notifAjax').on('submit', function(e){
+	e.preventDefault();
 	var that = $(this),
 		url = that.attr('action'),
 		type = that.attr('method'),
@@ -12,9 +12,6 @@ $('form.notifAjax').on('submit', function(){
 			value = that.val();
 
 		data[name] = value;
-
-		console.log(data);
-
 	});
 
 	$.ajax({
@@ -27,6 +24,5 @@ $('form.notifAjax').on('submit', function(){
 		} 
 
 	});
-
-	return false;
+	console.log(data);
 });

@@ -32,7 +32,7 @@
 
 		<div class="portada overlay-cont" id="">
 
-			<a href="#close" id="close" class=""></a>
+			<a href="#close" id="close" onclick="resetForm()" class=""></a>
 
 				<div class="slide-cont">
 					<div class="slide" id="este-">
@@ -95,14 +95,15 @@
 
 							$atributos= array(
 
-								'id' 		=> 	'notif',
-								'class' 	=>	'notifAjax'
+								'id' 			=> 	'notif',
+								'class' 		=>	'notifAjax',
+								'autocomplete' 	=> 	'false'
 
 								);
 
 								echo form_open('notificacion/obtenerDatos',$atributos);
 
-								form_hidden('name', 'value');
+								
 
 								$data1 = array(
 								'name' => 'nombre',

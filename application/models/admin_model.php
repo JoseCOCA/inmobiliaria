@@ -11,9 +11,9 @@ class Admin_model extends CI_Model {
 	public function insert_images($table, $data){
 		if($this->db->insert($table, $data)) return true;
 	}
-	
-	// verifica el login de usuario 
-	
+
+	// verifica el login de usuario
+
 	public function verify_user($email, $password){
 		$q = $this
 			->db
@@ -23,7 +23,7 @@ class Admin_model extends CI_Model {
 			->get('users');
 
 		if ($q->num_rows > 0) {
-	
+
 			return $q->row();
 		}
 
@@ -37,11 +37,11 @@ class Admin_model extends CI_Model {
 	{
 		$query = $this->db->get('imagedesc');
 		if ($query->num_rows() > 0) {
-		
+
 			foreach ($query->result() as $row) {
 				$data[] = $row;
 			}
-			return $data;		
+			return $data;
 		}
 	}
 
@@ -51,53 +51,53 @@ class Admin_model extends CI_Model {
 		$query = $this->db->get_where('imagefilters',array('Filtro' => $Filtro));
 		$queryB = $this->db->get_where('imagedesc',array('Filtro' => $Filtro, 'principal =' => '0', 'recomendado =' => '0'));
 		if ($query->num_rows() > 0) {
-		
+
 			foreach ($query->result() as $row) {
 				$data[] = $row;
-			
+
 			}
-			// return $data;		
+			// return $data;
 		}
 		if ($queryB->num_rows() > 0) {
-		
+
 			foreach ($queryB->result() as $rowB) {
 				$data[] = $rowB;
-			
+
 			}
 		}
-		return $data;		
+		return $data;
 	}
-	
-	
+
+
 	public function get_banner()
 	{
 		$data;
 		$query = $this->db->get_where('imagedesc',array('principal' => '1'));
 		$queryB = $this->db->get_where('imagedesc',array('recomendado' => '1'));
 		if ($query->num_rows() > 0) {
-		
+
 			foreach ($query->result() as $row) {
 				$data['principal'][] = $row;
-			
+
 			}
 		}
 		if ($queryB->num_rows() > 0) {
-		
+
 			foreach ($queryB->result() as $rowB) {
 				$data['recomendados'][] = $rowB;
-			
+
 			}
 		}
-		return $data;		
+		return $data;
 	}
-	
+
 
 		public function get_imagesFilter()
 	{
 		$query = $this->db->get('imagefilters');
 
 		if ($query->num_rows() > 0) {
-		
+
 			foreach ($query->result() as $row) {
 				$data[] = $row;
 			}
@@ -113,11 +113,11 @@ class Admin_model extends CI_Model {
 
 	public function getContent($padre)
 	{
-		$this->db->select('contenido');
+		// $this->db->select('contenido');
 		$query = $this->db->get_where('contenido', array('padre' => $padre));
 
 		if ($query->num_rows() > 0) {
-		
+
 			$data = $query->result();
 			return $data;
 		}
@@ -137,7 +137,7 @@ class Admin_model extends CI_Model {
 		$query = $this->db->get('imagefilters', 1);
 
 		if ($query->num_rows() > 0) {
-			
+
 			$row = $query->result_array();
 			$value = $row['0']['Filtro'];
 			$arrayTrimed = str_split($value);

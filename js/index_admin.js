@@ -18,6 +18,7 @@ jQuery(document).on('ready', function($){
 	  	e.stopImmediatePropagation();
 	  	$('form#nuevaPropiedad').slideDown();
 	  });
+	  
  	
  	/* INICIO */
  	
@@ -319,6 +320,11 @@ jQuery(document).on('ready', function($){
 		        	 // data.context.addClass('error');
 		        }
 		    });
+
+	  $('#panelBanner .elimina-img').click(function(){
+	  	alert("Error al procesar la solicitud en el servidor \n Intente de nuevo o verifique la configuración");
+	  })
+
  		}).fail(function (status, statusText, responseXML){
  			console.log(satus);
  			console.log(statusText);

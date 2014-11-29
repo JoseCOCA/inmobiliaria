@@ -13,8 +13,20 @@ jQuery(document).on('ready', function($){
 	  '<div class="side"></div>'+
 	  '<div class="side"></div>'+
 	  '</div>';
+	  
+	  $('h1.add-propiety').click(function (e){
+	  	e.stopImmediatePropagation();
+	  	$('form#nuevaPropiedad').slideDown();
+	  });
  	
  	/* INICIO */
+ 	
+ 	$('#home').click(function (e){
+ 		muestraLoadr(e);
+		$('#main>div:not(#welcome)').delay(1000).hide(0);
+		$('#welcome').delay(1000).show(0);
+ 		muestraLoadr(e);
+ 	});
 
  	$('select#seccion').on('change', function (e) {
  		e.stopImmediatePropagation();
@@ -102,21 +114,236 @@ jQuery(document).on('ready', function($){
 
  	/* INICIO */
 
+	/* BANNERS */
+	
+ 	$('#bannersEdit').click(function (e){
+ 		muestraLoadr(e);
+		$('#main>div:not(#panelBanner)').delay(1000).hide(0);
+		$('#panelBanner').delay(1000).show(0);
+ 		muestraLoadr(e);
+ 		$.ajax({
+ 			url : base_url+'ajax/getBanners',
+ 			cache : false,
+ 			beforeSend : function (e) {
+ 				$('#contenido-banner-principal ul').empty();
+ 			}
+ 		}).done(function (data){
+ 			data = typeof(data)!='object' ? JSON.parse(data) : data;
+ 			// console.log(data);
+ 			var principales = data.principal;
+ 			var recomendados = data.recomendados;
+ 			/* PRINCIPAL */
+ 			for (var i = 0; i < principales.length; i++) {
+ 				var url = principales[i].url;
+ 				var name = principales[i].nombre;
+ 				var image = '<li><div class="elimina-img butn" data-id="'+principales[i]['ID']+'">Eliminar</div><img src="' + base_url + url + '" alt="' + name + '" class="image_slide"></li>';
+ 				// console.log(image);
+ 				$(image).appendTo('#contenido-banner-principal ul');
+ 			};
+ 			
+ 			/* 	NUEVO BANNER */
+			$('form#newMainBanner').fileupload({
+		        dataType: 'json',
+		        dropZone: $('#image_preview_main_ban'),
+		        add: function (e, data) {
+		        	$('button.submit').remove();
+		        	if (data.files && data.files[0]) {
+				        var reader = new FileReader();
+				        reader.onload = function(e) {
+				            $('#previewing_main_ban').attr('src', e.target.result);
+				        }
+				    }
+				    var propiedad = $(this).find('select#seccion-banner-p').val();
+				    $('select#seccion-banner-p').on('change', function(){
+				    	propiedad = $(this).val();
+				    })
+				    
+				    console.log(propiedad);
+		        	reader.readAsDataURL(data.files[0]);
+		            data.context = $('<button/>',{class:'submit'}).text('Cargar')
+		                .appendTo($(this).find('#selectImage'))
+		                .click(function (e) {
+		                	e.preventDefault();
+		                    // data.context = $('<p/>').text('Uploading...').replaceAll($(this));
+		                    if(propiedad==''||propiedad==null||propiedad==undefined){
+		                    	alert('debe elegir una propiedad');
+		                    }else{
+		                    	data.submit();
+			                    data.context.fadeOut();
+		                    }
+		                    
+		                });
+		        },
+		        done: function (e, data) {
+		        	data = typeof(data)!='object' ? JSON.parse(data) : data;
+		            // console.log(data.result);
+		            var status = data.result.status;
+		            if(status == "success"){
+						// Filtro
+						// nombre
+						// url
+						// principal
+						// recomendado
+						var filtro = $('select#seccion-banner-p').val(),
+						nombre     = data.result.nombre,
+						imagen     = nombre,
+						dats       = {
+							Filtro : filtro,
+							nombre : nombre,
+							imagen : imagen,
+							recomendado : 0,
+							principal : 1,
+							adminPanel : 'Nuevo banner'
+						};
+		            	$.ajax({
+		            		url : base_url+'admin/getData',
+		            		cache :false,
+		            		type : 'POST',
+		            		data : dats,
+		            		beforeSend : function(){
+		            			$('#previewing_main_ban').removeAttr('src');
+				            	$('button.submit').remove();
+				            	$('form#nuevaPropiedad').slideUp(1000);
+		            		}
+		            	}).done(function (data){
+		            		alert('Imagen agregada');
+		     //        		console.log(data);
+		            		// var nueva = '<li><div class="elimina-img butn" data-id="'+principales[i]['ID']+'">Eliminar</div><img src="' + base_url + url + '" alt="' + name + '" class="image_slide"></li>';
+		            		
+							// $(nueva).hide().appendTo("#lista-propiedades").fadeIn(1000);
+
+		            	}).fail(function (status, statusText, responseXML){
+		            		console.log(statusText);
+							console.log(responseXML);
+		            	});
+		            }else{
+		            	alert(status);
+		            	data.context.fadeIn();
+		            }
+		        },
+		        fail: function (e, data){
+		        	 data.context.addClass('error');
+		        	 // data.context.addClass('error');
+		        }
+		    });
+
+ 			/* RECOMENDADOS */
+ 			for (var r = 0; r < recomendados.length; r++) {
+ 				var url = recomendados[r].url;
+ 				var name = recomendados[r].nombre;
+ 				var image = '<li><div class="elimina-img butn" data-id="'+recomendados[r]['ID']+'">Eliminar</div><img src="' + base_url + url + '" alt="' + name + '" class="image_slide"></li>';
+ 				// console.log(image);
+ 				$(image).appendTo('#contenido-banner-recomendado ul');
+ 			};
+ 			/* 	NUEVO BANNER RECOMENDADO */
+			$('form#newRecomendBanner').fileupload({
+		        dataType: 'json',
+		        dropZone: $('#image_preview_recomend_ban'),
+		        add: function (e, data) {
+		        	$('button.submit').remove();
+		        	if (data.files && data.files[0]) {
+				        var reader = new FileReader();
+				        reader.onload = function(e) {
+				            $('#previewing_recomend_ban').attr('src', e.target.result);
+				        }
+				    }
+				    var propiedad = $(this).find('select#seccion-banner-r').val();
+				    $('select#seccion-banner-r').on('change', function(){
+				    	propiedad = $(this).val();
+				    })
+				    
+				    // console.log(propiedad);
+		        	reader.readAsDataURL(data.files[0]);
+		            data.context = $('<button/>',{class:'submit'}).text('Cargar')
+		                .appendTo($(this).find('#selectImage'))
+		                .click(function (e) {
+		                	e.preventDefault();
+		                    // data.context = $('<p/>').text('Uploading...').replaceAll($(this));
+		                    if(propiedad==''||propiedad==null||propiedad==undefined){
+		                    	alert('debe elegir una propiedad');
+		                    }else{
+		                    	data.submit();
+			                    data.context.fadeOut();
+		                    }
+		                    
+		                });
+		        },
+		        done: function (e, data) {
+		        	data = typeof(data)!='object' ? JSON.parse(data) : data;
+		            // console.log(data.result);
+		            var status = data.result.status;
+		            if(status == "success"){
+						// Filtro
+						// nombre
+						// url
+						// principal
+						// recomendado
+						var filtro = $('select#seccion-banner-r').val(),
+						nombre     = data.result.nombre,
+						imagen     = nombre,
+						dats       = {
+							Filtro : filtro,
+							nombre : nombre,
+							imagen : imagen,
+							recomendado : 1,
+							principal : 0,
+							adminPanel : 'Nuevo banner'
+						};
+		            	$.ajax({
+		            		url : base_url+'admin/getData',
+		            		cache :false,
+		            		type : 'POST',
+		            		data : dats,
+		            		beforeSend : function(){
+		            			$('#previewing_recomend_ban').removeAttr('src');
+				            	$('button.submit').remove();
+		            		}
+		            	}).done(function (data){
+		            		alert('Imagen agregada');
+		     //        		console.log(data);
+		     //        		var nueva = '<li><a href="#sidr" id="'+filtro+'" class="configFilter showInfo" data-cont="'+filtro+'"><img src="images/filtros/'+imagen+'" /><p>'+nombre+'</p></a></li>';
+		            		
+							// $(nueva).hide().appendTo("#lista-propiedades").fadeIn(1000);
+
+		            	}).fail(function (status, statusText, responseXML){
+		            		console.log(statusText);
+							console.log(responseXML);
+		            	});
+		            }else{
+		            	alert(status);
+		            	data.context.fadeIn();
+		            }
+		        },
+		        fail: function (e, data){
+		        	 data.context.addClass('error');
+		        	 // data.context.addClass('error');
+		        }
+		    });
+ 		}).fail(function (status, statusText, responseXML){
+ 			console.log(satus);
+ 			console.log(statusText);
+ 		})
+ 	});
+ 		
+ 	
+	
+	/* BANNERS */
+
+
  	/* PROPIEDADES */
 
-	$("#input_btn").on('click',function (e){
+	$(".input_btn_file").on('click',function (e){
 		e.preventDefault();
-	  	$("#file-upl").click();  
+	  	$(this).prev('input[type="file"]').click();  
 	});
- 	$('#bannersEdit').click(function(){
- 		alert('warning! \n Critical error!! \n Aorry an error has ocurred. Please try your request later\n Status error[40092] Unknown request service in front page');
- 	});
 
 	// $('.showInfo').each(function() {
 		$('.showInfo').live('click', function (e){
+			muestraLoadr(e);
 			$(this).sidr({speed: 500});
-			$('#welcome').hide();
-			$('.config_container').slideDown(500);
+ 			$('#main>div:not(.config_container)').delay(1000).hide(0);
+			$('.config_container').delay(1000).show(0);
+			
 		// $(this).live('click', function (e){
 			var getID = $(this).attr("data-cont");
 			data = {
@@ -140,7 +367,7 @@ jQuery(document).on('ready', function($){
 				for (var i = 1; i < data.length; i++) {
 					var url = data[i]['url'];
 					var name = data[i]['nombre'];
-					var image = '<li><div class="elimina-img btn" id="'+data[i]['nombre']+'">Eliminar</div><img src="' + base_url + url + '" alt="' + name + '" class="image_slide"></li>';
+					var image = '<li><div class="elimina-img butn" id="'+data[i]['nombre']+'">Eliminar</div><img src="' + base_url + url + '" alt="' + name + '" class="image_slide"></li>';
 					$('.config_container .carrusel').append(image);
 				};
 				$('#condiciones').html(datos['Condiciones']);
@@ -158,10 +385,11 @@ jQuery(document).on('ready', function($){
 				
 				$('<div/>', {
 					id: 'saveChanges',
-					class: 'saveChanges btn',
+					class: 'saveChanges butn',
 					'data-filtro': datos['Filtro']
 				}).html('Guardar').appendTo('.config_container');
 				eliminaImagen();
+				muestraLoadr(e);
 				$('#saveChanges').on('click', function (e) {
 					// e.preventDefault();
 					var condiciones = $('#condiciones').html(),
@@ -263,7 +491,8 @@ jQuery(document).on('ready', function($){
                 });
         },
         done: function (e, data) {
-            console.log(data.result);
+        	data = typeof(data)!='object' ? JSON.parse(data) : data;
+            // console.log(data.result);
             var status = data.result.status;
             if(status == "success"){
 				// Filtro
@@ -298,6 +527,8 @@ jQuery(document).on('ready', function($){
             		console.log(statusText);
 					console.log(responseXML);
             	});
+            }else{
+            	alert(status);
             }
         },
         fail: function (e, data){
@@ -399,4 +630,15 @@ function agregaImages (ars){
 
  	/* PROPIEDADES */
 
-	
+	function muestraLoadr (e){
+		e.preventDefault();
+		e.stopImmediatePropagation();
+		var overlay = $('#overlay-loading');
+		var dom = $('html, body');
+		dom.queue(function(){
+			$(this).toggleClass('no-overflow');
+			$(this).dequeue();
+		}).delay(1000);
+		// dom.toggleClass('no-overflow').delay(1000);
+		overlay.slideToggle().delay(1000);
+	}

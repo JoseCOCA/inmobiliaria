@@ -6,7 +6,7 @@ if(isset($_POST['propiedad'])) {
 	
 	$propiedad = $_POST['propiedad'];
 	
-	if($propiedad == 'nueva'){
+	if($propiedad == 'nueva'){ // REVISA SI LA IMAGEN ES DE UNA PROPIEDAD NUEVA
 		
 		if(isset($_FILES["file-upl"]["type"])){
 			$path = '../images/filtros/';
@@ -17,10 +17,11 @@ if(isset($_POST['propiedad'])) {
 			) && ($_FILES["file-upl"]["size"] < 100000)//Approx. 100kb files can be uploaded.
 			&& in_array($file_extension, $validextensions)) {
 				if ($_FILES["file-upl"]["error"] > 0){
-					echo "Return Code: " . $_FILES["file-upl"]["error"] . "<br/><br/>";
+					echo '{"status":"'.$_FILES["file-upl"]["error"].'"}';
 				}else{
 					if (file_exists($path . $_FILES["file-upl"]["name"])) {
-						echo $_FILES["file-upl"]["name"] . " <span id='invalid'><b>already exists.</b></span> ";
+						echo '{"status":"Ya existe un archivo con ese nombre."}';
+						// echo $_FILES["file-upl"]["name"] . " <span id='invalid'><b>already exists.</b></span> ";
 					}
 					else{
 						$sourcePath = $_FILES['file-upl']['tmp_name']; // Storing source path of the file in a variable
@@ -30,12 +31,13 @@ if(isset($_POST['propiedad'])) {
 					}
 				}	
 			}else{
-				echo "<span id='invalid'>***Invalid file Size or Type***<span>";
+				echo '{"status":"El archivo supera el peso máximo."}';
+				// echo "<span id='invalid'>***Invalid file Size or Type***<span>";
 			}
 		}else{
-			echo 'error2';
+			echo 'error';
 		}
-	}else{
+	}else{ // SI NO ES UNA PROPIEDAD NUEVA SUBE UNA IMAGEN A BANNERS
 		
 		$allowed = array('png', 'jpg', 'gif','zip');
 

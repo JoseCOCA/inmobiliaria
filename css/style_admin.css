@@ -36,6 +36,9 @@ a[href^="tel:"] {
     -webkit-text-size-adjust: none;
 }
 
+*, *:before, *:after {
+    box-sizing: content-box;
+}
 
 body {
     position: relative;
@@ -46,6 +49,9 @@ body {
     min-height: 100%;
 }
 
+.no-overflow{
+	overflow: hidden !important;
+}
 .ic {
 	border:0;
 	float:right;
@@ -265,7 +271,7 @@ a:focus{
     border: 0;
 }
 
-.btn:not(.note-style .btn)  {
+#saveChanges.butn, #welcome .butn, #panelBanner .butn, .butn  {
     background-color: #007A96;
     padding: 12px 26px;
     color: #FFF;
@@ -277,8 +283,23 @@ a:focus{
     line-height: 1;
 }
 
+/*.btn-default  {
+    background-color: initial !important;
+    padding:  initial !important;
+    color: initial !important;
+    font-size: initial !important;
+    border-radius: initial !important;
+    cursor: initial !important;
+    display: initial !important;
+    margin-top: initial !important;
+    line-height: initial !important;
+}*/
+/*#saveChanges.btn{
+	background-color: #007A96 !important;
+    color: #FFF !important;
+}*/
 
-.btn:hover {
+.butn:hover {
     background-color: #1d1d1d;
 }
 
@@ -983,7 +1004,7 @@ img.wrap{
     vertical-align: top;
 }
 
-#welcome{
+#welcome, #panelBanner{
     /*height: calc(100vh - 180px);*/
     /*height: 100vh;*/
     padding-top: 150px;
@@ -1057,7 +1078,7 @@ nav{
 	position: fixed;
 	top: 0;
 	width: 100%;
-    z-index: 100;
+    z-index: 10;
 }
 nav .botn{
 	background-color: #4B9BAF;
@@ -1069,6 +1090,12 @@ nav .botn{
 	padding: 7px;
 	text-align: center;
 	vertical-align: middle;
+}
+nav .botn:last-child{
+	background-color: indianred;
+}
+nav .botn:last-child:hover{
+	background-color: rgba(237, 163, 163, 1);
 }
 nav .botn:hover{
 	background-color: rgba(101, 203, 228, 1);
@@ -1160,12 +1187,12 @@ nav .botn a:hover{
     padding: 10px;
     position: relative;
 }
-.carrusel li .btn{
+.carrusel li .butn{
     position: absolute;
     opacity: .4;
     transition: opacity .3s ;
 }
-.carrusel li:hover .btn{
+.carrusel li:hover .butn{
     opacity: 1;
 }
 
@@ -1182,12 +1209,12 @@ nav .botn a:hover{
 }
 
 .styled-select select {
-   background: transparent;
-   border: none;
-   font-size: 14px;
-   height: 29px;
-   padding: 5px; 
-   width: 268px;
+    background: transparent;
+    border: none;
+    font-size: 14px;
+    height: calc(100% - 10px);
+    padding: 5px; 
+    width: 268px;
 }
 .blue {
     background-color: #007A96;
@@ -1225,7 +1252,7 @@ nav .botn a:hover{
 
 /* AGREGA NUEVA PROPIEDAD */
 
-#image_preview{
+#image_preview, #image_preview_main_ban, #image_preview_recomend_ban {
     background-color: #5D5D5D;
     color: #E0E0E0;
     font-family: "DINpro-l";
@@ -1237,10 +1264,10 @@ nav .botn a:hover{
     text-align: center;
     width: 100%;
 }
-#image_preview:after{
+#image_preview:after, #image_preview_main_ban:after, #image_preview_recomend_ban:after{
     content: "Preview"
 }
-#image_preview img{
+#image_preview img, #image_preview_main_ban img, #image_preview_recomend_ban img{
     left: 0;
     position: absolute;
     top: 0;
@@ -1336,7 +1363,49 @@ font-size:25px;
 
 
 
+/* BANNERS */
 
+#panelBanner ul li{
+	margin: 10px;
+}
+#panelBanner ul li .butn{
+    position: absolute;
+    opacity: .4;
+    transition: opacity .3s ;
+}
+#panelBanner ul li:hover .butn{
+    opacity: 1;
+}
+
+#contenido-banner-principal{
+	background: #007A96;
+}
+
+#contenido-banner-principal h3,
+#contenido-banner-recomendado h3{
+	color: white;
+}
+
+#newMainBanner .submit, #newRecomendBanner .submit{
+	width: 20%;
+}
+
+#contenido-banner-recomendado{
+	background: #007A96;
+	margin-top: 20px;
+}
+
+
+/* BANNERS */
+#overlay-loading{
+	background: #4B9BAF;
+	height: 100%;
+	left: 0;
+	position: fixed;
+	top: 0;
+	width: 100%;
+	z-index: 11;
+}
 
 /* LOADER */
 

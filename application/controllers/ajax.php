@@ -23,6 +23,13 @@ class Ajax extends CI_Controller {
 		echo json_encode($this->admin_model->getContent($padre));
 	}
 
+
+	public function getBanners(){
+		$padre = isset($_GET['banner']) ? $_GET['banner'] : 'principal';
+		echo json_encode($this->admin_model->get_banner());
+
+	}
+	
 	public function contacto()
 	{
 		if($this->input->post('ajaxForm') != ""){

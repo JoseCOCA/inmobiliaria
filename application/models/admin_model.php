@@ -45,11 +45,11 @@ class Admin_model extends CI_Model {
 		}
 	}
 
-		public function get_desc($Filtro)
+	public function get_desc($Filtro)
 	{
 		$data;
 		$query = $this->db->get_where('imagefilters',array('Filtro' => $Filtro));
-		$queryB = $this->db->get_where('imagedesc',array('Filtro' => $Filtro));
+		$queryB = $this->db->get_where('imagedesc',array('Filtro' => $Filtro, 'principal =' => '0', 'recomendado =' => '0'));
 		if ($query->num_rows() > 0) {
 		
 			foreach ($query->result() as $row) {
@@ -67,6 +67,31 @@ class Admin_model extends CI_Model {
 		}
 		return $data;		
 	}
+	
+	
+	public function get_banner()
+	{
+		$data;
+		$query = $this->db->get_where('imagedesc',array('principal' => '1'));
+		$queryB = $this->db->get_where('imagedesc',array('recomendado' => '1'));
+		if ($query->num_rows() > 0) {
+		
+			foreach ($query->result() as $row) {
+				$data['principal'][] = $row;
+			
+			}
+		}
+		if ($queryB->num_rows() > 0) {
+		
+			foreach ($queryB->result() as $rowB) {
+				$data['recomendados'][] = $rowB;
+			
+			}
+		}
+		return $data;		
+	}
+	
+
 		public function get_imagesFilter()
 	{
 		$query = $this->db->get('imagefilters');

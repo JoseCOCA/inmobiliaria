@@ -349,6 +349,24 @@ class Admin extends CI_Controller {
 					}
 				
 				break;
+				case 'Nuevo banner':
+					// Filtro 	url 	nombre 	principal 	recomendado
+					$insert = array(
+
+						'Filtro'      => $this->input->post('Filtro'),
+						'nombre'      => $this->input->post('nombre'),
+						'url'         => 'images/banners/'.$this->input->post('imagen'),
+						'principal'   => $this->input->post('principal'),
+						'recomendado' => $this->input->post('recomendado')
+					
+					);
+					if($this->admin_model->insert_images('imagedesc',$insert)){
+						echo 'ok';
+					}else{
+						echo 'error';
+					}
+				
+				break;
 				case 'Modifica seccion':
 					$update = array(
 						'contenido' => $this->input->post('contenido')

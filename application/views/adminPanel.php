@@ -38,12 +38,12 @@ o crear nuevas propiedades*/ ?>-->
 
     <h1 class="add-propiety">Agregar nueva propiedad</h1>
     
-    <form id="nuevaPropiedad" action="<?=base_url()?>php/upload_images.php" method="post" enctype="multipart/form-data" autocomplete="off">
+    <form class="oculto" id="nuevaPropiedad" action="<?=base_url()?>php/upload_images.php" method="post" enctype="multipart/form-data" autocomplete="off">
         <div id="image_preview" title="Arrastra aquí la imagen"><img id="previewing" /></div>
         <div id="selectImage">
             <label for="file-upl">Seleciona imagen para propiedad</label><br/>
             <input type="file" name="file-upl" id="file-upl" required="required" accept="image/*" />
-            <button class='input-btn' id='input_btn'>Buscar archivo...</button>
+            <button class='input-btn input_btn_file' id='input_btn'>Buscar archivo...</button>
             <input type="text" class="nombre" id="propiedad-nombre" name="propiedad-nombre" value="<?=$Filtro?>" />
             <input type="hidden" class="nuevo-filtro" id="nuevo-filtro" name="nuevo-filtro" value="<?=$Filtro?>" />
             <input type="hidden" class="propiedad" id="propiedad-nueva" name="propiedad" value="nueva">
@@ -59,12 +59,13 @@ o crear nuevas propiedades*/ ?>-->
 
 
 <div id="main">
+
     <div id="welcome">
         
         <h1>Bienvenido al administrador</h1>
         
         
-        <h4>Selecciona una sección para editar:</h4>
+        <h4>Selecciona una sección para editar su contenido:</h4>
         <div class="styled-select blue semi-square">
 
             <select id="seccion" name="seccion">
@@ -78,6 +79,7 @@ o crear nuevas propiedades*/ ?>-->
         <br>
         <div class="no-float col-md-2 col-xs-1 col-sm-1 col-lg-3"></div><div id="contenidos-principales" class="no-float col-md-8 col-xs-10 col-sm-10 col-lg-6"></div><div class="no-float col-md-2 col-xs-1 col-sm-1 col-lg-3"></div>
     </div>
+
     <div class="config_container oculto">
         
 		<!-- CARRUSEL -->
@@ -160,5 +162,106 @@ o crear nuevas propiedades*/ ?>-->
 
     </div>
 
+    <div id="panelBanner" class="oculto">
+        
+       <div id="banner-principal">
+           
+            <div class="no-float col-md-1 col-xs-1 col-sm-1 col-lg-3"></div><div id="contenido-banner-principal" class="no-float col-md-7 col-xs-10 col-sm-8 col-lg-6">
+            	<h3>BANNER PRINCIPAL</h3>
+                <ul> <!-- BANNER PRINCIPAL --> </ul>
+                <form id="newMainBanner" action="<?=base_url()?>php/upload_images.php" method="post" enctype="multipart/form-data" autocomplete="off">
+                    <div id="image_preview_main_ban" title="Arrastra aquí la imagen"><img id="previewing_main_ban" /></div>
+                    <div id="selectImage">
+                        <label for="file-upl">Seleciona imagen </label><br/>
+                        <input type="file" name="upl" id="file-upl" required="required" accept="image/*" />
+                        <button class='input-btn input_btn_file' id='input_btn'>Buscar archivo...</button>
+                        <!-- <input type="text" class="nombre" id="propiedad-nombre" name="propiedad-nombre" value="<?=$Filtro?>" /> -->
+                        <!-- <input type="hidden" class="propiedad" id="propiedad-nueva" name="propiedad" value="nueva"> -->
+                        
+                        <h5>
+                            <label for="seccion-banner-p">Propiedad a la que pertenece:</label>
+                        </h5>
+                        <div class="styled-select blue semi-square">
+                            <select id="seccion-banner-p" name="seccion" required="required">
+                                <option value="" disabled="disabled" selected="selected">Propiedad</option>
+                                <?php if ($query1 > 0) { ?>
+                                    <?php foreach ($query1 as $row) { ?>
+                                       <option value="<?=$row->Filtro?>"><?=$row->nombre?></option>
+
+                                    <?php } ?>
+                                <?php } ?>
+                            </select>
+                        </div>
+                        <input type="hidden" class="propiedad" id="propiedad-true" name="propiedad" value="true">
+                        <br>
+                    </div>
+    
+                </form>
+                
+                            
+            </div><div class="no-float col-md-2 col-xs-1 col-sm-1 col-lg-3"></div>
+            
+            <div class="no-float col-md-1 col-xs-1 col-sm-1 col-lg-3"></div><div id="contenido-banner-recomendado" class="no-float col-md-7 col-xs-10 col-sm-8 col-lg-6">
+            	<h3>BANNER DE PROPIEDADES RECOMENDADAS</h3>
+                <ul> <!-- BANNER RECOMENDADOS --> </ul>
+                <form id="newRecomendBanner" action="<?=base_url()?>php/upload_images.php" method="post" enctype="multipart/form-data" autocomplete="off">
+                    <div id="image_preview_recomend_ban" title="Arrastra aquí la imagen"><img id="previewing_recomend_ban" /></div>
+                    <div id="selectImage">
+                        <label for="file-upl">Seleciona imagen </label><br/>
+                        <input type="file" name="upl" id="file-upl" required="required" accept="image/*" />
+                        <button class='input-btn input_btn_file' id='input_btn'>Buscar archivo...</button>
+                        <!-- <input type="text" class="nombre" id="propiedad-nombre" name="propiedad-nombre" value="<?=$Filtro?>" /> -->
+                        <!-- <input type="hidden" class="propiedad" id="propiedad-nueva" name="propiedad" value="nueva"> -->
+                        
+                        <h5>
+                            <label for="seccion-banner-r">Propiedad a la que pertenece:</label>
+                        </h5>
+                        <div class="styled-select blue semi-square">
+                            <select id="seccion-banner-r" name="seccion" required="required">
+                                <option value="" disabled="disabled" selected="selected">Propiedad</option>
+                                <?php if ($query1 > 0) { ?>
+                                    <?php foreach ($query1 as $row) { ?>
+                                       <option value="<?=$row->Filtro?>"><?=$row->nombre?></option>
+
+                                    <?php } ?>
+                                <?php } ?>
+                            </select>
+                        </div>
+                        <input type="hidden" class="propiedad" id="propiedad-true" name="propiedad" value="true">
+                        <br>
+                    </div>
+    
+                </form>
+                
+                            
+            </div><div class="no-float col-md-2 col-xs-1 col-sm-1 col-lg-3"></div>
+
+
+    
+           
+       </div>
+
+       <div id="banner-recomendados">
+           
+            <div class="no-float col-md-2 col-xs-1 col-sm-1 col-lg-3"></div><div id="contenido-banner-principal" class="no-float col-md-8 col-xs-10 col-sm-10 col-lg-6"></div><div class="no-float col-md-2 col-xs-1 col-sm-1 col-lg-3"></div>
+           
+       </div>
+       
+        
+    </div>
+
+
 </div>
 
+<div id="overlay-loading" class="oculto">
+    <div class="loader">
+      <div class="side"></div>
+      <div class="side"></div>
+      <div class="side"></div>
+      <div class="side"></div>
+      <div class="side"></div>
+      <div class="side"></div>
+      <div class="side"></div>
+      <div class="side"></div>
+      </div>
+</div>

@@ -36,14 +36,17 @@
 
 
 		<nav>
-			<div class="botn" id="logOut">
-			<a href="<?= base_url('admin/logout') ?>">CERRAR SESION</a>
+			<div class="botn" id="home">
+			<a href="#">INICIO</a>
 			</div>
 			<div class="botn" id="edit">
 			<a id="admin-menu" href="#sidr">EDITAR PROPIEDADES</a>  <!-- agregando el menu sidr -->
 			</div>
 			<div class="botn" id="bannersEdit">
 			<a id="admin-banners" href="#">EDITAR BANNERS</a> 
+			</div>
+			<div class="botn" id="logOut">
+			<a href="<?= base_url('admin/logout') ?>">CERRAR SESION</a>
 			</div>
 		</nav>
 

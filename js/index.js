@@ -103,7 +103,7 @@ jQuery(document).on('ready', function($){
 						e.stopImmediatePropagation();
 						if(checkbox.is(':checked')){
 							$('#descripcion').slideUp('slow', function(){
-
+								$('.form-message').empty();
 								$('#notificationForm').slideDown('slow');
 								
 							});
@@ -174,4 +174,5 @@ function goToByScroll(id){$('html,body').animate({scrollTop: $("#"+id).offset().
 
 function resetForm () {
 	document.getElementById("notif").reset();
+	$('.form-message').empty();
 }

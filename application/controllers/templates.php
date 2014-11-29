@@ -28,7 +28,8 @@ class Templates extends CI_Controller {
 		$data = array(
 			'title' => 'Inicio - Inmobiliaria',
 			'query' => $this->admin_model->get_imagesDesc(),
-			'query1' => $this->admin_model->get_imagesFilter()
+			'query1' => $this->admin_model->get_imagesFilter(),
+			'contenido' => $this->admin_model->getContent('1')
 			);
 		$this->load->view('header',$data);
 		$this->load->view('public/home');
@@ -38,7 +39,8 @@ class Templates extends CI_Controller {
 		$data = array(
 			'title' => 'info',
 			'query' => $this->admin_model->get_imagesDesc(),
-			'query1' => $this->admin_model->get_imagesFilter()
+			'query1' => $this->admin_model->get_imagesFilter(),
+			'contenido' => $this->admin_model->getContent('2')
 			);
 		$this->load->view('header',$data);
 		$this->load->view('public/info');
@@ -48,6 +50,8 @@ class Templates extends CI_Controller {
 		$data = array(
 			'title' => 'privacy',
 			'query' => $this->admin_model->get_imagesDesc(),
+			'query1' => $this->admin_model->get_imagesFilter(),
+			'contenido' => $this->admin_model->getContent('3')
 			);
 		$this->load->view('header',$data);
 		$this->load->view('public/privacy');
@@ -58,8 +62,8 @@ class Templates extends CI_Controller {
 		$data = array(
 			'title' => 'terms',
 			'query' => $this->admin_model->get_imagesDesc(),
-			'query1' => $this->admin_model->get_imagesFilter()
-
+			'query1' => $this->admin_model->get_imagesFilter(),
+			'contenido' => $this->admin_model->getContent('4')
 			);
 		$this->load->view('header',$data);
 		$this->load->view('public/terms');

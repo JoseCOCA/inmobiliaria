@@ -2,15 +2,13 @@
 <!--==============================footer=================================-->
 <footer>
   <div class="container_12">
-    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit.
-      Asperiores vitae eos quia, quo numquam quae, earum deserunt similique perferendis
-      libero fuga dolores odit. Labore earum, cum aperiam, eius expedita molestias?
-      Lorem ipsum dolor sit amet, consectetur adipisicing elit.
-      Voluptatem, voluptate veritatis porro, minima commodi esse.
-      Commodi maiores repudiandae quisquam enim qui autem sed nisi
-      odit facilis, ipsa illo magnam, praesentium!</p>
-      <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Dignissimos incidunt dolorum quidem et debitis labore deleniti quaerat non. Recusandae quibusdam nihil voluptate exercitationem dignissimos eligendi, tempora, perspiciatis fugit? Rem, eius. Lorem ipsum dolor sit amet, consectetur adipisicing elit. Dignissimos incidunt dolorum quidem et debitis labore deleniti quaerat non. Recusandae quibusdam nihil voluptate exercitationem dignissimos eligendi, tempora, perspiciatis fugit? Rem, eius.Lorem ipsum dolor sit amet, consectetur adipisicing elit. Dignissimos incidunt dolorum quidem et debitis labore deleniti quaerat non. Recusandae quibusdam nihil voluptate exercitationem dignissimos eligendi, tempora, perspiciatis fugit? Rem, eius.</p>
-      <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Dignissimos incidunt dolorum quidem et debitis labore deleniti quaerat non. Recusandae quibusdam nihil voluptate exercitationem dignissimos eligendi, tempora, perspiciatis fugit? Rem, eius.Lorem ipsum dolor sit amet, consectetur adipisicing elit. Dignissimos incidunt dolorum quidem et debitis labore deleniti quaerat non. Recusandae quibusdam nihil voluptate exercitationem dignissimos eligendi, tempora, perspiciatis fugit? Rem, eius.</p>
+   	<p>
+   		<?php if($contenido > 0){ ?>
+	   		<?php foreach ($contenido as $row) {
+	    	echo $row->contenido;
+	    	}
+    	} ?>
+	</p>
   </div>
   <div class="clear"></div>
   <div class="sep__1"><hr></div>

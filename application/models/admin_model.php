@@ -105,16 +105,20 @@ class Admin_model extends CI_Model {
 
 		}
 	}
-	
+	//obtiene los contenidos de las secciones principales
+	//inicio 				= 1
+	//info empresa 			= 2
+	//Aviso de privacidad 	= 3
+	//Terminos de usos 		= 4
+
 	public function getContent($padre)
 	{
+		$this->db->select('contenido');
 		$query = $this->db->get_where('contenido', array('padre' => $padre));
 
 		if ($query->num_rows() > 0) {
 		
-			foreach ($query->result() as $row) {
-				$data[] = $row;
-			}
+			$data = $query->result();
 			return $data;
 		}
 	}
@@ -163,6 +167,7 @@ class Admin_model extends CI_Model {
 	{
 		$this->db->insert('contactos', $data);
 	}
+
 }
 
 /* End of file admin_model.php */

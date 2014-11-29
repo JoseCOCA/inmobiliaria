@@ -90,7 +90,7 @@
 					<div id="notificationForm">
 						<div class="formcontent">
 
-							<div class="form-message">
+							<div class="form-message" id="form-message">
 								<!-- MENSAJE DEL FORMULARIO -->
 							</div>
 
@@ -144,12 +144,13 @@
 								echo form_input($data5);
 								echo '<br />';
 								$data6 = array(
-								'name' => 'comentarios',
-								'id'  =>  'comentarios'
+								'name' => 'Comentarios',
+								'id'  =>  'comentarios',
+								'placeholder' => 'Deje su comentario'
 								);
 
-								echo form_label('Comentarios'.':', $data6['name']);
-								echo form_textarea('Comentarios');?>
+								echo form_label('Comentarios:','Comentarios');
+								echo form_textarea($data6);?>
 
 								<hr/>
 							<div class= "subButton">

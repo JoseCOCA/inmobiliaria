@@ -19,7 +19,9 @@ $('#submit').click(function(e){
 		type:  	'POST',
 		data:  	form_data,
 		success: function (msg) {
-			$('.form-message').append(msg);
+
+			alert(msg);
+			//console.log(msg);
 			document.getElementById("notif").reset();
 		}
 

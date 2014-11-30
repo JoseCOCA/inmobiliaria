@@ -151,13 +151,31 @@ jQuery(document).on('ready', function($){
 		slideNextDirection: 'toLeft',
 		slidePrevDirection: 'toRight',
 		callBackInit : function(){
-			console.log($('.slider-recomedados').find('.rhino-active>a>img').attr('id'));
+			var imageID = $('.slider-recomedados').find('.rhino-active>a>img').attr('id');
+			$('#'+imageID+'.specs').removeClass('oculto').addClass('visible');
+			$('#'+imageID+'.tr').removeClass('oculto').addClass('visible');
 		},
 		callBackNext : function(data){
-			// var ids = $('.imgRec').map(function(i) {
-			//     console.log(this.id);
+			
+			console.log($('.slider-recomedados').rhinoslider().find('vars.active>li>a>img'));
+
+			var imageID = $('.slider-recomedados').find('.rhino-active>a>img').attr('id');
+			$('.specs').each(function () {
+				var thisID = $(this).attr('id');
+				if (imageID == thisID ) {
+				$('.visible').removeClass('.visible').addClass('oculto');
+			    $('#'+thisID+'.specs').removeClass('oculto').addClass('visible');
+			    $('#'+thisID+'.tr').removeClass('oculto').addClass('visible');			
+				};
+			});
+			// $('.tipo-rec').each(function () {
+			// 	var thisID = $(this).attr('id');
+			// 	if (imageID == thisID ) {
+			// 	$('.visible').removeClass('.visible').addClass('oculto');
+			//     $('#'+thisID).removeClass('oculto').addClass('visible');					
+			// 	};
 			// });
-			console.log($('.slider-recomedados').find('.rhino-active>a>img').attr('id'));
+
 		}
 	});
 
@@ -172,3 +190,7 @@ jQuery(document).on('ready', function($){
 	});
 
 function goToByScroll(id){$('html,body').animate({scrollTop: $("#"+id).offset().top},'slow');}
+
+function resetForm () {
+	document.getElementById("notif").reset();
+}

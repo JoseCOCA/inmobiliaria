@@ -18,11 +18,10 @@ class Notificacion extends CI_Controller {
 	public function obtenerDatos()
 	{
 
-		$this->load->library('email');
 
 		//validación del formulario
 
-		//$this->form_validation->set_message();
+		$this->form_validation->set_message('required', 'El campo %s es requerido');
 
 		 $this->form_validation->set_rules('name', 'Nombre', 'required');
 		 $this->form_validation->set_rules('tel', 'Teléfono', 'required');
@@ -38,7 +37,7 @@ class Notificacion extends CI_Controller {
 
 		if ($this->form_validation->run() == FALSE) {
 			
-			echo validation_errors();
+			echo validation_errors(' ',' ');
 
 		}else{
 
@@ -60,7 +59,7 @@ class Notificacion extends CI_Controller {
 				if(!empty($comentarios)){
 
 
-					$this->_sendEmail(set_value($correo),set_value($comentarios));
+					$this->_sendEmail($correo,$comentarios);
 
 
 				 }else{
@@ -115,10 +114,13 @@ class Notificacion extends CI_Controller {
 
 		private function _sendEmail($emailFrom,$comentarios)
 	{
+		
 		// activar envio de email
+		$this->load->library('email');
+
 		
 		$this->email->from($emailFrom);
-		$this->email->to('josecoca0890@gmail.com');
+		$this->email->to('test@inmobiliariayarrendadora.com.mx');
 		
 		$this->email->subject('Comentarios de las propiedades');
 		$this->email->message($comentarios);
@@ -126,13 +128,13 @@ class Notificacion extends CI_Controller {
 		if($this->email->send()){
 
 			echo "Su mensaje fue enviado correctamente";
-			echo $this->email->print_debugger();
+			// echo $this->email->print_debugger();
 
 		}else{
 
 		echo "fallo en el envio, por favor intentelo más tarde";
 
-			echo $this->email->print_debugger();
+			// echo $this->email->print_debugger();
 
 		}
 	}

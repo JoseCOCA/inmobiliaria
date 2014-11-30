@@ -86,17 +86,15 @@
 		<div class="tipo-recomendados ">
 		<?php if($query > 0) {?>
 			<?php foreach ($query1 as $row ) {
-
-				$filtroInfo =  $row-> Filtro;
 				?>
-		<div class="oculto"><span><?= $row -> Tipo ?></span></div>
+		<div class="tr oculto" id="<?= $row->Filtro?>"><span><?= $row -> Tipo ?></span></div>
 			<?php } ?>
 		<?php } ?>
 		</div>
 		<div class="specs-recomendados  ">
 		<?php if($query > 0) {?>
 			<?php foreach ($query1 as $row ) {?>
-			<div class="specs oculto">
+			<div class="specs oculto" id= "<?= $row->Filtro?>">
 				<span>Dimenciones <?= $row -> Dimension ?></span>
 				<span>Zona <?= $row -> Delegacion?></span>
 				<span>Costo: $<?= $row -> Precio?></span>

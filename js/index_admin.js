@@ -18,12 +18,7 @@ jQuery(document).on('ready', function($){
 	  	e.stopImmediatePropagation();
 	  	$('form#nuevaPropiedad').slideDown();
 	  });
-<<<<<<< HEAD
 
-
-=======
- 	
->>>>>>> parent of d3d8c35... Pequenio update
  	/* INICIO */
 
  	$('#home').click(function (e){

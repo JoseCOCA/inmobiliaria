@@ -18,8 +18,12 @@ jQuery(document).on('ready', function($){
 	  	e.stopImmediatePropagation();
 	  	$('form#nuevaPropiedad').slideDown();
 	  });
+<<<<<<< HEAD
 
 
+=======
+ 	
+>>>>>>> parent of d3d8c35... Pequenio update
  	/* INICIO */
 
  	$('#home').click(function (e){
@@ -320,11 +324,6 @@ jQuery(document).on('ready', function($){
 		        	 // data.context.addClass('error');
 		        }
 		    });
-
-	  $('#panelBanner .elimina-img').click(function(){
-	  	alert("Error al procesar la solicitud en el servidor \n Intente de nuevo o verifique la configuración");
-	  })
-
  		}).fail(function (status, statusText, responseXML){
  			console.log(satus);
  			console.log(statusText);

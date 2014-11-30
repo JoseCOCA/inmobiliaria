@@ -103,9 +103,7 @@ jQuery(document).on('ready', function($){
 						e.stopImmediatePropagation();
 						if(checkbox.is(':checked')){
 							$('#descripcion').slideUp('slow', function(){
-								$('.form-message').empty();
 								$('#notificationForm').slideDown('slow');
-								
 							});
 							// $('#notificationForm, #descripcion').fadeToggle();
 						}else{
@@ -146,17 +144,20 @@ jQuery(document).on('ready', function($){
 		effect: 'turnOver',
 		effectTime: 2000,
 		pauseOnHover: false,
-		showTime: 15000,
+		showTime: 10000,
+		controlsMousewheel: false,
 		showBullets: 'never',
 		showControls: 'never',
 		slideNextDirection: 'toLeft',
 		slidePrevDirection: 'toRight',
-
-		callBackNext : function(){
-		var ids = $('.imgRec').map(function(i) {
-		    return this.id;
-		});
-
+		callBackInit : function(){
+			console.log($('.slider-recomedados').find('.rhino-active>a>img').attr('id'));
+		},
+		callBackNext : function(data){
+			// var ids = $('.imgRec').map(function(i) {
+			//     console.log(this.id);
+			// });
+			console.log($('.slider-recomedados').find('.rhino-active>a>img').attr('id'));
 		}
 	});
 
@@ -171,8 +172,3 @@ jQuery(document).on('ready', function($){
 	});
 
 function goToByScroll(id){$('html,body').animate({scrollTop: $("#"+id).offset().top},'slow');}
-
-function resetForm () {
-	document.getElementById("notif").reset();
-	$('.form-message').empty();
-}

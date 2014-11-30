@@ -2,7 +2,7 @@ jQuery(document).on('ready', function($){
 	$=jQuery;
     $('#admin-menu, .showInfo').sidr({speed: 500});
  	// $('#simple-menu').sidr();
- 	
+
  	var loader = '<div class="loader">'+
 	  '<div class="side"></div>'+
 	  '<div class="side"></div>'+
@@ -13,15 +13,15 @@ jQuery(document).on('ready', function($){
 	  '<div class="side"></div>'+
 	  '<div class="side"></div>'+
 	  '</div>';
-	  
+
 	  $('h1.add-propiety').click(function (e){
 	  	e.stopImmediatePropagation();
 	  	$('form#nuevaPropiedad').slideDown();
 	  });
-	  
- 	
+
+
  	/* INICIO */
- 	
+
  	$('#home').click(function (e){
  		muestraLoadr(e);
 		$('#main>div:not(#welcome)').delay(1000).hide(0);
@@ -43,7 +43,7 @@ jQuery(document).on('ready', function($){
  			}
  		}).done(function (data){
  			data = typeof(data)!='object' ? JSON.parse(data) : data;
- 			console.log(data.length);
+ 			console.log(data);
  			for (var i = 0; i < data.length; i++) {
  				var elID = data[i].ID;
  				var suPa = data[i].padre;
@@ -116,7 +116,7 @@ jQuery(document).on('ready', function($){
  	/* INICIO */
 
 	/* BANNERS */
-	
+
  	$('#bannersEdit').click(function (e){
  		muestraLoadr(e);
 		$('#main>div:not(#panelBanner)').delay(1000).hide(0);
@@ -141,7 +141,7 @@ jQuery(document).on('ready', function($){
  				// console.log(image);
  				$(image).appendTo('#contenido-banner-principal ul');
  			};
- 			
+
  			/* 	NUEVO BANNER */
 			$('form#newMainBanner').fileupload({
 		        dataType: 'json',
@@ -158,7 +158,7 @@ jQuery(document).on('ready', function($){
 				    $('select#seccion-banner-p').on('change', function(){
 				    	propiedad = $(this).val();
 				    })
-				    
+
 				    console.log(propiedad);
 		        	reader.readAsDataURL(data.files[0]);
 		            data.context = $('<button/>',{class:'submit'}).text('Cargar')
@@ -172,7 +172,7 @@ jQuery(document).on('ready', function($){
 		                    	data.submit();
 			                    data.context.fadeOut();
 		                    }
-		                    
+
 		                });
 		        },
 		        done: function (e, data) {
@@ -210,7 +210,7 @@ jQuery(document).on('ready', function($){
 		            		alert('Imagen agregada');
 		     //        		console.log(data);
 		            		// var nueva = '<li><div class="elimina-img butn" data-id="'+principales[i]['ID']+'">Eliminar</div><img src="' + base_url + url + '" alt="' + name + '" class="image_slide"></li>';
-		            		
+
 							// $(nueva).hide().appendTo("#lista-propiedades").fadeIn(1000);
 
 		            	}).fail(function (status, statusText, responseXML){
@@ -252,7 +252,7 @@ jQuery(document).on('ready', function($){
 				    $('select#seccion-banner-r').on('change', function(){
 				    	propiedad = $(this).val();
 				    })
-				    
+
 				    // console.log(propiedad);
 		        	reader.readAsDataURL(data.files[0]);
 		            data.context = $('<button/>',{class:'submit'}).text('Cargar')
@@ -266,7 +266,7 @@ jQuery(document).on('ready', function($){
 		                    	data.submit();
 			                    data.context.fadeOut();
 		                    }
-		                    
+
 		                });
 		        },
 		        done: function (e, data) {
@@ -303,7 +303,7 @@ jQuery(document).on('ready', function($){
 		            		alert('Imagen agregada');
 		     //        		console.log(data);
 		     //        		var nueva = '<li><a href="#sidr" id="'+filtro+'" class="configFilter showInfo" data-cont="'+filtro+'"><img src="images/filtros/'+imagen+'" /><p>'+nombre+'</p></a></li>';
-		            		
+
 							// $(nueva).hide().appendTo("#lista-propiedades").fadeIn(1000);
 
 		            	}).fail(function (status, statusText, responseXML){
@@ -330,9 +330,9 @@ jQuery(document).on('ready', function($){
  			console.log(statusText);
  		})
  	});
- 		
- 	
-	
+
+
+
 	/* BANNERS */
 
 
@@ -340,7 +340,7 @@ jQuery(document).on('ready', function($){
 
 	$(".input_btn_file").on('click',function (e){
 		e.preventDefault();
-	  	$(this).prev('input[type="file"]').click();  
+	  	$(this).prev('input[type="file"]').click();
 	});
 
 	// $('.showInfo').each(function() {
@@ -349,7 +349,7 @@ jQuery(document).on('ready', function($){
 			$(this).sidr({speed: 500});
  			$('#main>div:not(.config_container)').delay(1000).hide(0);
 			$('.config_container').delay(1000).show(0);
-			
+
 		// $(this).live('click', function (e){
 			var getID = $(this).attr("data-cont");
 			data = {
@@ -388,7 +388,7 @@ jQuery(document).on('ready', function($){
 				$('#status').val(datos['Status']);
 				$('#filtro-hd').val(datos['Filtro']);
 				$('form#upload').append('<input type="hidden" id="propiedad" value="true" name="propiedad" />');
-				
+
 				$('<div/>', {
 					id: 'saveChanges',
 					class: 'saveChanges butn',
@@ -436,7 +436,7 @@ jQuery(document).on('ready', function($){
 			// $('#este-'+getID +' #slider').data('rhinoslider').play();
 		});
 	// });
-	
+
 
 	function actualizaRegistro (ars) {
 		$.ajax({
@@ -446,7 +446,7 @@ jQuery(document).on('ready', function($){
 			data : ars,
 			beforeSend : function (){
 				$('#saveChanges').hide('slow').attr('disabled', true);
-			}			
+			}
 		}).done(function (data){
 			if (data=='ok') {
 					$('#saveChanges').delay(1000).show(100,function(){
@@ -455,7 +455,7 @@ jQuery(document).on('ready', function($){
 							$(this).remove();
 						})
 					}).attr('disabled', false);
-						
+
 			}else{
 				$('#saveChanges').delay(1000).show(100,function(){
 						$('<div>',{class:'warning'}).html(data).insertBefore('#saveChanges');
@@ -464,16 +464,16 @@ jQuery(document).on('ready', function($){
 						})
 					}).attr('disabled', false);
 			}
-			
+
 		}).fail(function (status, statusText, responseXML){
 				console.log(statusText);
 				console.log(responseXML);
 			});
 	}
-	
 
-/*		NUEVA PROPIEDAD */	
-	// 	
+
+/*		NUEVA PROPIEDAD */
+	//
 
 	$('form#nuevaPropiedad').fileupload({
         dataType: 'json',
@@ -526,7 +526,7 @@ jQuery(document).on('ready', function($){
             	}).done(function (data){
             		console.log(data);
             		var nueva = '<li><a href="#sidr" id="'+filtro+'" class="configFilter showInfo" data-cont="'+filtro+'"><img src="images/filtros/'+imagen+'" /><p>'+nombre+'</p></a></li>';
-            		
+
 					$(nueva).hide().appendTo("#lista-propiedades").fadeIn(1000);
 
             	}).fail(function (status, statusText, responseXML){
@@ -543,7 +543,7 @@ jQuery(document).on('ready', function($){
         }
     });
 	/* ENVIA INFO DE NUEVA PROPIEDAD */
-	
+
 	// $("form#nuevaPropiedad").on('submit',(function (e) {
 	// 	e.preventDefault();
 	// 	$("#message").empty();
@@ -560,7 +560,7 @@ jQuery(document).on('ready', function($){
 	// 		data : datos,
 	// 		// data: new FormData(this),
 	// 		cache: false,
-	// 		processData:false, 
+	// 		processData:false,
 	// 		success: function(data){
 	// 			$('#loading').hide();
 	// 			$("#message").html(data);
@@ -568,12 +568,12 @@ jQuery(document).on('ready', function($){
 	// 		},
 	// 		error: function(status, statusText, responseXML){
 	// 			console.log(statusText);
-	// 			console.log(responseXML);				
+	// 			console.log(responseXML);
 	// 		}
 	// 	});
-	// }));	
-	
-	
+	// }));
+
+
 	/*NUEVA PROPIEDAD*/
 
  	/* PROPIEDADES */
@@ -610,9 +610,9 @@ function eliminaImagen(){
 					console.log(responseXML);
 				});
 			}
-			
+
 		})
-	})	
+	})
 }
 
 function agregaImages (ars){

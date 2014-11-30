@@ -70,11 +70,11 @@
 				settings.parts = [];
 				return settings;
 			},
-			
+
 			//init function
 			init = function ($slider, settings, vars) {
 				settings = setUpSettings(settings);
-				
+
 				$slider.wrap('<div class="' + vars.prefix + 'container">');
 				vars.container = $slider.parent('.' + vars.prefix + 'container');
 				vars.isPlaying = settings.autoPlay;
@@ -130,14 +130,14 @@
 						}
 					});
 				}
-				
+
 				//style
 				vars.container.find('.' + vars.prefix + 'btn').css({
 					position: 'absolute',
 					display: 'block',
 					cursor: 'pointer'
 				});
-				
+
 				//hide/show controls on hover or never
 				if (settings.showControls !== 'always') {
 					var allControls = vars.container.find('.' + vars.prefix + 'btn');
@@ -153,7 +153,7 @@
 				if(settings.showControls !== 'never'){
 					vars.container.addClass(vars.prefix + 'show-controls');
 				}
-				
+
 
 				//get content-elements and set css-reset for positioning
 				vars.items = $slider.children();
@@ -244,7 +244,7 @@
 						vars.navigation.delay(200).fadeOut(settings.controlFadeTime);
 					});
 				}
-				
+
 				//add captions
 				if (settings.showCaptions !== 'never') {
 					vars.container.addClass(vars.prefix + 'show-captions');
@@ -375,7 +375,7 @@
 							$item.addClass(vars.prefix + 'lastItem');
 						}
 					});
-					
+
 					if(vars.active.is(':first-child') && settings.controlsPrevNext){
 						vars.buttons.prev.addClass('disabled');
 					}
@@ -385,11 +385,11 @@
 							pause();
 						}
 						if(settings.autoPlay){
-							vars.buttons.play.addClass('disabled');	
+							vars.buttons.play.addClass('disabled');
 						}
 					}
 				}
-				
+
 				if(preparations[settings.effect] == undefined){
 					console.log('Effect for ' + settings.effect + ' not found.');
 				}else{
@@ -401,12 +401,12 @@
 
 				settings.callBackInit();
 			},
-			
+
 			//check if item element is first-child
 			isFirst = function($item) {
 				return $item.is(':first-child');
 			},
-			
+
 			//check if item element is last-child
 			isLast = function($item) {
 				return $item.is(':last-child');
@@ -420,10 +420,10 @@
 				if (settings.controlsPlayPause) {
 					vars.buttons.play.text(settings.playText).removeClass(vars.prefix + 'pause').addClass(vars.prefix + 'play');
 				}
-	
+
 				settings.callBackPause();
 			},
-		
+
 			//start/resume the autoplay and change the bg-image of the button to "pause"
 			play = function () {
 				var vars = $slider.data('slider:vars');
@@ -434,7 +434,7 @@
 				if (settings.controlsPlayPause) {
 					vars.buttons.play.text(settings.pauseText).removeClass(vars.prefix + 'play').addClass(vars.prefix + 'pause');
 				}
-	
+
 				settings.callBackPlay();
 			},
 
@@ -443,9 +443,9 @@
 				if(!settings.cycled && isFirst(vars.active)){
 					return false;
 				}
-				
+
 				settings.callBeforePrev();
-				
+
 				//if some effect is already running, don't stack up another one
 				if (vars.container.hasClass('inProgress')) {
 					return false;
@@ -471,7 +471,7 @@
 				if (settings.showCaptions !== 'never') {
 					$('.' + vars.prefix + 'caption').stop(true, true).fadeOut(settings.captionsFadeTime);
 				}
-				
+
 				if (settings.showBullets !== 'never' && settings.changeBullets == 'before') {
 					vars.navigation.find('.' + vars.prefix + 'active-bullet').removeClass(vars.prefix + 'active-bullet');
 					vars.navigation.find('#' + vars.next.attr('id') + '-bullet').addClass(vars.prefix + 'active-bullet');
@@ -482,13 +482,13 @@
 					params.settings = settings;
 					params.animateActive = settings.animateActive;
 					params.direction = settings.slidePrevDirection;
-	
+
 					if(effects[settings.effect] == undefined){
 						console.log('Preparations for ' + settings.effect + ' not found.');
 					}else{
 						effects[settings.effect]($slider, params, resetElements);
 					}
-	
+
 					setTimeout(function () {
 						if (settings.showBullets !== 'never' && settings.changeBullets == 'after') {
 							vars.navigation.find('.' + vars.prefix + 'active-bullet').removeClass(vars.prefix + 'active-bullet');
@@ -497,7 +497,7 @@
 						settings.callBackPrev();
 					}, settings.effectTime);
 				}, settings.captionsFadeTime);
-				
+
 				if (settings.showBullets !== 'never' && settings.changeBullets == 'after') {
 					vars.navigation.find('.' + vars.prefix + 'active-bullet').removeClass(vars.prefix + 'active-bullet');
 					vars.navigation.find('#' + vars.next.attr('id') + '-bullet').addClass(vars.prefix + 'active-bullet');
@@ -509,9 +509,9 @@
 				if(!settings.cycled && isLast(vars.active)){
 					return false;
 				}
-				
+
 				settings.callBeforeNext();
-				
+
 				//if some effect is already running, don't stack up another one
 				if (vars.container.hasClass('inProgress')) {
 					return false;
@@ -537,7 +537,7 @@
 				if (settings.showCaptions !== 'never') {
 					$('.' + vars.prefix + 'caption').stop(true, true).fadeOut(settings.captionsFadeTime);
 				}
-								
+
 				if (settings.showBullets !== 'never' && settings.changeBullets == 'before') {
 					vars.navigation.find('.' + vars.prefix + 'active-bullet').removeClass(vars.prefix + 'active-bullet');
 					vars.navigation.find('#' + vars.next.attr('id') + '-bullet').addClass(vars.prefix + 'active-bullet');
@@ -548,14 +548,14 @@
 					params.settings = settings;
 					params.animateActive = settings.animateActive;
 					params.direction = settings.slideNextDirection;
-	
+
 					//run effect
 					if(effects[settings.effect] == undefined){
 						console.log('Preparations for ' + settings.effect + ' not found.');
 					}else{
 						effects[settings.effect]($slider, params, resetElements);
 					}
-	
+
 					setTimeout(function () {
 						if (settings.showBullets !== 'never' && settings.changeBullets == 'after') {
 							vars.navigation.find('.' + vars.prefix + 'active-bullet').removeClass(vars.prefix + 'active-bullet');
@@ -563,7 +563,7 @@
 						}
 						settings.callBackNext();
 					}, settings.effectTime);
-					
+
 				}, settings.captionsFadeTime);
 			},
 
@@ -613,9 +613,9 @@
 					})
 					//and remove its active class
 					.removeClass(vars.prefix + 'active');
-					
+
 				settings.additionalResets();
-				
+
 				//check if cycled is false and start or end is reached
 				if(!settings.cycled) {
 					if(settings.controlsPrevNext){
@@ -640,9 +640,9 @@
 						}
 					}
 				}
-				
+
 				if (settings.showBullets !== 'never') {
-					
+
 					vars.navigation.find('.' + vars.prefix + 'active-bullet').removeClass(vars.prefix + 'active-bullet');
 					vars.navigation.find('#' + vars.next.attr('id') + '-bullet').addClass(vars.prefix + 'active-bullet');
 				}
@@ -654,7 +654,7 @@
 				if (settings.showCaptions !== 'never') {
 					vars.active.find('.' + vars.prefix + 'caption').stop(true, true).fadeTo(settings.captionsFadeTime, settings.captionsOpacity);
 				}
-				
+
 				vars.container.removeClass('inProgress');
 			};
 
@@ -679,7 +679,7 @@
 			if (element.data('rhinoslider')) {
 				return element.data('rhinoslider');
 			}
-			
+
 			element.data('slider:original', element.clone());
 			var rhinoslider = new rhinoSlider(this, opts);
 			element.data('rhinoslider', rhinoslider);
@@ -973,7 +973,7 @@
 			var values = [];
 			values.width = $slider.width();
 			values.height = $slider.height();
-			
+
 			//set values for effect
 			switch (direction) {
 				case 'toTop':
@@ -1017,7 +1017,7 @@
 				margin: '-' + parseInt(values.height * 0.5, 10) + 'px 0 0 -' + parseInt(values.width * 0.5, 10) + 'px'
 
 			});
-				
+
 			$nextContainer.css({
 				width: values.width,
 				height: values.height,
@@ -1026,9 +1026,9 @@
 				left: '50%',
 				margin: '-' + parseInt(values.height * 0.5, 10) + 'px 0 0 -' + parseInt(values.width * 0.5, 10) + 'px'
 			});
-			
+
 			if(settings.animateActive){
-				
+
 				vars.active.css({
 					width: '100%',
 					height: '100%',
@@ -1068,10 +1068,10 @@
 			var direction = params.direction;
 			var vars = $slider.data('slider:vars');
 			var values = [];
-			
+
 			values.width = $slider.width();
 			values.height = $slider.height();
-			
+
 			//set values for effect
 			switch (direction) {
 				case 'toTop':
@@ -1105,7 +1105,7 @@
 				$nextContainer = vars.next.find('#' + vars.prefix + 'nextContainer'),
 				$activeContainer = vars.active.find('#' + vars.prefix + 'activeContainer'),
 				$tmpContainer = vars.container.find('.' + vars.prefix + 'tmpContainer');
-		
+
 			$activeContainer.css({
 				width: values.width,
 				height: values.height,
@@ -1114,7 +1114,7 @@
 				left: '50%',
 				margin: '-' + parseInt(values.height * 0.5, 10) + 'px 0 0 -' + parseInt(values.width * 0.5, 10) + 'px'
 			});
-				
+
 			$nextContainer.css({
 				width: values.width,
 				height: values.height,
@@ -1123,9 +1123,9 @@
 				left: '50%',
 				margin: '-' + parseInt(values.height * 0.5, 10) + 'px 0 0 -' + parseInt(values.width * 0.5, 10) + 'px'
 			});
-			
+
 			if(settings.animateActive){
-				
+
 				vars.active.css({
 					width: '100%',
 					height: '100%',
@@ -1139,7 +1139,7 @@
 					opacity: 0
 				}, settings.effectTime);
 			}
-		
+
 			vars.next.css({
 				opacity: 0,
 				zIndex: 2,
@@ -1157,7 +1157,7 @@
 				$tmpContainer.children().unwrap();
 				callback($slider, settings);
 			});
-		
+
 		},
 		//options: animateActive, easing, shiftValue, parts
 		shuffle: function ($slider, params, callback) {
@@ -1431,7 +1431,7 @@
 						partValues.top = ((i - (i % settings.parts.x)) / settings.parts.x) * partValues.height;
 						partValues.left = (i % settings.parts.x) * partValues.width;
 						var newLeft, newTop, position = [];
-						
+
 						position.top = $this.position().top;
 						position.bottom = $this.parent().height() - $this.position().top - $this.height();
 						position.left = $this.position().left;
@@ -1485,9 +1485,9 @@
 			;
 			values.width = vars.container.width();
 			values.height = vars.container.height();
-			
-			
-			
+
+
+
 			//check, in which direction the content will be moved
 			switch (direction) {
 				case 'toTop':
@@ -1533,7 +1533,7 @@
 					opacity: 1
 				}, values.effectTime, settings.easing);
 			}
-			
+
 			setTimeout(function() {
 				vars.next.animate({
 					top: 0,
@@ -1579,7 +1579,7 @@
 							partValues.height = $li.height() / settings.parts;
 							break;
 					}
-					
+
 					$parts.each(function (i) {
 						var $this = $(this), liWidth = $li.width(), liHeight = $li.height();
 						partValues.left = 'auto';
@@ -1588,7 +1588,7 @@
 						partValues.marginTop = 'auto';
 						partValues.right = 'auto';
 						partValues.bottom = 'auto';
-						
+
 						switch(direction){
 							case 'toLeft':
 								partValues.width = liWidth / settings.parts;
@@ -1664,9 +1664,9 @@
 						nextBackgroundColor = vars.next.css('background-color'),
 						delay = 0
 					;
-					
+
 					partDuration = settings.effectTime - (2 * ((settings.parts - 1) * partDelay));
-					
+
 					vars.active.css({
 						backgroundImage: 'none',
 						backgroundColor: 'none',
@@ -1721,7 +1721,7 @@
 						});
 						delay = settings.parts * partDelay;
 					}
-					
+
 					$nextParts.each(function(i){
 						var $this = $(this), newValues = [], aniMap = {opacity: 1};
 
@@ -1743,7 +1743,7 @@
 								aniMap.left = values.width * i;
 								break;
 						}
-						
+
 						$this.delay(delay).css(cssMapNext).delay(i*partDelay).animate(aniMap, partDuration, settings.easing, function () {
 							if (i == settings.parts - 1) {
 								vars.active.html(activeContent);
@@ -1793,7 +1793,7 @@
 				settings.shiftValue.x = parseInt(tmpShiftValue, 10);
 				settings.shiftValue.y = parseInt(tmpShiftValue, 10);
 			}
-			
+
 			vars.items.css('overflow', 'hidden');
 		},
 		shuffle: function ($slider, settings, vars) {
@@ -1816,7 +1816,7 @@
 				settings.parts.x = parseInt(tmpParts, 10);
 				settings.parts.y = parseInt(tmpParts, 10);
 			}
-			
+
 			vars.items.css('overflow', 'visible');
 		},
 		explode: function ($slider, settings, vars) {
@@ -1839,7 +1839,7 @@
 				settings.parts.x = parseInt(tmpParts, 10);
 				settings.parts.y = parseInt(tmpParts, 10);
 			}
-			
+
 			vars.items.css('overflow', 'visible');
 		},
 		turnOver: function ($slider, settings, vars) {
@@ -1857,7 +1857,7 @@
 				settings.shiftValue.x = parseInt(tmpShiftValue, 10);
 				settings.shiftValue.y = parseInt(tmpShiftValue, 10);
 			}
-			
+
 			//if bars-effect has x and y shift or parts
 			var parts = String(tmpParts);
 			if (parts.indexOf(',') >= 0) {
@@ -1868,7 +1868,7 @@
 			}
 
 			vars.items.css('overflow', 'visible');
-			
+
 		}
 	};
 

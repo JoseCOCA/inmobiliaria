@@ -169,6 +169,19 @@ class Admin_model extends CI_Model {
 
 		return $data->result();
 	}
+	
+	/**
+	 * Elimina los registros dados por un dato o array de datos 
+	 * @param  Array $tables el array de las tablas en las que se eliminará el registro
+	 * @param  Array $th     El array de los datos de los que se buscará coincidencia
+	 * @return Boolean         True si lo hace, false si no
+	 */	
+	public function deleteReg($tables, $th)
+	{
+		$this->db->where($th);
+		$this->db->delete($tables);
+		return $this->db->affected_rows();
+	}
 
 	public function nuevoContacto($data)
 	{

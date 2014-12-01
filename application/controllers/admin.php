@@ -361,7 +361,7 @@ class Admin extends CI_Controller {
 
 					);
 					if($this->admin_model->insert_images('imagedesc',$insert)){
-						echo "{success:'ok', datos:'".$this->admin_model->get_MAX_ID('imagedesc')."'}";
+						echo json_encode($this->admin_model->get_MAX_ID('imagedesc'));
 					}else{
 						echo 'error';
 					}
@@ -427,6 +427,17 @@ class Admin extends CI_Controller {
 		if(is_file($config['upload_path']))
 		{
 		    chmod($config['upload_path'], 777); ## this should change the permissions
+		}
+	}
+	
+	public function eliminaPropiedad()
+	{
+		$datos = array('Filtro' => $this->input->post('filtro'));
+		$tablas = array('imagedesc', 'imagefilters');
+		if($this->admin_model->deleteReg($tablas,$datos)>0){
+			echo json_encode("{status:'ok'}");
+		}else{
+			echo "{status:'error'}";
 		}
 	}
 

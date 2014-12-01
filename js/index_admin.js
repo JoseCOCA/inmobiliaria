@@ -125,18 +125,18 @@ jQuery(document).on('ready', function($){
  			url : base_url+'ajax/getBanners',
  			cache : false,
  			beforeSend : function (e) {
- 				$('#contenido-banner-principal ul').empty();
+ 				$('#panelBanner ul').empty();
  			}
  		}).done(function (data){
  			data = typeof(data)!='object' ? JSON.parse(data) : data;
- 			// console.log(data);
+ 			console.log(data);
  			var principales = data.principal;
  			var recomendados = data.recomendados;
  			/* PRINCIPAL */
  			for (var i = 0; i < principales.length; i++) {
  				var url = principales[i].url;
  				var name = principales[i].nombre;
- 				var image = '<li><div class="elimina-img butn" data-id="'+principales[i]['ID']+'">Eliminar</div><img src="' + base_url + url + '" alt="' + name + '" class="image_slide"></li>';
+ 				var image = '<li><div class="elimina-img butn" data-id="'+principales[i]['ID']+'" id="' +name+ '">Eliminar</div><img src="' + base_url + url + '" alt="' + name + '" class="image_slide"></li>';
  				// console.log(image);
  				$(image).appendTo('#contenido-banner-principal ul');
  			};
@@ -158,7 +158,7 @@ jQuery(document).on('ready', function($){
 				    	propiedad = $(this).val();
 				    })
 
-				    console.log(propiedad);
+				    // console.log(propiedad);
 		        	reader.readAsDataURL(data.files[0]);
 		            data.context = $('<button/>',{class:'submit'}).text('Cargar')
 		                .appendTo($(this).find('#selectImage'))
@@ -205,12 +205,15 @@ jQuery(document).on('ready', function($){
 				            	$('button.submit').remove();
 		            		}
 		            	}).done(function (data){
-		            		alert('Imagen agregada');
-		            		console.log(data);
-		            		// var nueva = '<li><div class="elimina-img butn" data-id="'+principales[i]['ID']+'">Eliminar</div><img src="' + base_url + url + '" alt="' + name + '" class="image_slide"></li>';
+		            		// alert('Imagen agregada');
+		            		// console.log(data);
+		            		// console.log(nombre);
+		            		var url = 'images/banners/'+nombre;
+		            		var nueva = '<li><div class="elimina-img butn" id="'+nombre+'">Eliminar</div><img src="' + base_url + url + '" alt="' + nombre + '" class="image_slide"></li>';
 
-							// $(nueva).hide().appendTo("#lista-propiedades").fadeIn(1000);
-
+							$(nueva).hide().appendTo("#contenido-banner-principal ul").fadeIn(1000);
+							
+							eliminaImagen();
 		            	}).fail(function (status, statusText, responseXML){
 		            		console.log(statusText);
 							console.log(responseXML);
@@ -230,7 +233,7 @@ jQuery(document).on('ready', function($){
  			for (var r = 0; r < recomendados.length; r++) {
  				var url = recomendados[r].url;
  				var name = recomendados[r].nombre;
- 				var image = '<li><div class="elimina-img butn" data-id="'+recomendados[r]['ID']+'">Eliminar</div><img src="' + base_url + url + '" alt="' + name + '" class="image_slide"></li>';
+ 				var image = '<li><div class="elimina-img butn" data-id="'+recomendados[r]['ID']+'" id="' +name+ '">Eliminar</div><img src="' + base_url + url + '" alt="' + name + '" class="image_slide"></li>';
  				// console.log(image);
  				$(image).appendTo('#contenido-banner-recomendado ul');
  			};
@@ -298,11 +301,14 @@ jQuery(document).on('ready', function($){
 				            	$('button.submit').remove();
 		            		}
 		            	}).done(function (data){
-		            		alert('Imagen agregada');
-		     //        		console.log(data);
-		     //        		var nueva = '<li><a href="#sidr" id="'+filtro+'" class="configFilter showInfo" data-cont="'+filtro+'"><img src="images/filtros/'+imagen+'" /><p>'+nombre+'</p></a></li>';
+		            		// alert('Imagen agregada');
+		            		// console.log(data);
+		            		// console.log(nombre);
+		            		var url = 'images/banners/'+nombre;
+		            		var nueva = '<li><div class="elimina-img butn" id="'+nombre+'">Eliminar</div><img src="' + base_url + url + '" alt="' + nombre + '" class="image_slide"></li>';
 
-							// $(nueva).hide().appendTo("#lista-propiedades").fadeIn(1000);
+							$(nueva).hide().appendTo("#contenido-banner-recomendado ul").fadeIn(1000);
+							eliminaImagen();
 
 		            	}).fail(function (status, statusText, responseXML){
 		            		console.log(statusText);
@@ -318,6 +324,9 @@ jQuery(document).on('ready', function($){
 		        	 // data.context.addClass('error');
 		        }
 		    });
+ 
+  			eliminaImagen();
+
  		}).fail(function (status, statusText, responseXML){
  			console.log(satus);
  			console.log(statusText);
@@ -357,6 +366,7 @@ jQuery(document).on('ready', function($){
 					$('.config_container .carrusel').empty();
 					$('form#upload ul').empty();
 					$('.config_container #saveChanges').remove();
+					$('.config_container #deleteP').remove();
 				}
 			}).done(function (data){
 				var dataA = data;
@@ -386,10 +396,7 @@ jQuery(document).on('ready', function($){
 					id: 'saveChanges',
 					class: 'saveChanges butn',
 					'data-filtro': datos['Filtro']
-				}).html('Guardar').appendTo('.config_container');
-				eliminaImagen();
-				muestraLoadr(e);
-				$('#saveChanges').on('click', function (e) {
+				}).html('Guardar').appendTo('.config_container').on('click', function (e) {
 					// e.preventDefault();
 					var condiciones = $('#condiciones').html(),
 					calleNo = $('#calleNo').html(),
@@ -418,6 +425,19 @@ jQuery(document).on('ready', function($){
 					};
 					actualizaRegistro(dats);
 				});
+				
+				$('<div/>', {
+					id: 'deleteP',
+					class: 'deleteP butn',
+					'data-filtro': datos['Filtro']
+				}).html('Eliminar Propiedad').appendTo('.config_container').on('click', function (e){
+					var Filtro = $(this).data('filtro');
+					if(confirm('Desea eliminar esta propiedad? \nTodos los datos e imágenes pertenecientes a este registro serán eliminados.'))eliminaPropiedad(Filtro);
+				});
+				
+				eliminaImagen();
+				muestraLoadr(e);
+				
 
 			}).fail(function (status, statusText, responseXML){
 				console.log(statusText);
@@ -637,11 +657,35 @@ function agregaImages (ars){
 	});
 }
 
+function eliminaPropiedad (filter){
+	data = {filtro : filter};
+	$.ajax({
+		url : base_url+'admin/eliminaPropiedad',
+		type : 'POST',
+		cache : false,
+		data : data
+	}).done(function (data){
+		data = typeof(data)!='object' ? JSON.parse(data) : data;
+		console.log(typeof(data));
+		var status = data.status;
+		// if (status=='ok') {
+			$('#sidr>ul').find('a#'+filter).parent().remove();	
+	 		muestraLoadr();
+			$('#main>div:not(#welcome)').delay(1000).hide(0);
+			$('#welcome').delay(1000).show(0);
+	 		muestraLoadr();
+		// }
+	}).fail(function (status, statusText, responseXML){
+		console.log(statusText);
+		console.log(responseXML);
+	});
+}
+
  	/* PROPIEDADES */
 
 	function muestraLoadr (e){
-		e.preventDefault();
-		e.stopImmediatePropagation();
+		// e.preventDefault();
+		// e.stopImmediatePropagation();
 		var overlay = $('#overlay-loading');
 		var dom = $('html, body');
 		dom.queue(function(){

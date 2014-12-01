@@ -283,6 +283,10 @@ a:focus{
     line-height: 1;
 }
 
+#deleteP.butn{
+    margin-left: 10px;
+}
+
 /*.btn-default  {
     background-color: initial !important;
     padding:  initial !important;

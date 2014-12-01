@@ -43,7 +43,7 @@ class Templates extends CI_Controller {
 			'contenido' => $this->admin_model->getContent('2')
 			);
 		$this->load->view('header',$data);
-		$this->load->view('public/info');
+		$this->load->view('public/info',$data);
 		$this->load->view('footer2');
 	}
 	public function privacy(){

@@ -9,6 +9,7 @@
   </div>
 </footer>
 	<script src="js/script.js"></script>
+	<script src="js/cookieManager.js"></script>
 	<script src="js/superfish.js"></script>
 	<script src="js/jquery.equalheights.js"></script>
 	<script src="js/jquery.easing.1.3.js"></script>
@@ -27,6 +28,7 @@
 	<script type="text/javascript" src="js/jquerypp.custom.js"></script>
 	<script type="text/javascript" src="js/jquery.elastislide.js"></script>
 	<script type="text/javascript">
+
 
 
 

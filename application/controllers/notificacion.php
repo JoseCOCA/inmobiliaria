@@ -70,9 +70,9 @@ class Notificacion extends CI_Controller {
 
 			}else{
 
-					if($comentarios !== ""){	//si existen comentarios
+					if(!empty($comentarios)){	//si existen comentarios
 
-						$this->_sendEmail(set_value($correo),set_value($comentarios));
+						$this->_sendEmail($correo,$comentarios);
 						
 					}
 				//captura de datos de nuevo contacto en DB
@@ -88,10 +88,10 @@ class Notificacion extends CI_Controller {
 	{
 		//checar si la propiedad status ha cambiado
 		if($this->notificacion_modelo->notificar($Filtro)){ //agregar filtro para corroborar notificacion
-			//si cambia elecciona los correos relacionados
+			//si cambia selecciona los correos relacionados
 		$emails = $this->notificacion_modelo->selecMails($Filtro);
 			//los manda desde la dirección correspondiente
-			$this->email->from('admin@admin.com'); //agregar direccion
+			$this->email->from('test@inmobiliariayarrendadora.com.mx'); //agregar direccion
 			$this->email->to($emails);				//emails en DB			
 			$this->email->subject('Notificacion de disponibilidad');
 			$this->email->message('La propiedad esta disponible');

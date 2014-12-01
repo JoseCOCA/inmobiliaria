@@ -56,6 +56,7 @@ jQuery(document).on('ready', function($){
 				}).appendTo('.slide-cont #slide');
 			}
 			var getID = $(this).attr("data-cont");
+			//console.log(base_url);
 			data = {
 				id : getID
 			}
@@ -154,7 +155,7 @@ jQuery(document).on('ready', function($){
 		initID: '', // variable para el filtro de inicio
 
 		callBackInit : function(){
-			
+
 			var initID = $('.slider-recomedados').find('.rhino-active>a>img').attr('id');
 
 			$('#'+initID+'.specs').removeClass('oculto').addClass('visible');
@@ -201,7 +202,7 @@ jQuery(document).on('ready', function($){
 	$('.menu_block').one('sticky-start', function (e) {
 		e.preventDefault();
 		var altura = document.querySelector('.menu_block').offsetHeight;
-		$('#nav').sticky({topSpacing:46, getWidthFrom: '#isotope-cont'}).css({'z-index': '10', });
+		$('#nav').sticky({topSpacing:46, getWidthFrom: '#isotope-cont'}).css({'z-index': '9', });
 	});
 
 function goToByScroll(id){$('html,body').animate({scrollTop: $("#"+id).offset().top},'slow');}

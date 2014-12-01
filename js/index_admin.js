@@ -203,11 +203,10 @@ jQuery(document).on('ready', function($){
 		            		beforeSend : function(){
 		            			$('#previewing_main_ban').removeAttr('src');
 				            	$('button.submit').remove();
-				            	$('form#nuevaPropiedad').slideUp(1000);
 		            		}
 		            	}).done(function (data){
 		            		alert('Imagen agregada');
-		     //        		console.log(data);
+		            		console.log(data);
 		            		// var nueva = '<li><div class="elimina-img butn" data-id="'+principales[i]['ID']+'">Eliminar</div><img src="' + base_url + url + '" alt="' + name + '" class="image_slide"></li>';
 
 							// $(nueva).hide().appendTo("#lista-propiedades").fadeIn(1000);
@@ -621,7 +620,17 @@ function agregaImages (ars){
 		cache : false,
 		type : 'POST'
 	}).done(function (data){
+		data = typeof(data)!='object' ? JSON.parse(data) : data;
 		console.log(data);
+		// console.log(data[0]);
+		console.log(data[0].ID);
+		console.log(ars);
+		var name = ars.nombre;
+		var url = 'images/banners/'+ name;
+		var image = '<li><div class="elimina-img butn" id="'+ name +'">Eliminar</div><img src="' + base_url + url + '" alt="' + name + '" class="image_slide"></li>';
+		// $('.config_container .carrusel').append(image);
+		$(image).hide().appendTo(".config_container .carrusel").fadeIn(1000);
+		eliminaImagen();
 	}).fail(function (status, statusText, responseXML){
 		console.log(statusText);
 		console.log(responseXML);

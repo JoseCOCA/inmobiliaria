@@ -91,6 +91,13 @@ class Admin_model extends CI_Model {
 		return $data;
 	}
 
+	public function get_MAX_ID($tabla)
+	{
+		$this->db->select_max('ID');
+		$query = $this->db->get($tabla);
+		return $query->result();
+	}
+
 
 		public function get_imagesFilter()
 	{

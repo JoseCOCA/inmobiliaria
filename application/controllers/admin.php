@@ -142,13 +142,13 @@ class Admin extends CI_Controller {
 
 					$this->db->delete('imagedesc',array('nombre' => $name) );
 
-					// unlink('images/banners/'.$name);
+					echo unlink('images/banners/'.$name) ? 'ok' : 'error';
 				}
 
 
 				// redirect('admin');
-				// 
-				echo 'ok';
+				//
+				// echo 'ok';
 				break;
 
 			case 'Agregar imagenes':
@@ -186,14 +186,14 @@ class Admin extends CI_Controller {
 				// 	}
 
 				// 	// redirect('admin');
-				// 	// 
+				// 	//
 				// 	echo 'ok';
 				// }
 				// else
 				// {
 
 				// 	$error = array('error' => $this->upload->display_errors());
-					
+
 				// 	echo '10';
 				// 	echo $error;
 				// 	// $this->load->view('upload_form', $error);
@@ -228,14 +228,14 @@ class Admin extends CI_Controller {
 					'url'         => 'images/banners/'.$this->input->post('nombre'),
 					'principal'   => '0',
 					'recomendado' => '0'
-				
+
 				);
 				if($this->admin_model->insert_images('imagedesc',$insert)){
-					echo 'ok';
+					echo json_encode($this->admin_model->get_MAX_ID('imagedesc'));
 				}else{
 					echo 'error';
 				}
-				
+
 				break;
 			case 'Modificar':
 
@@ -313,7 +313,7 @@ class Admin extends CI_Controller {
 
 
 						// redirect('admin');
-						// 
+						//
 						echo 'ok';
 
 				}
@@ -331,23 +331,23 @@ class Admin extends CI_Controller {
 					redirect('admin');
 
 				break;
-				
+
 				case 'Nueva Propiedad':
-				
+
 					$insert = array(
 
 						'Filtro'      => $this->input->post('Filtro'),
 						'nombre'      => $this->input->post('nombre'),
 						'url'         => 'images/filtros/'.$this->input->post('imagen'),
 						'Status'   => 'NO DISPONIBLE'
-					
+
 					);
 					if($this->admin_model->insert_images('imagefilters',$insert)){
 						echo 'ok';
 					}else{
 						echo 'error';
 					}
-				
+
 				break;
 				case 'Nuevo banner':
 					// Filtro 	url 	nombre 	principal 	recomendado
@@ -358,14 +358,14 @@ class Admin extends CI_Controller {
 						'url'         => 'images/banners/'.$this->input->post('imagen'),
 						'principal'   => $this->input->post('principal'),
 						'recomendado' => $this->input->post('recomendado')
-					
+
 					);
 					if($this->admin_model->insert_images('imagedesc',$insert)){
-						echo 'ok';
+						echo "{success:'ok', datos:'".$this->admin_model->get_MAX_ID('imagedesc')."'}";
 					}else{
 						echo 'error';
 					}
-				
+
 				break;
 				case 'Modifica seccion':
 					$update = array(
@@ -375,9 +375,9 @@ class Admin extends CI_Controller {
 						'ID' => $this->input->post('id'),
 						);
 					$this->admin_model->update_data('contenido',$update,$id);
-					
+
 					echo "{success:'ok', datos:'".$update['contenido']."'}";
-					
+
 				break;
 				default:
 					echo 'nel';

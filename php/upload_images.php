@@ -3,11 +3,11 @@
 error_reporting(0);
 // A list of permitted file extensions
 if(isset($_POST['propiedad'])) {
-	
+
 	$propiedad = $_POST['propiedad'];
-	
+
 	if($propiedad == 'nueva'){ // REVISA SI LA IMAGEN ES DE UNA PROPIEDAD NUEVA
-		
+
 		if(isset($_FILES["file-upl"]["type"])){
 			$path = '../images/filtros/';
 			$validextensions = array("jpeg", "jpg", "png");
@@ -29,7 +29,7 @@ if(isset($_POST['propiedad'])) {
 						move_uploaded_file($sourcePath,$targetPath) ; // Moving Uploaded file
 						echo '{"status":"success", "nombre":"'.$_POST['propiedad-nombre'].'", "imagen":"'.$_FILES['file-upl']['name'].'", "filtro":"'.$_POST['nuevo-filtro'].'"}';
 					}
-				}	
+				}
 			}else{
 				echo '{"status":"El archivo supera el peso máximo."}';
 				// echo "<span id='invalid'>***Invalid file Size or Type***<span>";
@@ -38,7 +38,7 @@ if(isset($_POST['propiedad'])) {
 			echo 'error';
 		}
 	}else{ // SI NO ES UNA PROPIEDAD NUEVA SUBE UNA IMAGEN A BANNERS
-		
+
 		$allowed = array('png', 'jpg', 'gif','zip');
 
 		if(isset($_FILES['upl']) && $_FILES['upl']['error'] == 0){
@@ -46,7 +46,7 @@ if(isset($_POST['propiedad'])) {
 			$extension = pathinfo($_FILES['upl']['name'], PATHINFO_EXTENSION);
 
 			if(!in_array(strtolower($extension), $allowed)){
-				echo '{"status":"Error. Aextensión de archivo no permitida"}';
+				echo '{"status":"Error. Extensión de archivo no permitida"}';
 				exit;
 			}
 
@@ -57,7 +57,7 @@ if(isset($_POST['propiedad'])) {
 			}
 		}
 
-		echo '{"status":"Error al subir el archivo"}';		
+		echo '{"status":"Error al subir el archivo"}';
 	}
 }else{
 	echo '{"status":"Proepiedad indefinida"}';

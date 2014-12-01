@@ -1,27 +1,27 @@
-<!-- 
+<!--
 
 <?php /*Panel de administración para la inmobiliaria:
 En este se muestra un formulario para la modificación de la información en las
 descripciones de las propiedades existentes, se tiene la posibilidad de borrar
-o crear nuevas propiedades*/ ?>--> 
+o crear nuevas propiedades*/ ?>-->
 
 
 <!-- SIDR -->
 <div id="sidr">
     <h1>Elige una propiedad</h1>
-    
+
     <?php if ($query1 > 0) { ?>
         <ul id="lista-propiedades">
         <?php foreach ($query1 as $row) { ?>
 
-            
+
                 <li>
                     <a href="#sidr" id="<?=$row-> Filtro?>" class="configFilter showInfo" data-cont="<?=$row -> Filtro ?>">
                     <img src="<?= $row -> url ?>" />
                     <p><?=$row-> nombre?></p>
                     </a>
                 </li>
-           
+
 
         <?php } ?>
         </ul>
@@ -30,14 +30,14 @@ o crear nuevas propiedades*/ ?>-->
 
     <?php
 
-    
+
 
     $Filtro = 'F'.($lastFilter+1);
 
     ?>
 
     <h1 class="add-propiety">Agregar nueva propiedad</h1>
-    
+
     <form class="oculto" id="nuevaPropiedad" action="<?=base_url()?>php/upload_images.php" method="post" enctype="multipart/form-data" autocomplete="off">
         <div id="image_preview" title="Arrastra aquí la imagen"><img id="previewing" /></div>
         <div id="selectImage">
@@ -61,10 +61,10 @@ o crear nuevas propiedades*/ ?>-->
 <div id="main">
 
     <div id="welcome">
-        
+
         <h1>Bienvenido al administrador</h1>
-        
-        
+
+
         <h4>Selecciona una sección para editar su contenido:</h4>
         <div class="styled-select blue semi-square">
 
@@ -81,7 +81,7 @@ o crear nuevas propiedades*/ ?>-->
     </div>
 
     <div class="config_container oculto">
-        
+
 		<!-- CARRUSEL -->
 		<ul class="carrusel">
 
@@ -93,7 +93,7 @@ o crear nuevas propiedades*/ ?>-->
                 Arrastra tus archivos aquí
 
                 <a>Buscar</a>
-                <input type="file" name="upl" multiple />
+                <input type="file" name="upl" multiple  accept="image/*" />
             </div>
 
             <ul>
@@ -103,7 +103,7 @@ o crear nuevas propiedades*/ ?>-->
             <input type="hidden" id="add-hd" value="Agregar imagenes" name="adminPanel" />
 
         </form>
-        
+
         <!-- CONTENIDOS EDITABLES -->
         <h3>Edita la información de esta propiedad</h3>
         <div class="box-editable">
@@ -139,7 +139,7 @@ o crear nuevas propiedades*/ ?>-->
             <h4>Precio</h4>
             <div contenteditable="true" class="div-editable" id="precio"><!-- CONTENIDO --></div>
         </div>
-        
+
         <div class="styled-select blue semi-square">
 
             <select id="tipo" name="tipo">
@@ -163,9 +163,9 @@ o crear nuevas propiedades*/ ?>-->
     </div>
 
     <div id="panelBanner" class="oculto">
-        
+
        <div id="banner-principal">
-           
+
             <div class="no-float col-md-1 col-xs-1 col-sm-1 col-lg-3"></div><div id="contenido-banner-principal" class="no-float col-md-7 col-xs-10 col-sm-8 col-lg-6">
             	<h3>BANNER PRINCIPAL</h3>
                 <ul> <!-- BANNER PRINCIPAL --> </ul>
@@ -177,7 +177,7 @@ o crear nuevas propiedades*/ ?>-->
                         <button class='input-btn input_btn_file' id='input_btn'>Buscar archivo...</button>
                         <!-- <input type="text" class="nombre" id="propiedad-nombre" name="propiedad-nombre" value="<?=$Filtro?>" /> -->
                         <!-- <input type="hidden" class="propiedad" id="propiedad-nueva" name="propiedad" value="nueva"> -->
-                        
+
                         <h5>
                             <label for="seccion-banner-p">Propiedad a la que pertenece:</label>
                         </h5>
@@ -195,12 +195,12 @@ o crear nuevas propiedades*/ ?>-->
                         <input type="hidden" class="propiedad" id="propiedad-true" name="propiedad" value="true">
                         <br>
                     </div>
-    
+
                 </form>
-                
-                            
+
+
             </div><div class="no-float col-md-2 col-xs-1 col-sm-1 col-lg-3"></div>
-            
+
             <div class="no-float col-md-1 col-xs-1 col-sm-1 col-lg-3"></div><div id="contenido-banner-recomendado" class="no-float col-md-7 col-xs-10 col-sm-8 col-lg-6">
             	<h3>BANNER DE PROPIEDADES RECOMENDADAS</h3>
                 <ul> <!-- BANNER RECOMENDADOS --> </ul>
@@ -212,7 +212,7 @@ o crear nuevas propiedades*/ ?>-->
                         <button class='input-btn input_btn_file' id='input_btn'>Buscar archivo...</button>
                         <!-- <input type="text" class="nombre" id="propiedad-nombre" name="propiedad-nombre" value="<?=$Filtro?>" /> -->
                         <!-- <input type="hidden" class="propiedad" id="propiedad-nueva" name="propiedad" value="nueva"> -->
-                        
+
                         <h5>
                             <label for="seccion-banner-r">Propiedad a la que pertenece:</label>
                         </h5>
@@ -230,24 +230,24 @@ o crear nuevas propiedades*/ ?>-->
                         <input type="hidden" class="propiedad" id="propiedad-true" name="propiedad" value="true">
                         <br>
                     </div>
-    
+
                 </form>
-                
-                            
+
+
             </div><div class="no-float col-md-2 col-xs-1 col-sm-1 col-lg-3"></div>
 
 
-    
-           
+
+
        </div>
 
        <div id="banner-recomendados">
-           
+
             <div class="no-float col-md-2 col-xs-1 col-sm-1 col-lg-3"></div><div id="contenido-banner-principal" class="no-float col-md-8 col-xs-10 col-sm-10 col-lg-6"></div><div class="no-float col-md-2 col-xs-1 col-sm-1 col-lg-3"></div>
-           
+
        </div>
-       
-        
+
+
     </div>
 
 

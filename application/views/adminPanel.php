@@ -139,6 +139,7 @@ o crear nuevas propiedades*/ ?>-->
             <h4>Precio</h4>
             <div contenteditable="true" class="div-editable" id="precio"><!-- CONTENIDO --></div>
         </div>
+        <br>
 
         <div class="styled-select blue semi-square">
 
@@ -151,12 +152,19 @@ o crear nuevas propiedades*/ ?>-->
         </div>
         <div class="styled-select blue semi-square">
 
-            <select id="status" name="status">
+            <select id="condicion" name="condicion">
                 <option value="venta">Venta</option>
                 <option value="renta" selected="selected">Renta</option>
                 <option value="NO DISPONIBLE">No disponible</option>
             </select>
         </div>
+        <div class="styled-select blue semi-square">
+
+            <select id="status" name="status">
+                <option value="DISPONIBLE">Disponible</option>
+                <option value="NO DISPONIBLE" selected="selected">No disponible</option>
+            </select>
+        </div>        
         <br>
          <!-- Textos completos   ID  url     nombre  Descripcion     Tipo    Condicion   Condiciones     Filtro  CalleNo     Colonia     Delegacion  CP  Dimension Precio -->
 

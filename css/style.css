@@ -1201,11 +1201,12 @@ img.wrap{
 }
 #banner-recomendados span{
 	color: white;
-	font-size: 23px;
+	font-size: 22px;
 	display: inline-block;
 	vertical-align: middle;
 	line-height: normal;
 }
+
 #banner-recomendados .tipo-recomendados span{
 	font-size: 32px;
 }
@@ -1286,10 +1287,14 @@ img.wrap{
 
 /*media queries*/
 
-@media (max-width: 1024px) {
+@media screen and (min-width: 1024px) {
 
     .menu_block li{
         font-size: 18px;
+    }
+   
+    #banner-recomendados span{
+    font-size: 18px;
     }
     
 }

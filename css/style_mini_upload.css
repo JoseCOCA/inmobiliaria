@@ -2,7 +2,44 @@
     The file upload form
 -----------------------------*/
 
+/*form cambio propiedad*/
 
+#mod-Prop{
+    background-color: #69949D;
+    width: 310px;
+    margin: auto auto 30px;
+    padding-top: 30px;
+    padding-bottom: 10px;
+}
+#mod-Prop button{
+    display: block;
+    color: #FFF;
+    width: 140px;
+    margin: 30px auto;
+    padding: 10px;
+    border-radius: 8px;
+}
+#mod-drop{
+    width: 250px;
+    margin: auto;
+    /*margin-top: 10px;*/
+    border: dashed;
+    border-color: #FFF;
+    border-radius: 5px;
+    color: #FFF;
+
+}
+#mod-drop p{
+    text-align: center;
+    text-transform: uppercase;
+}
+#mod-search{
+    background-color: #025063;
+
+}
+#mod-upl{
+    background-color: #05789D;
+}
 #upload{
     font-family:'PT Sans Narrow', sans-serif;
     background-color:#373a3d;

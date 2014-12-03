@@ -1310,6 +1310,9 @@ background: linear-gradient(#ffdd7f 5%, #ffbc00 100%);
   /*display:none;  */
   visibility: hidden;
 }
+#file-mod{
+    visibility: hidden;
+}
 .input-btn{
   background-color:#8c8c8c;
   color:#fff;

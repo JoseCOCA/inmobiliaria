@@ -14,16 +14,18 @@ jQuery(document).on('ready', function($){
 
 
 	var $isoContainer = $('.iso');
-	$isoContainer.isotope({
-		filter: '*',
-		animationOptions: {
-			duration: 750,
-			easing: 'linear',
-			queue: false,
-			resizable: true, // disable normal resizing
-			// set columnWidth to a percentage of container width
-			masonry: { columnWidth: $isoContainer.width() / 5 }
-		}
+	$isoContainer.imagesLoaded( function () {
+		$isoContainer.isotope({
+			filter: '*',
+			animationOptions: {
+				duration: 750,
+				easing: 'linear',
+				queue: false,
+				resizable: true, // disable normal resizing
+				// set columnWidth to a percentage of container width
+				masonry: { columnWidth: $isoContainer.width() / 5 }
+			}
+		});
 	});
 	$('#isotope-cont #nav a').click(function(e){
 		e.preventDefault();
@@ -155,6 +157,12 @@ jQuery(document).on('ready', function($){
 		initID: '', // variable para el filtro de inicio
 
 		callBackInit : function(){
+			var containerWidth = $('.slide-recomendados').css("width");
+			var containerHeight = $('.slide-recomendados').css("height");
+			$('.rhino-container').css("width",containerWidth);
+			$('.rhino-container').css("height",containerHeight);
+			console.log($('.rhino-container').css("width"));
+			console.log($('.rhino-container').css("height"));
 
 			var initID = $('.slider-recomedados').find('.rhino-active>a>img').attr('id');
 

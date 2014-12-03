@@ -441,6 +441,27 @@ class Admin extends CI_Controller {
 		}
 	}
 
+	public function chImg()
+	{
+		$filtro = array(
+			
+			'Filtro' => $this->input->post('Filtro'),
+
+		);
+
+		$datos = array(
+			'url'	 => 'images/filtros/'.$this->input->post('imagen')
+			);
+		
+
+		if($this->admin_model->update_data('imagefilters',$datos,$filtro)){
+			echo "OK";
+		}else{
+			echo "error";
+		}
+
+	}
+
 
 }
 

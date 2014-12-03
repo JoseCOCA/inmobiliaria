@@ -391,6 +391,10 @@ jQuery(document).on('ready', function($){
 				$('#status').val(datos['Status']);
 				$('#filtro-hd').val(datos['Filtro']);
 				$('form#upload').append('<input type="hidden" id="propiedad" value="true" name="propiedad" />');
+				$('#filtro-mod').val(datos['Filtro']);
+				$('#filtro_mod_nombre').val(datos['Filtro']);
+				var url = datos['url'];
+				$('#mod-img').attr('src',url);
 
 				$('<div/>', {
 					id: 'saveChanges',
@@ -513,6 +517,7 @@ jQuery(document).on('ready', function($){
         	data = typeof(data)!='object' ? JSON.parse(data) : data;
             // console.log(data.result);
             var status = data.result.status;
+            console.log(data.result);
             if(status == "success"){
 				// Filtro
 				// nombre
@@ -555,6 +560,79 @@ jQuery(document).on('ready', function($){
         	 // data.context.addClass('error');
         }
     });
+	
+	// CAMBIO DE IMAGEN EN PROPIEDAD
+
+	$('form#mod-Prop').fileupload({
+		datatype: 'json',
+		dropzone: 'mod_drop',
+		add: function  (e,data) {
+			$('button.mod_submit').remove();
+			if (data.files && data.files[0]) {
+		        var reader = new FileReader();
+		        reader.onload = function(e) {
+		            $('#mod-img').attr('src', e.target.result);
+		        }
+		    }
+		    reader.readAsDataURL(data.files[0]);
+            data.context = $('<button/>',{class:'submit', id:'mod-upl'}).text('Cargar')
+                .appendTo($(this).find('#modImage'))
+                .click(function (e) {
+                	e.preventDefault();
+                    // data.context = $('<p/>').text('Uploading...').replaceAll($(this));
+                    console.log("submit");
+                    data.context.fadeOut();
+                    data.submit();
+                });
+		},
+		done: function (e, data) {
+			data = typeof(data)!='object' ? JSON.parse(data) : data;
+			result = JSON.parse(data.result);
+            console.log(result.status);
+            var status = result.status;
+             if(status == "success"){
+             	//console.log("succes");
+				// Filtro
+				// nombre
+				// imagen
+				var filtro = result.filtro,
+				nombre     = result.nombre,
+				imagen     = result.imagen,
+				dats       = {
+					Filtro : filtro,
+					imagen : imagen,
+				};
+
+            	$.ajax({
+            		url : base_url+'admin/chImg',
+            		cache :false,
+            		type : 'POST',
+            		data : dats,
+            		beforeSend : function(){
+            			// $('#previewing').removeAttr('src');
+		            	// $('button.submit').remove();
+		            	// console.log(dats);
+		            	// console.log(url);
+            		}
+            	}).done(function (data){
+            		console.log(data);
+            	}).fail(function (status, statusText, responseXML){
+            		console.log(statusText);
+					console.log(responseXML);
+            	});
+        	}else{
+        		alert(status);
+        		console.log("fallo");
+        	}
+        },
+        fail: function (e, data){
+        	 data.context.addClass('error');
+        	 // console.log("fallo");
+        	 // data.context.addClass('error');
+        }
+
+	});
+	
 	/* ENVIA INFO DE NUEVA PROPIEDAD */
 
 	// $("form#nuevaPropiedad").on('submit',(function (e) {

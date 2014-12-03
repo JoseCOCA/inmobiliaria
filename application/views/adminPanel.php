@@ -82,6 +82,35 @@ o crear nuevas propiedades*/ ?>-->
 
     <div class="config_container oculto">
 
+        <!-- EDICIÓN DE PROPIEDAD -->
+
+        <h3>Edita la información de esta propiedad</h3>
+
+        <h4>Cambia la imagen principal de esta propiedad</h4>
+
+        <form id="mod-Prop" action="<?=base_url()?>php/upload_images.php">
+            <p>
+                Arrastra nueva imagen aquí
+            </p>
+            <div id= "mod-drop">
+                
+                <img src="" id="mod-img">
+            </div>
+            <!-- <button id="mod-search">Buscar imagen</button> -->
+            <div id="modImage">
+                <input type="file" name="file-upl" id="file-mod" required="required" accept="image/*" />
+                <button class='input_btn_file' id='mod-search'>Buscar imagen</button>     
+            </div>
+
+                <input type="hidden" id="filtro-mod" name="nuevo-filtro" >
+                <input type="hidden" class="propiedad" id="propiedad-nueva" name="propiedad" value="nueva">
+                <input type="hidden" class="nombre" id="filtro_mod_nombre" name="propiedad-nombre" />
+
+
+           
+
+        </form>
+
 		<!-- CARRUSEL -->
 		<ul class="carrusel">
 

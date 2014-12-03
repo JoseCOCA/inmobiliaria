@@ -203,7 +203,7 @@ o crear nuevas propiedades*/ ?>-->
 
        <div id="banner-principal">
 
-            <div class="no-float col-md-1 col-xs-1 col-sm-1 col-lg-3"></div><div id="contenido-banner-principal" class="no-float col-md-7 col-xs-10 col-sm-8 col-lg-6">
+           <div id="contenido-banner-principal" class="no-float col-md-7 col-xs-10 col-sm-8 col-lg-6">
             	<h3>BANNER PRINCIPAL</h3>
                 <ul> <!-- BANNER PRINCIPAL --> </ul>
                 <form id="newMainBanner" action="<?=base_url()?>php/upload_images.php" method="post" enctype="multipart/form-data" autocomplete="off">
@@ -236,9 +236,9 @@ o crear nuevas propiedades*/ ?>-->
                 </form>
 
 
-            </div><div class="no-float col-md-2 col-xs-1 col-sm-1 col-lg-3"></div>
+            </div>
 
-            <div class="no-float col-md-1 col-xs-1 col-sm-1 col-lg-3"></div><div id="contenido-banner-recomendado" class="no-float col-md-7 col-xs-10 col-sm-8 col-lg-6">
+            <div id="contenido-banner-recomendado" class="no-float col-md-7 col-xs-10 col-sm-8 col-lg-6">
             	<h3>BANNER DE PROPIEDADES RECOMENDADAS</h3>
                 <ul> <!-- BANNER RECOMENDADOS --> </ul>
                 <form id="newRecomendBanner" action="<?=base_url()?>php/upload_images.php" method="post" enctype="multipart/form-data" autocomplete="off">
@@ -271,7 +271,7 @@ o crear nuevas propiedades*/ ?>-->
                 </form>
 
 
-            </div><div class="no-float col-md-2 col-xs-1 col-sm-1 col-lg-3"></div>
+            </div>
 
 
 

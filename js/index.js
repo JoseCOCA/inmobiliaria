@@ -161,8 +161,8 @@ jQuery(document).on('ready', function($){
 			var containerHeight = $('.slide-recomendados').css("height");
 			$('.rhino-container').css("width",containerWidth);
 			$('.rhino-container').css("height",containerHeight);
-			console.log($('.rhino-container').css("width"));
-			console.log($('.rhino-container').css("height"));
+			//console.log($('.rhino-container').css("width"));
+			//console.log($('.rhino-container').css("height"));
 
 			var initID = $('.slider-recomedados').find('.rhino-active>a>img').attr('id');
 

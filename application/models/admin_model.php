@@ -71,7 +71,7 @@ class Admin_model extends CI_Model {
 
 	public function get_banner()
 	{
-		$data;
+		$data = array();
 		$query = $this->db->get_where('imagedesc',array('principal' => '1'));
 		$queryB = $this->db->get_where('imagedesc',array('recomendado' => '1'));
 		if ($query->num_rows() > 0) {
@@ -88,7 +88,11 @@ class Admin_model extends CI_Model {
 
 			}
 		}
-		return $data;
+		if(count($data) >0){
+			return $data;	
+		}else{
+			return FALSE;
+		}
 	}
 
 	public function get_MAX_ID($tabla)
@@ -159,7 +163,6 @@ class Admin_model extends CI_Model {
 	{
 		$this->db->where($Filter);
 		$this->db->update($table, $data);
-
 	}
 
 	public function deleteImage($name)

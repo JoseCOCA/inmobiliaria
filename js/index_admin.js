@@ -116,7 +116,7 @@ jQuery(document).on('ready', function($){
 
 	/* BANNERS */
 
- 	$('#bannersEdit').click(function (e){
+$('#bannersEdit').click(function (e){
  		muestraLoadr(e);
 		$('#main>div:not(#panelBanner)').delay(1000).hide(0);
 		$('#panelBanner').delay(1000).show(0);
@@ -127,215 +127,229 @@ jQuery(document).on('ready', function($){
  			beforeSend : function (e) {
  				$('#panelBanner ul').empty();
  			}
- 		}).done(function (data){
- 			data = typeof(data)!='object' ? JSON.parse(data) : data;
- 			console.log(data);
- 			var principales = data.principal;
- 			var recomendados = data.recomendados;
+ 	}).done(function (data){
+
+ 		if(data != "false"){
+	 		
+	 		data = typeof(data)!='object' ? JSON.parse(data) : data;
+
+	 		//console.log(data);
+ 			
  			/* PRINCIPAL */
- 			for (var i = 0; i < principales.length; i++) {
- 				var url = principales[i].url;
- 				var name = principales[i].nombre;
- 				var image = '<li><div class="elimina-img butn" data-id="'+principales[i]['ID']+'" id="' +name+ '">Eliminar</div><img src="' + base_url + url + '" alt="' + name + '" class="image_slide"></li>';
- 				// console.log(image);
- 				$(image).appendTo('#contenido-banner-principal ul');
- 			};
+ 			if (data.principal) {
+ 				//console.log("hay principales");
+ 				principales = data.principal;
+	 			for (var i = 0; i < principales.length; i++) {
+	 				var url = principales[i].url;
+	 				var name = principales[i].nombre;
+	 				var image = '<li><div class="elimina-img butn" data-id="'+principales[i]['ID']+'" id="' +name+ '">Eliminar</div><img src="' + base_url + url + '" alt="' + name + '" class="image_slide"></li>';
+	 				// console.log(image);
+	 				$(image).appendTo('#contenido-banner-principal ul');
+	 			}
+ 			}else{
 
- 			/* 	NUEVO BANNER */
-			$('form#newMainBanner').fileupload({
-		        dataType: 'json',
-		        dropZone: $('#image_preview_main_ban'),
-		        add: function (e, data) {
-		        	$('button.submit').remove();
-		        	if (data.files && data.files[0]) {
-				        var reader = new FileReader();
-				        reader.onload = function(e) {
-				            $('#previewing_main_ban').attr('src', e.target.result);
-				        }
-				    }
-				    var propiedad = $(this).find('select#seccion-banner-p').val();
-				    $('select#seccion-banner-p').on('change', function(){
-				    	propiedad = $(this).val();
-				    })
+ 				console.log("no principales");
+ 			}
+ 			if(data.recomendados){
+ 				recomendados = data.recomendados;
+	 			/* RECOMENDADOS */
+	 			for (var r = 0; r < recomendados.length; r++) {
+	 				var url = recomendados[r].url;
+	 				var name = recomendados[r].nombre;
+	 				var image = '<li><div class="elimina-img butn" data-id="'+recomendados[r]['ID']+'" id="' +name+ '">Eliminar</div><img src="' + base_url + url + '" alt="' + name + '" class="image_slide"></li>';
+	 				// console.log(image);
+	 				$(image).appendTo('#contenido-banner-recomendado ul');
+	 			}		
+ 				//console.log("hay recomendados");
+ 			}else{
+ 				console.log("no recomendados");
+ 			}
+		}
+		eliminaImagen();
+	}).fail(function (status, statusText, responseXML){
+		console.log(satus);
+		console.log(statusText);
+	})  			
+});
 
-				    // console.log(propiedad);
-		        	reader.readAsDataURL(data.files[0]);
-		            data.context = $('<button/>',{class:'submit'}).text('Cargar')
-		                .appendTo($(this).find('#selectImage'))
-		                .click(function (e) {
-		                	e.preventDefault();
-		                    // data.context = $('<p/>').text('Uploading...').replaceAll($(this));
-		                    if(propiedad==''||propiedad==null||propiedad==undefined){
-		                    	alert('debe elegir una propiedad');
-		                    }else{
-		                    	data.submit();
-			                    data.context.fadeOut();
-		                    }
+	/* 	NUEVO BANNER */
+	$('form#newMainBanner').fileupload({
+		dataType: 'json',
+		dropZone: $('#image_preview_main_ban'),
+		add: function (e, data) {
+			$('button.submit').remove();
+			if (data.files && data.files[0]) {
+				var reader = new FileReader();
+				reader.onload = function(e) {
+					$('#previewing_main_ban').attr('src', e.target.result);
+				}
+			}
+			var propiedad = $(this).find('select#seccion-banner-p').val();
+			$('select#seccion-banner-p').on('change', function(){
+				propiedad = $(this).val();
+			})
 
-		                });
-		        },
-		        done: function (e, data) {
-		        	data = typeof(data)!='object' ? JSON.parse(data) : data;
-		            // console.log(data.result);
-		            var status = data.result.status;
-		            if(status == "success"){
-						// Filtro
-						// nombre
-						// url
-						// principal
-						// recomendado
-						var filtro = $('select#seccion-banner-p').val(),
-						nombre     = data.result.nombre,
-						imagen     = nombre,
-						dats       = {
-							Filtro : filtro,
-							nombre : nombre,
-							imagen : imagen,
-							recomendado : 0,
-							principal : 1,
-							adminPanel : 'Nuevo banner'
-						};
-		            	$.ajax({
-		            		url : base_url+'admin/getData',
-		            		cache :false,
-		            		type : 'POST',
-		            		data : dats,
-		            		beforeSend : function(){
-		            			$('#previewing_main_ban').removeAttr('src');
-				            	$('button.submit').remove();
-		            		}
-		            	}).done(function (data){
-		            		// alert('Imagen agregada');
-		            		// console.log(data);
-		            		// console.log(nombre);
-		            		var url = 'images/banners/'+nombre;
-		            		var nueva = '<li><div class="elimina-img butn" id="'+nombre+'">Eliminar</div><img src="' + base_url + url + '" alt="' + nombre + '" class="image_slide"></li>';
+			// console.log(propiedad);
+			reader.readAsDataURL(data.files[0]);
+			data.context = $('<button/>',{class:'submit'}).text('Cargar')
+			.appendTo($(this).find('#selectImage'))
+			.click(function (e) {
+				e.preventDefault();
+			// data.context = $('<p/>').text('Uploading...').replaceAll($(this));
+			if(propiedad==''||propiedad==null||propiedad==undefined){
+				alert('debe elegir una propiedad');
+			}else{
+				data.submit();
+				data.context.fadeOut();
+			}
 
-							$(nueva).hide().appendTo("#contenido-banner-principal ul").fadeIn(1000);
-							
-							eliminaImagen();
-		            	}).fail(function (status, statusText, responseXML){
-		            		console.log(statusText);
-							console.log(responseXML);
-		            	});
-		            }else{
-		            	alert(status);
-		            	data.context.fadeIn();
-		            }
-		        },
-		        fail: function (e, data){
-		        	 data.context.addClass('error');
-		        	 // data.context.addClass('error');
-		        }
-		    });
+		});
+		},
+		done: function (e, data) {
+			data = typeof(data)!='object' ? JSON.parse(data) : data;
+			// console.log(data.result);
+			var status = data.result.status;
+			if(status == "success"){
+				// Filtro
+				// nombre
+				// url
+				// principal
+				// recomendado
+				var filtro = $('select#seccion-banner-p').val(),
+				nombre     = data.result.nombre,
+				imagen     = nombre,
+				dats       = {
+					Filtro : filtro,
+					nombre : nombre,
+					imagen : imagen,
+					recomendado : 0,
+					principal : 1,
+					adminPanel : 'Nuevo banner'
+				};
+				$.ajax({
+					url : base_url+'admin/getData',
+					cache :false,
+					type : 'POST',
+					data : dats,
+					beforeSend : function(){
+						$('#previewing_main_ban').removeAttr('src');
+						$('button.submit').remove();
+					}
+				}).done(function (data){
+				// alert('Imagen agregada');
+				// console.log(data);
+				// console.log(nombre);
+				var url = 'images/banners/'+nombre;
+				var nueva = '<li><div class="elimina-img butn" id="'+nombre+'">Eliminar</div><img src="' + base_url + url + '" alt="' + nombre + '" class="image_slide"></li>';
 
- 			/* RECOMENDADOS */
- 			for (var r = 0; r < recomendados.length; r++) {
- 				var url = recomendados[r].url;
- 				var name = recomendados[r].nombre;
- 				var image = '<li><div class="elimina-img butn" data-id="'+recomendados[r]['ID']+'" id="' +name+ '">Eliminar</div><img src="' + base_url + url + '" alt="' + name + '" class="image_slide"></li>';
- 				// console.log(image);
- 				$(image).appendTo('#contenido-banner-recomendado ul');
- 			};
- 			/* 	NUEVO BANNER RECOMENDADO */
-			$('form#newRecomendBanner').fileupload({
-		        dataType: 'json',
-		        dropZone: $('#image_preview_recomend_ban'),
-		        add: function (e, data) {
-		        	$('button.submit').remove();
-		        	if (data.files && data.files[0]) {
-				        var reader = new FileReader();
-				        reader.onload = function(e) {
-				            $('#previewing_recomend_ban').attr('src', e.target.result);
-				        }
-				    }
-				    var propiedad = $(this).find('select#seccion-banner-r').val();
-				    $('select#seccion-banner-r').on('change', function(){
-				    	propiedad = $(this).val();
-				    })
+				$(nueva).hide().appendTo("#contenido-banner-principal ul").fadeIn(1000);
 
-				    // console.log(propiedad);
-		        	reader.readAsDataURL(data.files[0]);
-		            data.context = $('<button/>',{class:'submit'}).text('Cargar')
-		                .appendTo($(this).find('#selectImage'))
-		                .click(function (e) {
-		                	e.preventDefault();
-		                    // data.context = $('<p/>').text('Uploading...').replaceAll($(this));
-		                    if(propiedad==''||propiedad==null||propiedad==undefined){
-		                    	alert('debe elegir una propiedad');
-		                    }else{
-		                    	data.submit();
-			                    data.context.fadeOut();
-		                    }
+					eliminaImagen();
+				}).fail(function (status, statusText, responseXML){
+					console.log(statusText);
+					console.log(responseXML);
+				});
+			}else{
+				alert(status);
+				data.context.fadeIn();
+			}
+		},
+		fail: function (e, data){
+			data.context.addClass('error');
+				// data.context.addClass('error');
+			}
+	});
 
-		                });
-		        },
-		        done: function (e, data) {
-		        	data = typeof(data)!='object' ? JSON.parse(data) : data;
-		            // console.log(data.result);
-		            var status = data.result.status;
-		            if(status == "success"){
-						// Filtro
-						// nombre
-						// url
-						// principal
-						// recomendado
-						var filtro = $('select#seccion-banner-r').val(),
-						nombre     = data.result.nombre,
-						imagen     = nombre,
-						dats       = {
-							Filtro : filtro,
-							nombre : nombre,
-							imagen : imagen,
-							recomendado : 1,
-							principal : 0,
-							adminPanel : 'Nuevo banner'
-						};
-		            	$.ajax({
-		            		url : base_url+'admin/getData',
-		            		cache :false,
-		            		type : 'POST',
-		            		data : dats,
-		            		beforeSend : function(){
-		            			$('#previewing_recomend_ban').removeAttr('src');
-				            	$('button.submit').remove();
-		            		}
-		            	}).done(function (data){
-		            		// alert('Imagen agregada');
-		            		// console.log(data);
-		            		// console.log(nombre);
-		            		var url = 'images/banners/'+nombre;
-		            		var nueva = '<li><div class="elimina-img butn" id="'+nombre+'">Eliminar</div><img src="' + base_url + url + '" alt="' + nombre + '" class="image_slide"></li>';
 
-							$(nueva).hide().appendTo("#contenido-banner-recomendado ul").fadeIn(1000);
-							eliminaImagen();
+/* 	NUEVO BANNER RECOMENDADO */
+$('form#newRecomendBanner').fileupload({
+	dataType: 'json',
+	dropZone: $('#image_preview_recomend_ban'),
+	add: function (e, data) {
+		$('button.submit').remove();
+		if (data.files && data.files[0]) {
+			var reader = new FileReader();
+			reader.onload = function(e) {
+				console.log("onload");
+				$('#previewing_recomend_ban').attr('src', e.target.result);
+			}
+		}
+		var propiedad = $(this).find('select#seccion-banner-r').val();
+		$('select#seccion-banner-r').on('change', function(){
+			propiedad = $(this).val();
+		})
+		// console.log(propiedad);
+		reader.readAsDataURL(data.files[0]);
+		data.context = $('<button/>',{class:'submit'}).text('Cargar')
+		.appendTo($(this).find('#selectImage'))
+		.click(function (e) {
+				e.preventDefault();
+			// data.context = $('<p/>').text('Uploading...').replaceAll($(this));
+			if(propiedad==''||propiedad==null||propiedad==undefined){
+				alert('debe elegir una propiedad');
+			}else{
+				data.submit();
+				data.context.fadeOut();
+			}
+		});
+	},
+	done: function (e, data) {
+		data = typeof(data)!='object' ? JSON.parse(data) : data;
+		// console.log(data.result);
+		var status = data.result.status;
+		if(status == "success"){
+		// Filtro
+		// nombre
+		// url
+		// principal
+		// recomendado
+		var filtro = $('select#seccion-banner-r').val(),
+		nombre     = data.result.nombre,
+		imagen     = nombre,
+		dats       = {
+			Filtro : filtro,
+			nombre : nombre,
+			imagen : imagen,
+			recomendado : 1,
+			principal : 0,
+			adminPanel : 'Nuevo banner'
+		};
+		$.ajax({
+			url : base_url+'admin/getData',
+			cache :false,
+			type : 'POST',
+			data : dats,
+			beforeSend : function(){
+				$('#previewing_recomend_ban').removeAttr('src');
+				$('button.submit').remove();
+			}
+		}).done(function (data){
+		// alert('Imagen agregada');
+		// console.log(data);
+		// console.log(nombre);
+		var url = 'images/banners/'+nombre;
+		var nueva = '<li><div class="elimina-img butn" id="'+nombre+'">Eliminar</div><img src="' + base_url + url + '" alt="' + nombre + '" class="image_slide"></li>';
 
-		            	}).fail(function (status, statusText, responseXML){
-		            		console.log(statusText);
-							console.log(responseXML);
-		            	});
-		            }else{
-		            	alert(status);
-		            	data.context.fadeIn();
-		            }
-		        },
-		        fail: function (e, data){
-		        	 data.context.addClass('error');
-		        	 // data.context.addClass('error');
-		        }
-		    });
+		$(nueva).hide().appendTo("#contenido-banner-recomendado ul").fadeIn(1000);
+		eliminaImagen();
+
+		}).fail(function (status, statusText, responseXML){
+			console.log(statusText);
+			console.log(responseXML);
+		});
+		}else{
+			alert(status);
+			data.context.fadeIn();
+		}
+	},
+	fail: function (e, data){
+		data.context.addClass('error');
+	// data.context.addClass('error');
+	}
+});
  
-  			eliminaImagen();
 
- 		}).fail(function (status, statusText, responseXML){
- 			console.log(satus);
- 			console.log(statusText);
- 		})
- 	});
-
-
-
-	/* BANNERS */
+ /*BANNERS*/
 
 
  	/* PROPIEDADES */
@@ -670,7 +684,7 @@ jQuery(document).on('ready', function($){
  	/* PROPIEDADES */
 
 
-});
+	});
 
 
  	/* PROPIEDADES */

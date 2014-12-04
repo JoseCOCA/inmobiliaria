@@ -7,7 +7,8 @@ jQuery(document).on('ready', function($){
 		slippryWrapper: '<div class="slippry-main sy-box" />',
 		transition: 'fade',
 		easing: 'easeOutExpo',
-		continuous: false
+		continuous: false,
+		adaptiveHeight: false
 	});
 
 	$('.sy-pager').append('<h5 class="contact">'+contact+'</h5>');

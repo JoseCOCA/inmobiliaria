@@ -1216,9 +1216,10 @@ img.wrap{
 	max-width: 59% !important;
 }
 .slide-recomendados ul, .slide-recomendados li, .slide-recomendados img, .slide-recomendados div{
-	width: 100%;
-	max-width: 100% !important;
-	max-height: 100% !important
+    max-height: 100% !important;
+    max-width: 100% !important;
+    width: 100% !important;
+    height: 100% !important;
 }
 
 /**	 FORM PARA RECIBIR NOTIFICACIONES DE PROPIEDADES*/

@@ -104,6 +104,7 @@ o crear nuevas propiedades*/ ?>-->
                 <!-- The file uploads will be shown here -->
             </ul>
             <input type="hidden" id="filtro-hd" name="Filtro" />
+            <input type="hidden" name="carrusel" value="carrusel" />
             <input type="hidden" id="add-hd" value="Agregar imagenes" name="adminPanel" />
 
         </form>
@@ -231,6 +232,7 @@ o crear nuevas propiedades*/ ?>-->
                             </select>
                         </div>
                         <input type="hidden" class="propiedad" id="propiedad-true" name="propiedad" value="true">
+                        <input type="hidden" name="banner" value="principal" />
                         <br>
                     </div>
 
@@ -266,6 +268,7 @@ o crear nuevas propiedades*/ ?>-->
                             </select>
                         </div>
                         <input type="hidden" class="propiedad" id="propiedad-true" name="propiedad" value="true">
+                        <input type="hidden" name="banner" value="recomendado" />
                         <br>
                     </div>
 

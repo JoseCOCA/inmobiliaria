@@ -566,6 +566,7 @@ $('form#newRecomendBanner').fileupload({
 					var num = filtro.match(/\d+$/)[0];
 					var newFilter = parseInt(num)+1;
 					$('form#nuevaPropiedad input#nuevo-filtro').val('F'+newFilter);
+					$('form#nuevaPropiedad input#propiedad-nombre').val('F'+newFilter);
 
             	}).fail(function (status, statusText, responseXML){
             		console.log(statusText);

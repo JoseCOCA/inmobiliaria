@@ -3,8 +3,6 @@
 <footer>
     <div class="clear"></div>
     <div class="sep__1"><hr></div>
-    <div class="foot_colourd">
-    </div>
 </footer>
 <script src="js/modernizr.custom.17475.js"></script>
 <script src="js/cookieManager.js"></script>

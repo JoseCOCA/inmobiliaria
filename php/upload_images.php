@@ -1,5 +1,7 @@
 <?php
+use PHPImageWorkshop\ImageWorkshop as ImageWorkshop;
 
+require_once(__DIR__.'/autoload.php');
 error_reporting(0);
 // A list of permitted file extensions
 if(isset($_POST['propiedad'])) {

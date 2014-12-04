@@ -162,7 +162,7 @@ class Admin_model extends CI_Model {
 	public function update_data($table,$data,$Filter)
 	{
 		$this->db->where($Filter);
-		$this->db->update($table, $data);
+		return $this->db->update($table, $data)?true:false;
 	}
 
 	public function deleteImage($name)

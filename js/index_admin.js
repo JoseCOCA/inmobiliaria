@@ -558,8 +558,14 @@ $('form#newRecomendBanner').fileupload({
             	}).done(function (data){
             		console.log(data);
             		var nueva = '<li><a href="#sidr" id="'+filtro+'" class="configFilter showInfo" data-cont="'+filtro+'"><img src="images/filtros/'+imagen+'" /><p>'+nombre+'</p></a></li>';
+            		var nuevoOption = '<option value="'+filtro+'">'+nombre+'</option>';
 
 					$(nueva).hide().appendTo("#lista-propiedades").fadeIn(1000);
+					$(nuevoOption).appendTo($('select#seccion-banner-p'));
+					$(nuevoOption).appendTo($('select#seccion-banner-r'));
+					var num = filtro.match(/\d+$/)[0];
+					var newFilter = parseInt(num)+1;
+					$('form#nuevaPropiedad input#nuevo-filtro').val('F'+newFilter);
 
             	}).fail(function (status, statusText, responseXML){
             		console.log(statusText);
@@ -575,11 +581,12 @@ $('form#newRecomendBanner').fileupload({
         }
     });
 	
+	
 	// CAMBIO DE IMAGEN EN PROPIEDAD
 
 	$('form#mod-Prop').fileupload({
 		datatype: 'json',
-		dropzone: 'mod_drop',
+		dropzone: $('#mod_drop'),
 		add: function  (e,data) {
 			$('button.mod_submit').remove();
 			if (data.files && data.files[0]) {
@@ -629,7 +636,12 @@ $('form#newRecomendBanner').fileupload({
 		            	// console.log(url);
             		}
             	}).done(function (data){
-            		console.log(data);
+            		if(data == 'ok'){
+	            		alert('Imagen actualizada');
+	            		console.log(dats);
+	            		$('#sidr>ul').find('a#'+filtro).find('img').attr('src', 'images/filtros/'+imagen);
+            			
+            		}
             	}).fail(function (status, statusText, responseXML){
             		console.log(statusText);
 					console.log(responseXML);

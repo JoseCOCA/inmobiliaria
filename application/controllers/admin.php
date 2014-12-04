@@ -406,11 +406,11 @@ class Admin extends CI_Controller {
 		
 
 		if($this->admin_model->update_data('imagefilters',$datos,$filtro)){
-			echo "OK";
+			echo "ok";
 		}else{
 			echo "error";
 		}
-
+		// echo $this->admin_model->update_data('imagefilters',$datos,$filtro); 
 	}
 
 

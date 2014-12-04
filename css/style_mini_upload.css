@@ -23,10 +23,11 @@
     width: 250px;
     margin: auto;
     /*margin-top: 10px;*/
-    border: dashed;
-    border-color: #FFF;
-    border-radius: 5px;
+    /*border: dashed;*/
+    /*border-color: #FFF;*/
+    /*border-radius: 5px;*/
     color: #FFF;
+    background: rgba(7, 24, 30, 0.1);
 
 }
 #mod-drop p{

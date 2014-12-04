@@ -86,13 +86,38 @@ o crear nuevas propiedades*/ ?>-->
 
         <h3>Edita la información de esta propiedad</h3>
 
-        <h4>Cambia la imagen principal de esta propiedad</h4>
+		<!-- CARRUSEL -->
+		<ul class="carrusel">
+
+		</ul>
+        <!-- UPLOAD IMÁGENES -->
+        <h4>Agrega nuevas imágenes al carrusel</h4>
+        <form id="upload" method="post" action="<?=base_url()?>php/upload_images.php" enctype="multipart/form-data">
+            <div id="drop">
+                Arrastra tus archivos aquí
+
+                <a>Buscar</a>
+                <input type="file" name="upl" multiple  accept="image/*" />
+            </div>
+
+            <ul>
+                <!-- The file uploads will be shown here -->
+            </ul>
+            <input type="hidden" id="filtro-hd" name="Filtro" />
+            <input type="hidden" id="add-hd" value="Agregar imagenes" name="adminPanel" />
+
+        </form>
+
+        <!-- CONTENIDOS EDITABLES -->
+        
+        <!-- CAMBIA IMAGEN PRINCIPAL DE PROPIEDAD -->
+        <h4>Cambia la imagen principal</h4>
 
         <form id="mod-Prop" action="<?=base_url()?>php/upload_images.php">
+            <div id= "mod-drop">
             <p>
                 Arrastra nueva imagen aquí
             </p>
-            <div id= "mod-drop">
                 
                 <img src="" id="mod-img">
             </div>
@@ -111,30 +136,6 @@ o crear nuevas propiedades*/ ?>-->
 
         </form>
 
-		<!-- CARRUSEL -->
-		<ul class="carrusel">
-
-		</ul>
-        <!-- UPLOAD IMÁGENES -->
-        <h3>Agrega nuevas imágenes a esta propiedad</h3>
-        <form id="upload" method="post" action="<?=base_url()?>php/upload_images.php" enctype="multipart/form-data">
-            <div id="drop">
-                Arrastra tus archivos aquí
-
-                <a>Buscar</a>
-                <input type="file" name="upl" multiple  accept="image/*" />
-            </div>
-
-            <ul>
-                <!-- The file uploads will be shown here -->
-            </ul>
-            <input type="hidden" id="filtro-hd" name="Filtro" />
-            <input type="hidden" id="add-hd" value="Agregar imagenes" name="adminPanel" />
-
-        </form>
-
-        <!-- CONTENIDOS EDITABLES -->
-        <h3>Edita la información de esta propiedad</h3>
         <div class="box-editable">
             <h4>Descripcion</h4>
             <div contenteditable="true" class="div-editable" id="descripcion"><!-- CONTENIDO --></div>

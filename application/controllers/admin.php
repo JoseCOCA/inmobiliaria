@@ -24,6 +24,7 @@ class Admin extends CI_Controller {
 
 		session_start();
 		$this->load->model('admin_model');
+		$this->load->model('notificacion_modelo');
 		$error = "";
 		$this->load->helper(array('form', 'url'));
 
@@ -263,9 +264,13 @@ class Admin extends CI_Controller {
 						);
 
 
-
+						
 						$this->admin_model->update_data('imagefilters', $dataForm,$Filter);
 
+						if($this->notificacion_modelo->notificar()){
+							echo 'enviar mails';
+
+						}
 						echo 'ok';
 
 				}
@@ -295,7 +300,15 @@ class Admin extends CI_Controller {
 
 					);
 					if($this->admin_model->insert_images('imagefilters',$insert)){
-						echo 'ok';
+						$nuevoFiltro = array(
+							'Propiedad' => $this->input->post('Filtro'),
+							'Enviado'	=> '0'
+							);
+						if($this->admin_model->addMailProp($nuevoFiltro)){
+							echo 'ok';
+						}else{
+							echo "error";
+						}
 					}else{
 						echo 'error';
 					}

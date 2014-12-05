@@ -238,6 +238,13 @@
 								echo form_label('Empresa'.':', $data5['name']);
 								echo form_input($data5);
 								echo '<br />';
+								$id = array(
+									'name'=> 'Filtro',
+									'value'=> '',
+									'id' => 'notiFiltro',
+									'type' => 'hidden'
+									);
+								echo form_input($id);
 								$data6 = array(
 								'name' => 'Comentarios',
 								'id'  =>  'comentarios',

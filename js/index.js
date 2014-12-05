@@ -71,6 +71,8 @@ jQuery(document).on('ready', function($){
 			}).done(function (data){
 				var dataA = data;
 				data = JSON.parse(data);
+				var filtro = data[0]['Filtro'];
+				//console.log(filtro);
 				console.log(data);
 				var datos = data[0];
 				for (var i = 1; i < data.length; i++) {
@@ -97,6 +99,7 @@ jQuery(document).on('ready', function($){
 				$('#desc').html(datos['Descripcion']);
 				$('#condiciones-propiedad-compra').html(datos['Condiciones']);
 				$('#status-prop').html(datos['Status']);
+				$('#notiFiltro').val(filtro);
 
 
 				$('.checkbox-1').on('click', function(event){

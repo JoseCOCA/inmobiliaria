@@ -7,7 +7,8 @@ $('#submit').click(function(e){
 		cel : $('#celular').val(), 
 		email : $('#correo').val(), 
 		emp : $('#empresa').val(), 
-		com : $('#comentarios').val() 
+		com : $('#comentarios').val(),
+		filtro : $('#notiFiltro').val(), 
 		},
 		url = $('#notif').attr('action');
 

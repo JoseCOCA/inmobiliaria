@@ -34,6 +34,7 @@ class Notificacion extends CI_Controller {
 			$cel 		=	$this->input->post('cel');
 			$empresa 	=	$this->input->post('emp');
 			$comentarios =  $this->input->post('com');
+			$Filtro 	=	$this->input->post('filtro');
 
 		if ($this->form_validation->run() == FALSE) {
 			
@@ -50,6 +51,11 @@ class Notificacion extends CI_Controller {
 				'Correo' => $correo,
 				'Celular' => $cel,
 				'Empresa' => $empresa,
+				
+				);
+			$notificarA = array(
+				'Correo' => $correo,
+				'Filtro'	=> $filtro
 				);
 
 			//chequeo de contacto no repetido

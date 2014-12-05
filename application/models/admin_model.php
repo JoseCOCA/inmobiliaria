@@ -191,6 +191,11 @@ class Admin_model extends CI_Model {
 		$this->db->insert('contactos', $data);
 	}
 
+	public function addMailProp($nuevoFiltro)
+	{
+		$this->db->insert('Correos', $nuevoFiltro);
+	}
+
 }
 
 /* End of file admin_model.php */

@@ -426,9 +426,11 @@ $('form#newRecomendBanner').fileupload({
 					descripcion = $('#descripcion').html(),
 					tipo = $('#tipo').val(),
 					status = $('#status').val(),
+					Condicion = $('#condicion-propiedad').val(),
 					filtro = $(this).attr('data-filtro');
 					var dats = {
 						condiciones : condiciones,
+						Condicion : Condicion,
 						CalleNumero : calleNo,
 						Colonia : colonia,
 						Delegacion : delegacion,

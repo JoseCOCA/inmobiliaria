@@ -252,6 +252,7 @@ class Admin extends CI_Controller {
 					 	'Descripcion' 	=> $this->input->post('descripcion'),
 					 	'Tipo'			=> $this->input->post('inmueble'),
 					 	'Status'		=> $this->input->post('Status'),
+					 	'Condicion'		=> $this->input->post('Condicion'),
 					 	'Condiciones'	=> $this->input->post('condiciones'),
 					 	'CalleNo'		=> $this->input->post('CalleNumero'),
 					 	'Colonia'		=> $this->input->post('Colonia'),

@@ -146,7 +146,7 @@
 				</div>
 
 				<div class="content2">
-					<p>STATUS: </p><P id="status-prop"><!-- STATUS --></P>
+					<p>STATUS: </p><p id="status-prop"><!-- STATUS --></p>
 
 					<div class="checkbox-1">
 

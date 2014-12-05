@@ -96,6 +96,7 @@ jQuery(document).on('ready', function($){
 				$('#ubicacion-propiedad').html(datos['CalleNo']+' '+datos['Colonia']+' '+datos['Delegacion']+' '+datos['CP']);
 				$('#desc').html(datos['Descripcion']);
 				$('#condiciones-propiedad-compra').html(datos['Condiciones']);
+				$('#status-prop').html(datos['Status']);
 
 
 				$('.checkbox-1').on('click', function(event){
@@ -146,7 +147,7 @@ jQuery(document).on('ready', function($){
 	$('.slider-recomedados').rhinoslider({
 		autoPlay: true,
 		easing: 'easeInExpo',
-		effect: 'turnOver',
+		effect: 'fade',
 		effectTime: 2000,
 		pauseOnHover: false,
 		showTime: 10000,
@@ -218,4 +219,8 @@ function goToByScroll(id){$('html,body').animate({scrollTop: $("#"+id).offset().
 
 function resetForm () {
 	document.getElementById("notif").reset();
+	$('#notificationForm').slideUp('slow', function(){
+			$('#descripcion').slideDown('slow');
+	});
+
 }

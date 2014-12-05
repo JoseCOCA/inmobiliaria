@@ -192,8 +192,8 @@ o crear nuevas propiedades*/ ?>-->
         <div class="styled-select blue semi-square">
 
             <select id="status" name="status">
-                <option value="DISPONIBLE">Disponible</option>
-                <option value="NO DISPONIBLE" selected="selected">No disponible</option>
+                <option value="Disponible">Disponible</option>
+                <option value="No disponible" selected="selected">No disponible</option>
             </select>
         </div>        
         <br>

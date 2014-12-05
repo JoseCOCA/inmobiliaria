@@ -426,7 +426,7 @@ $('form#newRecomendBanner').fileupload({
 					descripcion = $('#descripcion').html(),
 					tipo = $('#tipo').val(),
 					status = $('#status').val(),
-					Condicion = $('#condicion-propiedad').val(),
+					Condicion = $('#condicion').val(),
 					filtro = $(this).attr('data-filtro');
 					var dats = {
 						condiciones : condiciones,

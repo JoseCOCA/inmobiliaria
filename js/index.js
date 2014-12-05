@@ -100,7 +100,12 @@ jQuery(document).on('ready', function($){
 				$('#condiciones-propiedad-compra').html(datos['Condiciones']);
 				$('#status-prop').html(datos['Status']);
 				$('#notiFiltro').val(filtro);
-
+				
+				if(datos['Status']=='DISPONIBLE'){
+					$('.checkbox-1, #check-text').hide();
+				}else{
+					$('.checkbox-1, #check-text').show();
+				}
 
 				$('.checkbox-1').on('click', function(event){
 					event.stopImmediatePropagation();

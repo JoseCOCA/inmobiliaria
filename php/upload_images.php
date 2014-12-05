@@ -15,7 +15,7 @@ if(isset($_POST['propiedad'])) {
 			$temporary = explode(".", $_FILES["file-upl"]["name"]);
 			$file_extension = end($temporary);
 			if ((($_FILES["file-upl"]["type"] == "image/png") || ($_FILES["file-upl"]["type"] == "image/jpg") || ($_FILES["file-upl"]["type"] == "image/jpeg")
-			) && ($_FILES["file-upl"]["size"] < 100000)//Approx. 100kb files can be uploaded.
+			) && ($_FILES["file-upl"]["size"] < 500000)//Approx. 500kb files can be uploaded.
 			&& in_array($file_extension, $validextensions)) {
 				if ($_FILES["file-upl"]["error"] > 0){
 					echo '{"status":"'.$_FILES["file-upl"]["error"].'"}';
@@ -55,7 +55,7 @@ if(isset($_POST['propiedad'])) {
 			$temporary = explode(".", $_FILES["upl"]["name"]);
 			$file_extension = end($temporary);
 			if ((($_FILES["upl"]["type"] == "image/png") || ($_FILES["upl"]["type"] == "image/jpg") || ($_FILES["upl"]["type"] == "image/jpeg")
-			) && ($_FILES["upl"]["size"] < 350000)//Approx. 350kb files can be uploaded.
+			) && ($_FILES["upl"]["size"] < 500000)//Approx. 500kb files can be uploaded.
 			&& in_array($file_extension, $validextensions)) {
 				if ($_FILES["upl"]["error"] > 0){
 					echo '{"status":"'.$_FILES["upl"]["error"].'"}';

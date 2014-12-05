@@ -13,10 +13,14 @@
 	<script src="js/jquery.js"></script>
 	<script src="js/jquery-migrate-1.1.1.js"></script>
     <script>
+		if(window.location.hash) {
+		  window.location = '';
+		  // hash found
+		}
 		var contact = 'BIENES RAICES / +52 (55) 90 00 30 00';
 		var base_url = '<?php echo base_url()?>';
     </script>
-
+	
 
     <!--[if lt IE 8]>
        <div style=' clear: both; text-align:center; position: relative;'>

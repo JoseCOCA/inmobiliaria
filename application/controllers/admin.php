@@ -265,13 +265,14 @@ class Admin extends CI_Controller {
 
 
 						
-						$this->admin_model->update_data('imagefilters', $dataForm,$Filter);
-
-						if($this->notificacion_modelo->notificar()){
-							echo 'enviar mails';
-
+						if ($this->admin_model->update_data('imagefilters', $dataForm,$Filter) and $this->notificacion_modelo->notificar($Filter['Filtro'])) {
+							echo 'mails';
+						}else{
+							if($this->admin_model->update_data('imagefilters', $dataForm,$Filter)){
+								echo 'ok';
+							}
 						}
-						echo 'ok';
+						
 
 				}
 

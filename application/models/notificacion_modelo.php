@@ -24,15 +24,18 @@ class Notificacion_modelo extends CI_Model {
 	{
 		
 		$this->db->select('Status');
-		$this->db->from('imagefilters');
-		$this->db->where('Filtro', $Filtro);
-		$query = $this->db->get();
+		$query = $this->db->get_where('imagefilters',array('Filtro' => $Filtro ));
+		if($query->num_rows()>0){
+			foreach ($query->result() as $row) {
+				$status = $row->Status;
+				if( $status == "Disponible"){
+					return TRUE;
+				}else{
+					return FALSE;
+				}
+			}
+		}	
 
-		if($query->result() == 'DISPONIBLE'){
-			return TRUE;
-		}else{
-			return FALSE;
-		}
 	}
 
 	public function selecMails($Filtro)

@@ -489,6 +489,19 @@ $('form#newRecomendBanner').fileupload({
 						})
 					}).attr('disabled', false);
 
+			}else if(data=='mails'){
+				var mailConfirm = confirm("Desea notificar disponibilidad ?");
+				if(mailConfirm == true){
+					//Enviar los correos 
+				}else{
+					//Solo actualizar los datos
+				}
+					$('#saveChanges').delay(1000).show(100,function(){
+						$('<div>',{class:'success'}).html('Registro actualizado').insertBefore('#saveChanges');
+						$('.success').delay(3000).animate({'opacity':'0'},500,function(){
+							$(this).remove();
+						})
+					}).attr('disabled', false);
 			}else{
 				$('#saveChanges').delay(1000).show(100,function(){
 						$('<div>',{class:'warning'}).html(data).insertBefore('#saveChanges');

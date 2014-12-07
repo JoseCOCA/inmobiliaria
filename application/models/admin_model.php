@@ -193,7 +193,21 @@ class Admin_model extends CI_Model {
 
 	public function addMailProp($nuevoFiltro)
 	{
-		$this->db->insert('Correos', $nuevoFiltro);
+		$query = $this->db->get_where('correos',$nuevoFiltro);
+		if($query->num_rows() > 0){
+			return false;
+		}else{
+			$this->db->insert('correos', $nuevoFiltro);
+			return true;
+		}
+	}
+	public function deleteMails($Filtro)
+	{
+		$query = $this->db->get_where('correos',array('Propiedad'=>$Filtro));
+		if($query->num_rows()> 0 ){
+			$this->db->delete('correos',array('Propiedad'=>$Filtro));
+			return $this->db->affected_rows();
+		}
 	}
 
 }

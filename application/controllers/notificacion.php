@@ -7,6 +7,7 @@ class Notificacion extends CI_Controller {
 		parent::__construct();
 		//Do your magic here
 		$this->load->model('notificacion_modelo');
+		$this->load->model('admin_model');
 
 	}
 
@@ -42,8 +43,6 @@ class Notificacion extends CI_Controller {
 
 		}else{
 
-
-
 			//arreglo para el nuevo contacto
 			$contacto = array(		
 				'Nombre' => $nombre, 
@@ -54,8 +53,8 @@ class Notificacion extends CI_Controller {
 				
 				);
 			$notificarA = array(
-				'Correo' => $correo,
-				'Filtro'	=> $filtro
+				 'Nombre' => $nombre,
+				 'Correo' => $correo
 				);
 
 			//chequeo de contacto no repetido
@@ -68,9 +67,11 @@ class Notificacion extends CI_Controller {
 					$this->_sendEmail($correo,$comentarios);
 
 
+
 				 }else{
 
-				 	echo "Recibira notificacion de disponibilidad de esta propiedad";
+				 	
+				 	$this->jsonMail($Filtro,$notificarA);
 				 }
 				 
 
@@ -82,8 +83,12 @@ class Notificacion extends CI_Controller {
 						
 					}
 				//captura de datos de nuevo contacto en DB
-				echo "Nuevo contacto agregado gracias por su preferencia";
-				$this->notificacion_modelo->nuevoContacto($contacto);
+				echo "Nuevo contacto agregado gracias por su preferencia\n";
+				if($this->notificacion_modelo->nuevoContacto($contacto)){
+					$this->jsonMail($Filtro,$notificarA);
+
+				}
+
 			}
 
 		}
@@ -92,13 +97,35 @@ class Notificacion extends CI_Controller {
 		//funcion para enviar notificaciones
 	public function Notificaciones()
 	{
-		//checar si la propiedad status ha cambiado
-		if($this->notificacion_modelo->notificar($Filtro)){ //agregar filtro para corroborar notificacion
-			//si cambia selecciona los correos relacionados
+		$config = Array(
+		    'protocol' => 'smtp',
+		    'smtp_host' => 'ssl://smtp.googlemail.com',
+		    'smtp_port' => 465,
+		    'smtp_user' => 'josecoca0890@gmail.com',
+		    'smtp_pass' => 'Jjoc110890!',
+		    'mailtype'  => 'html', 
+		    'charset'   => 'iso-8859-1'
+		);
+
+		$this->load->library('email');
+		//agregar filtro para corroborar notificacion
+		$Filtro = $this->input->post('Filtro');
+		
 		$emails = $this->notificacion_modelo->selecMails($Filtro);
-			//los manda desde la dirección correspondiente
-			$this->email->from('test@inmobiliariayarrendadora.com.mx'); //agregar direccion
-			$this->email->to($emails);				//emails en DB			
+
+		  $data = json_decode($emails);
+
+		  // $countMail = count($data);
+		  // echo $countMail;
+
+		  foreach ($data as $key) {
+		  	//print_r($key);
+		  	$dataMails[] = $key->Correo;
+		  }
+		 //print_r($data) ;
+			// los manda desde la dirección correspondiente
+			$this->email->from('josecoca0890@gmail.com'); //agregar direccion
+			$this->email->to($dataMails);				//emails en DB			
 			$this->email->subject('Notificacion de disponibilidad');
 			$this->email->message('La propiedad esta disponible');
 						
@@ -112,8 +139,46 @@ class Notificacion extends CI_Controller {
 				echo $this->email->print_debugger();
 
 			}
+	}
+	//JSON agregado a DB
 
-		}
+	public function jsonMail($Filtro, $datos)
+	{
+		$notificarA = $datos;
+		//agregar correo para notificacion
+		$data = $this->notificacion_modelo->selecMails($Filtro);
+
+		if ($data) {
+
+			$findMail = strpos($data, $notificarA['Correo']);
+			//echo $findMail;
+			if($findMail === false){
+				echo "Recibira notificacion de disponibilidad de esta propiedad";
+			//insertar solo el correo en JSON de tabla correos
+			 
+			 $json = json_decode($data,true);
+
+			 $json[] = $notificarA;
+			 // print_r($json);
+			 $json = json_encode($json,JSON_FORCE_OBJECT);
+
+			 //echo $json;
+
+			 $this->admin_model->update_data('correos',array('Correos' => $json),array('Propiedad' => $Filtro));
+			 
+			}else{
+				echo "Este correo ya existe por favor espere a ser notificado";
+			}
+
+
+		}else{
+			//crear JSON para filtro
+			$NotJson = array($notificarA);
+			$json = json_encode($NotJson, JSON_FORCE_OBJECT);
+			//echo $json;
+			$this->admin_model->update_data('correos',array('Correos' => $json),array('Propiedad' => $Filtro));
+
+		}		
 	}
 
 	//envio de mensajes a la dirección del admin

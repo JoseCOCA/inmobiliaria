@@ -265,8 +265,10 @@ class Admin extends CI_Controller {
 
 
 						
-						if ($this->admin_model->update_data('imagefilters', $dataForm,$Filter) and $this->notificacion_modelo->notificar($Filter['Filtro'])) {
+						if ($this->admin_model->update_data('imagefilters', $dataForm,$Filter) and $this->notificacion_modelo->notificar($Filter['Filtro']) == '0') {
 							echo 'mails';
+						}elseif($this->admin_model->update_data('imagefilters', $dataForm,$Filter) and $this->notificacion_modelo->notificar($Filter['Filtro']) == '1'){
+							echo 'mailsAgain';
 						}else{
 							if($this->admin_model->update_data('imagefilters', $dataForm,$Filter)){
 								echo 'ok';
@@ -310,6 +312,7 @@ class Admin extends CI_Controller {
 						}else{
 							echo "error";
 						}
+						//echo 'ok';
 					}else{
 						echo 'error';
 					}
@@ -401,6 +404,16 @@ class Admin extends CI_Controller {
 		$datos = array('Filtro' => $this->input->post('filtro'));
 		$tablas = array('imagedesc', 'imagefilters');
 		if($this->admin_model->deleteReg($tablas,$datos)>0){
+			$this->admin_model->deleteMails($datos['Filtro']);
+			echo json_encode("{status:'ok'}");
+		}else{
+			echo "{status:'error'}";
+		}
+	}
+		public function eliminaPropImg()
+	{
+		$url =  $this->input->post('imagen');
+		if(unlink($url)){
 			echo json_encode("{status:'ok'}");
 		}else{
 			echo "{status:'error'}";

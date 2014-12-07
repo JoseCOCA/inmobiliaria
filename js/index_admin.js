@@ -452,7 +452,12 @@ $('form#newRecomendBanner').fileupload({
 					'data-filtro': datos['Filtro']
 				}).html('Eliminar Propiedad').appendTo('.config_container').on('click', function (e){
 					var Filtro = $(this).data('filtro');
-					if(confirm('Desea eliminar esta propiedad? \nTodos los datos e imágenes pertenecientes a este registro serán eliminados.'))eliminaPropiedad(Filtro);
+					var imagen = $('#mod-img').attr('src');
+					console.log(imagen);
+					if(confirm('Desea eliminar esta propiedad? \nTodos los datos e imágenes pertenecientes a este registro serán eliminados.')){
+						eliminaPropImg(imagen);
+						eliminaPropiedad(Filtro);
+					}
 				});
 				
 				eliminaImagen();
@@ -492,16 +497,38 @@ $('form#newRecomendBanner').fileupload({
 			}else if(data=='mails'){
 				var mailConfirm = confirm("Desea notificar disponibilidad ?");
 				if(mailConfirm == true){
-					//Enviar los correos 
-				}else{
-					//Solo actualizar los datos
+					datos = { Filtro : ars.Filtro};
+					console.log(datos);
+					//Enviar los correos
+					$.ajax({
+						url : base_url+'notificacion/Notificaciones',
+						cache : false,
+						type : 'POST',
+						data : datos,
+					}).done(function (data){
+						alert(data);
+					}).fail(function (status, statusText, responseXML){
+						console.log(statusText);
+						console.log(responseXML);
+					});
 				}
+				//Solo actualizar los datos
 					$('#saveChanges').delay(1000).show(100,function(){
 						$('<div>',{class:'success'}).html('Registro actualizado').insertBefore('#saveChanges');
 						$('.success').delay(3000).animate({'opacity':'0'},500,function(){
 							$(this).remove();
 						})
 					}).attr('disabled', false);
+			}else if(data == 'mailsAgain'){
+				var confirmAgain = confirm("Desea reenviar notificaciones?");
+
+				$('#saveChanges').delay(1000).show(100,function(){
+						$('<div>',{class:'success'}).html('Registro actualizado').insertBefore('#saveChanges');
+						$('.success').delay(3000).animate({'opacity':'0'},500,function(){
+							$(this).remove();
+						})
+					}).attr('disabled', false);
+
 			}else{
 				$('#saveChanges').delay(1000).show(100,function(){
 						$('<div>',{class:'warning'}).html(data).insertBefore('#saveChanges');
@@ -605,9 +632,15 @@ $('form#newRecomendBanner').fileupload({
 		dropzone: $('#mod_drop'),
 		add: function  (e,data) {
 			$('button.mod_submit').remove();
+			console.log(data.files[0]['name']);
 			if (data.files && data.files[0]) {
+				var prevImg =  $('#mod-img').attr('src');
+				var nextimg = 'images/filtros/'+data.files[0]['name'];
+				console.log(prevImg);
+				console.log(nextimg);
 		        var reader = new FileReader();
 		        reader.onload = function(e) {
+
 		            $('#mod-img').attr('src', e.target.result);
 		        }
 		    }
@@ -800,7 +833,20 @@ function eliminaPropiedad (filter){
 		console.log(responseXML);
 	});
 }
-
+function eliminaPropImg (imagen){
+	data = {imagen : imagen};
+	$.ajax({
+		url : base_url+'admin/eliminaPropImg',
+		type : 'POST',
+		cache : false,
+		data : data
+	}).done(function (data){
+		console.log(data);
+	}).fail(function (status, statusText, responseXML){
+		console.log(statusText);
+		console.log(responseXML);
+	});
+}
  	/* PROPIEDADES */
 
 	function muestraLoadr (e){
@@ -814,4 +860,10 @@ function eliminaPropiedad (filter){
 		}).delay(1000);
 		// dom.toggleClass('no-overflow').delay(1000);
 		overlay.slideToggle().delay(1000);
+	}
+
+	/* CORREOS*/
+
+	function sendMails(){
+		
 	}

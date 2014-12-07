@@ -4,7 +4,10 @@ class Notificacion_modelo extends CI_Model {
 
 	public function nuevoContacto($data)
 	{
-		$this->db->insert('contactos', $data);
+		if ($this->db->insert('contactos', $data)) {
+			return TRUE;
+		}
+		
 	}
 
 	public function isContact($contacto)
@@ -22,35 +25,41 @@ class Notificacion_modelo extends CI_Model {
 
 	public function notificar($Filtro)
 	{
-		
+		$this->db->select('Enviado');
+		$queryB = $this->db->get_where('correos', array('Propiedad' => $Filtro ));
+		if($queryB->num_rows()>0){
+			foreach ($queryB->result() as $row) {
+				$enviado = $row->Enviado;
+			}
+		}
 		$this->db->select('Status');
 		$query = $this->db->get_where('imagefilters',array('Filtro' => $Filtro ));
 		if($query->num_rows()>0){
 			foreach ($query->result() as $row) {
 				$status = $row->Status;
-				if( $status == "Disponible"){
-					return TRUE;
-				}else{
-					return FALSE;
-				}
 			}
-		}	
-
+		}
+		if( $status == "Disponible" and $enviado == '0'){
+			return '0';
+		}else if($status == "Disponible" and $enviado == '1'){
+			return '1';
+		}else{
+			return FALSE;
+		}
 	}
 
 	public function selecMails($Filtro)
 	{
 		$this->db->select('Correos');
-		$this->db->from('correos');
-		$this->db->where('Filtro', $Filtro);
-		$query = $this->db->get();
+		$query = $this->db->get_where('correos',array('Propiedad'=>$Filtro));
 
-		foreach ($query->result as $row) {
-			$data[] = $row;
+		foreach ($query->result() as $row) {
+			$data = $row->Correos;
 		}
 
-		return $data;
-
+		if(!empty($data)){
+			return $data;
+		}
 	}
 
 }

@@ -10,8 +10,8 @@ o crear nuevas propiedades*/ ?>-->
 <div id="sidr">
     <h1>Elige una propiedad</h1>
 
-    <?php if ($query1 > 0) { ?>
         <ul id="lista-propiedades">
+    <?php if ($query1 > 0) { ?>
         <?php foreach ($query1 as $row) { ?>
 
 
@@ -24,8 +24,8 @@ o crear nuevas propiedades*/ ?>-->
 
 
         <?php } ?>
-        </ul>
     <?php } ?>
+        </ul>
 
 
     <?php

@@ -66,15 +66,8 @@ class Notificacion extends CI_Controller {
 
 					$this->_sendEmail($correo,$comentarios);
 
-
-
-				 }else{
-
-				 	
-				 	$this->jsonMail($Filtro,$notificarA);
 				 }
-				 
-
+				 	$this->jsonMail($Filtro,$notificarA);
 			}else{
 
 					if(!empty($comentarios)){	//si existen comentarios
@@ -113,7 +106,7 @@ class Notificacion extends CI_Controller {
 		
 		$emails = $this->notificacion_modelo->selecMails($Filtro);
 
-		echo $emails;
+		// echo $emails;
 
 		  $data = json_decode($emails);
 
@@ -134,14 +127,15 @@ class Notificacion extends CI_Controller {
 			if($this->email->send()){
 
 				
-				echo $this->email->print_debugger();
+				// echo $this->email->print_debugger();
 				if($this->admin_model->update_data('correos',array('Enviado' => '1', ),array('Propiedad'=>$Filtro))){
-				echo "mail sent";	
+				echo "Su mensaje fue enviado correctamente";	
 				}
 
 			}else{
 
-				echo $this->email->print_debugger();
+				// echo $this->email->print_debugger();
+				echo "Fallo en el envío intentelo más tarde";
 
 			}
 		  }else{
@@ -183,9 +177,9 @@ class Notificacion extends CI_Controller {
 			//crear JSON para filtro
 			$NotJson = array($notificarA);
 			$json = json_encode($NotJson, JSON_FORCE_OBJECT);
-			echo $json;
+			// echo $json;
 			$this->admin_model->update_data('correos',array('Correos' => $json),array('Propiedad' => $Filtro));
-			echo "agregado correo notificacion";
+			echo "Agregado correo notificacion";
 		}		
 	}
 

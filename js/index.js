@@ -101,7 +101,7 @@ jQuery(document).on('ready', function($){
 				$('#status-prop').html(datos['Status']);
 				$('#notiFiltro').val(filtro);
 				
-				if(datos['Status']=='DISPONIBLE'){
+				if(datos['Status']=='Disponible'){
 					$('.checkbox-1, #check-text').hide();
 				}else{
 					$('.checkbox-1, #check-text').show();

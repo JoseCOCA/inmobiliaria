@@ -43,8 +43,8 @@ class Notificacion_modelo extends CI_Model {
 			return '0';
 		}else if($status == "Disponible" and $enviado == '1'){
 			return '1';
-		}else{
-			return FALSE;
+		}else if($status == "No disponible"){
+			return '2';
 		}
 	}
 

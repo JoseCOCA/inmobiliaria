@@ -113,32 +113,40 @@ class Notificacion extends CI_Controller {
 		
 		$emails = $this->notificacion_modelo->selecMails($Filtro);
 
+		echo $emails;
+
 		  $data = json_decode($emails);
 
 		  // $countMail = count($data);
 		  // echo $countMail;
-
-		  foreach ($data as $key) {
-		  	//print_r($key);
-		  	$dataMails[] = $key->Correo;
-		  }
-		 //print_r($data) ;
+		  if ($data) {
+			  foreach ($data as $key) {
+			  	//print_r($key);
+			  	$dataMails[] = $key->Correo;
+			  }
+		 print_r($dataMails) ;
 			// los manda desde la dirección correspondiente
-			$this->email->from('josecoca0890@gmail.com'); //agregar direccion
+			$this->email->from('test@inmobiliariayarrendadora.com.mx'); //agregar direccion
 			$this->email->to($dataMails);				//emails en DB			
 			$this->email->subject('Notificacion de disponibilidad');
 			$this->email->message('La propiedad esta disponible');
 						
 			if($this->email->send()){
 
-				echo "mail sent";
+				
 				echo $this->email->print_debugger();
+				if($this->admin_model->update_data('correos',array('Enviado' => '1', ),array('Propiedad'=>$Filtro))){
+				echo "mail sent";	
+				}
 
 			}else{
 
 				echo $this->email->print_debugger();
 
 			}
+		  }else{
+		  	echo "No se encontraron correos para notificar";
+		  }
 	}
 	//JSON agregado a DB
 
@@ -175,9 +183,9 @@ class Notificacion extends CI_Controller {
 			//crear JSON para filtro
 			$NotJson = array($notificarA);
 			$json = json_encode($NotJson, JSON_FORCE_OBJECT);
-			//echo $json;
+			echo $json;
 			$this->admin_model->update_data('correos',array('Correos' => $json),array('Propiedad' => $Filtro));
-
+			echo "agregado correo notificacion";
 		}		
 	}
 

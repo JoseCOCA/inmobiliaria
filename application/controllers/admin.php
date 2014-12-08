@@ -264,20 +264,26 @@ class Admin extends CI_Controller {
 						);
 
 
-						
-						if ($this->admin_model->update_data('imagefilters', $dataForm,$Filter) and $this->notificacion_modelo->notificar($Filter['Filtro']) == '0') {
-							echo 'mails';
+						if($dataForm['Status'] == "No disponible"){
+							$this->admin_model->update_data('correos',array('Enviado' => '0', ),array('Propiedad'=>$Filter['Filtro']));
+						}
+						if ($this->admin_model->update_data('imagefilters', $dataForm,$Filter) and $this->notificacion_modelo->notificar($Filter['Filtro']) == '0' ) {
+							if($this->notificacion_modelo->selecMails($Filter['Filtro'])){
+								echo 'mails';								
+							}else{
+								echo 'noMails';
+							}
+
 						}elseif($this->admin_model->update_data('imagefilters', $dataForm,$Filter) and $this->notificacion_modelo->notificar($Filter['Filtro']) == '1'){
-							echo 'mailsAgain';
-						}else{
-							if($this->admin_model->update_data('imagefilters', $dataForm,$Filter)){
+							if($this->notificacion_modelo->selecMails($Filter['Filtro'])){								
+								echo 'mailsAgain';
+							}else{
 								echo 'ok';
 							}
+						}elseif($this->admin_model->update_data('imagefilters', $dataForm,$Filter) and $this->notificacion_modelo->notificar($Filter['Filtro']) == '2'){
+								echo 'ok';
 						}
-						
-
-				}
-
+					}
 
 						break;
 
@@ -299,7 +305,7 @@ class Admin extends CI_Controller {
 						'Filtro'      => $this->input->post('Filtro'),
 						'nombre'      => $this->input->post('nombre'),
 						'url'         => 'images/filtros/'.$this->input->post('imagen'),
-						'Status'   => 'NO DISPONIBLE'
+						'Status'   => 'No disponible'
 
 					);
 					if($this->admin_model->insert_images('imagefilters',$insert)){

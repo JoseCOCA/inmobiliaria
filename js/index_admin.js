@@ -494,6 +494,14 @@ $('form#newRecomendBanner').fileupload({
 						})
 					}).attr('disabled', false);
 
+			}else if(data == 'noMails'){
+				alert("No existen correos para notificar");
+				$('#saveChanges').delay(1000).show(100,function(){
+						$('<div>',{class:'success'}).html('Registro actualizado').insertBefore('#saveChanges');
+						$('.success').delay(3000).animate({'opacity':'0'},500,function(){
+							$(this).remove();
+						})
+					}).attr('disabled', false);
 			}else if(data=='mails'){
 				var mailConfirm = confirm("Desea notificar disponibilidad ?");
 				if(mailConfirm == true){
@@ -521,6 +529,22 @@ $('form#newRecomendBanner').fileupload({
 					}).attr('disabled', false);
 			}else if(data == 'mailsAgain'){
 				var confirmAgain = confirm("Desea reenviar notificaciones?");
+				if(confirmAgain == true){
+					datos = { Filtro : ars.Filtro};
+					console.log(datos);
+					//Enviar los correos
+					$.ajax({
+						url : base_url+'notificacion/Notificaciones',
+						cache : false,
+						type : 'POST',
+						data : datos,
+					}).done(function (data){
+						alert(data);
+					}).fail(function (status, statusText, responseXML){
+						console.log(statusText);
+						console.log(responseXML);
+					});					
+				}
 
 				$('#saveChanges').delay(1000).show(100,function(){
 						$('<div>',{class:'success'}).html('Registro actualizado').insertBefore('#saveChanges');

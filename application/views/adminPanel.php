@@ -49,9 +49,6 @@ o crear nuevas propiedades*/ ?>-->
             <input type="hidden" class="propiedad" id="propiedad-nueva" name="propiedad" value="nueva">
         </div>
     </form>
-   <!--  <h4 id='loading' >loading..</h4>
-    <div id="message"></div>
- -->
 
 
 </div>
@@ -122,7 +119,6 @@ o crear nuevas propiedades*/ ?>-->
                 
                 <img src="" id="mod-img">
             </div>
-            <!-- <button id="mod-search">Buscar imagen</button> -->
             <div id="modImage">
                 <input type="file" name="file-upl" id="file-mod" required="required" accept="image/*" />
                 <button class='input_btn_file' id='mod-search'>Buscar imagen</button>     

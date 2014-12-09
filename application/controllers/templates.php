@@ -11,9 +11,9 @@ class Templates extends CI_Controller {
 	 * Index Page for this controller.
 	 *
 	 * Maps to the following URL
-	 * 		http://example.com/index.php/welcome
+	 * 		http://example.com/index.php/templates
 	 *	- or -
-	 * 		http://example.com/index.php/welcome/index
+	 * 		http://example.com/index.php/templates/index
 	 *	- or -
 	 * Since this controller is set as the default controller in
 	 * config/routes.php, it's displayed at http://example.com/
@@ -69,16 +69,5 @@ class Templates extends CI_Controller {
 		$this->load->view('public/terms');
 		$this->load->view('footer2');
 	}
-
-	public function contacto()
-	{
-		$this->load->view('contactForm');
-	}
-
-	public function descripcion()
-	{
-		$this->load->view('getDescription');
-	}
-
 
 }

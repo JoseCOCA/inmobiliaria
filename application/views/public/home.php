@@ -2,10 +2,6 @@
 <!--=====================Content======================-->
 <section class="content">
     <div class="grid_12 center">
-
-
-        <!-- <a href="#"><img src="images/mask.png" class="ban_img" alt=""></a> -->
-
         <div class="text1">Elige la mejor opción que se adapte a tus necesidades </div>
     </div>
 

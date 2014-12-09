@@ -16,10 +16,7 @@
 	<script src="js/slippry.js"></script>
 	<script src="js/modernizr.custom.17475.js"></script>
 	<script type="text/javascript" src="js/isotope.js"></script>
-	<!--<script type="text/javascript" src="js/imagesloaded.pkgd.js"></script>
-	<script type="text/javascript" src="js/imagesloaded.pkgd.min.js"></script>-->
 	<script type="text/javascript" src="js/jquery.sticky.js"></script>
-	<!--<script type="text/javascript" src="js/jquery.popupoverlay.js"></script>-->
 	<script type="text/javascript" src="js/rhinoslider-1.05.min.js"></script>
 	<script type="text/javascript" src="js/mousewheel.js"></script>
 	<script type="text/javascript" src="js/easing.js"></script>

@@ -113,15 +113,15 @@ class Notificacion extends CI_Controller {
 			if($this->email->send()){				
 				// echo $this->email->print_debugger();
 				if($this->admin_model->update_data('correos',array('Enviado' => '1', ),array('Propiedad'=>$Filtro))){
-				echo "Su mensaje fue enviado correctamente";	
+				echo "Su mensaje fue enviado correctamente \n";	
 				}
 
 			}else{
 				// echo $this->email->print_debugger();
-				echo "Fallo en el envío intentelo más tarde";
+				echo "Fallo en el envío intentelo más tarde \n";
 			}
 		}else{
-		  	echo "No se encontraron correos para notificar";
+		  	echo "No se encontraron correos para notificar \n";
 		}
 	}
 	//JSON agregado a DB
@@ -137,7 +137,7 @@ class Notificacion extends CI_Controller {
 			$findMail = strpos($data, $notificarA['Correo']);
 			//echo $findMail;
 			if($findMail === false){
-			    echo "Recibira notificacion de disponibilidad de esta propiedad";
+			    echo "Recibira notificacion de disponibilidad de esta propiedad \n";
 				//insertar solo el correo en JSON de tabla correos
 				 
 				$json = json_decode($data,true);
@@ -151,7 +151,7 @@ class Notificacion extends CI_Controller {
 				$this->admin_model->update_data('correos',array('Correos' => $json),array('Propiedad' => $Filtro));
 			 
 			}else{
-				echo "Este correo ya existe por favor espere a ser notificado";
+				echo "Este correo ya existe por favor espere a ser notificado \n";
 			}
 		}else{
 			//crear JSON para filtro
@@ -159,7 +159,7 @@ class Notificacion extends CI_Controller {
 			$json = json_encode($NotJson, JSON_FORCE_OBJECT);
 			// echo $json;
 			$this->admin_model->update_data('correos',array('Correos' => $json),array('Propiedad' => $Filtro));
-			echo "Agregado correo notificacion";
+			echo "Agregado correo notificacion \n";
 		}		
 	}
 
@@ -180,12 +180,12 @@ class Notificacion extends CI_Controller {
 		
 		if($this->email->send()){
 
-			echo "Su mensaje fue enviado correctamente";
+			echo "Su mensaje fue enviado correctamente \n";
 			// echo $this->email->print_debugger();
 
 		}else{
 
-		echo "fallo en el envio, por favor intentelo más tarde";
+		echo "fallo en el envio, por favor intentelo más tarde \n";
 
 			// echo $this->email->print_debugger();
 

@@ -64,7 +64,7 @@ jQuery(document).on('ready', function($){
 				id : getID
 			}
 			$.ajax({
-				url: base_url+'ajax/index',
+				url: base_url+'ajax',
 				data: data,
 				type : 'POST',
 				cache: false

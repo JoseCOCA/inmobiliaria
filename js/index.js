@@ -217,11 +217,13 @@ jQuery(document).on('ready', function($){
 	$('.menu_block').sticky({topSpacing:0});
 });
 
-	$('.menu_block').one('sticky-start', function (e) {
+	$('.menu_block').on('sticky-start', function (e) {
 		e.preventDefault();
-		var altura = document.querySelector('.menu_block').offsetHeight;
-		$('#nav').sticky({topSpacing:46, getWidthFrom: '#isotope-cont'}).css({'z-index': '9', });
+		var altura = $('.menu_block').innerHeight();
+		console.log(altura);
+		$('#nav').sticky({topSpacing:altura, getWidthFrom: '#isotope-cont', responsiveWidth: true}).css({'z-index': '9'});
 	});
+
 
 function goToByScroll(id){$('html,body').animate({scrollTop: $("#"+id).offset().top},'slow');}
 

@@ -14,8 +14,8 @@
 | path to your installation.
 |
 */
-// $config['base_url']	= 'http://localhost/pruebas/inmobiliaria/';
-$config['base_url']	= 'http://localhost/inmobiliaria/'; // DESCOMENTAR ESTA LINEA Y COMENTAR LA DE ARRIBA 
+$config['base_url']	= 'http://localhost/pruebas/inmobiliaria/';
+// $config['base_url']	= 'http://localhost/inmobiliaria/'; // DESCOMENTAR ESTA LINEA Y COMENTAR LA DE ARRIBA 
 
 /*
 |--------------------------------------------------------------------------
@@ -280,7 +280,7 @@ $config['cookie_secure']	= FALSE;
 | COOKIE data is encountered
 |
 */
-$config['global_xss_filtering'] = true;
+$config['global_xss_filtering'] = '';
 
 /*
 |--------------------------------------------------------------------------

@@ -86,6 +86,7 @@ class CI_Input {
 		log_message('debug', "Input Class Initialized");
 
 		$this->_allow_get_array	= (config_item('allow_get_array') === TRUE);
+		// EDITADO POR JOSÉ GARCÍA.- PERMITE DESHABILITAR xss_flitering DE LAS VARIABLES $_GET, $_POST, $_COOKIE
 		$this->_enable_xss		= (config_item('global_xss_filtering') === TRUE);
 		$this->_enable_csrf		= (config_item('csrf_protection') === TRUE);
 

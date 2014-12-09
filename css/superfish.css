@@ -206,9 +206,11 @@ nav{ position:relative;padding: 0px 0 0 0;}
 
 
 	.sf-menu>li+li{
+		margin-left: 26px;
 	}
 
 	.sf-menu>li>a {
+		font-size: 16px;
 	}
 }
 
@@ -223,7 +225,7 @@ nav{ position:relative;padding: 0px 0 0 0;}
 
 
   .menu_block  nav{
-  	border: none !important;
+  		border: none !important;
 		float:none !important;
 		font:12px/15px Arial, Helvetica, sans-serif;
 		text-transform:uppercase;
@@ -233,7 +235,12 @@ nav{ position:relative;padding: 0px 0 0 0;}
 		
 	
 	}
-
+	.sf-menu > li + li {
+	    margin-left: 5px;
+	}
+	.sf-menu > li > a {
+	    font-size: 12px;
+	}
 
 	
 
@@ -241,7 +248,7 @@ nav{ position:relative;padding: 0px 0 0 0;}
   	border: none;
   }
 
-	.sf-menu{display:none !important; float: none;}
+	/*.sf-menu{display:none !important; float: none;}*/
 
 	.select-menu {
 		font:12px/15px Arial, Helvetica, sans-serif;

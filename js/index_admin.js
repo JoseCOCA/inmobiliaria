@@ -104,6 +104,8 @@ jQuery(document).on('ready', function($){
 					}
 				}).done(function (data){
 					console.log(data);
+					alert('Registro actualizado');
+					este.fadeIn();
 				}).fail(function (status, statusText, responseXML){
 					console.log(statusText);
 					console.log(responseXML);

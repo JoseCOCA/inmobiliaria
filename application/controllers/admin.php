@@ -21,7 +21,6 @@ class Admin extends CI_Controller {
 
 	public function __construct(){
 		parent::__construct();
-
 		session_start();
 		$this->load->model('admin_model');
 		$this->load->model('notificacion_modelo');
@@ -343,16 +342,15 @@ class Admin extends CI_Controller {
 
 				break;
 				case 'Modifica seccion':
+					$contenido = $this->input->post('contenido');
 					$update = array(
-						'contenido' => $this->input->post('contenido')
+						'contenido' => $contenido
 					);
 					$id = array(
 						'ID' => $this->input->post('id'),
 						);
-					$this->admin_model->update_data('contenido',$update,$id);
-
-					echo "{success:'ok', datos:'".$update['contenido']."'}";
-
+					echo $this->admin_model->update_data('contenido',$update,$id) ? "{success:'ok', datos:'".$update['contenido']."'}" : 'error';
+					// echo $this->input->ip_address();
 				break;
 				default:
 					echo 'nel';

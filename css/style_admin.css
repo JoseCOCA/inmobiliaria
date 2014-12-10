@@ -1164,6 +1164,9 @@ nav .botn a:hover{
 .blue {
     background-color: #007A96;
 }
+.blue option{
+    background-color: #007A96;
+}
 .semi-square {
     border-radius: 5px;
 }

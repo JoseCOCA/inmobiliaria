@@ -658,12 +658,9 @@ $('form#newRecomendBanner').fileupload({
 		dropzone: $('#mod_drop'),
 		add: function  (e,data) {
 			$('button.mod_submit').remove();
-			console.log(data.files[0]['name']);
+			//console.log(data.files[0]['name']);
 			if (data.files && data.files[0]) {
-				var prevImg =  $('#mod-img').attr('src');
-				var nextimg = 'images/filtros/'+data.files[0]['name'];
-				console.log(prevImg);
-				console.log(nextimg);
+				//console.log(nextimg);
 		        var reader = new FileReader();
 		        reader.onload = function(e) {
 
@@ -713,7 +710,7 @@ $('form#newRecomendBanner').fileupload({
             	}).done(function (data){
             		if(data == 'ok'){
 	            		alert('Imagen actualizada');
-	            		console.log(dats);
+	            		console.log(dats);	
 	            		$('#sidr>ul').find('a#'+filtro).find('img').attr('src', 'images/filtros/'+imagen);
             			
             		}

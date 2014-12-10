@@ -12,7 +12,11 @@ class Ajax extends CI_Controller {
 	{
 		if($Filtro = $this->input->post('id')){ //Agregar nombre del post de ajax;
 			$query = $this->admin_model->get_desc($Filtro);
-		    echo json_encode($query);
+				
+				$this->output
+						->set_content_type('application/json')
+						->set_output(json_encode($query));				
+		    //echo json_encode($query);
 		}else{
 			echo "something get wrong";
 		}

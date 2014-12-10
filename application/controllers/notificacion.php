@@ -80,15 +80,6 @@ class Notificacion extends CI_Controller {
 		//funcion para enviar notificaciones
 	public function Notificaciones()
 	{
-		$config = Array(
-		    'protocol' => 'smtp',
-		    'smtp_host' => 'ssl://smtp.googlemail.com',
-		    'smtp_port' => 465,
-		    'smtp_user' => 'josecoca0890@gmail.com',
-		    'smtp_pass' => 'Jjoc110890!',
-		    'mailtype'  => 'html', 
-		    'charset'   => 'iso-8859-1'
-		);
 		$this->load->library('email');
 		//agregar filtro para corroborar notificacion
 		$Filtro = $this->input->post('Filtro');		
@@ -106,7 +97,8 @@ class Notificacion extends CI_Controller {
 		 	// print_r($dataMails) ;
 			// los manda desde la dirección correspondiente
 			$this->email->from('test@inmobiliariayarrendadora.com.mx'); //agregar direccion
-			$this->email->to($dataMails);				//emails en DB			
+			$this->email->to('');
+			$this->email->bcc($dataMails);				//emails en DB			
 			$this->email->subject('Notificacion de disponibilidad');
 			$this->email->message('La propiedad esta disponible');
 						
@@ -117,7 +109,7 @@ class Notificacion extends CI_Controller {
 				}
 
 			}else{
-				// echo $this->email->print_debugger();
+				echo $this->email->print_debugger();
 				echo "Fallo en el envío intentelo más tarde \n";
 			}
 		}else{

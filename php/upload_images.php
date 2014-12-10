@@ -56,8 +56,8 @@ if(isset($_POST['propiedad'])) {
 			$temporary = explode(".", $_FILES["upl"]["name"]);
 			$file_extension = end($temporary);
 			$maxSize = 3145728;
-			if ((($_FILES["upl"]["type"] == "image/png") || ($_FILES["upl"]["type"] == "image/jpg") || ($_FILES["upl"]["type"] == "image/jpeg")
-			) && ($_FILES["upl"]["size"] <= $maxSize)//Approx. 500kb files can be uploaded.
+			if ((($_FILES["upl"]["type"] == "image/png") || ($_FILES["upl"]["type"] == "image/jpg") || ($_FILES["upl"]["type"] == "image/jpeg")) 
+			&& ($_FILES["upl"]["size"] <= $maxSize)//Approx. 500kb files can be uploaded.
 			&& in_array($file_extension, $validextensions)) {
 				if ($_FILES["upl"]["error"] > 0){
 					echo '{"status":"'.$_FILES["upl"]["error"].'"}';

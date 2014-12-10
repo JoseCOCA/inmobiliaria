@@ -20,14 +20,16 @@ $('#submit').click(function(e){
 		type:  	'POST',
 		data:  	form_data,
 		success: function (msg) {
-
 			alert(msg);
 			//console.log(msg);
 			document.getElementById("notif").reset();
+			$('#notificationForm').slideUp('slow', function(){
+			$('#descripcion').slideDown('slow');
+			});
+			$('.checkbox-1 input[type="checkbox"]').attr('checked',false);
+
 		}
 
 	});
-
-	return false;
 
 });

@@ -67,10 +67,13 @@ jQuery(document).on('ready', function($){
 				url: base_url+'ajax',
 				data: data,
 				type : 'POST',
-				cache: false
+				cache: false,
+				croosDomain: true,
+				//dataType: 'jsonp',
 			}).done(function (data){
 				var dataA = data;
-				data = JSON.parse(data);
+				//console.log(data);
+				//data = JSON.parse(data);
 				var filtro = data[0]['Filtro'];
 				//console.log(filtro);
 				console.log(data);

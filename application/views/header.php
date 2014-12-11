@@ -99,8 +99,8 @@
 		<?php if($query > 0) {?>
 			<?php foreach ($query1 as $row ) {?>
 			<div class="specs oculto" id= "<?= $row->Filtro?>">
-				<span>Dimensiones <?= $row -> Dimension ?></span>
-				<span>Zona <?= $row -> Delegacion?></span>
+				<span>Dimensiones <?= $row -> Dimension ?></span><br>
+				<span>Zona <?= $row -> Delegacion?></span><br>
 				<span>Costo: $<?= $row -> Precio?></span>
 			</div>
 
@@ -131,14 +131,14 @@
 
 		<div class="portada overlay-cont" id="">
 
-			<a href="#close" id="close" onclick="resetForm()" class=""></a>
+			<a href="#overlay" id="close" onclick="resetForm()" class=""></a>
 
 				<div class="slide-cont">
 					<div class="slide" id="este-">
-						<ul class="slider-cont" data-slide="" id="slider">
+						<!-- <ul class="slider-cont" data-slide="" id="slider"> -->
 							<!-- IMÁGENES CARRUSEL PROPIEDAD -->
 							<!-- <li><img src="http://lorempixel.com/g/750/450" alt="" class="image_slide"></li> -->
-						</ul>
+						<!-- </ul> -->
 					</div>
 				</div>
 

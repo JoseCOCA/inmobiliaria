@@ -806,7 +806,8 @@ filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#fdfefe', end
 	background: -ms-linear-gradient(top,  #f6fcfd 0%,#83cfe6 10%,#00acd3 10%,#007089 100%);
 	background: linear-gradient(to bottom,  #f6fcfd 0%,#83cfe6 10%,#00acd3 10%,#007089 100%);
 	filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#f6fcfd', endColorstr='#007089',GradientType=0 );
-	width: 900px;
+	width: 90%;
+    height: 63.5%;
 	margin-top: 30px;
 	margin-bottom: 30px;
 	position: absolute;
@@ -1107,8 +1108,15 @@ img.wrap{
 	margin: auto;
 	width: 100%;
 	text-align: center;
+    height: 42.5%;
 }
-
+.slide{
+    height:100%;
+}
+.slide .rhino-container{
+    width: 78% !important;
+    height:100% !important;
+}
 #imagesDesc {
   transform: scale(0.8);
 }
@@ -1117,7 +1125,7 @@ img.wrap{
 }
 
 #slider {
-	width:750px;
+	width: 100%;
 	height:450px;
 	/*IE bugfix*/
 	padding:0;
@@ -1297,6 +1305,10 @@ img.wrap{
 /*media queries*/
 
 @media only screen and (max-width: 767px) {
+    .tipo-recomendados{
+        line-height: 70px;
+    }
+
     .contact {
         position: static;
         float: none;

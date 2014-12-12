@@ -1304,13 +1304,20 @@ img.wrap{
     .slide .rhino-container{
         height: 200px;
     }
+
+    #tipo-propiedad{
+        margin-right: 25%; 
+    }
+    #status-prop{
+        margin-right: 59% !important;
+    }
 }
+
 @media only screen and (min-device-width: 320px) and (max-device-width: 480px){
     /*banner principal*/
+    .sy-controls li {
 
-    .sy-controls li a{
-        background-size: 10px;
-        background: none ;
+        display: none;
     }
     /*menu principal*/
     .menu-separator{
@@ -1325,13 +1332,50 @@ img.wrap{
     #close{
         width: 20px ;
         height: 20px;
-        left: 98%;
+        left: 95%;
         top: -10px;
 
     }
+    
+    /*formulario notificaciones*/
+    #notificationForm label{
+        display: block;
+    }
+
+    #notificationForm input[type="text"]{
+        width: 90%;
+        height: 11px;
+    }
+
+    #notificationForm input[type="submit"]{
+        width: 95%;
+    }
+
+    #status-prop{
+        margin-right: 38%;
+    }
+
+    .content1 p{
+        margin-right: 15%;
+    }
+
+    #check-text{
+        display: inline;
+    }
+
+    .checkbox-1{
+        margin-left: 4px;
+    }
+
+/*    .portada{
+        top: 2%;
+        left: 5%;
+    }*/
 
     #close:after{
         font-size: 1em;
+        /*top: 0%;*/
+        /*left: 10%;*/
     }
 
     .slide .rhino-container{
@@ -1458,12 +1502,32 @@ img.wrap{
     }
 }
 
-@media screen and (min-width: 1024px) {
+@media screen and (min-width: 1024px){
 
     .menu_block li{
         font-size: 18px;
     }
    
+    #banner-recomendados span{
+    font-size: 18px;
+    }
+    
+}
+
+@media screen and (min-device-width: 1024px) and (min-device-height: 768px){
+
+    .menu_block li{
+        font-size: 18px;
+    }
+
+    .sy-controls li {
+
+        display: none;
+    }
+    
+    .portada{
+        left: 5%;
+    }
     #banner-recomendados span{
     font-size: 18px;
     }

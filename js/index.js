@@ -230,7 +230,5 @@ function resetForm () {
 	$('#notificationForm').slideUp('slow', function(){
 			$('#descripcion').slideDown('slow');
 	});
-
-		$('ul#slider').remove();
-
+	$('ul#slider').remove();
 }

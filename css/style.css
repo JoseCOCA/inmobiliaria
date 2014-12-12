@@ -807,8 +807,7 @@ filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#fdfefe', end
 	background: linear-gradient(to bottom,  #f6fcfd 0%,#83cfe6 10%,#00acd3 10%,#007089 100%);
 	filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#f6fcfd', endColorstr='#007089',GradientType=0 );
 	width: 90%;
-    height: 63.5%;
-	margin-top: 30px;
+  	margin-top: 30px;
 	margin-bottom: 30px;
 	position: absolute;
 	top: 3%;
@@ -1108,14 +1107,12 @@ img.wrap{
 	margin: auto;
 	width: 100%;
 	text-align: center;
-    height: 42.5%;
 }
 .slide{
     height:100%;
 }
 .slide .rhino-container{
     width: 78% !important;
-    height:100% !important;
 }
 #imagesDesc {
   transform: scale(0.8);
@@ -1303,8 +1300,107 @@ img.wrap{
 
 
 /*media queries*/
+@media only screen and (min-device-width: 320px) and (max-device-width: 480px) and (orientation: landscape){
+    .slide .rhino-container{
+        height: 200px;
+    }
+}
+@media only screen and (min-device-width: 320px) and (max-device-width: 480px){
+    /*banner principal*/
 
-@media only screen and (max-width: 767px) {
+    .sy-controls li a{
+        background-size: 10px;
+        background: none ;
+    }
+    /*menu principal*/
+    .menu-separator{
+        display: none !important; 
+    }
+
+    .menu_block nav {
+        font: 14px/20px 'DINPro','Helvetica';
+    }
+
+    /*descripciones de propiedades*/
+    #close{
+        width: 20px ;
+        height: 20px;
+        left: 98%;
+        top: -10px;
+
+    }
+
+    #close:after{
+        font-size: 1em;
+    }
+
+    .slide .rhino-container{
+        height: 200px !important;
+    }
+
+    .slide .rhino-bullets{
+        display: none;
+    }
+    /*banner recomendados*/
+
+    #banner-recomendados{
+        height: 180px !important;
+    }
+    #banner-recomendados span{
+        font-size: 13px;
+    }
+
+    #banner-recomendados .tipo-recomendados span{
+        font-size: 23px;
+    }
+    .tipo-recomendados{
+        line-height: 57px !important;
+    }
+
+    /*texto slogan*/
+
+    .text1{
+        font-size: 15px;
+    }
+
+    /*info*/
+    .block1 h3{
+        text-align: center;
+        font-size: 20px;
+    }
+
+    .extra_wrapper h3{
+        font-size: 20px;
+    }
+
+    /*aviso de privacidad Terminos de uso*/
+
+    .head2{
+        font-size: 17px !important;
+    }
+
+
+
+
+}
+
+@media only screen and (max-width: 768px) {
+    /*descripciones de propiedades*/
+
+    .text-content{
+        font-size: 14px;
+    }
+    .slide .rhino-container{
+        height: 320px ;
+    }
+    .content1{
+        margin-top: 14px;
+    }
+    #contenido-descripcion{
+        padding-top: 4%
+    }
+
+    /*banner recomendados*/
     .tipo-recomendados{
         line-height: 70px;
     }
@@ -1328,7 +1424,7 @@ img.wrap{
     #banner-recomendados .mask-recomendado h2  {
         padding-left: 10%;
         font-size: 26px;
-        line-height: 40px;
+        line-height: 90px;
         height: 100%;
     }
     #isotope-cont #nav a {

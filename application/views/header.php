@@ -131,7 +131,7 @@
 
 		<div class="portada overlay-cont" id="">
 
-			<a href="#overlay" id="close" onclick="resetForm()" class=""></a>
+			<a href="#close" id="close" onclick="resetForm()" class=""></a>
 
 				<div class="slide-cont">
 					<div class="slide" id="este-">
